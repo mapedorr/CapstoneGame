@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Limpiar/Limpiar.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Sprites/bird-02.png" type="Texture" id=2]
@@ -8,6 +8,9 @@
 [ext_resource path="res://addons/swipe-detector/swipe_detector.gd" type="Script" id=6]
 [ext_resource path="res://addons/swipe-detector/icon.png" type="Texture" id=7]
 [ext_resource path="res://CustomResources/DynamicFonts/FiraCode-Medium.tres" type="DynamicFont" id=8]
+[ext_resource path="res://Limpiar/MusicManager.gd" type="Script" id=9]
+[ext_resource path="res://Limpiar/Metronome.gd" type="Script" id=10]
+[ext_resource path="res://Audio/MusicRefLoop_CleaningStage_110BPM.wav" type="AudioStream" id=11]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 300, 300 )
@@ -74,6 +77,23 @@ text = "placeholder"
 align = 1
 valign = 1
 
+[node name="MusicManager" type="Node" parent="."]
+script = ExtResource( 9 )
+
+[node name="Metronome" type="Node" parent="MusicManager"]
+script = ExtResource( 10 )
+bpm = 110.0
+
+[node name="Display" type="Label" parent="MusicManager/Metronome"]
+margin_right = 40.0
+margin_bottom = 14.0
+
+[node name="Timer" type="Timer" parent="MusicManager/Metronome"]
+wait_time = 0.5
+
+[node name="Mx" type="AudioStreamPlayer" parent="MusicManager"]
+stream = ExtResource( 11 )
+
 [connection signal="timeout" from="CleanCheck" to="." method="_on_CleanCheck_timeout"]
 [connection signal="timeout" from="ResetCountdown" to="." method="_on_ResetCountdown_timeout"]
 [connection signal="pressed" from="SwipeObject" to="SwipeObject" method="_on_touch_pressed"]
@@ -81,3 +101,4 @@ valign = 1
 [connection signal="swipe_ended" from="SwipeBird/SwipeDetector" to="SwipeBird" method="_on_SwipeDetector_swipe_ended"]
 [connection signal="swipe_started" from="SwipeBird/SwipeDetector" to="SwipeBird" method="_on_SwipeDetector_swipe_started"]
 [connection signal="swiped" from="SwipeBird/SwipeDetector" to="SwipeBird" method="_on_SwipeDetector_swiped"]
+[connection signal="timeout" from="MusicManager/Metronome/Timer" to="MusicManager/Metronome" method="_on_Timer_timeout"]
