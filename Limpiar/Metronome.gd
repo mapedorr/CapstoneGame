@@ -28,17 +28,20 @@ func _ready():
 
 
 func _play_metronome():
+	if not isPlaying:
+		isPlaying = true
+		timer.start()
 	if current_beat % time_signature_top == 0:
 		#high_beap.play()
 		current_beat = 1
 		current_measure += 1
 		display.set_text(str(current_measure) + "  " + str(current_beat))
-		timer.start()
+#		timer.start()
 	else:
 		#low_beap.play()
 		current_beat += 1
 		display.set_text(str(current_measure) + "  " + str(current_beat))
-		timer.start()
+#		timer.start()
 
 ###use this function if you disconect the buttons
 #func _stop_metronome():
@@ -51,7 +54,6 @@ func _on_Timer_timeout():
 
 func start_metronome():
 	if isPlaying == false:
-		isPlaying = true
 		_play_metronome()
 		
 

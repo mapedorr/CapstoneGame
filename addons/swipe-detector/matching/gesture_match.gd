@@ -27,7 +27,7 @@ func score():
   return score
 
 func similarity_algorithm():
-  print('Subclass Responsibility!')
+  # print('Subclass Responsibility!')
   breakpoint
 
 func is_match():

@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/achli2.ogg-0bc9ff7a93279e43257e6555fd1dd3af.oggstr"
+
+[deps]
+
+source_file="res://Audio/achli2.ogg"
+dest_files=[ "res://.import/achli2.ogg-0bc9ff7a93279e43257e6555fd1dd3af.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

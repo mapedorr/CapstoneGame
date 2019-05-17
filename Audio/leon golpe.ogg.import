@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/leon golpe.ogg-eeec43578b86215732b5825b0324d191.oggstr"
+
+[deps]
+
+source_file="res://Audio/leon golpe.ogg"
+dest_files=[ "res://.import/leon golpe.ogg-eeec43578b86215732b5825b0324d191.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

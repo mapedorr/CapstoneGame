@@ -10,4 +10,4 @@ func _on_touch_pressed():
 
 func _on_touch_released():
 	presionado = false
-	print(get_shape().collide(transform, get_shape(), transform))
+	# print(get_shape().collide(transform, get_shape(), transform))

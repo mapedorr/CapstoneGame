@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://Limpiar/Limpiar.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Sprites/bird-02.png" type="Texture" id=2]
@@ -11,6 +11,11 @@
 [ext_resource path="res://Limpiar/MusicManager.gd" type="Script" id=9]
 [ext_resource path="res://Limpiar/Metronome.gd" type="Script" id=10]
 [ext_resource path="res://Audio/MusicRefLoop_CleaningStage_110BPM.wav" type="AudioStream" id=11]
+[ext_resource path="res://Assets/Scripts/DancingBird.gd" type="Script" id=12]
+[ext_resource path="res://Audio/leon golpe.ogg" type="AudioStream" id=13]
+[ext_resource path="res://Audio/leon wei.ogg" type="AudioStream" id=14]
+[ext_resource path="res://Audio/achli.ogg" type="AudioStream" id=15]
+[ext_resource path="res://Audio/achli2.ogg" type="AudioStream" id=16]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 300, 300 )
@@ -27,6 +32,70 @@ Label/constants/shadow_offset_y = 1
 Label/fonts/font = null
 Label/styles/normal = null
 
+[sub_resource type="Animation" id=3]
+resource_name = "Dance"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( 0, 0 ), Vector2( 0, -20 ), Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "Dance"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( 0, 0 ), Vector2( 0, -20 ), Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "Dance"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( 0, 0 ), Vector2( 0, -20 ), Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "Dance"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( 0, 0 ), Vector2( 0, -20 ), Vector2( 0, 0 ) ]
+}
+
 [node name="Limpiar" type="Node2D"]
 script = ExtResource( 1 )
 
@@ -40,7 +109,7 @@ one_shot = true
 
 [node name="SwipeObject" type="TouchScreenButton" parent="."]
 modulate = Color( 0.407843, 0.878431, 0.141176, 1 )
-position = Vector2( 156.408, 111.842 )
+position = Vector2( -74.0776, -68.5381 )
 scale = Vector2( 0.5, 0.5 )
 normal = ExtResource( 2 )
 pressed = ExtResource( 3 )
@@ -49,8 +118,9 @@ passby_press = true
 script = ExtResource( 4 )
 
 [node name="SwipeBird" type="TouchScreenButton" parent="."]
+editor/display_folded = true
 modulate = Color( 0.870588, 0.278431, 0.278431, 1 )
-position = Vector2( 710.056, 433.778 )
+position = Vector2( 1100.88, 610.818 )
 scale = Vector2( 0.5, 0.5 )
 normal = ExtResource( 2 )
 pressed = ExtResource( 3 )
@@ -68,6 +138,9 @@ directions_mode = "Four Directions"
 editor/display_folded = true
 margin_right = 1280.0
 margin_bottom = 800.0
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="CleanTime" type="Label" parent="Debug"]
 anchor_right = 1.0
@@ -78,6 +151,7 @@ align = 1
 valign = 1
 
 [node name="MusicManager" type="Node" parent="."]
+editor/display_folded = true
 script = ExtResource( 9 )
 
 [node name="Metronome" type="Node" parent="MusicManager"]
@@ -89,10 +163,99 @@ margin_right = 40.0
 margin_bottom = 14.0
 
 [node name="Timer" type="Timer" parent="MusicManager/Metronome"]
+process_mode = 0
 wait_time = 0.5
 
 [node name="Mx" type="AudioStreamPlayer" parent="MusicManager"]
 stream = ExtResource( 11 )
+
+[node name="Bird" type="Sprite" parent="."]
+position = Vector2( 165.348, 382.473 )
+scale = Vector2( 2, 2 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="DancingBird" type="TouchScreenButton" parent="Bird"]
+modulate = Color( 0.407843, 0.878431, 0.141176, 1 )
+scale = Vector2( 0.3, 0.3 )
+normal = ExtResource( 2 )
+pressed = ExtResource( 3 )
+shape = SubResource( 1 )
+passby_press = true
+script = ExtResource( 12 )
+
+[node name="Dance" type="AnimationPlayer" parent="Bird/DancingBird"]
+anims/Dance = SubResource( 3 )
+
+[node name="Chirp" type="AudioStreamPlayer2D" parent="Bird/DancingBird"]
+stream = ExtResource( 13 )
+
+[node name="Bird2" type="Sprite" parent="."]
+position = Vector2( 639.681, 512.747 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="DancingBird" type="TouchScreenButton" parent="Bird2"]
+modulate = Color( 0.407843, 0.878431, 0.141176, 1 )
+scale = Vector2( 0.3, 0.3 )
+normal = ExtResource( 2 )
+pressed = ExtResource( 3 )
+shape = SubResource( 1 )
+passby_press = true
+script = ExtResource( 12 )
+cuando = 2
+
+[node name="Dance" type="AnimationPlayer" parent="Bird2/DancingBird"]
+anims/Dance = SubResource( 4 )
+
+[node name="Chirp" type="AudioStreamPlayer2D" parent="Bird2/DancingBird"]
+stream = ExtResource( 14 )
+
+[node name="Bird3" type="Sprite" parent="."]
+position = Vector2( 594.586, 163.678 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="DancingBird" type="TouchScreenButton" parent="Bird3"]
+modulate = Color( 0.407843, 0.878431, 0.141176, 1 )
+scale = Vector2( 0.3, 0.3 )
+normal = ExtResource( 2 )
+pressed = ExtResource( 3 )
+shape = SubResource( 1 )
+passby_press = true
+script = ExtResource( 12 )
+cuando = 3
+
+[node name="Dance" type="AnimationPlayer" parent="Bird3/DancingBird"]
+anims/Dance = SubResource( 5 )
+
+[node name="Chirp" type="AudioStreamPlayer2D" parent="Bird3/DancingBird"]
+stream = ExtResource( 15 )
+
+[node name="Bird4" type="Sprite" parent="."]
+position = Vector2( 958.687, 118.583 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="DancingBird" type="TouchScreenButton" parent="Bird4"]
+modulate = Color( 0.407843, 0.878431, 0.141176, 1 )
+scale = Vector2( 0.3, 0.3 )
+normal = ExtResource( 2 )
+pressed = ExtResource( 3 )
+shape = SubResource( 1 )
+passby_press = true
+script = ExtResource( 12 )
+cuando = 4
+
+[node name="Dance" type="AnimationPlayer" parent="Bird4/DancingBird"]
+anims/Dance = SubResource( 6 )
+
+[node name="Chirp" type="AudioStreamPlayer2D" parent="Bird4/DancingBird"]
+stream = ExtResource( 16 )
 
 [connection signal="timeout" from="CleanCheck" to="." method="_on_CleanCheck_timeout"]
 [connection signal="timeout" from="ResetCountdown" to="." method="_on_ResetCountdown_timeout"]
@@ -102,3 +265,11 @@ stream = ExtResource( 11 )
 [connection signal="swipe_started" from="SwipeBird/SwipeDetector" to="SwipeBird" method="_on_SwipeDetector_swipe_started"]
 [connection signal="swiped" from="SwipeBird/SwipeDetector" to="SwipeBird" method="_on_SwipeDetector_swiped"]
 [connection signal="timeout" from="MusicManager/Metronome/Timer" to="MusicManager/Metronome" method="_on_Timer_timeout"]
+[connection signal="pressed" from="Bird/DancingBird" to="Bird/DancingBird" method="_on_touch_pressed"]
+[connection signal="released" from="Bird/DancingBird" to="Bird/DancingBird" method="_on_touch_released"]
+[connection signal="pressed" from="Bird2/DancingBird" to="Bird2/DancingBird" method="_on_touch_pressed"]
+[connection signal="released" from="Bird2/DancingBird" to="Bird2/DancingBird" method="_on_touch_released"]
+[connection signal="pressed" from="Bird3/DancingBird" to="Bird3/DancingBird" method="_on_touch_pressed"]
+[connection signal="released" from="Bird3/DancingBird" to="Bird3/DancingBird" method="_on_touch_released"]
+[connection signal="pressed" from="Bird4/DancingBird" to="Bird4/DancingBird" method="_on_touch_pressed"]
+[connection signal="released" from="Bird4/DancingBird" to="Bird4/DancingBird" method="_on_touch_released"]

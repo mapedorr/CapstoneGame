@@ -122,7 +122,7 @@ func get_direction_index(mode=null):
     var percentage = angle_normalized/(PI*2.0) + 1.0/16
     return int(floor(percentage * 8)) % 8
   else:
-    print('ERROR: Invalid directions_mode')
+    # print('ERROR: Invalid directions_mode')
     return 0
 
 func get_direction(mode=null):
