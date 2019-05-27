@@ -20,7 +20,10 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 300, 300 )
 
-[sub_resource type="Theme" id=2]
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 128, 128 )
+
+[sub_resource type="Theme" id=3]
 default_font = ExtResource( 8 )
 Label/colors/font_color = Color( 1, 1, 1, 1 )
 Label/colors/font_color_shadow = Color( 0, 0, 0, 0 )
@@ -118,12 +121,14 @@ script = ExtResource( 4 )
 [node name="SwipeBird" type="TouchScreenButton" parent="."]
 editor/display_folded = true
 modulate = Color( 0.870588, 0.278431, 0.278431, 1 )
-position = Vector2( 1100.88, 610.818 )
+position = Vector2( 710, 433 )
 scale = Vector2( 0.5, 0.5 )
 normal = ExtResource( 2 )
 pressed = ExtResource( 3 )
 passby_press = true
 script = ExtResource( 5 )
+
+[node name="GoOut" type="Tween" parent="SwipeBird"]
 
 [node name="SwipeDetector" type="Node" parent="SwipeBird"]
 script = ExtResource( 6 )
@@ -132,10 +137,15 @@ __meta__ = {
 }
 directions_mode = "Four Directions"
 
-[node name="GoOut" type="Tween" parent="SwipeBird"]
+[node name="Bird" type="Area2D" parent="SwipeBird/SwipeDetector"]
+position = Vector2( 838, 561 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SwipeBird/SwipeDetector/Bird"]
+shape = SubResource( 2 )
 
 [node name="Debug" type="Control" parent="."]
 editor/display_folded = true
+visible = false
 margin_left = -39.1069
 margin_top = 67.7389
 margin_right = 1240.89
@@ -144,7 +154,7 @@ margin_bottom = 867.739
 [node name="CleanTime" type="Label" parent="Debug"]
 anchor_right = 1.0
 margin_bottom = 14.0
-theme = SubResource( 2 )
+theme = SubResource( 3 )
 text = "placeholder"
 align = 1
 valign = 1

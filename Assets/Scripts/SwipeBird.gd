@@ -7,10 +7,10 @@ func _ready():
 	$SwipeDetector.connect("swipe_started", self, "_on_swipe_started")
 	$SwipeDetector.connect("swipe_ended", self, "_on_swipe_ended")
 	$SwipeDetector.connect("swiped", self, "_on_swiped")
+	pass
 
 func _on_swipe_started(partial_gesture):
-#	print("xxx ", partial_gesture.get_area().get_name().to_lower())
-	pass
+	print("xxx ", partial_gesture.get_area().get_name().to_lower())
 
 
 func _on_swipe_ended(partial_gesture):
