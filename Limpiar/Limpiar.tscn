@@ -99,8 +99,6 @@ tracks/0/keys = {
 [node name="Limpiar" type="Node2D"]
 script = ExtResource( 1 )
 
-[node name="GoOut" type="Tween" parent="."]
-
 [node name="CleanCheck" type="Timer" parent="."]
 
 [node name="ResetCountdown" type="Timer" parent="."]
@@ -134,13 +132,14 @@ __meta__ = {
 }
 directions_mode = "Four Directions"
 
+[node name="GoOut" type="Tween" parent="SwipeBird"]
+
 [node name="Debug" type="Control" parent="."]
 editor/display_folded = true
-margin_right = 1280.0
-margin_bottom = 800.0
-__meta__ = {
-"_edit_lock_": true
-}
+margin_left = -39.1069
+margin_top = 67.7389
+margin_right = 1240.89
+margin_bottom = 867.739
 
 [node name="CleanTime" type="Label" parent="Debug"]
 anchor_right = 1.0
