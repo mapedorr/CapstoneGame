@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Limpiar/Limpiar.gd" type="Script" id=1]
 [ext_resource path="res://Limpiar/fondo.png" type="Texture" id=2]
@@ -11,8 +11,9 @@
 [ext_resource path="res://Assets/Scripts/DancingBird.gd" type="Script" id=9]
 [ext_resource path="res://Audio/achli2.ogg" type="AudioStream" id=10]
 [ext_resource path="res://Limpiar/Leaf/Leaf.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Limpiar/Leaf/Stick.tscn" type="PackedScene" id=12]
 
-[sub_resource type="Theme" id=3]
+[sub_resource type="Theme" id=1]
 default_font = ExtResource( 3 )
 Label/colors/font_color = Color( 1, 1, 1, 1 )
 Label/colors/font_color_shadow = Color( 0, 0, 0, 0 )
@@ -24,11 +25,10 @@ Label/constants/shadow_offset_y = 1
 Label/fonts/font = null
 Label/styles/normal = null
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 300, 300 )
 
-[sub_resource type="Animation" id=2]
-resource_name = "Dance"
+[sub_resource type="Animation" id=3]
 length = 0.2
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:position")
@@ -68,7 +68,7 @@ margin_bottom = 867.739
 [node name="CleanTime" type="Label" parent="Debug"]
 anchor_right = 1.0
 margin_bottom = 14.0
-theme = SubResource( 3 )
+theme = SubResource( 1 )
 text = "placeholder"
 align = 1
 valign = 1
@@ -100,13 +100,13 @@ modulate = Color( 0.407843, 0.878431, 0.141176, 1 )
 scale = Vector2( 0.3, 0.3 )
 normal = ExtResource( 7 )
 pressed = ExtResource( 8 )
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 passby_press = true
 script = ExtResource( 9 )
 cuando = 4
 
 [node name="Dance" type="AnimationPlayer" parent="Bird4/DancingBird"]
-anims/Dance = SubResource( 2 )
+anims/Dance = SubResource( 3 )
 
 [node name="Chirp" type="AudioStreamPlayer2D" parent="Bird4/DancingBird"]
 stream = ExtResource( 10 )
@@ -114,7 +114,7 @@ stream = ExtResource( 10 )
 [node name="LeafContainer" type="Node2D" parent="."]
 
 [node name="Leaf" parent="LeafContainer" instance=ExtResource( 11 )]
-position = Vector2( 725.452, 419.587 )
+position = Vector2( 725.452, 422.587 )
 
 [node name="Leaf2" parent="LeafContainer" instance=ExtResource( 11 )]
 position = Vector2( 634.378, 123.598 )
@@ -142,6 +142,32 @@ cuando = 3
 [node name="Leaf8" parent="LeafContainer" instance=ExtResource( 11 )]
 position = Vector2( 415.316, 225.606 )
 cuando = 4
+
+[node name="Stick" parent="LeafContainer" instance=ExtResource( 12 )]
+position = Vector2( 281.63, 246.342 )
+random_movement = false
+
+[node name="Stick2" parent="LeafContainer" instance=ExtResource( 12 )]
+position = Vector2( 774.486, 190.291 )
+cuando = 2
+random_movement = false
+
+[node name="Stick3" parent="LeafContainer" instance=ExtResource( 12 )]
+position = Vector2( 749.36, 690.878 )
+cuando = 3
+random_movement = false
+
+[node name="Stick4" parent="LeafContainer" instance=ExtResource( 12 )]
+position = Vector2( 320.286, 625.164 )
+cuando = 4
+random_movement = false
+
+[node name="Stick5" parent="LeafContainer" instance=ExtResource( 12 )]
+position = Vector2( 911.712, 435.753 )
+
+[node name="Stick6" parent="LeafContainer" instance=ExtResource( 12 )]
+position = Vector2( 999.404, 615.596 )
+cuando = 3
 
 [connection signal="timeout" from="CleanCheck" to="." method="_on_CleanCheck_timeout"]
 [connection signal="timeout" from="ResetCountdown" to="." method="_on_ResetCountdown_timeout"]
