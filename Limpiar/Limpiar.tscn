@@ -103,7 +103,6 @@ passby_press = true
 script = ExtResource( 4 )
 
 [node name="SwipeBird" type="TouchScreenButton" parent="."]
-editor/display_folded = true
 modulate = Color( 0.870588, 0.278431, 0.278431, 1 )
 position = Vector2( 710, 433 )
 scale = Vector2( 0.5, 0.5 )
@@ -111,6 +110,9 @@ normal = ExtResource( 2 )
 pressed = ExtResource( 3 )
 passby_press = true
 script = ExtResource( 5 )
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="GoOut" type="Tween" parent="SwipeBird"]
 
@@ -254,7 +256,4 @@ stream = ExtResource( 16 )
 [connection signal="timeout" from="ResetCountdown" to="." method="_on_ResetCountdown_timeout"]
 [connection signal="pressed" from="SwipeObject" to="SwipeObject" method="_on_touch_pressed"]
 [connection signal="released" from="SwipeObject" to="SwipeObject" method="_on_touch_released"]
-[connection signal="swipe_ended" from="SwipeBird/SwipeDetector" to="SwipeBird" method="_on_SwipeDetector_swipe_ended"]
-[connection signal="swipe_started" from="SwipeBird/SwipeDetector" to="SwipeBird" method="_on_SwipeDetector_swipe_started"]
-[connection signal="swiped" from="SwipeBird/SwipeDetector" to="SwipeBird" method="_on_SwipeDetector_swiped"]
 [connection signal="timeout" from="MusicManager/Metronome/Timer" to="MusicManager/Metronome" method="_on_Timer_timeout"]
