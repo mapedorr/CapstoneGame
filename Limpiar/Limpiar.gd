@@ -8,7 +8,8 @@ var mins = 0
 
 func _ready():
 	$Debug/CleanTime.set_text("00:00")
-	$SwipeObject.connect("object_pressed", self, "start_clean_check")
+	for leaf in $LeafContainer.get_children():
+		$MusicManager/Metronome/Timer.connect("timeout", leaf, "move")
 
 func _on_CleanCheck_timeout():
 	secs += 1
