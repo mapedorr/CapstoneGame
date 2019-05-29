@@ -35,22 +35,6 @@ Label/constants/shadow_offset_y = 1
 Label/fonts/font = null
 Label/styles/normal = null
 
-[sub_resource type="Animation" id=3]
-resource_name = "Dance"
-length = 0.2
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 1,
-"values": [ Vector2( 0, 0 ), Vector2( 0, -20 ), Vector2( 0, 0 ) ]
-}
-
 [sub_resource type="Animation" id=4]
 resource_name = "Dance"
 length = 0.2
@@ -195,7 +179,7 @@ passby_press = true
 script = ExtResource( 12 )
 
 [node name="Dance" type="AnimationPlayer" parent="Bird/DancingBird"]
-anims/Dance = SubResource( 3 )
+anims/Dance = SubResource( 4 )
 
 [node name="Chirp" type="AudioStreamPlayer2D" parent="Bird/DancingBird"]
 stream = ExtResource( 13 )
@@ -274,11 +258,3 @@ stream = ExtResource( 16 )
 [connection signal="swipe_started" from="SwipeBird/SwipeDetector" to="SwipeBird" method="_on_SwipeDetector_swipe_started"]
 [connection signal="swiped" from="SwipeBird/SwipeDetector" to="SwipeBird" method="_on_SwipeDetector_swiped"]
 [connection signal="timeout" from="MusicManager/Metronome/Timer" to="MusicManager/Metronome" method="_on_Timer_timeout"]
-[connection signal="pressed" from="Bird/DancingBird" to="Bird/DancingBird" method="_on_touch_pressed"]
-[connection signal="released" from="Bird/DancingBird" to="Bird/DancingBird" method="_on_touch_released"]
-[connection signal="pressed" from="Bird2/DancingBird" to="Bird2/DancingBird" method="_on_touch_pressed"]
-[connection signal="released" from="Bird2/DancingBird" to="Bird2/DancingBird" method="_on_touch_released"]
-[connection signal="pressed" from="Bird3/DancingBird" to="Bird3/DancingBird" method="_on_touch_pressed"]
-[connection signal="released" from="Bird3/DancingBird" to="Bird3/DancingBird" method="_on_touch_released"]
-[connection signal="pressed" from="Bird4/DancingBird" to="Bird4/DancingBird" method="_on_touch_pressed"]
-[connection signal="released" from="Bird4/DancingBird" to="Bird4/DancingBird" method="_on_touch_released"]
