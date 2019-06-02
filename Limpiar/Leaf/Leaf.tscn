@@ -5,7 +5,7 @@
 [ext_resource path="res://addons/swipe-detector/swipe_detector.gd" type="Script" id=3]
 [ext_resource path="res://addons/swipe-detector/icon.png" type="Texture" id=4]
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=1]
 resource_name = "Dance"
 length = 0.2
 tracks/0/type = "value"
@@ -21,7 +21,7 @@ tracks/0/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( 0, -20 ), Vector2( 0, 0 ) ]
 }
 
-[sub_resource type="CapsuleShape2D" id=1]
+[sub_resource type="CapsuleShape2D" id=2]
 radius = 18.6056
 height = 19.9381
 
@@ -34,7 +34,7 @@ editor/display_folded = true
 texture = ExtResource( 2 )
 
 [node name="Dance" type="AnimationPlayer" parent="Sprite"]
-anims/Dance = SubResource( 2 )
+anims/Dance = SubResource( 1 )
 
 [node name="Tween" type="Tween" parent="."]
 
@@ -50,5 +50,5 @@ directions_mode = "Four Directions"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SwipeDetector/Area2D"]
 rotation = 0.261799
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 

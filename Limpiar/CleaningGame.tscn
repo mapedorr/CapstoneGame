@@ -1,20 +1,21 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Limpiar/Limpiar.gd" type="Script" id=1]
-[ext_resource path="res://Limpiar/fondo.png" type="Texture" id=2]
-[ext_resource path="res://CustomResources/DynamicFonts/FiraCode-Medium.tres" type="DynamicFont" id=3]
-[ext_resource path="res://Limpiar/MusicManager.gd" type="Script" id=4]
-[ext_resource path="res://Limpiar/Metronome.gd" type="Script" id=5]
-[ext_resource path="res://Audio/MusicRefLoop_CleaningStage_110BPM.wav" type="AudioStream" id=6]
-[ext_resource path="res://Assets/Sprites/bird-02.png" type="Texture" id=7]
-[ext_resource path="res://Assets/Sprites/bird-02-pressed.png" type="Texture" id=8]
-[ext_resource path="res://Assets/Scripts/DancingBird.gd" type="Script" id=9]
-[ext_resource path="res://Audio/achli2.ogg" type="AudioStream" id=10]
-[ext_resource path="res://Limpiar/Leaf/Leaf.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Limpiar/Leaf/Leaf.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Limpiar/fondo.png" type="Texture" id=3]
+[ext_resource path="res://CustomResources/DynamicFonts/FiraCode-Medium-32.tres" type="DynamicFont" id=4]
+[ext_resource path="res://Limpiar/MusicManager.gd" type="Script" id=5]
+[ext_resource path="res://Limpiar/Metronome.gd" type="Script" id=6]
+[ext_resource path="res://Audio/MusicRefLoop_CleaningStage_110BPM.wav" type="AudioStream" id=7]
+[ext_resource path="res://Assets/Sprites/bird-02.png" type="Texture" id=8]
+[ext_resource path="res://Assets/Sprites/bird-02-pressed.png" type="Texture" id=9]
+[ext_resource path="res://Assets/Scripts/DancingBird.gd" type="Script" id=10]
+[ext_resource path="res://Audio/achli2.ogg" type="AudioStream" id=11]
 [ext_resource path="res://Limpiar/Leaf/Stick.tscn" type="PackedScene" id=12]
+[ext_resource path="res://CustomResources/DynamicFonts/FiraCode-Medium-128.tres" type="DynamicFont" id=13]
 
 [sub_resource type="Theme" id=1]
-default_font = ExtResource( 3 )
+default_font = ExtResource( 4 )
 Label/colors/font_color = Color( 1, 1, 1, 1 )
 Label/colors/font_color_shadow = Color( 0, 0, 0, 0 )
 Label/colors/font_outline_modulate = Color( 1, 1, 1, 1 )
@@ -45,11 +46,12 @@ tracks/0/keys = {
 
 [node name="Limpiar" type="Node2D"]
 script = ExtResource( 1 )
+leaf = ExtResource( 2 )
 
 [node name="fondo" type="Sprite" parent="."]
 position = Vector2( 640, 400 )
 z_index = -1
-texture = ExtResource( 2 )
+texture = ExtResource( 3 )
 
 [node name="CleanCheck" type="Timer" parent="."]
 
@@ -59,11 +61,9 @@ one_shot = true
 
 [node name="Debug" type="Control" parent="."]
 editor/display_folded = true
-visible = false
-margin_left = -39.1069
-margin_top = 67.7389
-margin_right = 1240.89
-margin_bottom = 867.739
+margin_right = 1280.0
+margin_bottom = 800.0
+mouse_filter = 2
 
 [node name="CleanTime" type="Label" parent="Debug"]
 anchor_right = 1.0
@@ -75,10 +75,10 @@ valign = 1
 
 [node name="MusicManager" type="Node" parent="."]
 editor/display_folded = true
-script = ExtResource( 4 )
+script = ExtResource( 5 )
 
 [node name="Metronome" type="Node" parent="MusicManager"]
-script = ExtResource( 5 )
+script = ExtResource( 6 )
 bpm = 110.0
 
 [node name="Display" type="Label" parent="MusicManager/Metronome"]
@@ -90,84 +90,94 @@ process_mode = 0
 wait_time = 0.5
 
 [node name="Mx" type="AudioStreamPlayer" parent="MusicManager"]
-stream = ExtResource( 6 )
+stream = ExtResource( 7 )
 
 [node name="Bird4" type="Sprite" parent="."]
+editor/display_folded = true
 position = Vector2( 958.687, 118.583 )
 
 [node name="DancingBird" type="TouchScreenButton" parent="Bird4"]
 modulate = Color( 0.407843, 0.878431, 0.141176, 1 )
 scale = Vector2( 0.3, 0.3 )
-normal = ExtResource( 7 )
-pressed = ExtResource( 8 )
+normal = ExtResource( 8 )
+pressed = ExtResource( 9 )
 shape = SubResource( 2 )
 passby_press = true
-script = ExtResource( 9 )
+script = ExtResource( 10 )
 cuando = 4
 
 [node name="Dance" type="AnimationPlayer" parent="Bird4/DancingBird"]
 anims/Dance = SubResource( 3 )
 
 [node name="Chirp" type="AudioStreamPlayer2D" parent="Bird4/DancingBird"]
-stream = ExtResource( 10 )
+stream = ExtResource( 11 )
 
 [node name="LeafContainer" type="Node2D" parent="."]
+editor/display_folded = true
+__meta__ = {
+"_edit_lock_": true
+}
 
-[node name="Leaf" parent="LeafContainer" instance=ExtResource( 11 )]
-position = Vector2( 725.452, 422.587 )
+[node name="Leaf" parent="LeafContainer" instance=ExtResource( 2 )]
+position = Vector2( 100, 100 )
+scale = Vector2( 2.3, 2.3 )
 
-[node name="Leaf2" parent="LeafContainer" instance=ExtResource( 11 )]
+[node name="Leaf2" parent="LeafContainer" instance=ExtResource( 2 )]
 position = Vector2( 634.378, 123.598 )
+scale = Vector2( 2.3, 2.3 )
 cuando = 2
 
-[node name="Leaf3" parent="LeafContainer" instance=ExtResource( 11 )]
+[node name="Leaf3" parent="LeafContainer" instance=ExtResource( 2 )]
 position = Vector2( 995.637, 460.571 )
+scale = Vector2( 2.3, 2.3 )
 cuando = 3
 
-[node name="Leaf4" parent="LeafContainer" instance=ExtResource( 11 )]
+[node name="Leaf4" parent="LeafContainer" instance=ExtResource( 2 )]
 position = Vector2( 578.216, 326.996 )
-cuando = 4
-
-[node name="Leaf5" parent="LeafContainer" instance=ExtResource( 11 )]
-position = Vector2( 278.131, 473.75 )
-
-[node name="Leaf6" parent="LeafContainer" instance=ExtResource( 11 )]
-position = Vector2( 132.876, 264.802 )
-cuando = 2
-
-[node name="Leaf7" parent="LeafContainer" instance=ExtResource( 11 )]
-position = Vector2( 491.978, 568.857 )
-cuando = 3
-
-[node name="Leaf8" parent="LeafContainer" instance=ExtResource( 11 )]
-position = Vector2( 415.316, 225.606 )
+scale = Vector2( 2.3, 2.3 )
 cuando = 4
 
 [node name="Stick" parent="LeafContainer" instance=ExtResource( 12 )]
 position = Vector2( 281.63, 246.342 )
+scale = Vector2( 2.3, 2.3 )
 random_movement = false
 
 [node name="Stick2" parent="LeafContainer" instance=ExtResource( 12 )]
 position = Vector2( 774.486, 190.291 )
+scale = Vector2( 2.3, 2.3 )
 cuando = 2
 random_movement = false
 
 [node name="Stick3" parent="LeafContainer" instance=ExtResource( 12 )]
 position = Vector2( 749.36, 690.878 )
+scale = Vector2( 2.3, 2.3 )
 cuando = 3
 random_movement = false
 
 [node name="Stick4" parent="LeafContainer" instance=ExtResource( 12 )]
 position = Vector2( 320.286, 625.164 )
+scale = Vector2( 2.3, 2.3 )
 cuando = 4
 random_movement = false
 
-[node name="Stick5" parent="LeafContainer" instance=ExtResource( 12 )]
-position = Vector2( 911.712, 435.753 )
+[node name="UI" type="CanvasLayer" parent="."]
+editor/display_folded = true
 
-[node name="Stick6" parent="LeafContainer" instance=ExtResource( 12 )]
-position = Vector2( 999.404, 615.596 )
-cuando = 3
+[node name="WinMessage" type="Label" parent="UI"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = ExtResource( 13 )
+custom_colors/font_color = Color( 0.878431, 0.0862745, 0.0862745, 1 )
+custom_colors/font_color_shadow = Color( 0.419608, 0.0666667, 0.0666667, 1 )
+custom_constants/shadow_offset_x = 4
+custom_constants/shadow_offset_y = 4
+text = "Uuuuuuu!
+Se acercan las chicas
+^ ^ ,"
+align = 1
+valign = 1
+autowrap = true
 
 [connection signal="timeout" from="CleanCheck" to="." method="_on_CleanCheck_timeout"]
 [connection signal="timeout" from="ResetCountdown" to="." method="_on_ResetCountdown_timeout"]

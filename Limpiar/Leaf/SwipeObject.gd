@@ -1,4 +1,6 @@
- extends Node2D
+extends Node2D
+
+signal swipe_object_deleted
 
 onready var _swipe_directions = $SwipeDetector.Directions
 
@@ -13,13 +15,12 @@ func _ready():
 	$SwipeDetector.connect("swipe_failed", self, "_on_swipe_failed")
 	$SwipeDetector.connect("swiped", self, "_on_swiped")
 	$Tween.connect("tween_completed", self, "self_destroy")
+
+func _enter_tree():
 	$SwipeDetector/Area2D.transform = transform
 
 func _on_swipe_started(partial_gesture):
-	print("xxx ", partial_gesture.get_area().get_name().to_lower())
 	$SwipeDetector/Area2D/CollisionShape2D.set_scale(Vector2 (6, 6))
-	
-
 
 func _on_swipe_ended(partial_gesture):
 	$SwipeDetector/Area2D/CollisionShape2D.set_scale(Vector2 (1, 1))
@@ -28,6 +29,7 @@ func _on_swipe_failed():
 	$SwipeDetector/Area2D/CollisionShape2D.set_scale(Vector2 (1, 1))
 
 func _on_swiped(gesture):
+	emit_signal("swipe_object_deleted")
 	var target = self.get_position()
 	match gesture.get_direction():
 		_swipe_directions.DIRECTION_LEFT:
@@ -52,7 +54,6 @@ func _on_swiped(gesture):
 	$Tween.start()
 
 func move():
-	
 	if random_movement:
 		randomize()
 		cuando = randi()%4 +1
@@ -61,7 +62,6 @@ func move():
 	count += 1
 	if count > 4:
 		count = 1
-
 
 func self_destroy(obj, key):
 	queue_free()

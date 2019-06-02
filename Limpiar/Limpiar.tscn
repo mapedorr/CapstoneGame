@@ -7,7 +7,7 @@
 [ext_resource path="res://Assets/Scripts/SwipeBird.gd" type="Script" id=5]
 [ext_resource path="res://addons/swipe-detector/swipe_detector.gd" type="Script" id=6]
 [ext_resource path="res://addons/swipe-detector/icon.png" type="Texture" id=7]
-[ext_resource path="res://CustomResources/DynamicFonts/FiraCode-Medium.tres" type="DynamicFont" id=8]
+[ext_resource path="res://CustomResources/DynamicFonts/FiraCode-Medium-32.tres" type="DynamicFont" id=8]
 [ext_resource path="res://Limpiar/MusicManager.gd" type="Script" id=9]
 [ext_resource path="res://Limpiar/Metronome.gd" type="Script" id=10]
 [ext_resource path="res://Audio/MusicRefLoop_CleaningStage_110BPM.wav" type="AudioStream" id=11]
@@ -16,6 +16,7 @@
 [ext_resource path="res://Audio/leon wei.ogg" type="AudioStream" id=14]
 [ext_resource path="res://Audio/achli.ogg" type="AudioStream" id=15]
 [ext_resource path="res://Audio/achli2.ogg" type="AudioStream" id=16]
+
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 300, 300 )
