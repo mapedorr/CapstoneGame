@@ -20,6 +20,18 @@ tracks/0/keys = {
 "update": 1,
 "values": [ Vector2( 0, 0 ), Vector2( 0, -20 ), Vector2( 0, 0 ) ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("../SwipeDetector/Area2D/CollisionShape2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( 0, 0 ), Vector2( 0, -20 ), Vector2( 0, 0 ) ]
+}
 
 [sub_resource type="CapsuleShape2D" id=2]
 radius = 18.6056
@@ -30,7 +42,6 @@ script = ExtResource( 1 )
 random_movement = true
 
 [node name="Sprite" type="Sprite" parent="."]
-editor/display_folded = true
 texture = ExtResource( 2 )
 
 [node name="Dance" type="AnimationPlayer" parent="Sprite"]

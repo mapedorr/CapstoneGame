@@ -1,45 +1,55 @@
 extends Node2D
 
 export(PackedScene) var leaf
+export(PackedScene) var stick
+onready var dirt_on_ground = $LeafContainer.get_children().size()
+onready var min_x = 32
+onready var max_x = int(get_viewport().get_size().x - 32)
+onready var min_y = 32
+onready var max_y = int(get_viewport().get_size().y - 32)
 var clean = false
 var timer_on = false
 var countdown_on = false
 var secs = 0
 var mins = 0
 var spawn_countdown = 3
-onready var dirt_on_ground = $LeafContainer.get_children().size()
-onready var min_x = 32
-onready var max_x = int(OS.get_screen_size().x - 32)
-onready var min_y = 32
-onready var max_y = int(OS.get_screen_size().y - 32)
+var spawning = false
+var spawn_timer = 0
+var spawn_count = 0
+var spawn_limit = 4
+var clean_countdown = 0
 
 func _ready():
+	$MasterTimer.connect("timeout", self, "_on_master_timer_timeout")
 	$Debug/CleanTime.set_text("00:00")
 	for leaf in $LeafContainer.get_children():
 		$MusicManager/Metronome/Timer.connect("timeout", leaf, "move")
 		leaf.connect("swipe_object_deleted", self, "check_dirt")
 
-func _on_CleanCheck_timeout():
-	secs += 1
-	if secs > 59:
-		secs = 0
-		mins += 1
-		if mins > 59:
-			mins = 0
-	$Debug/CleanTime.set_text("%02d:%02d" % [mins, secs])
-	if clean and secs == 10:
-		$CleanCheck.stop()
-		$UI/WinMessage.show()
-		return
-	spawn_countdown -= 1
-	if spawn_countdown <= 0:
-		clean = false
-		var new_leaf = leaf.instance()
-		var pos_x = randi()%(max_x - min_x) + min_x
-		var pos_y = randi()%(max_y - min_y) + min_y
-		new_leaf.set_position(Vector2(pos_x, pos_y))
-		new_leaf.set_scale(Vector2(2.3, 2.3))
-		$LeafContainer.add_child(new_leaf)
+func _on_master_timer_timeout():
+	if clean:
+		clean_countdown = 0
+		secs += 1
+		if secs > 59:
+			secs = 0
+			mins += 1
+			if mins > 59:
+				mins = 0
+		# TODO: update the UI
+		$Debug/CleanTime.set_text("%02d:%02d" % [mins, secs])
+
+		if secs == 10:
+			$MasterTimer.stop()
+			$UI/WinMessage.show()
+			return
+		
+		spawn_countdown -= 1
+		if spawn_countdown <= 0:
+			spawning = true
+	else:
+		clean_countdown += 1
+		if clean_countdown == 10:
+			reset_master_timer()
 
 func start_clean_check():
 	clean = !clean
@@ -48,25 +58,44 @@ func _process(delta):
 	if clean:
 		if not timer_on:
 			timer_on = true
-			$CleanCheck.start()
+			$MasterTimer.start()
 		else:
-			$CleanCheck.set_paused(false)
+			countdown_on = false
 	elif timer_on and not countdown_on:
 		countdown_on = true
-		$CleanCheck.set_paused(true)
-		$ResetCountdown.start()
 
-func _on_ResetCountdown_timeout():
-	# reset the CleanCheck
-	reset_clean_check()
-	countdown_on = false
-	$CleanCheck.stop()
-	$Debug/CleanTime.set_text("00:00")
-	
-func reset_clean_check():
+func _physics_process(delta):
+	if spawning:
+		spawn_timer += 1
+		if spawn_timer == 30:
+			spawn_mugre()
+			spawn_timer = 0
+		if spawn_count == spawn_limit:
+			spawning = false
+			spawn_count = 0
+			spawn_limit += 2
+
+func spawn_mugre():
+	var new_mugre = leaf.instance() if (randi() % 21 > 10) else stick.instance()
+	var pos_x = randi()%(max_x - min_x) + min_x
+	var pos_y = randi()%(max_y - min_y) + min_y
+	new_mugre.set_position(Vector2(pos_x, pos_y))
+	new_mugre.set_scale(Vector2(2.3, 2.3))
+	$MusicManager/Metronome/Timer.connect("timeout", new_mugre, "move")
+	new_mugre.connect("swipe_object_deleted", self, "check_dirt")
+	$LeafContainer.add_child(new_mugre)
+	spawn_count += 1
+	dirt_on_ground += 1
+	clean = false
+
+func reset_master_timer():
 	timer_on = false
 	secs = 0
 	mins = 0
+	clean_countdown = 0
+	countdown_on = false
+	$MasterTimer.stop()
+	$Debug/CleanTime.set_text("00:00")
 	
 func check_dirt():
 	dirt_on_ground -= 1

@@ -56,7 +56,7 @@ func _on_swiped(gesture):
 func move():
 	if random_movement:
 		randomize()
-		cuando = randi()%4 +1
+		cuando = randi()%4+1
 	if cuando == count:
 		$Sprite/Dance.play("Dance")
 	count += 1
