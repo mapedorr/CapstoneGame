@@ -70,12 +70,13 @@ align = 1
 valign = 1
 
 [node name="MusicManager" type="Node" parent="."]
-editor/display_folded = true
 script = ExtResource( 6 )
 
 [node name="Metronome" type="Node" parent="MusicManager"]
+editor/display_folded = true
 script = ExtResource( 7 )
 bpm = 110.0
+eight = true
 
 [node name="Display" type="Label" parent="MusicManager/Metronome"]
 margin_right = 40.0
@@ -89,7 +90,6 @@ wait_time = 0.5
 stream = ExtResource( 8 )
 
 [node name="Bird4" type="Sprite" parent="."]
-editor/display_folded = true
 position = Vector2( 958.687, 118.583 )
 
 [node name="DancingBird" type="TouchScreenButton" parent="Bird4"]
@@ -120,7 +120,6 @@ scale = Vector2( 2.3, 2.3 )
 [node name="Stick" parent="LeafContainer" instance=ExtResource( 3 )]
 position = Vector2( 821.101, 566.851 )
 scale = Vector2( 2.3, 2.3 )
-random_movement = false
 
 [node name="UI" type="CanvasLayer" parent="."]
 editor/display_folded = true

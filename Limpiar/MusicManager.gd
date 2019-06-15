@@ -7,7 +7,7 @@ func _ready():
 	
 func _process(delta):
 	if isPlaying == false:
-		if $Metronome.current_measure == 1:
+		if $Metronome.current_measure == 2:
 			$Mx.play()
 			isPlaying = true
 

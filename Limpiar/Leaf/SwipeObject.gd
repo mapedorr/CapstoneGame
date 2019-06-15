@@ -6,6 +6,7 @@ onready var _swipe_directions = $SwipeDetector.Directions
 
 export(int) var cuando = 1
 export(bool) var random_movement
+export (int) var max_count = 8
 var count = 2
 
 func _ready():
@@ -15,6 +16,10 @@ func _ready():
 	$SwipeDetector.connect("swipe_failed", self, "_on_swipe_failed")
 	$SwipeDetector.connect("swiped", self, "_on_swiped")
 	$Tween.connect("tween_completed", self, "self_destroy")
+	
+	if random_movement:
+		randomize()
+		cuando = randi()%max_count+1
 
 func _enter_tree():
 	$SwipeDetector/Area2D.transform = transform
@@ -54,13 +59,14 @@ func _on_swiped(gesture):
 	$Tween.start()
 
 func move():
-	if random_movement:
-		randomize()
-		cuando = randi()%4+1
+	
 	if cuando == count:
 		$Sprite/Dance.play("Dance")
+		#if random_movement:
+		#	randomize()
+		#s	cuando = randi()%max_count+1
 	count += 1
-	if count > 4:
+	if count > max_count:
 		count = 1
 
 func self_destroy(obj, key):
