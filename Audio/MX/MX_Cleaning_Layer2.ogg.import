@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/MX_Cleaning_Layer2.ogg-0610188f6be1465c9f73f830a02ecad6.oggstr"
+
+[deps]
+
+source_file="res://Audio/MX/MX_Cleaning_Layer2.ogg"
+dest_files=[ "res://.import/MX_Cleaning_Layer2.ogg-0610188f6be1465c9f73f830a02ecad6.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
