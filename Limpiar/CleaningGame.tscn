@@ -1,21 +1,25 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://Limpiar/Limpiar.gd" type="Script" id=1]
 [ext_resource path="res://Limpiar/Leaf/Leaf.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Limpiar/Leaf/Stick.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Limpiar/fondo.png" type="Texture" id=4]
-[ext_resource path="res://CustomResources/DynamicFonts/FiraCode-Medium-32.tres" type="DynamicFont" id=5]
-[ext_resource path="res://Limpiar/MusicManager.gd" type="Script" id=6]
-[ext_resource path="res://Limpiar/Metronome.gd" type="Script" id=7]
-[ext_resource path="res://Audio/MusicRefLoop_CleaningStage_110BPM.wav" type="AudioStream" id=8]
-[ext_resource path="res://Assets/Sprites/bird-02.png" type="Texture" id=9]
-[ext_resource path="res://Assets/Sprites/bird-02-pressed.png" type="Texture" id=10]
-[ext_resource path="res://Assets/Scripts/DancingBird.gd" type="Script" id=11]
-[ext_resource path="res://Audio/achli2.ogg" type="AudioStream" id=12]
-[ext_resource path="res://CustomResources/DynamicFonts/FiraCode-Medium-128.tres" type="DynamicFont" id=13]
+[ext_resource path="res://Limpiar/Leaf/Flower.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Limpiar/fondo.png" type="Texture" id=5]
+[ext_resource path="res://CustomResources/DynamicFonts/FiraCode-Medium-32.tres" type="DynamicFont" id=6]
+[ext_resource path="res://Limpiar/MusicManager.gd" type="Script" id=7]
+[ext_resource path="res://Limpiar/Metronome.gd" type="Script" id=8]
+[ext_resource path="res://Audio/MX/MX_Cleaning_Base.ogg" type="AudioStream" id=9]
+[ext_resource path="res://Audio/MX/MX_Cleaning_Layer1.ogg" type="AudioStream" id=10]
+[ext_resource path="res://Audio/MX/MX_Cleaning_Layer2.ogg" type="AudioStream" id=11]
+[ext_resource path="res://Audio/MX/MX_Cleaning_Layer3.ogg" type="AudioStream" id=12]
+[ext_resource path="res://Assets/Sprites/bird_1-idle.png" type="Texture" id=13]
+[ext_resource path="res://Assets/Sprites/bird_1-sing.png" type="Texture" id=14]
+[ext_resource path="res://Assets/Scripts/DancingBird.gd" type="Script" id=15]
+[ext_resource path="res://Audio/achli2.ogg" type="AudioStream" id=16]
+[ext_resource path="res://CustomResources/DynamicFonts/FiraCode-Medium-128.tres" type="DynamicFont" id=17]
 
 [sub_resource type="Theme" id=1]
-default_font = ExtResource( 5 )
+default_font = ExtResource( 6 )
 Label/colors/font_color = Color( 1, 1, 1, 1 )
 Label/colors/font_color_shadow = Color( 0, 0, 0, 0 )
 Label/colors/font_outline_modulate = Color( 1, 1, 1, 1 )
@@ -44,19 +48,24 @@ tracks/0/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( 0, -20 ), Vector2( 0, 0 ) ]
 }
 
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 500, 304.762 )
+
 [node name="Limpiar" type="Node2D"]
 script = ExtResource( 1 )
 leaf = ExtResource( 2 )
 stick = ExtResource( 3 )
+flower = ExtResource( 4 )
 
 [node name="fondo" type="Sprite" parent="."]
 position = Vector2( 640, 400 )
 z_index = -1
-texture = ExtResource( 4 )
+texture = ExtResource( 5 )
 
 [node name="MasterTimer" type="Timer" parent="."]
 
 [node name="Debug" type="Control" parent="."]
+editor/display_folded = true
 margin_right = 1280.0
 margin_bottom = 800.0
 mouse_filter = 2
@@ -70,11 +79,12 @@ align = 1
 valign = 1
 
 [node name="MusicManager" type="Node" parent="."]
-script = ExtResource( 6 )
+editor/display_folded = true
+script = ExtResource( 7 )
 
 [node name="Metronome" type="Node" parent="MusicManager"]
 editor/display_folded = true
-script = ExtResource( 7 )
+script = ExtResource( 8 )
 bpm = 110.0
 eight = true
 
@@ -86,27 +96,35 @@ margin_bottom = 14.0
 process_mode = 0
 wait_time = 0.5
 
-[node name="Mx" type="AudioStreamPlayer" parent="MusicManager"]
-stream = ExtResource( 8 )
+[node name="MxBase" type="AudioStreamPlayer" parent="MusicManager"]
+stream = ExtResource( 9 )
+
+[node name="Layer1" type="AudioStreamPlayer" parent="MusicManager"]
+stream = ExtResource( 10 )
+
+[node name="Layer2" type="AudioStreamPlayer" parent="MusicManager"]
+stream = ExtResource( 11 )
+
+[node name="Layer3" type="AudioStreamPlayer" parent="MusicManager"]
+stream = ExtResource( 12 )
 
 [node name="Bird4" type="Sprite" parent="."]
 position = Vector2( 958.687, 118.583 )
 
 [node name="DancingBird" type="TouchScreenButton" parent="Bird4"]
-modulate = Color( 0.407843, 0.878431, 0.141176, 1 )
 scale = Vector2( 0.3, 0.3 )
-normal = ExtResource( 9 )
-pressed = ExtResource( 10 )
+normal = ExtResource( 13 )
+pressed = ExtResource( 14 )
 shape = SubResource( 2 )
 passby_press = true
-script = ExtResource( 11 )
+script = ExtResource( 15 )
 cuando = 4
 
 [node name="Dance" type="AnimationPlayer" parent="Bird4/DancingBird"]
 anims/Dance = SubResource( 3 )
 
 [node name="Chirp" type="AudioStreamPlayer2D" parent="Bird4/DancingBird"]
-stream = ExtResource( 12 )
+stream = ExtResource( 16 )
 
 [node name="LeafContainer" type="Node2D" parent="."]
 __meta__ = {
@@ -128,7 +146,7 @@ editor/display_folded = true
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_fonts/font = ExtResource( 13 )
+custom_fonts/font = ExtResource( 17 )
 custom_colors/font_color = Color( 0.878431, 0.0862745, 0.0862745, 1 )
 custom_colors/font_color_shadow = Color( 0.419608, 0.0666667, 0.0666667, 1 )
 custom_constants/shadow_offset_x = 4
@@ -139,5 +157,16 @@ Se acercan las chicas
 align = 1
 valign = 1
 autowrap = true
+
+[node name="SpawnArea" type="StaticBody2D" parent="."]
+editor/display_folded = true
+position = Vector2( 636.259, 404.603 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpawnArea"]
+shape = SubResource( 4 )
+disabled = true
 
 [connection signal="timeout" from="MusicManager/Metronome/Timer" to="MusicManager/Metronome" method="_on_Timer_timeout"]

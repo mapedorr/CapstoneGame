@@ -2,11 +2,12 @@ extends Node2D
 
 export(PackedScene) var leaf
 export(PackedScene) var stick
+export(PackedScene) var flower
 onready var dirt_on_ground = $LeafContainer.get_children().size()
-onready var min_x = 32
-onready var max_x = int(get_viewport().get_size().x - 32)
-onready var min_y = 32
-onready var max_y = int(get_viewport().get_size().y - 32)
+onready var min_x = int ($SpawnArea.position.x - $SpawnArea/CollisionShape2D.shape.extents.x)
+onready var max_x = int($SpawnArea/CollisionShape2D.shape.extents.x*2)
+onready var min_y = int ($SpawnArea.position.y - $SpawnArea/CollisionShape2D.shape.extents.y)
+onready var max_y = int($SpawnArea/CollisionShape2D.shape.extents.y*2)
 var clean = false
 var timer_on = false
 var countdown_on = false
@@ -76,7 +77,7 @@ func _physics_process(delta):
 			spawn_limit += 2
 
 func spawn_mugre():
-	var new_mugre = leaf.instance() if (randi() % 21 > 10) else stick.instance()
+	var new_mugre = leaf.instance() if (randi() % 21 > 10) else flower.instance()
 	var pos_x = randi()%(max_x - min_x) + min_x
 	var pos_y = randi()%(max_y - min_y) + min_y
 	new_mugre.set_position(Vector2(pos_x, pos_y))
@@ -100,5 +101,6 @@ func reset_master_timer():
 func check_dirt():
 	dirt_on_ground -= 1
 	if dirt_on_ground == 0:
+		$MusicManager.add_layer()
 		spawn_countdown = 3
 		clean = true

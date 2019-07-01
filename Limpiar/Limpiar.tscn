@@ -1,8 +1,8 @@
 [gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://Limpiar/Limpiar.gd" type="Script" id=1]
-[ext_resource path="res://Assets/Sprites/bird-02.png" type="Texture" id=2]
-[ext_resource path="res://Assets/Sprites/bird-02-pressed.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Sprites/bird_1-idle.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Sprites/bird_1-sing.png" type="Texture" id=3]
 [ext_resource path="res://Assets/Scripts/SwipeObject.gd" type="Script" id=4]
 [ext_resource path="res://Assets/Scripts/SwipeBird.gd" type="Script" id=5]
 [ext_resource path="res://addons/swipe-detector/swipe_detector.gd" type="Script" id=6]
@@ -16,6 +16,8 @@
 [ext_resource path="res://Audio/leon wei.ogg" type="AudioStream" id=14]
 [ext_resource path="res://Audio/achli.ogg" type="AudioStream" id=15]
 [ext_resource path="res://Audio/achli2.ogg" type="AudioStream" id=16]
+
+
 
 
 [sub_resource type="RectangleShape2D" id=1]

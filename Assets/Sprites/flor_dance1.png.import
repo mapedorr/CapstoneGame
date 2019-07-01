@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/bird-02-pressed.png-0c84807e5f2641065af95b48a946a885.stex"
+path="res://.import/flor_dance1.png-839b02c54445c5ed008b04c7be848748.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/bird-02-pressed.png"
-dest_files=[ "res://.import/bird-02-pressed.png-0c84807e5f2641065af95b48a946a885.stex" ]
+source_file="res://Assets/Sprites/flor_dance1.png"
+dest_files=[ "res://.import/flor_dance1.png-839b02c54445c5ed008b04c7be848748.stex" ]
 
 [params]
 
