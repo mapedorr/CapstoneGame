@@ -1,15 +1,16 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Limpiar/Leaf/Breakable.gd" type="Script" id=1]
-[ext_resource path="res://Assets/Sprites/flor_dance1.png" type="Texture" id=2]
-[ext_resource path="res://Assets/Sprites/flor_dance2.png" type="Texture" id=3]
-[ext_resource path="res://Assets/Sprites/flor_dead.png" type="Texture" id=4]
-[ext_resource path="res://addons/swipe-detector/swipe_detector.gd" type="Script" id=5]
-[ext_resource path="res://addons/swipe-detector/icon.png" type="Texture" id=6]
+[ext_resource path="res://Assets/Sprites/hongo_dance2.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Sprites/hongo_dance3.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Sprites/hongo_dance1.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Sprites/hongo_dead.png" type="Texture" id=5]
+[ext_resource path="res://addons/swipe-detector/swipe_detector.gd" type="Script" id=6]
+[ext_resource path="res://addons/swipe-detector/icon.png" type="Texture" id=7]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Dance"
-length = 0.2
+length = 0.3
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:position")
 tracks/0/interp = 1
@@ -17,10 +18,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = false
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
-"values": [ Vector2( 0, 0 ), Vector2( 0, -20 ), Vector2( 0, 0 ) ]
+"values": [ Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, -20 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("../SwipeDetector/Area2D/CollisionShape2D:position")
@@ -29,10 +30,10 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
-"values": [ Vector2( 0, 0 ), Vector2( -6.29372, -10.5594 ), Vector2( 0, 0 ) ]
+"values": [ Vector2( 0, 0 ), Vector2( 4.95965, -0.795175 ), Vector2( 0, 0 ), Vector2( -5.734, -2.19 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath(".:texture")
@@ -41,10 +42,10 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 61.8199, 1 ),
 "update": 1,
-"values": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 2 ) ]
+"values": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 2 ), ExtResource( 4 ) ]
 }
 tracks/3/type = "value"
 tracks/3/path = NodePath("../SwipeDetector/Area2D/CollisionShape2D:rotation_degrees")
@@ -53,7 +54,7 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0 ),
+"times": PoolRealArray( 0.2 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ 15.0 ]
@@ -65,10 +66,10 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( -1, -1 ), Vector2( -8, -13 ), Vector2( -1, -1 ) ]
+"values": [ Vector2( -1, -1 ), Vector2( 5.48329, -0.446603 ), Vector2( -1, -1 ), Vector2( -5.6753, -0.214132 ) ]
 }
 
 [sub_resource type="Animation" id=2]
@@ -84,7 +85,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ ExtResource( 4 ) ]
+"values": [ ExtResource( 5 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("../SwipeDetector/Area2D/CollisionShape2D:rotation_degrees")
@@ -108,7 +109,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( -0.87413, 13.4616 ) ]
+"values": [ Vector2( 8.42468, -3.7412 ) ]
 }
 
 [sub_resource type="CapsuleShape2D" id=3]
@@ -118,7 +119,8 @@ height = 19.9381
 [sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 24, 24 )
 
-[node name="Flower" type="Node2D"]
+[node name="Mushroom" type="Node2D"]
+scale = Vector2( 2.3, 2.3 )
 script = ExtResource( 1 )
 random_movement = true
 
@@ -132,10 +134,9 @@ anims/Dead = SubResource( 2 )
 [node name="Tween" type="Tween" parent="."]
 
 [node name="SwipeDetector" type="Node" parent="."]
-editor/display_folded = true
-script = ExtResource( 5 )
+script = ExtResource( 6 )
 __meta__ = {
-"_editor_icon": ExtResource( 6 )
+"_editor_icon": ExtResource( 7 )
 }
 distance_threshold = 0.01
 directions_mode = "Four Directions"

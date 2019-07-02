@@ -3,6 +3,7 @@ extends Node2D
 export(PackedScene) var leaf
 export(PackedScene) var stick
 export(PackedScene) var flower
+export(PackedScene) var mushroom
 onready var dirt_on_ground = $LeafContainer.get_children().size()
 onready var min_x = int ($SpawnArea.position.x - $SpawnArea/CollisionShape2D.shape.extents.x)
 onready var max_x = int($SpawnArea/CollisionShape2D.shape.extents.x*2)
@@ -19,6 +20,8 @@ var spawn_timer = 0
 var spawn_count = 0
 var spawn_limit = 4
 var clean_countdown = 0
+var basic_mugre
+var breakable_mugre
 
 func _ready():
 	$MasterTimer.connect("timeout", self, "_on_master_timer_timeout")
@@ -77,7 +80,8 @@ func _physics_process(delta):
 			spawn_limit += 2
 
 func spawn_mugre():
-	var new_mugre = leaf.instance() if (randi() % 21 > 10) else flower.instance()
+	randomize_mugre()
+	var new_mugre = basic_mugre.instance() if (randi() % 21 > 8) else breakable_mugre.instance() 
 	var pos_x = randi()%(max_x - min_x) + min_x
 	var pos_y = randi()%(max_y - min_y) + min_y
 	new_mugre.set_position(Vector2(pos_x, pos_y))
@@ -89,6 +93,18 @@ func spawn_mugre():
 	dirt_on_ground += 1
 	clean = false
 
+func randomize_mugre():
+	randomize()
+	if randi() % 100 > 25:
+		basic_mugre = leaf
+	else:
+		basic_mugre = stick
+	randomize()
+	if randi() % 100 > 25:
+		breakable_mugre = flower
+	else:
+		breakable_mugre = mushroom
+
 func reset_master_timer():
 	timer_on = false
 	secs = 0
@@ -97,6 +113,7 @@ func reset_master_timer():
 	countdown_on = false
 	$MasterTimer.stop()
 	$Debug/CleanTime.set_text("00:00")
+
 	
 func check_dirt():
 	dirt_on_ground -= 1
