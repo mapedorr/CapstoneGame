@@ -81,8 +81,9 @@ align = 1
 valign = 1
 
 [node name="MusicManager" type="Node" parent="."]
-editor/display_folded = true
 script = ExtResource( 8 )
+
+[node name="Fade" type="Tween" parent="MusicManager"]
 
 [node name="Metronome" type="Node" parent="MusicManager"]
 editor/display_folded = true
@@ -101,14 +102,19 @@ wait_time = 0.5
 [node name="MxBase" type="AudioStreamPlayer" parent="MusicManager"]
 stream = ExtResource( 10 )
 
-[node name="Layer1" type="AudioStreamPlayer" parent="MusicManager"]
+[node name="Layers" type="Node" parent="MusicManager"]
+
+[node name="Layer1" type="AudioStreamPlayer" parent="MusicManager/Layers"]
 stream = ExtResource( 11 )
+volume_db = -80.0
 
-[node name="Layer2" type="AudioStreamPlayer" parent="MusicManager"]
+[node name="Layer2" type="AudioStreamPlayer" parent="MusicManager/Layers"]
 stream = ExtResource( 12 )
+volume_db = -80.0
 
-[node name="Layer3" type="AudioStreamPlayer" parent="MusicManager"]
+[node name="Layer3" type="AudioStreamPlayer" parent="MusicManager/Layers"]
 stream = ExtResource( 13 )
+volume_db = -80.0
 
 [node name="Bird4" type="Sprite" parent="."]
 editor/display_folded = true

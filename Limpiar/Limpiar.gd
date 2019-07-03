@@ -106,6 +106,7 @@ func randomize_mugre():
 		breakable_mugre = mushroom
 
 func reset_master_timer():
+	$MusicManager.reset()
 	timer_on = false
 	secs = 0
 	mins = 0
