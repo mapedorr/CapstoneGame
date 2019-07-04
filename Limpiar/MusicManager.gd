@@ -48,13 +48,15 @@ func add_layer():
 
 func reset():
 	for layers in $Layers.get_children():
+		tween_out.connect("tween_completed", self, "stoplayers")
 		fade_out(layers)
-#		layers.stop()
 		
 	current_layer = 0
 	
 
-
+func stoplayers(object, key):
+	for layers in $Layers.get_children():
+		layers.stop()
 
 func fade_in(music_to_fade):
 	tween_out.interpolate_property(music_to_fade, "volume_db", music_to_fade.volume_db, 0, fadein_duration, transition_type, Tween.EASE_OUT, 1)

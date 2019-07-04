@@ -11,7 +11,6 @@ export(int) var max_count = 8
 var count = 2
 
 func _ready():
-	print("Ready SwipeObject")
 	# Connect signals
 	$SwipeDetector.connect("swipe_started", self, "_on_swipe_started")
 	$SwipeDetector.connect("swipe_ended", self, "_on_swipe_ended")
@@ -24,6 +23,8 @@ func _ready():
 		cuando = randi() % max_count + 1
 
 func _enter_tree():
+	if self.has_node("SFX_Spawn"):
+		$SFX_Spawn.play()
 	$SwipeDetector/Area2D.transform = transform
 
 func _on_swipe_started(partial_gesture):

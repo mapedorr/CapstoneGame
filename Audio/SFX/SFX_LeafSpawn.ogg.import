@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/SFX_LeafSpawn.ogg-cbbeb2e0c1aa8cad4544cc64224338cd.oggstr"
+
+[deps]
+
+source_file="res://Audio/SFX/SFX_LeafSpawn.ogg"
+dest_files=[ "res://.import/SFX_LeafSpawn.ogg-cbbeb2e0c1aa8cad4544cc64224338cd.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

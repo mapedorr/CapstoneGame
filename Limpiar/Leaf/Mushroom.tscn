@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Limpiar/Leaf/Breakable.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Sprites/hongo_dance2.png" type="Texture" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Assets/Sprites/hongo_dead.png" type="Texture" id=5]
 [ext_resource path="res://addons/swipe-detector/swipe_detector.gd" type="Script" id=6]
 [ext_resource path="res://addons/swipe-detector/icon.png" type="Texture" id=7]
+[ext_resource path="res://Audio/SFX/SFX_MushroomSpawn.ogg" type="AudioStream" id=8]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Dance"
@@ -151,4 +152,7 @@ shape = SubResource( 3 )
 position = Vector2( -1, -1 )
 scale = Vector2( 0.726472, 0.856078 )
 shape = SubResource( 4 )
+
+[node name="SFX_Spawn" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 8 )
 

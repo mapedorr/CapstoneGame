@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/SFX_StickSpawn.ogg-42fb8c31dec90f89854c9dfd29858e2c.oggstr"
+
+[deps]
+
+source_file="res://Audio/SFX/SFX_StickSpawn.ogg"
+dest_files=[ "res://.import/SFX_StickSpawn.ogg-42fb8c31dec90f89854c9dfd29858e2c.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0
