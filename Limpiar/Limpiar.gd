@@ -24,11 +24,11 @@ var basic_mugre
 var breakable_mugre
 
 func _ready():
+	# Assign listeners
 	$MasterTimer.connect("timeout", self, "_on_master_timer_timeout")
+	$MusicManager.connect("music_started", self, "_on_music_started")
+	# Setup GUI
 	$Debug/CleanTime.set_text("00:00")
-	for leaf in $LeafContainer.get_children():
-		$MusicManager/Metronome/Timer.connect("timeout", leaf, "move")
-		leaf.connect("swipe_object_deleted", self, "check_dirt")
 
 func _on_master_timer_timeout():
 	if clean:
@@ -122,3 +122,15 @@ func check_dirt():
 		$MusicManager.add_layer()
 		spawn_countdown = 3
 		clean = true
+
+func _on_music_started():
+	$FondoL1/AnimationPlayer.play("Idle")
+	$PrimerPlano/AnimationPlayer.play("Idle")
+	$MusicManager/Metronome/Timer.connect(
+		"timeout",
+		$Bird4/DancingBird,
+		"dance"
+	)
+	for leaf in $LeafContainer.get_children():
+		$MusicManager/Metronome/Timer.connect("timeout", leaf, "move")
+		leaf.connect("swipe_object_deleted", self, "check_dirt")

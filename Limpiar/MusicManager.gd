@@ -1,5 +1,7 @@
 extends Node
 
+signal music_started
+
 onready var tween_out = $Fade
 onready var current_layer = 0
 
@@ -22,6 +24,7 @@ func _process(delta):
 
 func start_system():
 	$MxBase.play()
+	emit_signal("music_started")
 	
 func add_layer():
 	current_layer += 1

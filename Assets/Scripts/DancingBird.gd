@@ -7,7 +7,7 @@ var pre_count = 0
 onready var normal_texture = get_texture()
 
 func _ready():
-	$"../../MusicManager/Metronome/Timer".connect("timeout", self, "dance")
+	pass
 
 func dance():
 	pre_count += 1

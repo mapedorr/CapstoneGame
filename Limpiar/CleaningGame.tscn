@@ -1,26 +1,45 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://Limpiar/Limpiar.gd" type="Script" id=1]
 [ext_resource path="res://Limpiar/Leaf/Leaf.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Limpiar/Leaf/Stick.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Limpiar/Leaf/Flower.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Limpiar/Leaf/Mushroom.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Limpiar/fondo.png" type="Texture" id=6]
-[ext_resource path="res://CustomResources/DynamicFonts/FiraCode-Medium-32.tres" type="DynamicFont" id=7]
-[ext_resource path="res://Limpiar/MusicManager.gd" type="Script" id=8]
-[ext_resource path="res://Limpiar/Metronome.gd" type="Script" id=9]
-[ext_resource path="res://Audio/MX/MX_Cleaning_Base.ogg" type="AudioStream" id=10]
-[ext_resource path="res://Audio/MX/MX_Cleaning_Layer1.ogg" type="AudioStream" id=11]
-[ext_resource path="res://Audio/MX/MX_Cleaning_Layer2.ogg" type="AudioStream" id=12]
-[ext_resource path="res://Audio/MX/MX_Cleaning_Layer3.ogg" type="AudioStream" id=13]
-[ext_resource path="res://Assets/Sprites/bird_1-idle.png" type="Texture" id=14]
-[ext_resource path="res://Assets/Sprites/bird_1-sing.png" type="Texture" id=15]
-[ext_resource path="res://Assets/Scripts/DancingBird.gd" type="Script" id=16]
-[ext_resource path="res://Audio/achli2.ogg" type="AudioStream" id=17]
-[ext_resource path="res://CustomResources/DynamicFonts/FiraCode-Medium-128.tres" type="DynamicFont" id=18]
+[ext_resource path="res://Limpiar/Sprites/clean-bg-01.png" type="Texture" id=6]
+[ext_resource path="res://Limpiar/Sprites/clean-bg-02.png" type="Texture" id=7]
+[ext_resource path="res://CustomResources/DynamicFonts/FiraCode-Medium-32.tres" type="DynamicFont" id=8]
+[ext_resource path="res://Limpiar/MusicManager.gd" type="Script" id=9]
+[ext_resource path="res://Limpiar/Metronome.gd" type="Script" id=10]
+[ext_resource path="res://Audio/MX/MX_Cleaning_Base.ogg" type="AudioStream" id=11]
+[ext_resource path="res://Audio/MX/MX_Cleaning_Layer1.ogg" type="AudioStream" id=12]
+[ext_resource path="res://Audio/MX/MX_Cleaning_Layer2.ogg" type="AudioStream" id=13]
+[ext_resource path="res://Audio/MX/MX_Cleaning_Layer3.ogg" type="AudioStream" id=14]
+[ext_resource path="res://Assets/Sprites/bird_1-idle.png" type="Texture" id=15]
+[ext_resource path="res://Assets/Sprites/bird_1-sing.png" type="Texture" id=16]
+[ext_resource path="res://Assets/Scripts/DancingBird.gd" type="Script" id=17]
+[ext_resource path="res://Audio/achli2.ogg" type="AudioStream" id=18]
+[ext_resource path="res://CustomResources/DynamicFonts/FiraCode-Medium-128.tres" type="DynamicFont" id=19]
+[ext_resource path="res://Limpiar/Sprites/clean-fg.png" type="Texture" id=20]
+
+[sub_resource type="Animation" id=5]
+resource_name = "Idle"
+length = 0.3
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2 ]
+}
 
 [sub_resource type="Theme" id=1]
-default_font = ExtResource( 7 )
+default_font = ExtResource( 8 )
 Label/colors/font_color = Color( 1, 1, 1, 1 )
 Label/colors/font_color_shadow = Color( 0, 0, 0, 0 )
 Label/colors/font_outline_modulate = Color( 1, 1, 1, 1 )
@@ -52,6 +71,23 @@ tracks/0/keys = {
 [sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 500, 304.762 )
 
+[sub_resource type="Animation" id=6]
+resource_name = "Idle"
+length = 1.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.6, 1.1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2 ]
+}
+
 [node name="Limpiar" type="Node2D"]
 script = ExtResource( 1 )
 leaf = ExtResource( 2 )
@@ -59,10 +95,20 @@ stick = ExtResource( 3 )
 flower = ExtResource( 4 )
 mushroom = ExtResource( 5 )
 
-[node name="fondo" type="Sprite" parent="."]
+[node name="Fondo" type="Sprite" parent="."]
 position = Vector2( 640, 400 )
 z_index = -1
 texture = ExtResource( 6 )
+
+[node name="FondoL1" type="Sprite" parent="."]
+position = Vector2( 0, 18 )
+texture = ExtResource( 7 )
+centered = false
+hframes = 3
+frame = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="FondoL1"]
+anims/Idle = SubResource( 5 )
 
 [node name="MasterTimer" type="Timer" parent="."]
 
@@ -81,13 +127,14 @@ align = 1
 valign = 1
 
 [node name="MusicManager" type="Node" parent="."]
-script = ExtResource( 8 )
+editor/display_folded = true
+script = ExtResource( 9 )
 
 [node name="Fade" type="Tween" parent="MusicManager"]
 
 [node name="Metronome" type="Node" parent="MusicManager"]
 editor/display_folded = true
-script = ExtResource( 9 )
+script = ExtResource( 10 )
 bpm = 110.0
 eight = true
 
@@ -100,42 +147,43 @@ process_mode = 0
 wait_time = 0.5
 
 [node name="MxBase" type="AudioStreamPlayer" parent="MusicManager"]
-stream = ExtResource( 10 )
+stream = ExtResource( 11 )
 
 [node name="Layers" type="Node" parent="MusicManager"]
 
 [node name="Layer1" type="AudioStreamPlayer" parent="MusicManager/Layers"]
-stream = ExtResource( 11 )
-volume_db = -80.0
-
-[node name="Layer2" type="AudioStreamPlayer" parent="MusicManager/Layers"]
 stream = ExtResource( 12 )
 volume_db = -80.0
 
-[node name="Layer3" type="AudioStreamPlayer" parent="MusicManager/Layers"]
+[node name="Layer2" type="AudioStreamPlayer" parent="MusicManager/Layers"]
 stream = ExtResource( 13 )
+volume_db = -80.0
+
+[node name="Layer3" type="AudioStreamPlayer" parent="MusicManager/Layers"]
+stream = ExtResource( 14 )
 volume_db = -80.0
 
 [node name="Bird4" type="Sprite" parent="."]
 editor/display_folded = true
-position = Vector2( 958.687, 118.583 )
+position = Vector2( 907.437, 246.707 )
 
 [node name="DancingBird" type="TouchScreenButton" parent="Bird4"]
 scale = Vector2( 0.3, 0.3 )
-normal = ExtResource( 14 )
-pressed = ExtResource( 15 )
+normal = ExtResource( 15 )
+pressed = ExtResource( 16 )
 shape = SubResource( 2 )
 passby_press = true
-script = ExtResource( 16 )
+script = ExtResource( 17 )
 cuando = 4
 
 [node name="Dance" type="AnimationPlayer" parent="Bird4/DancingBird"]
 anims/Dance = SubResource( 3 )
 
 [node name="Chirp" type="AudioStreamPlayer2D" parent="Bird4/DancingBird"]
-stream = ExtResource( 17 )
+stream = ExtResource( 18 )
 
 [node name="LeafContainer" type="Node2D" parent="."]
+editor/display_folded = true
 __meta__ = {
 "_edit_lock_": true
 }
@@ -155,7 +203,7 @@ editor/display_folded = true
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_fonts/font = ExtResource( 18 )
+custom_fonts/font = ExtResource( 19 )
 custom_colors/font_color = Color( 0.878431, 0.0862745, 0.0862745, 1 )
 custom_colors/font_color_shadow = Color( 0.419608, 0.0666667, 0.0666667, 1 )
 custom_constants/shadow_offset_x = 4
@@ -177,5 +225,15 @@ __meta__ = {
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SpawnArea"]
 shape = SubResource( 4 )
 disabled = true
+
+[node name="PrimerPlano" type="Sprite" parent="."]
+position = Vector2( 0, 507.051 )
+texture = ExtResource( 20 )
+centered = false
+hframes = 3
+frame = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="PrimerPlano"]
+anims/Idle = SubResource( 6 )
 
 [connection signal="timeout" from="MusicManager/Metronome/Timer" to="MusicManager/Metronome" method="_on_Timer_timeout"]
