@@ -19,6 +19,16 @@ config/name="CapstoneGameProject"
 run/main_scene="res://Limpiar/CleaningGame.tscn"
 config/icon="res://icon.png"
 
+[debug]
+
+gdscript/warnings/unused_class_variable=false
+gdscript/warnings/unused_argument=false
+gdscript/warnings/unreachable_code=false
+gdscript/warnings/variable_conflicts_function=false
+gdscript/warnings/function_conflicts_variable=false
+gdscript/warnings/unused_signal=false
+gdscript/warnings/return_value_discarded=false
+
 [display]
 
 window/size/width=1280

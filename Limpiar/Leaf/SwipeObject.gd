@@ -9,6 +9,7 @@ export(bool) var random_movement
 export(int) var max_count = 8
 
 var count = 2
+var spawned = false
 
 func _ready():
 	# Connect signals
@@ -17,18 +18,18 @@ func _ready():
 	$SwipeDetector.connect("swipe_failed", self, "_on_swipe_failed")
 	$SwipeDetector.connect("swiped", self, "_on_swiped")
 	$Tween.connect("tween_completed", self, "self_destroy")
-	
+
 	if random_movement:
 		randomize()
 		cuando = randi() % max_count + 1
 
 func _enter_tree():
-	if self.has_node("SFX_Spawn"):
+	if self.has_node("SFX_Spawn") and spawned:
 		$SFX_Spawn.play()
 	$SwipeDetector/Area2D.transform = transform
 
 func _on_swipe_started(partial_gesture):
-	$SwipeDetector/Area2D/CollisionShape2D.set_scale(Vector2 (6, 6))
+	$SwipeDetector/Area2D/CollisionShape2D.set_scale(Vector2 (10, 10))
 
 func _on_swipe_ended(partial_gesture):
 	$SwipeDetector/Area2D/CollisionShape2D.set_scale(Vector2 (1, 1))

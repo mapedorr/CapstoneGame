@@ -10,6 +10,7 @@ export var fadeout_duration = 8
 export var transition_type = 1 # TRANS_SINE
 
 var isPlaying = false
+var fadingout = false
 
 
 # Called when the node enters the scene tree for the first time.
@@ -55,13 +56,16 @@ func reset():
 	
 
 func stoplayers(object, key):
-	for layers in $Layers.get_children():
-		layers.stop()
+	if fadingout:
+		for layers in $Layers.get_children():
+			layers.stop()
 
 func fade_in(music_to_fade):
+	fadingout = false
 	tween_out.interpolate_property(music_to_fade, "volume_db", music_to_fade.volume_db, 0, fadein_duration, transition_type, Tween.EASE_OUT, 1)
 	tween_out.start()
 
 func fade_out(music_to_fade):
+	fadingout = true
 	tween_out.interpolate_property(music_to_fade, "volume_db", music_to_fade.volume_db, -80, fadeout_duration, transition_type, Tween.EASE_OUT, 1)
 	tween_out.start()

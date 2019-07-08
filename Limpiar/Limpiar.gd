@@ -51,6 +51,13 @@ func _on_master_timer_timeout():
 		if spawn_countdown <= 0:
 			spawning = true
 	else:
+		match clean_countdown:
+			0:
+				$UI.show_clean()
+			5:
+				$UI.show_clean(1)
+			7:
+				$UI.show_clean(2)
 		clean_countdown += 1
 		if clean_countdown == 10:
 			reset_master_timer()
@@ -81,13 +88,17 @@ func _physics_process(delta):
 
 func spawn_mugre():
 	randomize_mugre()
-	var new_mugre = basic_mugre.instance() if (randi() % 21 > 8) else breakable_mugre.instance() 
 	var pos_x = randi()%(max_x - min_x) + min_x
 	var pos_y = randi()%(max_y - min_y) + min_y
+	# Create a mugre and set its basic properties
+	var new_mugre = basic_mugre.instance() if (randi() % 21 > 8) else breakable_mugre.instance() 
 	new_mugre.set_position(Vector2(pos_x, pos_y))
 	new_mugre.set_scale(Vector2(2.3, 2.3))
+	new_mugre.spawned = true
+	# Connect listeners for mugre's signals
 	$MusicManager/Metronome/Timer.connect("timeout", new_mugre, "move")
 	new_mugre.connect("swipe_object_deleted", self, "check_dirt")
+	# Add the mugre to the tree
 	$LeafContainer.add_child(new_mugre)
 	spawn_count += 1
 	dirt_on_ground += 1
@@ -115,7 +126,6 @@ func reset_master_timer():
 	$MasterTimer.stop()
 	$Debug/CleanTime.set_text("00:00")
 
-	
 func check_dirt():
 	dirt_on_ground -= 1
 	if dirt_on_ground == 0:
