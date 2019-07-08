@@ -50,7 +50,7 @@ func _on_master_timer_timeout():
 		spawn_countdown -= 1
 		if spawn_countdown <= 0:
 			spawning = true
-	else:
+	elif not spawning:
 		match clean_countdown:
 			0:
 				$UI.show_clean()
@@ -95,6 +95,7 @@ func spawn_mugre():
 	new_mugre.set_position(Vector2(pos_x, pos_y))
 	new_mugre.set_scale(Vector2(2.3, 2.3))
 	new_mugre.spawned = true
+	new_mugre.game_running = true
 	# Connect listeners for mugre's signals
 	$MusicManager/Metronome/Timer.connect("timeout", new_mugre, "move")
 	new_mugre.connect("swipe_object_deleted", self, "check_dirt")
@@ -125,11 +126,14 @@ func reset_master_timer():
 	countdown_on = false
 	$MasterTimer.stop()
 	$Debug/CleanTime.set_text("00:00")
+	# Update the UI
+	$UI.hide_clean()
 
 func check_dirt():
 	dirt_on_ground -= 1
 	if dirt_on_ground == 0:
 		$MusicManager.add_layer()
+		$UI.hide_clean()
 		spawn_countdown = 3
 		clean = true
 
@@ -144,3 +148,4 @@ func _on_music_started():
 	for leaf in $LeafContainer.get_children():
 		$MusicManager/Metronome/Timer.connect("timeout", leaf, "move")
 		leaf.connect("swipe_object_deleted", self, "check_dirt")
+		leaf.game_running = true

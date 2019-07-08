@@ -10,3 +10,7 @@ func show_clean(frame = 0):
 		Vector2(300 * frame, 0),
 		$Clean.texture.get_size())
 	)
+	$Clean.update()
+
+func hide_clean():
+	$Clean.hide()
