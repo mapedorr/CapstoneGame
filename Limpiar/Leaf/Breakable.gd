@@ -5,7 +5,6 @@ var cuando2 = 2
 var hp = 2
 
 func _ready():
-	print("Ready Breakable")
 	if random_movement:
 		randomize()
 		cuando2 = randi() % max_count + 1

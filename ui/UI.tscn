@@ -1,13 +1,224 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://ui/UI.gd" type="Script" id=1]
 [ext_resource path="res://CustomResources/DynamicFonts/FiraCode-Medium-128.tres" type="DynamicFont" id=2]
-[ext_resource path="res://ui/assets/clean_feedback.png" type="Texture" id=3]
+[ext_resource path="res://ui/assets/bg.png" type="Texture" id=3]
+[ext_resource path="res://ui/AnimatedAtlas.gd" type="Script" id=4]
+[ext_resource path="res://ui/assets/heart_1.png" type="Texture" id=5]
+[ext_resource path="res://ui/assets/heart_2.png" type="Texture" id=6]
+[ext_resource path="res://ui/assets/heart_3.png" type="Texture" id=7]
+[ext_resource path="res://ui/assets/bird.png" type="Texture" id=8]
 
-[sub_resource type="AtlasTexture" id=1]
+[sub_resource type="Animation" id=2]
+resource_name = "ShowCleanlinessCheck"
+tracks/0/type = "value"
+tracks/0/path = NodePath("CleanlinessCheck/Background:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 0.5, 1 ),
+"update": 0,
+"values": [ Vector2( 980, 820 ), Vector2( 980, 584 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("CleanlinessCheck/Heart1:rect_scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.6, 0.8 ),
+"transitions": PoolRealArray( 2, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("CleanlinessCheck/Heart2:rect_scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.7, 0.9 ),
+"transitions": PoolRealArray( 2, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 1, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("CleanlinessCheck/Heart3:rect_scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.8, 1 ),
+"transitions": PoolRealArray( 2, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 1, 1 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("CleanlinessCheck/Bird:rect_position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.2, 0.5 ),
+"transitions": PoolRealArray( 2, 1 ),
+"update": 0,
+"values": [ Vector2( 1100, 830 ), Vector2( 1098, 638 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("CleanlinessCheck/Bird:self_modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0.3, 0.6 ),
+"transitions": PoolRealArray( 2, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="AtlasTexture" id=3]
 atlas = ExtResource( 3 )
 region = Rect2( 0, 0, 300, 216 )
-filter_clip = true
+
+[sub_resource type="Animation" id=7]
+resource_name = "Idle"
+length = 0.9
+loop = true
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.3, 0.6, 0.9 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "next_frame"
+}, {
+"args": [  ],
+"method": "next_frame"
+}, {
+"args": [  ],
+"method": "next_frame"
+} ]
+}
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 5 )
+region = Rect2( 0, 0, 63, 62 )
+
+[sub_resource type="Animation" id=12]
+resource_name = "Break"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 0.5, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "Idle"
+length = 0.6
+loop = true
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.2, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "next_frame"
+}, {
+"args": [  ],
+"method": "next_frame"
+}, {
+"args": [  ],
+"method": "next_frame"
+} ]
+}
+
+[sub_resource type="AtlasTexture" id=5]
+atlas = ExtResource( 6 )
+region = Rect2( 0, 0, 78, 61 )
+
+[sub_resource type="Animation" id=9]
+resource_name = "Idle"
+length = 0.6
+loop = true
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.2, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "next_frame"
+}, {
+"args": [  ],
+"method": "next_frame"
+}, {
+"args": [  ],
+"method": "next_frame"
+} ]
+}
+
+[sub_resource type="AtlasTexture" id=6]
+atlas = ExtResource( 7 )
+region = Rect2( 0, 0, 76, 61 )
+
+[sub_resource type="Animation" id=10]
+resource_name = "Idle"
+length = 0.6
+loop = true
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.2, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "next_frame"
+}, {
+"args": [  ],
+"method": "next_frame"
+}, {
+"args": [  ],
+"method": "next_frame"
+} ]
+}
+
+[sub_resource type="AtlasTexture" id=11]
+atlas = ExtResource( 8 )
+region = Rect2( 0, 0, 184, 160 )
 
 [node name="UI" type="CanvasLayer"]
 script = ExtResource( 1 )
@@ -28,13 +239,89 @@ align = 1
 valign = 1
 autowrap = true
 
-[node name="Clean" type="TextureRect" parent="."]
+[node name="Animations" type="AnimationPlayer" parent="."]
+anims/ShowCleanlinessCheck = SubResource( 2 )
+
+[node name="CleanlinessCheck" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="Background" type="TextureRect" parent="CleanlinessCheck"]
+editor/display_folded = true
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = -300.0
-margin_top = -216.0
-texture = SubResource( 1 )
+margin_top = 20.0
+margin_bottom = 236.0
+mouse_filter = 2
+texture = SubResource( 3 )
 expand = true
+script = ExtResource( 4 )
+
+[node name="Animations" type="AnimationPlayer" parent="CleanlinessCheck/Background"]
+anims/Idle = SubResource( 7 )
+
+[node name="Heart1" type="TextureRect" parent="CleanlinessCheck"]
+editor/display_folded = true
+margin_left = 1020.0
+margin_top = 710.0
+margin_right = 1083.0
+margin_bottom = 772.0
+rect_scale = Vector2( 3.68755e-005, 3.68755e-005 )
+rect_pivot_offset = Vector2( 31, 31 )
+mouse_filter = 2
+texture = SubResource( 4 )
+script = ExtResource( 4 )
+
+[node name="Animations" type="AnimationPlayer" parent="CleanlinessCheck/Heart1"]
+anims/Break = SubResource( 12 )
+anims/Idle = SubResource( 8 )
+
+[node name="Heart2" type="TextureRect" parent="CleanlinessCheck"]
+editor/display_folded = true
+margin_left = 1040.0
+margin_top = 646.0
+margin_right = 1118.0
+margin_bottom = 707.0
+rect_scale = Vector2( 3.68719e-005, 3.68719e-005 )
+rect_pivot_offset = Vector2( 39, 30 )
+mouse_filter = 2
+texture = SubResource( 5 )
+script = ExtResource( 4 )
+
+[node name="Animations" type="AnimationPlayer" parent="CleanlinessCheck/Heart2"]
+anims/Break = SubResource( 12 )
+anims/Idle = SubResource( 9 )
+
+[node name="Heart3" type="TextureRect" parent="CleanlinessCheck"]
+editor/display_folded = true
+margin_left = 1000.0
+margin_top = 584.0
+margin_right = 1076.0
+margin_bottom = 645.0
+rect_scale = Vector2( 2.95754e-005, 2.95754e-005 )
+rect_pivot_offset = Vector2( 38, 30 )
+mouse_filter = 2
+texture = SubResource( 6 )
+script = ExtResource( 4 )
+
+[node name="Animations" type="AnimationPlayer" parent="CleanlinessCheck/Heart3"]
+anims/Break = SubResource( 12 )
+anims/Idle = SubResource( 10 )
+
+[node name="Bird" type="TextureRect" parent="CleanlinessCheck"]
+self_modulate = Color( 1, 1, 1, 1.29795e-005 )
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -180.0
+margin_top = 29.9975
+margin_right = 4.0
+margin_bottom = 191.997
+texture = SubResource( 11 )
+script = ExtResource( 4 )
 

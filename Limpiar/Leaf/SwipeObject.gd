@@ -10,7 +10,7 @@ export(int) var max_count = 8
 
 var count = 2
 var spawned = false
-var game_running = false
+var in_game = false
 
 func _ready():
 	# Connect signals
@@ -30,20 +30,25 @@ func _enter_tree():
 	$SwipeDetector/Area2D.transform = transform
 
 func _on_swipe_started(partial_gesture):
-	if game_running:
+	if in_game:
 		$SwipeDetector/Area2D/CollisionShape2D.set_scale(Vector2 (10, 10))
 
 func _on_swipe_ended(partial_gesture):
-	if game_running:
+	if in_game:
 		$SwipeDetector/Area2D/CollisionShape2D.set_scale(Vector2 (1, 1))
 
 func _on_swipe_failed():
-	if game_running:
+	if in_game:
 		$SwipeDetector/Area2D/CollisionShape2D.set_scale(Vector2 (1, 1))
 
 func _on_swiped(gesture):
-	if not game_running: return
+	if not in_game: return
+	
+	self.in_game = false
+	$Sprite/Dance.stop()
+	
 	emit_signal("swipe_object_deleted")
+	
 	var target = self.get_position()
 	match gesture.get_direction():
 		_swipe_directions.DIRECTION_LEFT:
@@ -68,6 +73,8 @@ func _on_swiped(gesture):
 	$Tween.start()
 
 func move():
+	if not in_game: return
+	
 	if cuando == count:
 		$Sprite/Dance.play("Dance")
 	count += 1

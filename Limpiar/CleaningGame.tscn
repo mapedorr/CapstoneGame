@@ -14,11 +14,11 @@
 [ext_resource path="res://Audio/MX/MX_Cleaning_Layer1.ogg" type="AudioStream" id=12]
 [ext_resource path="res://Audio/MX/MX_Cleaning_Layer2.ogg" type="AudioStream" id=13]
 [ext_resource path="res://Audio/MX/MX_Cleaning_Layer3.ogg" type="AudioStream" id=14]
-[ext_resource path="res://Assets/Sprites/bird_1-idle.png" type="Texture" id=15]
-[ext_resource path="res://Assets/Sprites/bird_1-sing.png" type="Texture" id=16]
-[ext_resource path="res://Assets/Scripts/DancingBird.gd" type="Script" id=17]
-[ext_resource path="res://Audio/achli2.ogg" type="AudioStream" id=18]
-[ext_resource path="res://ui/UI.tscn" type="PackedScene" id=19]
+[ext_resource path="res://ui/UI.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Assets/Sprites/bird_1-idle.png" type="Texture" id=16]
+[ext_resource path="res://Assets/Sprites/bird_1-sing.png" type="Texture" id=17]
+[ext_resource path="res://Assets/Scripts/DancingBird.gd" type="Script" id=18]
+[ext_resource path="res://Audio/achli2.ogg" type="AudioStream" id=19]
 [ext_resource path="res://Limpiar/Sprites/clean-fg.png" type="Texture" id=20]
 
 [sub_resource type="Animation" id=1]
@@ -50,6 +50,9 @@ Label/constants/shadow_offset_y = 1
 Label/fonts/font = null
 Label/styles/normal = null
 
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 500, 304.762 )
+
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 300, 300 )
 
@@ -67,9 +70,6 @@ tracks/0/keys = {
 "update": 1,
 "values": [ Vector2( 0, 0 ), Vector2( 0, -20 ), Vector2( 0, 0 ) ]
 }
-
-[sub_resource type="RectangleShape2D" id=5]
-extents = Vector2( 500, 304.762 )
 
 [sub_resource type="Animation" id=6]
 resource_name = "Idle"
@@ -164,25 +164,6 @@ volume_db = -80.0
 stream = ExtResource( 14 )
 volume_db = -80.0
 
-[node name="Bird4" type="Sprite" parent="."]
-editor/display_folded = true
-position = Vector2( 907.437, 246.707 )
-
-[node name="DancingBird" type="TouchScreenButton" parent="Bird4"]
-scale = Vector2( 0.3, 0.3 )
-normal = ExtResource( 15 )
-pressed = ExtResource( 16 )
-shape = SubResource( 3 )
-passby_press = true
-script = ExtResource( 17 )
-cuando = 4
-
-[node name="Dance" type="AnimationPlayer" parent="Bird4/DancingBird"]
-anims/Dance = SubResource( 4 )
-
-[node name="Chirp" type="AudioStreamPlayer2D" parent="Bird4/DancingBird"]
-stream = ExtResource( 18 )
-
 [node name="LeafContainer" type="Node2D" parent="."]
 editor/display_folded = true
 __meta__ = {
@@ -197,7 +178,7 @@ scale = Vector2( 2.3, 2.3 )
 position = Vector2( 821.101, 566.851 )
 scale = Vector2( 2.3, 2.3 )
 
-[node name="UI" parent="." instance=ExtResource( 19 )]
+[node name="UI" parent="." instance=ExtResource( 15 )]
 
 [node name="SpawnArea" type="StaticBody2D" parent="."]
 editor/display_folded = true
@@ -209,6 +190,25 @@ __meta__ = {
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SpawnArea"]
 shape = SubResource( 5 )
 disabled = true
+
+[node name="Bird4" type="Sprite" parent="."]
+editor/display_folded = true
+position = Vector2( 907.437, 246.707 )
+
+[node name="DancingBird" type="TouchScreenButton" parent="Bird4"]
+scale = Vector2( 0.3, 0.3 )
+normal = ExtResource( 16 )
+pressed = ExtResource( 17 )
+shape = SubResource( 3 )
+passby_press = true
+script = ExtResource( 18 )
+cuando = 4
+
+[node name="Dance" type="AnimationPlayer" parent="Bird4/DancingBird"]
+anims/Dance = SubResource( 4 )
+
+[node name="Chirp" type="AudioStreamPlayer2D" parent="Bird4/DancingBird"]
+stream = ExtResource( 19 )
 
 [node name="PrimerPlano" type="Sprite" parent="."]
 editor/display_folded = true

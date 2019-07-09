@@ -1,16 +1,24 @@
 extends CanvasLayer
 
+onready var cleanliness_visible = false
+
 func _ready():
-	$Clean.hide()
+	$CleanlinessCheck.hide()
 
-func show_clean(frame = 0):
-	if not $Clean.visible:
-		$Clean.show()
-	$Clean.texture.set_region(Rect2(
-		Vector2(300 * frame, 0),
-		$Clean.texture.get_size())
-	)
-	$Clean.update()
+func show_cleanliness_check(frame = 0):
+	$CleanlinessCheck/Bird.change_frame(frame)
+	if not cleanliness_visible:
+		cleanliness_visible = true
+		$CleanlinessCheck.show()
+		$CleanlinessCheck.propagate_call("play_animation")
+		$Animations.play("ShowCleanlinessCheck")
+	else:
+		get_node("CleanlinessCheck/Heart%d" % (4 - frame)).play_animation("Break")
 
-func hide_clean():
-	$Clean.hide()
+func hide_cleanliness_check():
+	if cleanliness_visible:
+		$Animations.play_backwards("ShowCleanlinessCheck")
+		yield($Animations, "animation_finished")
+		$CleanlinessCheck.propagate_call("stop_animation")
+		cleanliness_visible = false
+		$CleanlinessCheck.hide()
