@@ -9,7 +9,7 @@
 [ext_resource path="res://ui/assets/heart_3.png" type="Texture" id=7]
 [ext_resource path="res://ui/assets/bird.png" type="Texture" id=8]
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=1]
 resource_name = "ShowCleanlinessCheck"
 tracks/0/type = "value"
 tracks/0/path = NodePath("CleanlinessCheck/Background:rect_position")
@@ -84,11 +84,11 @@ tracks/5/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="AtlasTexture" id=3]
+[sub_resource type="AtlasTexture" id=2]
 atlas = ExtResource( 3 )
 region = Rect2( 0, 0, 300, 216 )
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=3]
 resource_name = "Idle"
 length = 0.9
 loop = true
@@ -117,7 +117,7 @@ tracks/0/keys = {
 atlas = ExtResource( 5 )
 region = Rect2( 0, 0, 63, 62 )
 
-[sub_resource type="Animation" id=12]
+[sub_resource type="Animation" id=5]
 resource_name = "Break"
 length = 0.4
 tracks/0/type = "value"
@@ -132,6 +132,35 @@ tracks/0/keys = {
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
+
+[sub_resource type="Animation" id=6]
+resource_name = "Idle"
+length = 0.6
+loop = true
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.2, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "next_frame"
+}, {
+"args": [  ],
+"method": "next_frame"
+}, {
+"args": [  ],
+"method": "next_frame"
+} ]
+}
+
+[sub_resource type="AtlasTexture" id=7]
+atlas = ExtResource( 6 )
+region = Rect2( 0, 0, 78, 61 )
 
 [sub_resource type="Animation" id=8]
 resource_name = "Idle"
@@ -158,36 +187,7 @@ tracks/0/keys = {
 } ]
 }
 
-[sub_resource type="AtlasTexture" id=5]
-atlas = ExtResource( 6 )
-region = Rect2( 0, 0, 78, 61 )
-
-[sub_resource type="Animation" id=9]
-resource_name = "Idle"
-length = 0.6
-loop = true
-tracks/0/type = "method"
-tracks/0/path = NodePath(".")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0.2, 0.4, 0.6 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"values": [ {
-"args": [  ],
-"method": "next_frame"
-}, {
-"args": [  ],
-"method": "next_frame"
-}, {
-"args": [  ],
-"method": "next_frame"
-} ]
-}
-
-[sub_resource type="AtlasTexture" id=6]
+[sub_resource type="AtlasTexture" id=9]
 atlas = ExtResource( 7 )
 region = Rect2( 0, 0, 76, 61 )
 
@@ -240,7 +240,7 @@ valign = 1
 autowrap = true
 
 [node name="Animations" type="AnimationPlayer" parent="."]
-anims/ShowCleanlinessCheck = SubResource( 2 )
+anims/ShowCleanlinessCheck = SubResource( 1 )
 
 [node name="CleanlinessCheck" type="Control" parent="."]
 anchor_right = 1.0
@@ -257,12 +257,12 @@ margin_left = -300.0
 margin_top = 20.0
 margin_bottom = 236.0
 mouse_filter = 2
-texture = SubResource( 3 )
+texture = SubResource( 2 )
 expand = true
 script = ExtResource( 4 )
 
 [node name="Animations" type="AnimationPlayer" parent="CleanlinessCheck/Background"]
-anims/Idle = SubResource( 7 )
+anims/Idle = SubResource( 3 )
 
 [node name="Heart1" type="TextureRect" parent="CleanlinessCheck"]
 editor/display_folded = true
@@ -277,8 +277,8 @@ texture = SubResource( 4 )
 script = ExtResource( 4 )
 
 [node name="Animations" type="AnimationPlayer" parent="CleanlinessCheck/Heart1"]
-anims/Break = SubResource( 12 )
-anims/Idle = SubResource( 8 )
+anims/Break = SubResource( 5 )
+anims/Idle = SubResource( 6 )
 
 [node name="Heart2" type="TextureRect" parent="CleanlinessCheck"]
 editor/display_folded = true
@@ -289,12 +289,12 @@ margin_bottom = 707.0
 rect_scale = Vector2( 3.68719e-005, 3.68719e-005 )
 rect_pivot_offset = Vector2( 39, 30 )
 mouse_filter = 2
-texture = SubResource( 5 )
+texture = SubResource( 7 )
 script = ExtResource( 4 )
 
 [node name="Animations" type="AnimationPlayer" parent="CleanlinessCheck/Heart2"]
-anims/Break = SubResource( 12 )
-anims/Idle = SubResource( 9 )
+anims/Break = SubResource( 5 )
+anims/Idle = SubResource( 8 )
 
 [node name="Heart3" type="TextureRect" parent="CleanlinessCheck"]
 editor/display_folded = true
@@ -305,11 +305,11 @@ margin_bottom = 645.0
 rect_scale = Vector2( 2.95754e-005, 2.95754e-005 )
 rect_pivot_offset = Vector2( 38, 30 )
 mouse_filter = 2
-texture = SubResource( 6 )
+texture = SubResource( 9 )
 script = ExtResource( 4 )
 
 [node name="Animations" type="AnimationPlayer" parent="CleanlinessCheck/Heart3"]
-anims/Break = SubResource( 12 )
+anims/Break = SubResource( 5 )
 anims/Idle = SubResource( 10 )
 
 [node name="Bird" type="TextureRect" parent="CleanlinessCheck"]

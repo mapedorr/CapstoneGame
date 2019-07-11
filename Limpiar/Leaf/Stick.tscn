@@ -51,12 +51,12 @@ anims/Dance = SubResource( 1 )
 [node name="Tween" type="Tween" parent="."]
 
 [node name="SwipeDetector" type="Node" parent="."]
+editor/display_folded = true
 script = ExtResource( 3 )
 __meta__ = {
 "_editor_icon": ExtResource( 4 )
 }
 distance_threshold = 0.01
-directions_mode = "Four Directions"
 
 [node name="Area2D" type="Area2D" parent="SwipeDetector"]
 

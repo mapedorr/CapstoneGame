@@ -50,13 +50,13 @@ Label/constants/shadow_offset_y = 1
 Label/fonts/font = null
 Label/styles/normal = null
 
-[sub_resource type="RectangleShape2D" id=5]
+[sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 500, 304.762 )
 
-[sub_resource type="RectangleShape2D" id=3]
+[sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 300, 300 )
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=5]
 length = 0.2
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:position")
@@ -165,7 +165,6 @@ stream = ExtResource( 14 )
 volume_db = -80.0
 
 [node name="LeafContainer" type="Node2D" parent="."]
-editor/display_folded = true
 __meta__ = {
 "_edit_lock_": true
 }
@@ -188,7 +187,7 @@ __meta__ = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SpawnArea"]
-shape = SubResource( 5 )
+shape = SubResource( 3 )
 disabled = true
 
 [node name="Bird4" type="Sprite" parent="."]
@@ -199,13 +198,13 @@ position = Vector2( 907.437, 246.707 )
 scale = Vector2( 0.3, 0.3 )
 normal = ExtResource( 16 )
 pressed = ExtResource( 17 )
-shape = SubResource( 3 )
+shape = SubResource( 4 )
 passby_press = true
 script = ExtResource( 18 )
 cuando = 4
 
 [node name="Dance" type="AnimationPlayer" parent="Bird4/DancingBird"]
-anims/Dance = SubResource( 4 )
+anims/Dance = SubResource( 5 )
 
 [node name="Chirp" type="AudioStreamPlayer2D" parent="Bird4/DancingBird"]
 stream = ExtResource( 19 )

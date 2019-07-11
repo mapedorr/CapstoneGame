@@ -31,7 +31,7 @@ func _enter_tree():
 
 func _on_swipe_started(partial_gesture):
 	if in_game:
-		$SwipeDetector/Area2D/CollisionShape2D.set_scale(Vector2 (10, 10))
+		$SwipeDetector/Area2D/CollisionShape2D.set_scale(Vector2 (18, 18))
 
 func _on_swipe_ended(partial_gesture):
 	if in_game:
@@ -53,12 +53,24 @@ func _on_swiped(gesture):
 	match gesture.get_direction():
 		_swipe_directions.DIRECTION_LEFT:
 			target.x = -get_viewport_rect().size.x
+		_swipe_directions.DIRECTION_UP_LEFT:
+			target.x = -get_viewport_rect().size.x
+			target.y = -get_viewport_rect().size.y
+		_swipe_directions.DIRECTION_DOWN_LEFT:
+			target.x = -get_viewport_rect().size.x
+			target.y = get_viewport_rect().size.y + 200.0
 		_swipe_directions.DIRECTION_UP:
 			target.y = -get_viewport_rect().size.y
 		_swipe_directions.DIRECTION_DOWN:
 			target.y = get_viewport_rect().size.y + 200.0
 		_swipe_directions.DIRECTION_RIGHT:
 			target.x = get_viewport_rect().size.x + 200.0
+		_swipe_directions.DIRECTION_UP_RIGHT:
+			target.x = get_viewport_rect().size.x + 200.0
+			target.y = -get_viewport_rect().size.y
+		_swipe_directions.DIRECTION_DOWN_RIGHT:
+			target.x = get_viewport_rect().size.x + 200.0
+			target.y = get_viewport_rect().size.y + 200.0
 	
 	$SwipeDetector.queue_free()
 	$Tween.interpolate_property(

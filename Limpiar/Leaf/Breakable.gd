@@ -11,8 +11,15 @@ func _ready():
 	$TouchScreenButton.connect("pressed", self, "kill")
 
 func _on_swiped(gesture):
+	if hp == 0:
+		alive = false
 	if not alive:
 		._on_swiped(gesture)
+
+func _on_swipe_ended(partial_gesture):
+	if hp == 1:
+		hp -= 1
+	._on_swipe_ended(partial_gesture)
 
 func move():
 	if hp > 1:
@@ -27,5 +34,4 @@ func kill():
 		hp -= 1
 		if hp == 1:
 			$Sprite/Dance.play("Dead")
-		if hp == 0:
-			alive = false
+			$TouchScreenButton.queue_free()
