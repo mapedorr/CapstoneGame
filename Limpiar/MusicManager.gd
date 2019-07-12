@@ -29,6 +29,7 @@ func start_system():
 	
 func add_layer():
 	current_layer += 1
+	awake_bird()
 	
 	while (true):
 		if $Metronome.current_beat == 1:
@@ -53,7 +54,9 @@ func reset():
 		fade_out(layers)
 		
 	current_layer = 0
-	
+
+func awake_bird():
+	pass
 
 func stoplayers(object, key):
 	if fadingout:
