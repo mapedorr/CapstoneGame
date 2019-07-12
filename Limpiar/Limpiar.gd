@@ -22,6 +22,7 @@ var spawn_limit = 4
 var clean_countdown = 0
 var basic_mugre
 var breakable_mugre
+var females_on_trunk = 0
 
 func _ready():
 	# Assign listeners
@@ -100,6 +101,7 @@ func spawn_mugre():
 	# Connect listeners for mugre's signals
 	$MusicManager/Metronome/Timer.connect("timeout", new_mugre, "move")
 	new_mugre.connect("swipe_object_deleted", self, "check_dirt")
+	new_mugre.connect("object_swiped", self, "play_whoosh")
 	# Add the mugre to the tree
 	$LeafContainer.add_child(new_mugre)
 	spawn_count += 1
@@ -137,6 +139,13 @@ func check_dirt():
 		$UI.hide_cleanliness_check()
 		spawn_countdown = 3
 		clean = true
+		$Females.get_child(females_on_trunk).show()
+		females_on_trunk += 1
+
+
+func play_whoosh(obj_position):
+	$SFX_Whoosh.position = obj_position
+	$SFX_Whoosh.play()
 
 func _on_music_started():
 	$FondoL1/AnimationPlayer.play("Idle")

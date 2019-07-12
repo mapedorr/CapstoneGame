@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://Limpiar/Limpiar.gd" type="Script" id=1]
 [ext_resource path="res://Limpiar/Leaf/Leaf.tscn" type="PackedScene" id=2]
@@ -20,6 +20,8 @@
 [ext_resource path="res://Assets/Scripts/DancingBird.gd" type="Script" id=18]
 [ext_resource path="res://Audio/achli2.ogg" type="AudioStream" id=19]
 [ext_resource path="res://Limpiar/Sprites/clean-fg.png" type="Texture" id=20]
+[ext_resource path="res://Audio/SFX/SFX_Whoosh.ogg" type="AudioStream" id=21]
+[ext_resource path="res://Assets/Sprites/Bird_Female.png" type="Texture" id=22]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Idle"
@@ -102,7 +104,7 @@ texture = ExtResource( 6 )
 
 [node name="FondoL1" type="Sprite" parent="."]
 editor/display_folded = true
-position = Vector2( 0, 18 )
+position = Vector2( 0, 70 )
 texture = ExtResource( 7 )
 centered = false
 hframes = 3
@@ -115,6 +117,7 @@ anims/Idle = SubResource( 1 )
 
 [node name="Debug" type="Control" parent="."]
 editor/display_folded = true
+visible = false
 margin_right = 1280.0
 margin_bottom = 800.0
 mouse_filter = 2
@@ -220,5 +223,35 @@ frame = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="PrimerPlano"]
 anims/Idle = SubResource( 6 )
+
+[node name="SFX_Whoosh" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 21 )
+volume_db = 6.0
+
+[node name="Females" type="Node2D" parent="."]
+
+[node name="Birdy1" type="Sprite" parent="Females"]
+visible = false
+position = Vector2( 1214.65, 163.511 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 22 )
+
+[node name="Birdy2" type="Sprite" parent="Females"]
+visible = false
+position = Vector2( 988.073, 114.458 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 22 )
+
+[node name="Birdy3" type="Sprite" parent="Females"]
+visible = false
+position = Vector2( 287.312, 112.122 )
+scale = Vector2( -2, 2 )
+texture = ExtResource( 22 )
+
+[node name="Birdy4" type="Sprite" parent="Females"]
+visible = false
+position = Vector2( 74.7477, 137.816 )
+scale = Vector2( -2, 2 )
+texture = ExtResource( 22 )
 
 [connection signal="timeout" from="MusicManager/Metronome/Timer" to="MusicManager/Metronome" method="_on_Timer_timeout"]

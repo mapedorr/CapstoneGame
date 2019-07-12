@@ -1,6 +1,7 @@
 extends Node2D
 
 signal swipe_object_deleted
+signal object_swiped (obj_position)
 
 onready var _swipe_directions = $SwipeDetector.Directions
 
@@ -73,6 +74,7 @@ func _on_swiped(gesture):
 			target.y = get_viewport_rect().size.y + 200.0
 	
 	$SwipeDetector.queue_free()
+	emit_signal("object_swiped", position)
 	$Tween.interpolate_property(
 		self,
 		"position",
