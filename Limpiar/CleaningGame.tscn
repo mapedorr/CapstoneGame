@@ -165,6 +165,7 @@ stream = ExtResource( 14 )
 volume_db = -80.0
 
 [node name="LeafContainer" type="Node2D" parent="."]
+editor/display_folded = true
 __meta__ = {
 "_edit_lock_": true
 }
