@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://Limpiar/Limpiar.gd" type="Script" id=1]
 [ext_resource path="res://Limpiar/Leaf/Leaf.tscn" type="PackedScene" id=2]
@@ -19,9 +19,11 @@
 [ext_resource path="res://Assets/Sprites/bird_1-sing.png" type="Texture" id=17]
 [ext_resource path="res://Assets/Scripts/DancingBird.gd" type="Script" id=18]
 [ext_resource path="res://Audio/achli2.ogg" type="AudioStream" id=19]
-[ext_resource path="res://Limpiar/Sprites/clean-fg.png" type="Texture" id=20]
-[ext_resource path="res://Audio/SFX/SFX_Whoosh.ogg" type="AudioStream" id=21]
-[ext_resource path="res://Assets/Sprites/Bird_Female.png" type="Texture" id=22]
+[ext_resource path="res://Assets/Sprites/speech_balloon.png" type="Texture" id=20]
+[ext_resource path="res://CustomResources/DynamicFonts/sniglet.tres" type="DynamicFont" id=21]
+[ext_resource path="res://Limpiar/Sprites/clean-fg.png" type="Texture" id=22]
+[ext_resource path="res://Audio/SFX/SFX_Whoosh.ogg" type="AudioStream" id=23]
+[ext_resource path="res://Assets/Sprites/Bird_Female.png" type="Texture" id=24]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Idle"
@@ -71,6 +73,51 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
 "values": [ Vector2( 0, 0 ), Vector2( 0, -20 ), Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "Idle"
+length = 0.9
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2 ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "Show"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 3, 4, 5, 6, 7, 8 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Text:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.6, 0.8 ),
+"transitions": PoolRealArray( 1, 2, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
 [sub_resource type="Animation" id=6]
@@ -196,7 +243,6 @@ shape = SubResource( 3 )
 disabled = true
 
 [node name="Bird4" type="Sprite" parent="."]
-editor/display_folded = true
 position = Vector2( 907.437, 246.707 )
 
 [node name="DancingBird" type="TouchScreenButton" parent="Bird4"]
@@ -214,10 +260,36 @@ anims/Dance = SubResource( 5 )
 [node name="Chirp" type="AudioStreamPlayer2D" parent="Bird4/DancingBird"]
 stream = ExtResource( 19 )
 
+[node name="SpeechBalloon" type="Sprite" parent="Bird4/DancingBird"]
+position = Vector2( 95.2009, -333.203 )
+scale = Vector2( 6.66667, 6.66667 )
+texture = ExtResource( 20 )
+hframes = 9
+frame = 8
+
+[node name="Animations" type="AnimationPlayer" parent="Bird4/DancingBird/SpeechBalloon"]
+anims/Idle = SubResource( 7 )
+anims/Show = SubResource( 8 )
+
+[node name="Text" type="Label" parent="Bird4/DancingBird/SpeechBalloon"]
+self_modulate = Color( 1, 1, 1, 0 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -65.5
+margin_top = -48.0
+margin_right = -95.5
+margin_bottom = -83.0
+custom_fonts/font = ExtResource( 21 )
+custom_colors/font_color = Color( 0.690196, 0.188235, 0.360784, 1 )
+text = "¡Uuuuh! se acercan las chicas"
+align = 1
+valign = 1
+autowrap = true
+
 [node name="PrimerPlano" type="Sprite" parent="."]
 editor/display_folded = true
 position = Vector2( 0, 507.051 )
-texture = ExtResource( 20 )
+texture = ExtResource( 22 )
 centered = false
 hframes = 3
 frame = 2
@@ -226,33 +298,34 @@ frame = 2
 anims/Idle = SubResource( 6 )
 
 [node name="SFX_Whoosh" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource( 21 )
+stream = ExtResource( 23 )
 volume_db = 6.0
 
 [node name="Females" type="Node2D" parent="."]
+editor/display_folded = true
 
 [node name="Birdy1" type="Sprite" parent="Females"]
 visible = false
 position = Vector2( 1214.65, 163.511 )
 scale = Vector2( 2, 2 )
-texture = ExtResource( 22 )
+texture = ExtResource( 24 )
 
 [node name="Birdy2" type="Sprite" parent="Females"]
 visible = false
 position = Vector2( 988.073, 114.458 )
 scale = Vector2( 2, 2 )
-texture = ExtResource( 22 )
+texture = ExtResource( 24 )
 
 [node name="Birdy3" type="Sprite" parent="Females"]
 visible = false
 position = Vector2( 287.312, 112.122 )
 scale = Vector2( -2, 2 )
-texture = ExtResource( 22 )
+texture = ExtResource( 24 )
 
 [node name="Birdy4" type="Sprite" parent="Females"]
 visible = false
 position = Vector2( 74.7477, 137.816 )
 scale = Vector2( -2, 2 )
-texture = ExtResource( 22 )
+texture = ExtResource( 24 )
 
 [connection signal="timeout" from="MusicManager/Metronome/Timer" to="MusicManager/Metronome" method="_on_Timer_timeout"]

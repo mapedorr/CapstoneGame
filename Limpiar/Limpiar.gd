@@ -139,6 +139,10 @@ func check_dirt():
 		$UI.hide_cleanliness_check()
 		spawn_countdown = 3
 		clean = true
+		
+		yield($Bird4/DancingBird.speech(), "completed")
+		$Bird4/DancingBird.silence()
+
 		$Females.get_child(females_on_trunk).show()
 		females_on_trunk += 1
 
