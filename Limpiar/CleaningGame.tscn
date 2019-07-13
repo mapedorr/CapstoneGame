@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://Limpiar/Limpiar.gd" type="Script" id=1]
 [ext_resource path="res://Limpiar/Leaf/Leaf.tscn" type="PackedScene" id=2]
@@ -13,15 +13,18 @@
 [ext_resource path="res://Audio/MX/MX_Cleaning_Base.ogg" type="AudioStream" id=11]
 [ext_resource path="res://Audio/MX/MX_Cleaning_Layer1.ogg" type="AudioStream" id=12]
 [ext_resource path="res://Audio/MX/MX_Cleaning_Layer2.ogg" type="AudioStream" id=13]
-[ext_resource path="res://Audio/MX/MX_Cleaning_Layer3.ogg" type="AudioStream" id=14]
-[ext_resource path="res://ui/UI.tscn" type="PackedScene" id=15]
-[ext_resource path="res://Assets/Sprites/bird_1-idle.png" type="Texture" id=16]
-[ext_resource path="res://Assets/Sprites/bird_1-sing.png" type="Texture" id=17]
-[ext_resource path="res://Assets/Scripts/DancingBird.gd" type="Script" id=18]
-[ext_resource path="res://Audio/achli2.ogg" type="AudioStream" id=19]
-[ext_resource path="res://Limpiar/Sprites/clean-fg.png" type="Texture" id=20]
-[ext_resource path="res://Audio/SFX/SFX_Whoosh.ogg" type="AudioStream" id=21]
-[ext_resource path="res://Assets/Sprites/Bird_Female.png" type="Texture" id=22]
+[ext_resource path="res://Audio/MX/MX_Cleaning_Bird1.ogg" type="AudioStream" id=14]
+[ext_resource path="res://Audio/MX/MX_Cleaning_Bird2.ogg" type="AudioStream" id=15]
+[ext_resource path="res://Audio/MX/MX_Cleaning_Bird3.ogg" type="AudioStream" id=16]
+[ext_resource path="res://Audio/MX/MX_Cleaning_Bird4.ogg" type="AudioStream" id=17]
+[ext_resource path="res://ui/UI.tscn" type="PackedScene" id=18]
+[ext_resource path="res://Assets/Sprites/bird_1-idle.png" type="Texture" id=19]
+[ext_resource path="res://Assets/Sprites/bird_1-sing.png" type="Texture" id=20]
+[ext_resource path="res://Assets/Scripts/DancingBird.gd" type="Script" id=21]
+[ext_resource path="res://Audio/achli2.ogg" type="AudioStream" id=22]
+[ext_resource path="res://Limpiar/Sprites/clean-fg.png" type="Texture" id=23]
+[ext_resource path="res://Audio/SFX/SFX_Whoosh.ogg" type="AudioStream" id=24]
+[ext_resource path="res://Assets/Sprites/Bird_Female.png" type="Texture" id=25]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Idle"
@@ -131,7 +134,6 @@ align = 1
 valign = 1
 
 [node name="MusicManager" type="Node" parent="."]
-editor/display_folded = true
 script = ExtResource( 9 )
 
 [node name="Fade" type="Tween" parent="MusicManager"]
@@ -164,8 +166,22 @@ volume_db = -80.0
 stream = ExtResource( 13 )
 volume_db = -80.0
 
-[node name="Layer3" type="AudioStreamPlayer" parent="MusicManager/Layers"]
+[node name="Birds" type="Node" parent="MusicManager"]
+
+[node name="Birds1" type="AudioStreamPlayer" parent="MusicManager/Birds"]
 stream = ExtResource( 14 )
+volume_db = -80.0
+
+[node name="Birds2" type="AudioStreamPlayer" parent="MusicManager/Birds"]
+stream = ExtResource( 15 )
+volume_db = -80.0
+
+[node name="Birds3" type="AudioStreamPlayer" parent="MusicManager/Birds"]
+stream = ExtResource( 16 )
+volume_db = -80.0
+
+[node name="Birds4" type="AudioStreamPlayer" parent="MusicManager/Birds"]
+stream = ExtResource( 17 )
 volume_db = -80.0
 
 [node name="LeafContainer" type="Node2D" parent="."]
@@ -182,7 +198,7 @@ scale = Vector2( 2.3, 2.3 )
 position = Vector2( 821.101, 566.851 )
 scale = Vector2( 2.3, 2.3 )
 
-[node name="UI" parent="." instance=ExtResource( 15 )]
+[node name="UI" parent="." instance=ExtResource( 18 )]
 
 [node name="SpawnArea" type="StaticBody2D" parent="."]
 editor/display_folded = true
@@ -201,23 +217,23 @@ position = Vector2( 907.437, 246.707 )
 
 [node name="DancingBird" type="TouchScreenButton" parent="Bird4"]
 scale = Vector2( 0.3, 0.3 )
-normal = ExtResource( 16 )
-pressed = ExtResource( 17 )
+normal = ExtResource( 19 )
+pressed = ExtResource( 20 )
 shape = SubResource( 4 )
 passby_press = true
-script = ExtResource( 18 )
+script = ExtResource( 21 )
 cuando = 4
 
 [node name="Dance" type="AnimationPlayer" parent="Bird4/DancingBird"]
 anims/Dance = SubResource( 5 )
 
 [node name="Chirp" type="AudioStreamPlayer2D" parent="Bird4/DancingBird"]
-stream = ExtResource( 19 )
+stream = ExtResource( 22 )
 
 [node name="PrimerPlano" type="Sprite" parent="."]
 editor/display_folded = true
 position = Vector2( 0, 507.051 )
-texture = ExtResource( 20 )
+texture = ExtResource( 23 )
 centered = false
 hframes = 3
 frame = 2
@@ -226,7 +242,7 @@ frame = 2
 anims/Idle = SubResource( 6 )
 
 [node name="SFX_Whoosh" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource( 21 )
+stream = ExtResource( 24 )
 volume_db = 6.0
 
 [node name="Females" type="Node2D" parent="."]
@@ -235,24 +251,24 @@ volume_db = 6.0
 visible = false
 position = Vector2( 1214.65, 163.511 )
 scale = Vector2( 2, 2 )
-texture = ExtResource( 22 )
+texture = ExtResource( 25 )
 
 [node name="Birdy2" type="Sprite" parent="Females"]
 visible = false
 position = Vector2( 988.073, 114.458 )
 scale = Vector2( 2, 2 )
-texture = ExtResource( 22 )
+texture = ExtResource( 25 )
 
 [node name="Birdy3" type="Sprite" parent="Females"]
 visible = false
 position = Vector2( 287.312, 112.122 )
 scale = Vector2( -2, 2 )
-texture = ExtResource( 22 )
+texture = ExtResource( 25 )
 
 [node name="Birdy4" type="Sprite" parent="Females"]
 visible = false
 position = Vector2( 74.7477, 137.816 )
 scale = Vector2( -2, 2 )
-texture = ExtResource( 22 )
+texture = ExtResource( 25 )
 
 [connection signal="timeout" from="MusicManager/Metronome/Timer" to="MusicManager/Metronome" method="_on_Timer_timeout"]
