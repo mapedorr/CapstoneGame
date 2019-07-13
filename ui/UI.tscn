@@ -1,7 +1,7 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://ui/UI.gd" type="Script" id=1]
-[ext_resource path="res://CustomResources/DynamicFonts/FiraCode-Medium-128.tres" type="DynamicFont" id=2]
+[ext_resource path="res://Assets/Fonts/Sniglet-Regular.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://ui/assets/bg.png" type="Texture" id=3]
 [ext_resource path="res://ui/AnimatedAtlas.gd" type="Script" id=4]
 [ext_resource path="res://ui/assets/heart_1.png" type="Texture" id=5]
@@ -9,8 +9,13 @@
 [ext_resource path="res://ui/assets/heart_3.png" type="Texture" id=7]
 [ext_resource path="res://ui/assets/bird.png" type="Texture" id=8]
 
-[sub_resource type="Animation" id=1]
-resource_name = "ShowCleanlinessCheck"
+[sub_resource type="DynamicFont" id=1]
+size = 72
+extra_spacing_top = -4
+extra_spacing_bottom = -4
+font_data = ExtResource( 2 )
+
+[sub_resource type="Animation" id=2]
 tracks/0/type = "value"
 tracks/0/path = NodePath("CleanlinessCheck/Background:rect_position")
 tracks/0/interp = 1
@@ -84,12 +89,11 @@ tracks/5/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="AtlasTexture" id=2]
+[sub_resource type="AtlasTexture" id=3]
 atlas = ExtResource( 3 )
 region = Rect2( 0, 0, 300, 216 )
 
-[sub_resource type="Animation" id=3]
-resource_name = "Idle"
+[sub_resource type="Animation" id=4]
 length = 0.9
 loop = true
 tracks/0/type = "method"
@@ -113,12 +117,11 @@ tracks/0/keys = {
 } ]
 }
 
-[sub_resource type="AtlasTexture" id=4]
+[sub_resource type="AtlasTexture" id=5]
 atlas = ExtResource( 5 )
 region = Rect2( 0, 0, 63, 62 )
 
-[sub_resource type="Animation" id=5]
-resource_name = "Break"
+[sub_resource type="Animation" id=6]
 length = 0.4
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:self_modulate")
@@ -133,8 +136,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
-[sub_resource type="Animation" id=6]
-resource_name = "Idle"
+[sub_resource type="Animation" id=7]
 length = 0.6
 loop = true
 tracks/0/type = "method"
@@ -158,12 +160,11 @@ tracks/0/keys = {
 } ]
 }
 
-[sub_resource type="AtlasTexture" id=7]
+[sub_resource type="AtlasTexture" id=8]
 atlas = ExtResource( 6 )
 region = Rect2( 0, 0, 78, 61 )
 
-[sub_resource type="Animation" id=8]
-resource_name = "Idle"
+[sub_resource type="Animation" id=9]
 length = 0.6
 loop = true
 tracks/0/type = "method"
@@ -187,12 +188,11 @@ tracks/0/keys = {
 } ]
 }
 
-[sub_resource type="AtlasTexture" id=9]
+[sub_resource type="AtlasTexture" id=10]
 atlas = ExtResource( 7 )
 region = Rect2( 0, 0, 76, 61 )
 
-[sub_resource type="Animation" id=10]
-resource_name = "Idle"
+[sub_resource type="Animation" id=11]
 length = 0.6
 loop = true
 tracks/0/type = "method"
@@ -216,7 +216,7 @@ tracks/0/keys = {
 } ]
 }
 
-[sub_resource type="AtlasTexture" id=11]
+[sub_resource type="AtlasTexture" id=12]
 atlas = ExtResource( 8 )
 region = Rect2( 0, 0, 184, 160 )
 
@@ -227,20 +227,19 @@ script = ExtResource( 1 )
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_fonts/font = ExtResource( 2 )
-custom_colors/font_color = Color( 0.878431, 0.0862745, 0.0862745, 1 )
-custom_colors/font_color_shadow = Color( 0.419608, 0.0666667, 0.0666667, 1 )
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.690196, 0.188235, 0.360784, 1 )
+custom_colors/font_color_shadow = Color( 0.243137, 0.137255, 0.278431, 1 )
 custom_constants/shadow_offset_x = 4
 custom_constants/shadow_offset_y = 4
-text = "Uuuuuuu!
-Se acercan las chicas
-^ ^ ,"
+text = "¡Llegó la hora de bailaaaaar!
+(/^^)/        \\(^^)/       \\(\\^^)"
 align = 1
 valign = 1
 autowrap = true
 
 [node name="Animations" type="AnimationPlayer" parent="."]
-anims/ShowCleanlinessCheck = SubResource( 1 )
+anims/ShowCleanlinessCheck = SubResource( 2 )
 
 [node name="CleanlinessCheck" type="Control" parent="."]
 anchor_right = 1.0
@@ -257,12 +256,12 @@ margin_left = -300.0
 margin_top = 20.0
 margin_bottom = 236.0
 mouse_filter = 2
-texture = SubResource( 2 )
+texture = SubResource( 3 )
 expand = true
 script = ExtResource( 4 )
 
 [node name="Animations" type="AnimationPlayer" parent="CleanlinessCheck/Background"]
-anims/Idle = SubResource( 3 )
+anims/Idle = SubResource( 4 )
 
 [node name="Heart1" type="TextureRect" parent="CleanlinessCheck"]
 editor/display_folded = true
@@ -273,12 +272,12 @@ margin_bottom = 772.0
 rect_scale = Vector2( 3.68755e-005, 3.68755e-005 )
 rect_pivot_offset = Vector2( 31, 31 )
 mouse_filter = 2
-texture = SubResource( 4 )
+texture = SubResource( 5 )
 script = ExtResource( 4 )
 
 [node name="Animations" type="AnimationPlayer" parent="CleanlinessCheck/Heart1"]
-anims/Break = SubResource( 5 )
-anims/Idle = SubResource( 6 )
+anims/Break = SubResource( 6 )
+anims/Idle = SubResource( 7 )
 
 [node name="Heart2" type="TextureRect" parent="CleanlinessCheck"]
 editor/display_folded = true
@@ -289,12 +288,12 @@ margin_bottom = 707.0
 rect_scale = Vector2( 3.68719e-005, 3.68719e-005 )
 rect_pivot_offset = Vector2( 39, 30 )
 mouse_filter = 2
-texture = SubResource( 7 )
+texture = SubResource( 8 )
 script = ExtResource( 4 )
 
 [node name="Animations" type="AnimationPlayer" parent="CleanlinessCheck/Heart2"]
-anims/Break = SubResource( 5 )
-anims/Idle = SubResource( 8 )
+anims/Break = SubResource( 6 )
+anims/Idle = SubResource( 9 )
 
 [node name="Heart3" type="TextureRect" parent="CleanlinessCheck"]
 editor/display_folded = true
@@ -305,12 +304,12 @@ margin_bottom = 645.0
 rect_scale = Vector2( 2.95754e-005, 2.95754e-005 )
 rect_pivot_offset = Vector2( 38, 30 )
 mouse_filter = 2
-texture = SubResource( 9 )
+texture = SubResource( 10 )
 script = ExtResource( 4 )
 
 [node name="Animations" type="AnimationPlayer" parent="CleanlinessCheck/Heart3"]
-anims/Break = SubResource( 5 )
-anims/Idle = SubResource( 10 )
+anims/Break = SubResource( 6 )
+anims/Idle = SubResource( 11 )
 
 [node name="Bird" type="TextureRect" parent="CleanlinessCheck"]
 self_modulate = Color( 1, 1, 1, 1.29795e-005 )
@@ -322,6 +321,6 @@ margin_left = -180.0
 margin_top = 29.9975
 margin_right = 4.0
 margin_bottom = 191.997
-texture = SubResource( 11 )
+texture = SubResource( 12 )
 script = ExtResource( 4 )
 

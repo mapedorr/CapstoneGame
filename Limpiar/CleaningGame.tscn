@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=2]
+[gd_scene load_steps=36 format=2]
 
 [ext_resource path="res://Limpiar/Limpiar.gd" type="Script" id=1]
 [ext_resource path="res://Limpiar/Leaf/Leaf.tscn" type="PackedScene" id=2]
@@ -18,15 +18,15 @@
 [ext_resource path="res://Audio/MX/MX_Cleaning_Bird3.ogg" type="AudioStream" id=16]
 [ext_resource path="res://Audio/MX/MX_Cleaning_Bird4.ogg" type="AudioStream" id=17]
 [ext_resource path="res://ui/UI.tscn" type="PackedScene" id=18]
-[ext_resource path="res://Assets/Sprites/bird_1-idle.png" type="Texture" id=19]
-[ext_resource path="res://Assets/Sprites/bird_1-sing.png" type="Texture" id=20]
-[ext_resource path="res://Assets/Scripts/DancingBird.gd" type="Script" id=21]
-[ext_resource path="res://Audio/achli2.ogg" type="AudioStream" id=22]
-[ext_resource path="res://Limpiar/Sprites/clean-fg.png" type="Texture" id=23]
-[ext_resource path="res://Audio/SFX/SFX_Whoosh.ogg" type="AudioStream" id=24]
-[ext_resource path="res://Assets/Sprites/Bird_Female.png" type="Texture" id=25]
-[ext_resource path="res://Assets/Sprites/speech_balloon.png" type="Texture" id=26]
-[ext_resource path="res://CustomResources/DynamicFonts/sniglet.tres" type="DynamicFont" id=27]
+[ext_resource path="res://Audio/SFX/SFX_Whoosh.ogg" type="AudioStream" id=19]
+[ext_resource path="res://Assets/Sprites/Bird_Female.png" type="Texture" id=20]
+[ext_resource path="res://Assets/Sprites/bird_1-idle.png" type="Texture" id=21]
+[ext_resource path="res://Assets/Sprites/bird_1-sing.png" type="Texture" id=22]
+[ext_resource path="res://Assets/Scripts/DancingBird.gd" type="Script" id=23]
+[ext_resource path="res://Audio/achli2.ogg" type="AudioStream" id=24]
+[ext_resource path="res://Assets/Sprites/speech_balloon.png" type="Texture" id=25]
+[ext_resource path="res://CustomResources/DynamicFonts/sniglet.tres" type="DynamicFont" id=26]
+[ext_resource path="res://Limpiar/Sprites/clean-fg.png" type="Texture" id=27]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Idle"
@@ -78,7 +78,7 @@ tracks/0/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( 0, -20 ), Vector2( 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=6]
 resource_name = "Idle"
 length = 0.9
 loop = true
@@ -95,7 +95,7 @@ tracks/0/keys = {
 "values": [ 0, 1, 2 ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=7]
 resource_name = "Show"
 length = 0.8
 tracks/0/type = "value"
@@ -123,8 +123,7 @@ tracks/1/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=6]
-resource_name = "Idle"
+[sub_resource type="Animation" id=8]
 length = 1.6
 loop = true
 tracks/0/type = "value"
@@ -181,6 +180,7 @@ align = 1
 valign = 1
 
 [node name="MusicManager" type="Node" parent="."]
+editor/display_folded = true
 script = ExtResource( 9 )
 
 [node name="Fade" type="Tween" parent="MusicManager"]
@@ -258,63 +258,8 @@ __meta__ = {
 shape = SubResource( 3 )
 disabled = true
 
-[node name="Bird4" type="Sprite" parent="."]
-position = Vector2( 907.437, 246.707 )
-
-[node name="DancingBird" type="TouchScreenButton" parent="Bird4"]
-scale = Vector2( 0.3, 0.3 )
-normal = ExtResource( 19 )
-pressed = ExtResource( 20 )
-shape = SubResource( 4 )
-passby_press = true
-script = ExtResource( 21 )
-cuando = 4
-
-[node name="Dance" type="AnimationPlayer" parent="Bird4/DancingBird"]
-anims/Dance = SubResource( 5 )
-
-[node name="Chirp" type="AudioStreamPlayer2D" parent="Bird4/DancingBird"]
-stream = ExtResource( 22 )
-
-[node name="SpeechBalloon" type="Sprite" parent="Bird4/DancingBird"]
-position = Vector2( 95.2009, -333.203 )
-scale = Vector2( 6.66667, 6.66667 )
-texture = ExtResource( 26 )
-hframes = 9
-frame = 8
-
-[node name="Animations" type="AnimationPlayer" parent="Bird4/DancingBird/SpeechBalloon"]
-anims/Idle = SubResource( 7 )
-anims/Show = SubResource( 8 )
-
-[node name="Text" type="Label" parent="Bird4/DancingBird/SpeechBalloon"]
-self_modulate = Color( 1, 1, 1, 0 )
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = -65.5
-margin_top = -48.0
-margin_right = -95.5
-margin_bottom = -83.0
-custom_fonts/font = ExtResource( 27 )
-custom_colors/font_color = Color( 0.690196, 0.188235, 0.360784, 1 )
-text = "¡Uuuuh! se acercan las chicas"
-align = 1
-valign = 1
-autowrap = true
-
-[node name="PrimerPlano" type="Sprite" parent="."]
-editor/display_folded = true
-position = Vector2( 0, 507.051 )
-texture = ExtResource( 23 )
-centered = false
-hframes = 3
-frame = 2
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="PrimerPlano"]
-anims/Idle = SubResource( 6 )
-
 [node name="SFX_Whoosh" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource( 24 )
+stream = ExtResource( 19 )
 volume_db = 6.0
 
 [node name="Females" type="Node2D" parent="."]
@@ -324,24 +269,80 @@ editor/display_folded = true
 visible = false
 position = Vector2( 1214.65, 163.511 )
 scale = Vector2( 2, 2 )
-texture = ExtResource( 25 )
+texture = ExtResource( 20 )
 
 [node name="Birdy2" type="Sprite" parent="Females"]
 visible = false
 position = Vector2( 988.073, 114.458 )
 scale = Vector2( 2, 2 )
-texture = ExtResource( 25 )
+texture = ExtResource( 20 )
 
 [node name="Birdy3" type="Sprite" parent="Females"]
 visible = false
 position = Vector2( 287.312, 112.122 )
 scale = Vector2( -2, 2 )
-texture = ExtResource( 25 )
+texture = ExtResource( 20 )
 
 [node name="Birdy4" type="Sprite" parent="Females"]
 visible = false
 position = Vector2( 74.7477, 137.816 )
 scale = Vector2( -2, 2 )
+texture = ExtResource( 20 )
+
+[node name="Bird4" type="Sprite" parent="."]
+editor/display_folded = true
+position = Vector2( 1003.44, 424.708 )
+
+[node name="DancingBird" type="TouchScreenButton" parent="Bird4"]
+scale = Vector2( 0.3, 0.3 )
+normal = ExtResource( 21 )
+pressed = ExtResource( 22 )
+shape = SubResource( 4 )
+passby_press = true
+script = ExtResource( 23 )
+cuando = 4
+
+[node name="Dance" type="AnimationPlayer" parent="Bird4/DancingBird"]
+anims/Dance = SubResource( 5 )
+
+[node name="Chirp" type="AudioStreamPlayer2D" parent="Bird4/DancingBird"]
+stream = ExtResource( 24 )
+
+[node name="SpeechBalloon" type="Sprite" parent="Bird4/DancingBird"]
+position = Vector2( 95.2009, -333.203 )
+scale = Vector2( 6.66667, 6.66667 )
 texture = ExtResource( 25 )
+hframes = 9
+frame = 8
+
+[node name="Animations" type="AnimationPlayer" parent="Bird4/DancingBird/SpeechBalloon"]
+anims/Idle = SubResource( 6 )
+anims/Show = SubResource( 7 )
+
+[node name="Text" type="Label" parent="Bird4/DancingBird/SpeechBalloon"]
+self_modulate = Color( 1, 1, 1, 0 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -65.5
+margin_top = -48.0
+margin_right = -95.5
+margin_bottom = -83.0
+custom_fonts/font = ExtResource( 26 )
+custom_colors/font_color = Color( 0.690196, 0.188235, 0.360784, 1 )
+text = "¡Uuuuh! se acercan las chicas"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="PrimerPlano" type="Sprite" parent="."]
+editor/display_folded = true
+position = Vector2( 0, 507.051 )
+texture = ExtResource( 27 )
+centered = false
+hframes = 3
+frame = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="PrimerPlano"]
+anims/Idle = SubResource( 8 )
 
 [connection signal="timeout" from="MusicManager/Metronome/Timer" to="MusicManager/Metronome" method="_on_Timer_timeout"]

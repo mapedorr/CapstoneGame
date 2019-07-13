@@ -23,6 +23,7 @@ var clean_countdown = 0
 var basic_mugre
 var breakable_mugre
 var females_on_trunk = 0
+var game_finished = false
 
 func _ready():
 	# Assign listeners
@@ -45,7 +46,7 @@ func _on_master_timer_timeout():
 
 		if secs == 10:
 			$MasterTimer.stop()
-			$UI/WinMessage.show()
+			game_finished = true
 			return
 		
 		spawn_countdown -= 1
@@ -145,6 +146,9 @@ func check_dirt():
 
 		$Females.get_child(females_on_trunk).show()
 		females_on_trunk += 1
+		
+		if game_finished:
+			$UI/WinMessage.show()
 
 
 func play_whoosh(obj_position):
