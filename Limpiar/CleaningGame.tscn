@@ -234,23 +234,22 @@ stream = ExtResource( 17 )
 volume_db = -80.0
 
 [node name="LeafContainer" type="Node2D" parent="."]
-editor/display_folded = true
 __meta__ = {
 "_edit_lock_": true
 }
 
 [node name="Leaf" parent="LeafContainer" instance=ExtResource( 2 )]
-position = Vector2( 344.349, 303.095 )
+position = Vector2( 530, 520 )
 scale = Vector2( 2.3, 2.3 )
 
-[node name="Stick" parent="LeafContainer" instance=ExtResource( 3 )]
-position = Vector2( 821.101, 566.851 )
-scale = Vector2( 2.3, 2.3 )
+[node name="Mushroom" parent="LeafContainer" instance=ExtResource( 5 )]
+position = Vector2( 200, 380 )
 
 [node name="UI" parent="." instance=ExtResource( 18 )]
 
 [node name="SpawnArea" type="StaticBody2D" parent="."]
 editor/display_folded = true
+visible = false
 position = Vector2( 636.259, 404.603 )
 __meta__ = {
 "_edit_group_": true
@@ -315,7 +314,6 @@ z_index = -1
 texture = ExtResource( 21 )
 
 [node name="Bird4" type="Sprite" parent="."]
-editor/display_folded = true
 position = Vector2( 1003.44, 424.708 )
 
 [node name="DancingBird" type="TouchScreenButton" parent="Bird4"]
@@ -358,6 +356,38 @@ text = "¡Uuuuh! se acercan las chicas"
 align = 1
 valign = 1
 autowrap = true
+
+[node name="Waypoints" type="Node" parent="Bird4/DancingBird"]
+
+[node name="A" type="Position2D" parent="Bird4/DancingBird/Waypoints"]
+modulate = Color( 0.913725, 1, 0.917647, 1 )
+self_modulate = Color( 0.603922, 0.0313726, 0.0313726, 1 )
+position = Vector2( 950, 310 )
+scale = Vector2( 2, 2 )
+
+[node name="B" type="Position2D" parent="Bird4/DancingBird/Waypoints"]
+modulate = Color( 0.913725, 1, 0.917647, 1 )
+self_modulate = Color( 0.603922, 0.0313726, 0.0313726, 1 )
+position = Vector2( 850, 530 )
+scale = Vector2( 2, 2 )
+
+[node name="C" type="Position2D" parent="Bird4/DancingBird/Waypoints"]
+modulate = Color( 0.913725, 1, 0.917647, 1 )
+self_modulate = Color( 0.603922, 0.0313726, 0.0313726, 1 )
+position = Vector2( 620, 400 )
+scale = Vector2( 2, 2 )
+
+[node name="D" type="Position2D" parent="Bird4/DancingBird/Waypoints"]
+modulate = Color( 0.913725, 1, 0.917647, 1 )
+self_modulate = Color( 0.603922, 0.0313726, 0.0313726, 1 )
+position = Vector2( 520, 240 )
+scale = Vector2( 2, 2 )
+
+[node name="E" type="Position2D" parent="Bird4/DancingBird/Waypoints"]
+modulate = Color( 0.913725, 1, 0.917647, 1 )
+self_modulate = Color( 0.603922, 0.0313726, 0.0313726, 1 )
+position = Vector2( 310, 320 )
+scale = Vector2( 2, 2 )
 
 [node name="PrimerPlano" type="Sprite" parent="."]
 editor/display_folded = true

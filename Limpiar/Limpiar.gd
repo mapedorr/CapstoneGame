@@ -166,4 +166,4 @@ func _on_music_started():
 	for leaf in $LeafContainer.get_children():
 		$MusicManager/Metronome/Timer.connect("timeout", leaf, "move")
 		leaf.connect("swipe_object_deleted", self, "check_dirt")
-		leaf.in_game = true
+#		leaf.in_game = true
