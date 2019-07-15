@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://Limpiar/Limpiar.gd" type="Script" id=1]
 [ext_resource path="res://Limpiar/Leaf/Leaf.tscn" type="PackedScene" id=2]
@@ -25,6 +25,7 @@
 [ext_resource path="res://Limpiar/Sprites/clean-fg.png" type="Texture" id=23]
 [ext_resource path="res://Audio/SFX/SFX_Whoosh.ogg" type="AudioStream" id=24]
 [ext_resource path="res://Assets/Sprites/Bird_Female.png" type="Texture" id=25]
+[ext_resource path="res://Assets/Sprites/Bird_Tail.png" type="Texture" id=26]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Idle"
@@ -248,27 +249,50 @@ volume_db = 6.0
 [node name="Females" type="Node2D" parent="."]
 
 [node name="Birdy1" type="Sprite" parent="Females"]
+editor/display_folded = true
 visible = false
 position = Vector2( 1214.65, 163.511 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 25 )
 
+[node name="Tail" type="Sprite" parent="Females/Birdy1"]
+position = Vector2( 0, -12 )
+z_index = -1
+texture = ExtResource( 26 )
+
 [node name="Birdy2" type="Sprite" parent="Females"]
+editor/display_folded = true
 visible = false
 position = Vector2( 988.073, 114.458 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 25 )
 
+[node name="Tail" type="Sprite" parent="Females/Birdy2"]
+position = Vector2( 0, -6 )
+z_index = -1
+texture = ExtResource( 26 )
+
 [node name="Birdy3" type="Sprite" parent="Females"]
+editor/display_folded = true
 visible = false
 position = Vector2( 287.312, 112.122 )
 scale = Vector2( -2, 2 )
 texture = ExtResource( 25 )
 
+[node name="Tail" type="Sprite" parent="Females/Birdy3"]
+position = Vector2( 0, -6 )
+z_index = -1
+texture = ExtResource( 26 )
+
 [node name="Birdy4" type="Sprite" parent="Females"]
+editor/display_folded = true
 visible = false
-position = Vector2( 74.7477, 137.816 )
+position = Vector2( 83.7477, 140.816 )
 scale = Vector2( -2, 2 )
 texture = ExtResource( 25 )
+
+[node name="Tail" type="Sprite" parent="Females/Birdy4"]
+z_index = -1
+texture = ExtResource( 26 )
 
 [connection signal="timeout" from="MusicManager/Metronome/Timer" to="MusicManager/Metronome" method="_on_Timer_timeout"]
