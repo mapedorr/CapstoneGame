@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=2]
+[gd_scene load_steps=42 format=2]
 
 [ext_resource path="res://Limpiar/Limpiar.gd" type="Script" id=1]
 [ext_resource path="res://Limpiar/Leaf/Leaf.tscn" type="PackedScene" id=2]
@@ -26,8 +26,11 @@
 [ext_resource path="res://Assets/Scripts/DancingBird.gd" type="Script" id=24]
 [ext_resource path="res://Audio/achli2.ogg" type="AudioStream" id=25]
 [ext_resource path="res://Assets/Sprites/speech_balloon.png" type="Texture" id=26]
-[ext_resource path="res://CustomResources/DynamicFonts/sniglet.tres" type="DynamicFont" id=27]
-[ext_resource path="res://Limpiar/Sprites/clean-fg.png" type="Texture" id=28]
+[ext_resource path="res://Assets/Sprites/how_to_play_A.png" type="Texture" id=27]
+[ext_resource path="res://CustomResources/DynamicFonts/sniglet.tres" type="DynamicFont" id=28]
+[ext_resource path="res://Assets/Scripts/Tutorial.gd" type="Script" id=29]
+[ext_resource path="res://Assets/Sprites/how_to_play_B.png" type="Texture" id=30]
+[ext_resource path="res://Limpiar/Sprites/clean-fg.png" type="Texture" id=31]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Idle"
@@ -125,6 +128,49 @@ tracks/1/keys = {
 }
 
 [sub_resource type="Animation" id=8]
+resource_name = "ShowNoText"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 3, 4, 5, 6, 7, 8 ]
+}
+
+[sub_resource type="Animation" id=9]
+resource_name = "WellDone"
+length = 1.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("Tutorial:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 12, 13, 14, 12, 13, 14 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Tutorial:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.00221157 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 27 ) ]
+}
+
+[sub_resource type="Animation" id=10]
 length = 1.6
 loop = true
 tracks/0/type = "value"
@@ -336,11 +382,19 @@ position = Vector2( 95.2009, -333.203 )
 scale = Vector2( 6.66667, 6.66667 )
 texture = ExtResource( 26 )
 hframes = 9
-frame = 8
+frame = 3
+
+[node name="Timer" type="Timer" parent="Bird4/DancingBird/SpeechBalloon"]
+process_mode = 0
+wait_time = 0.2
 
 [node name="Animations" type="AnimationPlayer" parent="Bird4/DancingBird/SpeechBalloon"]
 anims/Idle = SubResource( 6 )
 anims/Show = SubResource( 7 )
+anims/ShowNoText = SubResource( 8 )
+
+[node name="Tutorials" type="AnimationPlayer" parent="Bird4/DancingBird/SpeechBalloon"]
+anims/WellDone = SubResource( 9 )
 
 [node name="Text" type="Label" parent="Bird4/DancingBird/SpeechBalloon"]
 self_modulate = Color( 1, 1, 1, 0 )
@@ -350,14 +404,27 @@ margin_left = -65.5
 margin_top = -48.0
 margin_right = -95.5
 margin_bottom = -83.0
-custom_fonts/font = ExtResource( 27 )
+custom_fonts/font = ExtResource( 28 )
 custom_colors/font_color = Color( 0.690196, 0.188235, 0.360784, 1 )
 text = "¡Uuuuh! se acercan las chicas"
 align = 1
 valign = 1
 autowrap = true
 
+[node name="Tutorial" type="Sprite" parent="Bird4/DancingBird/SpeechBalloon"]
+visible = false
+position = Vector2( -11.0001, -12.3736 )
+texture = ExtResource( 27 )
+hframes = 15
+frame = 12
+script = ExtResource( 29 )
+tutorial_a = ExtResource( 27 )
+tutorial_b = ExtResource( 30 )
+tutorial_a_frames = 15
+tutorial_b_frames = 17
+
 [node name="Waypoints" type="Node" parent="Bird4/DancingBird"]
+editor/display_folded = true
 
 [node name="A" type="Position2D" parent="Bird4/DancingBird/Waypoints"]
 modulate = Color( 0.913725, 1, 0.917647, 1 )
@@ -392,12 +459,12 @@ scale = Vector2( 2, 2 )
 [node name="PrimerPlano" type="Sprite" parent="."]
 editor/display_folded = true
 position = Vector2( 0, 507.051 )
-texture = ExtResource( 28 )
+texture = ExtResource( 31 )
 centered = false
 hframes = 3
 frame = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="PrimerPlano"]
-anims/Idle = SubResource( 8 )
+anims/Idle = SubResource( 10 )
 
 [connection signal="timeout" from="MusicManager/Metronome/Timer" to="MusicManager/Metronome" method="_on_Timer_timeout"]

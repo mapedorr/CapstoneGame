@@ -24,11 +24,13 @@ var basic_mugre
 var breakable_mugre
 var females_on_trunk = 0
 var game_finished = false
+var in_tutorial = 1
 
 func _ready():
 	# Assign listeners
 	$MasterTimer.connect("timeout", self, "_on_master_timer_timeout")
 	$MusicManager.connect("music_started", self, "_on_music_started")
+	$Bird4/DancingBird.connect("tutorial_explained", self, "_on_tutorial_explained")
 	# Setup GUI
 	$Debug/CleanTime.set_text("00:00")
 
@@ -135,7 +137,10 @@ func reset_master_timer():
 
 func check_dirt():
 	dirt_on_ground -= 1
-	if dirt_on_ground == 0:
+	if in_tutorial <= 3:
+		in_tutorial += 1
+		$Bird4/DancingBird.stop_tutorial()
+	elif dirt_on_ground == 0:
 		$MusicManager.add_layer()
 		$UI.hide_cleanliness_check()
 		spawn_countdown = 3
@@ -167,3 +172,14 @@ func _on_music_started():
 		$MusicManager/Metronome/Timer.connect("timeout", leaf, "move")
 		leaf.connect("swipe_object_deleted", self, "check_dirt")
 #		leaf.in_game = true
+
+func _on_tutorial_explained(index):
+	if index == 1:
+		# The leaf is ready to be SWIPED
+		$LeafContainer/Leaf.in_game = true
+	elif index == 2:
+		# The mushroom is ready to be SWIPED
+		$LeafContainer/Mushroom.in_game = true
+	else:
+		dirt_on_ground = 1
+		check_dirt()

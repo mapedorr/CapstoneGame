@@ -1,5 +1,7 @@
 extends TouchScreenButton
 
+signal tutorial_explained(index)
+
 export(int) var cuando = 1
 var face = -1.0
 var count = 2
@@ -7,11 +9,29 @@ var pre_count = 0
 var moving = true
 var points = 2
 var destination = 1
+var tutorial_steps = [
+	[
+		[0, 1, 2],
+		[3, 4, 5],
+		[6, 7, 8, 9, 10, 11]
+	],
+	[
+		[0, 1, 2, 1],
+		[3, 4, 5, 4],
+		[6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
+	]
+]
+var current_tutorial = null
+var current_tutorial_index = 0
+var tutorial_index = 0
+var step_index = 0
+var tutorial_repeat = 0
+onready var default_position = get_parent().get_position()
 onready var normal_texture = get_texture()
-
 
 func _ready():
 	$SpeechBalloon.hide()
+	$SpeechBalloon/Timer.connect("timeout", self, "_on_tutorial_timeout")
 
 func dance():
 	pre_count += 1
@@ -45,10 +65,16 @@ func go_to_mugres(movimiento):
 						move($Waypoints/C.position)
 						points -= 1
 					0:
-						speech()
 						moving = false
 						destination = 2
 						points = 2
+						current_tutorial = tutorial_steps[current_tutorial_index]
+						$SpeechBalloon/Tutorial.set_texture($SpeechBalloon/Tutorial.tutorial_a)
+						$SpeechBalloon/Tutorial.set_hframes($SpeechBalloon/Tutorial.tutorial_a_frames)
+						$SpeechBalloon/Tutorial.set_frame(current_tutorial[tutorial_index][step_index])
+						yield(show_balloon(), "completed")
+						$SpeechBalloon/Tutorial.show()
+						$SpeechBalloon/Timer.start()
 		2:
 			if moving:
 				match points:
@@ -59,8 +85,26 @@ func go_to_mugres(movimiento):
 						move($Waypoints/E.position)
 						points -= 1
 					0:
-						speech()
 						moving = false
+						destination = 3
+						points = 1
+						current_tutorial = tutorial_steps[current_tutorial_index]
+						$SpeechBalloon/Tutorial.set_texture($SpeechBalloon/Tutorial.tutorial_b)
+						$SpeechBalloon/Tutorial.set_hframes($SpeechBalloon/Tutorial.tutorial_b_frames)
+						$SpeechBalloon/Tutorial.set_frame(current_tutorial[tutorial_index][step_index])
+						yield(show_balloon(), "completed")
+						$SpeechBalloon/Tutorial.show()
+						$SpeechBalloon/Timer.start()
+		3:
+			if moving:
+				match points:
+					1:
+						move(default_position)
+						points -= 1
+					0:
+						moving = false
+						$SpeechBalloon.hide()
+						emit_signal("tutorial_explained", current_tutorial_index + 1)
 
 func speech():
 	if not $SpeechBalloon.is_visible():
@@ -75,6 +119,43 @@ func silence():
 	yield($SpeechBalloon/Animations, "animation_finished")
 	$SpeechBalloon.hide()
 
-func move (waypoint):
-	
+func move(waypoint):
 	get_parent().position = waypoint
+
+func show_balloon():
+	if not $SpeechBalloon.is_visible():
+		$SpeechBalloon.show()
+		$SpeechBalloon/Animations.play("ShowNoText")
+		yield($SpeechBalloon/Animations, "animation_finished")
+		$SpeechBalloon/Animations.play("Idle")
+	else:
+		$SpeechBalloon/Animations.play_backwards("ShowNoText")
+		yield($SpeechBalloon/Animations, "animation_finished")
+		$SpeechBalloon.hide()
+
+func _on_tutorial_timeout():
+	step_index += 1
+	if step_index >= current_tutorial[tutorial_index].size():
+		step_index = 0
+		tutorial_repeat += 1
+	if tutorial_repeat == 2:
+		tutorial_repeat = 0
+		tutorial_index += 1
+	if tutorial_index >= current_tutorial.size():
+		tutorial_index = 0
+		emit_signal("tutorial_explained", current_tutorial_index + 1)
+	$SpeechBalloon/Tutorial.set_frame(current_tutorial[tutorial_index][step_index])
+
+func stop_tutorial():
+	$SpeechBalloon/Timer.stop()
+	step_index = 0
+	tutorial_repeat = 0
+	tutorial_index = 0
+	current_tutorial_index += 1
+	$SpeechBalloon/Tutorial.set_texture($SpeechBalloon/Tutorial.tutorial_a)
+	$SpeechBalloon/Tutorial.set_hframes($SpeechBalloon/Tutorial.tutorial_a_frames)
+	$SpeechBalloon/Tutorials.play("WellDone")
+	yield($SpeechBalloon/Tutorials, "animation_finished")
+	$SpeechBalloon/Tutorial.hide()
+	yield(show_balloon(), "completed")
+	moving = true
