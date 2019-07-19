@@ -68,13 +68,12 @@ func go_to_mugres(movimiento):
 						moving = false
 						destination = 2
 						points = 2
-						current_tutorial = tutorial_steps[current_tutorial_index]
+						# Set the texture and frames number for the first tutorial
+						# (a.k.a. the normal object)
 						$SpeechBalloon/Tutorial.set_texture($SpeechBalloon/Tutorial.tutorial_a)
 						$SpeechBalloon/Tutorial.set_hframes($SpeechBalloon/Tutorial.tutorial_a_frames)
-						$SpeechBalloon/Tutorial.set_frame(current_tutorial[tutorial_index][step_index])
-						yield(show_balloon(), "completed")
-						$SpeechBalloon/Tutorial.show()
-						$SpeechBalloon/Timer.start()
+						# Start the tutorial animation
+						begin_tutorial()
 		2:
 			if moving:
 				match points:
@@ -87,17 +86,25 @@ func go_to_mugres(movimiento):
 					0:
 						moving = false
 						destination = 3
-						points = 1
-						current_tutorial = tutorial_steps[current_tutorial_index]
+						points = 4
+						# Set the texture and frames number for the second tutorial
+						# (a.k.a. the swipeable object)
 						$SpeechBalloon/Tutorial.set_texture($SpeechBalloon/Tutorial.tutorial_b)
 						$SpeechBalloon/Tutorial.set_hframes($SpeechBalloon/Tutorial.tutorial_b_frames)
-						$SpeechBalloon/Tutorial.set_frame(current_tutorial[tutorial_index][step_index])
-						yield(show_balloon(), "completed")
-						$SpeechBalloon/Tutorial.show()
-						$SpeechBalloon/Timer.start()
+						# Start the tutorial animation
+						begin_tutorial()
 		3:
 			if moving:
 				match points:
+					4:
+						move($Waypoints/D.position)
+						points -= 1
+					3:
+						move($Waypoints/C.position)
+						points -= 1
+					2:
+						move($Waypoints/B.position)
+						points -= 1
 					1:
 						move(default_position)
 						points -= 1
@@ -105,6 +112,13 @@ func go_to_mugres(movimiento):
 						moving = false
 						$SpeechBalloon.hide()
 						emit_signal("tutorial_explained", current_tutorial_index + 1)
+
+func begin_tutorial():
+	current_tutorial = tutorial_steps[current_tutorial_index]
+	$SpeechBalloon/Tutorial.set_frame(current_tutorial[tutorial_index][step_index])
+	yield(show_balloon(), "completed")
+	$SpeechBalloon/Tutorial.show()
+	$SpeechBalloon/Timer.start()
 
 func speech():
 	if not $SpeechBalloon.is_visible():

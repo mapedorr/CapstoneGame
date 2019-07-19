@@ -137,7 +137,7 @@ func reset_master_timer():
 
 func check_dirt():
 	dirt_on_ground -= 1
-	if in_tutorial <= 3:
+	if in_tutorial < 3:
 		in_tutorial += 1
 		$Bird4/DancingBird.stop_tutorial()
 	elif dirt_on_ground == 0:

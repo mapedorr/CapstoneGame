@@ -424,7 +424,6 @@ tutorial_a_frames = 15
 tutorial_b_frames = 17
 
 [node name="Waypoints" type="Node" parent="Bird4/DancingBird"]
-editor/display_folded = true
 
 [node name="A" type="Position2D" parent="Bird4/DancingBird/Waypoints"]
 modulate = Color( 0.913725, 1, 0.917647, 1 )
