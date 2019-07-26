@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/SFX_Heart_01.ogg-de31590a7496aec621b31efc1f1c84a8.oggstr"
+
+[deps]
+
+source_file="res://Audio/SFX/SFX_Heart_01.ogg"
+dest_files=[ "res://.import/SFX_Heart_01.ogg-de31590a7496aec621b31efc1f1c84a8.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

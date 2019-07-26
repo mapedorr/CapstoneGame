@@ -41,7 +41,8 @@ func dance():
 			go_to_mugres(destination)
 			$Dance.play("Dance")
 			# set_scale(Vector2(get_scale().x * face, get_scale().y))
-			$Chirp.play()
+			if not moving:
+				$Chirp.play()
 			set_texture(pressed)
 		else:
 			set_texture(normal_texture)
@@ -124,6 +125,7 @@ func speech():
 	if not $SpeechBalloon.is_visible():
 		$SpeechBalloon.show()
 		$SpeechBalloon/Animations.play("Show")
+		$Scream.play()
 		yield($SpeechBalloon/Animations, "animation_finished")
 		$SpeechBalloon/Animations.play("Idle")
 		yield(get_tree().create_timer(3.0), "timeout")
@@ -134,15 +136,18 @@ func silence():
 	$SpeechBalloon.hide()
 
 func move(waypoint):
+	$Jump.play()
 	get_parent().position = waypoint
 
 func show_balloon():
 	if not $SpeechBalloon.is_visible():
+		$Speech_Op.play()
 		$SpeechBalloon.show()
 		$SpeechBalloon/Animations.play("ShowNoText")
 		yield($SpeechBalloon/Animations, "animation_finished")
 		$SpeechBalloon/Animations.play("Idle")
 	else:
+		$Speech_Cl.play()
 		$SpeechBalloon/Animations.play_backwards("ShowNoText")
 		yield($SpeechBalloon/Animations, "animation_finished")
 		$SpeechBalloon.hide()

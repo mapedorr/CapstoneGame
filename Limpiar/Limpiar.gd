@@ -124,6 +124,9 @@ func randomize_mugre():
 		breakable_mugre = mushroom
 
 func reset_master_timer():
+	for birds in $Females.get_children():
+		birds.hide()
+		females_on_trunk = 0
 	$MusicManager.reset()
 	timer_on = false
 	secs = 0
