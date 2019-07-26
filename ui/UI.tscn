@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://ui/UI.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Fonts/Sniglet-Regular.ttf" type="DynamicFontData" id=2]
@@ -8,6 +8,8 @@
 [ext_resource path="res://ui/assets/heart_2.png" type="Texture" id=6]
 [ext_resource path="res://ui/assets/heart_3.png" type="Texture" id=7]
 [ext_resource path="res://ui/assets/bird.png" type="Texture" id=8]
+[ext_resource path="res://Audio/SFX/SFX_UI_Show.ogg" type="AudioStream" id=9]
+[ext_resource path="res://Audio/SFX/SFX_UI_Hide.ogg" type="AudioStream" id=10]
 
 [sub_resource type="DynamicFont" id=1]
 size = 72
@@ -269,7 +271,7 @@ margin_left = 1020.0
 margin_top = 710.0
 margin_right = 1083.0
 margin_bottom = 772.0
-rect_scale = Vector2( 3.68755e-005, 3.68755e-005 )
+rect_scale = Vector2( 3.68755e-05, 3.68755e-05 )
 rect_pivot_offset = Vector2( 31, 31 )
 mouse_filter = 2
 texture = SubResource( 5 )
@@ -285,7 +287,7 @@ margin_left = 1040.0
 margin_top = 646.0
 margin_right = 1118.0
 margin_bottom = 707.0
-rect_scale = Vector2( 3.68719e-005, 3.68719e-005 )
+rect_scale = Vector2( 3.68719e-05, 3.68719e-05 )
 rect_pivot_offset = Vector2( 39, 30 )
 mouse_filter = 2
 texture = SubResource( 8 )
@@ -301,7 +303,7 @@ margin_left = 1000.0
 margin_top = 584.0
 margin_right = 1076.0
 margin_bottom = 645.0
-rect_scale = Vector2( 2.95754e-005, 2.95754e-005 )
+rect_scale = Vector2( 2.95754e-05, 2.95754e-05 )
 rect_pivot_offset = Vector2( 38, 30 )
 mouse_filter = 2
 texture = SubResource( 10 )
@@ -312,7 +314,7 @@ anims/Break = SubResource( 6 )
 anims/Idle = SubResource( 11 )
 
 [node name="Bird" type="TextureRect" parent="CleanlinessCheck"]
-self_modulate = Color( 1, 1, 1, 1.29795e-005 )
+self_modulate = Color( 1, 1, 1, 1.29795e-05 )
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
@@ -323,4 +325,12 @@ margin_right = 4.0
 margin_bottom = 191.997
 texture = SubResource( 12 )
 script = ExtResource( 4 )
+
+[node name="Show" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 9 )
+
+[node name="Hide" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 10 )
+
+[node name="Heart" type="AudioStreamPlayer" parent="."]
 

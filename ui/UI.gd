@@ -8,6 +8,7 @@ func _ready():
 func show_cleanliness_check(frame = 0):
 	$CleanlinessCheck/Bird.change_frame(frame)
 	if not cleanliness_visible:
+		$Show.play()
 		cleanliness_visible = true
 		$CleanlinessCheck.show()
 		$CleanlinessCheck.propagate_call("play_animation")
@@ -17,6 +18,7 @@ func show_cleanliness_check(frame = 0):
 
 func hide_cleanliness_check():
 	if cleanliness_visible:
+		$Hide.play()
 		$Animations.play_backwards("ShowCleanlinessCheck")
 		yield($Animations, "animation_finished")
 		$CleanlinessCheck.propagate_call("stop_animation")

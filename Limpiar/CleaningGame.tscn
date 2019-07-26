@@ -371,6 +371,7 @@ z_index = -1
 texture = ExtResource( 21 )
 
 [node name="Bird4" type="Sprite" parent="."]
+editor/display_folded = true
 position = Vector2( 1003.44, 424.708 )
 
 [node name="DancingBird" type="TouchScreenButton" parent="Bird4"]
