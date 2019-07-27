@@ -1,4 +1,4 @@
-extends TouchScreenButton
+extends Sprite
 
 signal tutorial_explained(index)
 
@@ -40,10 +40,8 @@ func dance():
 		if cuando == count:
 			go_to_mugres(destination)
 			$Dance.play("Dance")
-			# set_scale(Vector2(get_scale().x * face, get_scale().y))
 			if not moving:
 				$Chirp.play()
-			set_texture(pressed)
 		else:
 			set_texture(normal_texture)
 		count += 1

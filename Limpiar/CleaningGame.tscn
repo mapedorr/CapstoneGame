@@ -21,7 +21,7 @@
 [ext_resource path="res://Audio/SFX/SFX_Whoosh.ogg" type="AudioStream" id=19]
 [ext_resource path="res://Assets/Sprites/Bird_Female.png" type="Texture" id=20]
 [ext_resource path="res://Assets/Sprites/Bird_Tail.png" type="Texture" id=21]
-[ext_resource path="res://Assets/Sprites/bird_1-idle.png" type="Texture" id=22]
+[ext_resource path="res://Assets/Sprites/parotia.png" type="Texture" id=22]
 [ext_resource path="res://Assets/Scripts/DancingBird.gd" type="Script" id=23]
 [ext_resource path="res://Audio/SFX/SFX_Call_Short.ogg" type="AudioStream" id=24]
 [ext_resource path="res://Audio/SFX/SFX_Call_Long.ogg" type="AudioStream" id=25]
@@ -68,11 +68,8 @@ Label/styles/normal = null
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 500, 304.762 )
 
-[sub_resource type="RectangleShape2D" id=4]
-extents = Vector2( 300, 300 )
-
 [sub_resource type="Animation" id=5]
-length = 0.2
+length = 0.6
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:position")
 tracks/0/interp = 1
@@ -80,10 +77,39 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2 ),
+"times": PoolRealArray( 0, 0.1, 0.3 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
 "values": [ Vector2( 0, 0 ), Vector2( 0, -20 ), Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.001, 0.1, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 4, 3, 4 ]
+}
+
+[sub_resource type="Animation" id=11]
+resource_name = "Idle"
+length = 0.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2 ]
 }
 
 [sub_resource type="Animation" id=6]
@@ -231,6 +257,7 @@ align = 1
 valign = 1
 
 [node name="MusicManager" type="Node" parent="."]
+editor/display_folded = true
 script = ExtResource( 9 )
 
 [node name="Fade" type="Tween" parent="MusicManager"]
@@ -371,20 +398,22 @@ z_index = -1
 texture = ExtResource( 21 )
 
 [node name="Bird4" type="Sprite" parent="."]
-editor/display_folded = true
-position = Vector2( 1003.44, 424.708 )
+position = Vector2( 1003, 425 )
 
-[node name="DancingBird" type="TouchScreenButton" parent="Bird4"]
-scale = Vector2( 0.3, 0.3 )
-normal = ExtResource( 22 )
-pressed = ExtResource( 22 )
-shape = SubResource( 4 )
-passby_press = true
+[node name="DancingBird" type="Sprite" parent="Bird4"]
+scale = Vector2( 1.3, 1.3 )
+texture = ExtResource( 22 )
+centered = false
+hframes = 5
+frame = 4
 script = ExtResource( 23 )
 cuando = 4
 
 [node name="Dance" type="AnimationPlayer" parent="Bird4/DancingBird"]
+autoplay = "Idle"
 anims/Dance = SubResource( 5 )
+anims/Idle = SubResource( 11 )
+next/Dance = "Idle"
 
 [node name="Chirp" type="AudioStreamPlayer2D" parent="Bird4/DancingBird"]
 stream = ExtResource( 24 )
@@ -405,8 +434,8 @@ stream = ExtResource( 27 )
 stream = ExtResource( 28 )
 
 [node name="SpeechBalloon" type="Sprite" parent="Bird4/DancingBird"]
-position = Vector2( 95.2009, -333.203 )
-scale = Vector2( 6.66667, 6.66667 )
+editor/display_folded = true
+position = Vector2( 37, -45 )
 texture = ExtResource( 29 )
 hframes = 9
 frame = 3
@@ -451,6 +480,7 @@ tutorial_a_frames = 15
 tutorial_b_frames = 17
 
 [node name="Waypoints" type="Node" parent="Bird4/DancingBird"]
+editor/display_folded = true
 
 [node name="A" type="Position2D" parent="Bird4/DancingBird/Waypoints"]
 modulate = Color( 0.913725, 1, 0.917647, 1 )
