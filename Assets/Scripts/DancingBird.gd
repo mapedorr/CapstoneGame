@@ -39,8 +39,11 @@ func dance():
 		pre_count = 0
 		if cuando == count:
 			go_to_mugres(destination)
-			$Dance.play("Dance")
 			if not moving:
+				if $SpeechBalloon.is_visible():
+					$Dance.play("Speak")
+				else:
+					$Dance.play("Dance")
 				$Chirp.play()
 		else:
 			set_texture(normal_texture)
@@ -113,6 +116,7 @@ func go_to_mugres(movimiento):
 						emit_signal("tutorial_explained", current_tutorial_index + 1)
 
 func begin_tutorial():
+	$Dance.play("Speak")
 	current_tutorial = tutorial_steps[current_tutorial_index]
 	$SpeechBalloon/Tutorial.set_frame(current_tutorial[tutorial_index][step_index])
 	yield(show_balloon(), "completed")
@@ -121,6 +125,7 @@ func begin_tutorial():
 
 func speech():
 	if not $SpeechBalloon.is_visible():
+		$Dance.play("Speak")
 		$SpeechBalloon.show()
 		$SpeechBalloon/Animations.play("Show")
 		$Scream.play()
@@ -134,6 +139,7 @@ func silence():
 	$SpeechBalloon.hide()
 
 func move(waypoint):
+	$Dance.play("Dance")
 	$Jump.play()
 	get_parent().position = waypoint
 

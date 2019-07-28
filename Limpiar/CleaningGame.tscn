@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=2]
+[gd_scene load_steps=47 format=2]
 
 [ext_resource path="res://Limpiar/Limpiar.gd" type="Script" id=1]
 [ext_resource path="res://Limpiar/Leaf/Leaf.tscn" type="PackedScene" id=2]
@@ -68,7 +68,7 @@ Label/styles/normal = null
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 500, 304.762 )
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=4]
 length = 0.6
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:position")
@@ -95,7 +95,7 @@ tracks/1/keys = {
 "values": [ 0, 4, 3, 4 ]
 }
 
-[sub_resource type="Animation" id=11]
+[sub_resource type="Animation" id=5]
 resource_name = "Idle"
 length = 0.6
 loop = true
@@ -110,6 +110,22 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
 "values": [ 0, 1, 2 ]
+}
+
+[sub_resource type="Animation" id=11]
+resource_name = "Speak"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 5, 6, 5 ]
 }
 
 [sub_resource type="Animation" id=6]
@@ -404,16 +420,18 @@ position = Vector2( 1003, 425 )
 scale = Vector2( 1.3, 1.3 )
 texture = ExtResource( 22 )
 centered = false
-hframes = 5
-frame = 4
+hframes = 7
+frame = 5
 script = ExtResource( 23 )
 cuando = 4
 
 [node name="Dance" type="AnimationPlayer" parent="Bird4/DancingBird"]
 autoplay = "Idle"
-anims/Dance = SubResource( 5 )
-anims/Idle = SubResource( 11 )
+anims/Dance = SubResource( 4 )
+anims/Idle = SubResource( 5 )
+anims/Speak = SubResource( 11 )
 next/Dance = "Idle"
+next/Speak = "Idle"
 
 [node name="Chirp" type="AudioStreamPlayer2D" parent="Bird4/DancingBird"]
 stream = ExtResource( 24 )
