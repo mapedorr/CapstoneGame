@@ -125,6 +125,7 @@ func randomize_mugre():
 
 func reset_master_timer():
 	for birds in $Females.get_children():
+		$SFX_Away.play()
 		birds.hide()
 		females_on_trunk = 0
 	$MusicManager.reset()
@@ -150,7 +151,8 @@ func check_dirt():
 		clean = true
 		
 		yield($Bird4/DancingBird.speech(), "completed")
-		yield(get_tree().create_timer(1.0), "timeout")
+		$SFX_Arrive.play()
+		yield(get_tree().create_timer(2), "timeout")
 		$Bird4/DancingBird.silence()
 
 		$Females.get_child(females_on_trunk).show()

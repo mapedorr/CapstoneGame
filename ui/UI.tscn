@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://ui/UI.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Fonts/Sniglet-Regular.ttf" type="DynamicFontData" id=2]
@@ -10,6 +10,9 @@
 [ext_resource path="res://ui/assets/bird.png" type="Texture" id=8]
 [ext_resource path="res://Audio/SFX/SFX_UI_Show.ogg" type="AudioStream" id=9]
 [ext_resource path="res://Audio/SFX/SFX_UI_Hide.ogg" type="AudioStream" id=10]
+[ext_resource path="res://Audio/SFX/SFX_Heart_01.ogg" type="AudioStream" id=11]
+[ext_resource path="res://Audio/SFX/SFX_Heart_02.ogg" type="AudioStream" id=12]
+[ext_resource path="res://Audio/SFX/SFX_Heart_03.ogg" type="AudioStream" id=13]
 
 [sub_resource type="DynamicFont" id=1]
 size = 72
@@ -328,9 +331,21 @@ script = ExtResource( 4 )
 
 [node name="Show" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 9 )
+volume_db = -4.0
 
 [node name="Hide" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 10 )
+volume_db = -6.0
 
 [node name="Heart" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 11 )
+volume_db = -3.0
+
+[node name="Heart2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 12 )
+volume_db = -3.0
+
+[node name="Heart3" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 13 )
+volume_db = -3.0
 

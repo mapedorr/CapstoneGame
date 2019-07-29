@@ -45,6 +45,8 @@ func dance():
 				else:
 					$Dance.play("Dance")
 				$Chirp.play()
+			else:
+				$Call.play()
 		else:
 			set_texture(normal_texture)
 		count += 1
@@ -126,14 +128,16 @@ func begin_tutorial():
 func speech():
 	if not $SpeechBalloon.is_visible():
 		$Dance.play("Speak")
+		$Speech_Op.play()
 		$SpeechBalloon.show()
 		$SpeechBalloon/Animations.play("Show")
 		$Scream.play()
 		yield($SpeechBalloon/Animations, "animation_finished")
 		$SpeechBalloon/Animations.play("Idle")
-		yield(get_tree().create_timer(2.0), "timeout")
+		yield(get_tree().create_timer(1.3), "timeout")
 
 func silence():
+	$Speech_Cl.play()
 	$SpeechBalloon/Animations.play_backwards("Show")
 	yield($SpeechBalloon/Animations, "animation_finished")
 	$SpeechBalloon.hide()

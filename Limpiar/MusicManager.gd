@@ -58,6 +58,7 @@ func reset():
 	current_layer = 0
 
 func awake_bird(current_layer):
+	fadingout = false
 	while (true):
 		if $Metronome.current_beat == 1:
 			match current_layer:
@@ -90,7 +91,6 @@ func stoplayers(object, key):
 
 
 func fade_in(music_to_fade, fadein_duration):
-	fadingout = false
 	tween_out.interpolate_property(music_to_fade, "volume_db", music_to_fade.volume_db, 0, fadein_duration, transition_type, Tween.EASE_OUT, 1)
 	tween_out.start()
 

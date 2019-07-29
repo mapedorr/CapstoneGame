@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/SFX_Call_Med_02.ogg-86ec6435416f2d0612f73c7eddd84990.oggstr"
+
+[deps]
+
+source_file="res://Audio/SFX/SFX_Call_Med_02.ogg"
+dest_files=[ "res://.import/SFX_Call_Med_02.ogg-86ec6435416f2d0612f73c7eddd84990.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0
