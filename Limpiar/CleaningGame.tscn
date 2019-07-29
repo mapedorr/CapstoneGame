@@ -66,7 +66,7 @@ Label/fonts/font = null
 Label/styles/normal = null
 
 [sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 500, 304.762 )
+extents = Vector2( 489.867, 215.897 )
 
 [sub_resource type="Animation" id=4]
 length = 0.6
@@ -112,7 +112,7 @@ tracks/0/keys = {
 "values": [ 0, 1, 2 ]
 }
 
-[sub_resource type="Animation" id=11]
+[sub_resource type="Animation" id=6]
 resource_name = "Speak"
 length = 0.6
 tracks/0/type = "value"
@@ -128,8 +128,7 @@ tracks/0/keys = {
 "values": [ 5, 6, 5 ]
 }
 
-[sub_resource type="Animation" id=6]
-resource_name = "Idle"
+[sub_resource type="Animation" id=7]
 length = 0.9
 loop = true
 tracks/0/type = "value"
@@ -145,8 +144,7 @@ tracks/0/keys = {
 "values": [ 0, 1, 2 ]
 }
 
-[sub_resource type="Animation" id=7]
-resource_name = "Show"
+[sub_resource type="Animation" id=8]
 length = 0.8
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:frame")
@@ -173,8 +171,7 @@ tracks/1/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=8]
-resource_name = "ShowNoText"
+[sub_resource type="Animation" id=9]
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
@@ -188,8 +185,7 @@ tracks/0/keys = {
 "values": [ 3, 4, 5, 6, 7, 8 ]
 }
 
-[sub_resource type="Animation" id=9]
-resource_name = "WellDone"
+[sub_resource type="Animation" id=10]
 length = 1.2
 tracks/0/type = "value"
 tracks/0/path = NodePath("Tutorial:frame")
@@ -216,7 +212,7 @@ tracks/1/keys = {
 "values": [ ExtResource( 30 ) ]
 }
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=11]
 length = 1.6
 loop = true
 tracks/0/type = "value"
@@ -348,14 +344,13 @@ position = Vector2( 200, 380 )
 [node name="UI" parent="." instance=ExtResource( 18 )]
 
 [node name="SpawnArea" type="StaticBody2D" parent="."]
-editor/display_folded = true
-visible = false
 position = Vector2( 636.259, 404.603 )
 __meta__ = {
 "_edit_group_": true
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SpawnArea"]
+position = Vector2( 16, 0 )
 shape = SubResource( 3 )
 disabled = true
 
@@ -414,6 +409,7 @@ z_index = -1
 texture = ExtResource( 21 )
 
 [node name="Bird4" type="Sprite" parent="."]
+editor/display_folded = true
 position = Vector2( 1003, 425 )
 
 [node name="DancingBird" type="Sprite" parent="Bird4"]
@@ -429,7 +425,7 @@ cuando = 4
 autoplay = "Idle"
 anims/Dance = SubResource( 4 )
 anims/Idle = SubResource( 5 )
-anims/Speak = SubResource( 11 )
+anims/Speak = SubResource( 6 )
 next/Dance = "Idle"
 next/Speak = "Idle"
 
@@ -463,12 +459,12 @@ process_mode = 0
 wait_time = 0.2
 
 [node name="Animations" type="AnimationPlayer" parent="Bird4/DancingBird/SpeechBalloon"]
-anims/Idle = SubResource( 6 )
-anims/Show = SubResource( 7 )
-anims/ShowNoText = SubResource( 8 )
+anims/Idle = SubResource( 7 )
+anims/Show = SubResource( 8 )
+anims/ShowNoText = SubResource( 9 )
 
 [node name="Tutorials" type="AnimationPlayer" parent="Bird4/DancingBird/SpeechBalloon"]
-anims/WellDone = SubResource( 9 )
+anims/WellDone = SubResource( 10 )
 
 [node name="Text" type="Label" parent="Bird4/DancingBird/SpeechBalloon"]
 self_modulate = Color( 1, 1, 1, 0 )
@@ -539,10 +535,9 @@ hframes = 3
 frame = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="PrimerPlano"]
-anims/Idle = SubResource( 10 )
+anims/Idle = SubResource( 11 )
 
 [node name="BG" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 35 )
 autoplay = true
-
 [connection signal="timeout" from="MusicManager/Metronome/Timer" to="MusicManager/Metronome" method="_on_Timer_timeout"]
