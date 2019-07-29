@@ -131,7 +131,7 @@ func speech():
 		$Scream.play()
 		yield($SpeechBalloon/Animations, "animation_finished")
 		$SpeechBalloon/Animations.play("Idle")
-		yield(get_tree().create_timer(3.0), "timeout")
+		yield(get_tree().create_timer(2.0), "timeout")
 
 func silence():
 	$SpeechBalloon/Animations.play_backwards("Show")

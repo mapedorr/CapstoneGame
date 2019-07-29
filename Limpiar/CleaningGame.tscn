@@ -409,7 +409,6 @@ z_index = -1
 texture = ExtResource( 21 )
 
 [node name="Bird4" type="Sprite" parent="."]
-editor/display_folded = true
 position = Vector2( 1003, 425 )
 
 [node name="DancingBird" type="Sprite" parent="Bird4"]
@@ -540,4 +539,5 @@ anims/Idle = SubResource( 11 )
 [node name="BG" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 35 )
 autoplay = true
+
 [connection signal="timeout" from="MusicManager/Metronome/Timer" to="MusicManager/Metronome" method="_on_Timer_timeout"]

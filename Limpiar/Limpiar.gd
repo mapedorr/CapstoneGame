@@ -150,6 +150,7 @@ func check_dirt():
 		clean = true
 		
 		yield($Bird4/DancingBird.speech(), "completed")
+		yield(get_tree().create_timer(1.0), "timeout")
 		$Bird4/DancingBird.silence()
 
 		$Females.get_child(females_on_trunk).show()
