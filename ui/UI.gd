@@ -1,10 +1,14 @@
 extends CanvasLayer
 
+signal start_game
+
 onready var cleanliness_visible = false
 var hearts = 3
 
 func _ready():
 	$CleanlinessCheck.hide()
+	# Connect signals
+	$StartScreen/Start.connect("pressed", self, "_on_start_pressed")
 
 func show_cleanliness_check(frame = 0):
 	$CleanlinessCheck/Bird.change_frame(frame)
@@ -36,3 +40,8 @@ func hide_cleanliness_check():
 		$CleanlinessCheck.propagate_call("stop_animation")
 		cleanliness_visible = false
 		$CleanlinessCheck.hide()
+
+func _on_start_pressed():
+	# TODO: start the animation that hides the Start Screen elements
+	$StartScreen.hide()
+	emit_signal("start_game")

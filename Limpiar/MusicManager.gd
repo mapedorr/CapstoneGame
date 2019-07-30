@@ -15,8 +15,8 @@ var fadingout = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$Metronome.start_metronome()
-	
+	pass
+
 func _process(delta):
 	if isPlaying == false:
 		if $Metronome.current_measure == 1:
@@ -86,9 +86,6 @@ func stoplayers(object, key):
 			layers.stop()
 		for birds in $Birds.get_children():
 			birds.stop()
-		
-
-
 
 func fade_in(music_to_fade, fadein_duration):
 	tween_out.interpolate_property(music_to_fade, "volume_db", music_to_fade.volume_db, 0, fadein_duration, transition_type, Tween.EASE_OUT, 1)
@@ -98,3 +95,6 @@ func fade_out(music_to_fade):
 	fadingout = true
 	tween_out.interpolate_property(music_to_fade, "volume_db", music_to_fade.volume_db, -80, fadeout_duration, transition_type, Tween.EASE_OUT, 1)
 	tween_out.start()
+
+func start_metronome():
+	$Metronome.start_metronome()

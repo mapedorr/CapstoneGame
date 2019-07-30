@@ -346,6 +346,8 @@ position = Vector2( 200, 380 )
 [node name="UI" parent="." instance=ExtResource( 18 )]
 
 [node name="SpawnArea" type="StaticBody2D" parent="."]
+editor/display_folded = true
+visible = false
 position = Vector2( 636.259, 404.603 )
 __meta__ = {
 "_edit_group_": true

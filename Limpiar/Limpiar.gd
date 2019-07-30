@@ -4,11 +4,13 @@ export(PackedScene) var leaf
 export(PackedScene) var stick
 export(PackedScene) var flower
 export(PackedScene) var mushroom
+
 onready var dirt_on_ground = $LeafContainer.get_children().size()
 onready var min_x = int ($SpawnArea.position.x - $SpawnArea/CollisionShape2D.shape.extents.x)
 onready var max_x = int($SpawnArea/CollisionShape2D.shape.extents.x*2)
 onready var min_y = int ($SpawnArea.position.y - $SpawnArea/CollisionShape2D.shape.extents.y)
 onready var max_y = int($SpawnArea/CollisionShape2D.shape.extents.y*2)
+
 var clean = false
 var timer_on = false
 var countdown_on = false
@@ -31,8 +33,10 @@ func _ready():
 	$MasterTimer.connect("timeout", self, "_on_master_timer_timeout")
 	$MusicManager.connect("music_started", self, "_on_music_started")
 	$Bird4/DancingBird.connect("tutorial_explained", self, "_on_tutorial_explained")
-	# Setup GUI
-	$Debug/CleanTime.set_text("00:00")
+	$UI.connect("start_game", self, "start_game")
+	# Start animations
+	$FondoL1/AnimationPlayer.play("Idle")
+	$PrimerPlano/AnimationPlayer.play("Idle")
 
 func _on_master_timer_timeout():
 	if clean:
@@ -43,8 +47,6 @@ func _on_master_timer_timeout():
 			mins += 1
 			if mins > 59:
 				mins = 0
-		# TODO: update the UI
-		$Debug/CleanTime.set_text("%02d:%02d" % [mins, secs])
 
 		if secs == 10:
 			$MasterTimer.stop()
@@ -135,7 +137,6 @@ func reset_master_timer():
 	clean_countdown = 0
 	countdown_on = false
 	$MasterTimer.stop()
-	$Debug/CleanTime.set_text("00:00")
 	# Update the UI
 	$UI.hide_cleanliness_check()
 
@@ -167,8 +168,6 @@ func play_whoosh(obj_position):
 	$SFX_Whoosh.play()
 
 func _on_music_started():
-	$FondoL1/AnimationPlayer.play("Idle")
-	$PrimerPlano/AnimationPlayer.play("Idle")
 	$MusicManager/Metronome/Timer.connect(
 		"timeout",
 		$Bird4/DancingBird,
@@ -177,7 +176,6 @@ func _on_music_started():
 	for leaf in $LeafContainer.get_children():
 		$MusicManager/Metronome/Timer.connect("timeout", leaf, "move")
 		leaf.connect("swipe_object_deleted", self, "check_dirt")
-#		leaf.in_game = true
 
 func _on_tutorial_explained(index):
 	if index == 1:
@@ -189,3 +187,6 @@ func _on_tutorial_explained(index):
 	else:
 		dirt_on_ground = 1
 		check_dirt()
+
+func start_game():
+	$MusicManager.start_metronome()
