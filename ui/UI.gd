@@ -8,7 +8,10 @@ var hearts = 3
 func _ready():
 	$CleanlinessCheck.hide()
 	# Connect signals
-	$StartScreen/Start.connect("pressed", self, "_on_start_pressed")
+	$StartScreen/StartButtons/Start.connect("pressed", self, "_on_start_pressed")
+	$StartScreen/StartButtons/Credits.connect("pressed", self, "_on_credits_pressed")
+	$StartScreen/Credits/Back.connect("pressed", self, "_on_back_pressed")
+	$StartScreen/AnimationPlayer.play("Show")
 
 func show_cleanliness_check(frame = 0):
 	$CleanlinessCheck/Bird.change_frame(frame)
@@ -43,5 +46,13 @@ func hide_cleanliness_check():
 
 func _on_start_pressed():
 	# TODO: start the animation that hides the Start Screen elements
+	$StartScreen/AnimationPlayer.play_backwards("Show")
+	yield($StartScreen/AnimationPlayer, "animation_finished")
 	$StartScreen.hide()
 	emit_signal("start_game")
+
+func _on_credits_pressed():
+	$StartScreen/AnimationPlayer.play("ShowCredits")
+
+func _on_back_pressed():
+	$StartScreen/AnimationPlayer.play_backwards("ShowCredits")
