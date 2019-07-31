@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=34 format=2]
 
 [ext_resource path="res://ui/UI.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Fonts/Sniglet-Regular.ttf" type="DynamicFontData" id=2]
@@ -229,7 +229,7 @@ tracks/0/keys = {
 atlas = ExtResource( 8 )
 region = Rect2( 0, 0, 184, 160 )
 
-[sub_resource type="Animation" id=18]
+[sub_resource type="Animation" id=13]
 resource_name = "Show"
 length = 0.7
 tracks/0/type = "value"
@@ -285,7 +285,7 @@ tracks/1/keys = {
 "values": [ Vector2( 1280, 387 ), Vector2( 0, 387 ) ]
 }
 
-[sub_resource type="DynamicFont" id=17]
+[sub_resource type="DynamicFont" id=15]
 size = 64
 extra_spacing_top = -32
 font_data = ExtResource( 15 )
@@ -425,7 +425,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="StartScreen"]
-anims/Show = SubResource( 18 )
+anims/Show = SubResource( 13 )
 anims/ShowCredits = SubResource( 14 )
 
 [node name="GameName" type="TextureRect" parent="StartScreen"]
@@ -458,7 +458,7 @@ __meta__ = {
 margin_right = 268.0
 margin_bottom = 25.0
 mouse_default_cursor_shape = 2
-custom_fonts/font = SubResource( 17 )
+custom_fonts/font = SubResource( 15 )
 custom_colors/font_color = Color( 1, 0.894118, 0.470588, 1 )
 custom_colors/font_color_hover = Color( 0.4, 1, 0.890196, 1 )
 custom_colors/font_color_pressed = Color( 0.4, 1, 0.890196, 1 )
@@ -470,7 +470,7 @@ margin_top = 121.0
 margin_right = 268.0
 margin_bottom = 146.0
 mouse_default_cursor_shape = 2
-custom_fonts/font = SubResource( 17 )
+custom_fonts/font = SubResource( 15 )
 custom_colors/font_color = Color( 1, 0.894118, 0.470588, 1 )
 custom_colors/font_color_hover = Color( 0.4, 1, 0.890196, 1 )
 custom_colors/font_color_pressed = Color( 0.4, 1, 0.890196, 1 )
@@ -523,7 +523,7 @@ margin_left = 204.0
 margin_top = 43.0
 margin_right = 572.0
 margin_bottom = 57.0
-custom_fonts/font = ExtResource( 13 )
+custom_fonts/font = ExtResource( 16 )
 custom_colors/font_color = Color( 1, 1, 0.921569, 1 )
 text = "Special thanks to"
 align = 1
