@@ -28,14 +28,14 @@ func move():
 	if hp > 1:
 		.move()
 		if cuando2 == count:
-			$Sprite/Dance.play("Dance")
+			$Sprite/Animator.play("Dance")
 			randomize()
 			cuando2 = randi() % max_count + 1
 
 func kill():
 	hp -= 1
 	if hp == 1:
-		$Sprite/Dance.play("Dead")
+		$Sprite/Animator.play("Dead")
 		$SFX_Death.play()
 	elif hp <= 0:
 		alive = false

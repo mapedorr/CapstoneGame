@@ -19,7 +19,7 @@ func _ready():
 	$SwipeDetector.connect("swipe_ended", self, "_on_swipe_ended")
 	$SwipeDetector.connect("swipe_failed", self, "_on_swipe_failed")
 	$SwipeDetector.connect("swiped", self, "_on_swiped")
-	$Tween.connect("tween_completed", self, "self_destroy")
+	$Sprite/Animator.connect("animation_finished", self, "self_destroy")
 
 	if random_movement:
 		randomize()
@@ -46,7 +46,7 @@ func _on_swiped(gesture):
 	if not in_game: return
 	
 	self.in_game = false
-	$Sprite/Dance.stop()
+	$Sprite/Animator.stop()
 	
 	emit_signal("swipe_object_deleted")
 	
@@ -75,25 +75,22 @@ func _on_swiped(gesture):
 	
 	$SwipeDetector.queue_free()
 	emit_signal("object_swiped", position)
-	$Tween.interpolate_property(
-		self,
-		"position",
-		self.get_position(),
-		target,
-		1.0,
-		$Tween.TRANS_SINE,
-		$Tween.EASE_OUT
-	)
-	$Tween.start()
+
+	if target.x < 0:
+		$Sprite/Animator.play("DeathLeft", -1, 2)
+	else:
+		$Sprite/Animator.play("DeathRight", -1, 2)
 
 func move():
 	if not in_game: return
 	
 	if cuando == count:
-		$Sprite/Dance.play("Dance")
+		$Sprite/Animator.play("Dance")
 	count += 1
 	if count > max_count:
 		count = 1
 
-func self_destroy(obj, key):
-	queue_free()
+func self_destroy(anim_name):
+	if anim_name == 'DeathLeft' or anim_name == 'DeathRight':
+		# TODO: generar las partículas de la destrucción
+		queue_free()

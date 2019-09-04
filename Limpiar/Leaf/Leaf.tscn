@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Limpiar/Leaf/SwipeObject.gd" type="Script" id=1]
 [ext_resource path="res://Limpiar/leaf.png" type="Texture" id=2]
-[ext_resource path="res://addons/swipe-detector/swipe_detector.gd" type="Script" id=3]
-[ext_resource path="res://addons/swipe-detector/icon.png" type="Texture" id=4]
-[ext_resource path="res://Audio/SFX/SFX_LeafSpawn.ogg" type="AudioStream" id=5]
+[ext_resource path="res://Assets/Particles/dirt_01.png" type="Texture" id=3]
+[ext_resource path="res://addons/swipe-detector/swipe_detector.gd" type="Script" id=4]
+[ext_resource path="res://addons/swipe-detector/icon.png" type="Texture" id=5]
+[ext_resource path="res://Audio/SFX/SFX_LeafSpawn.ogg" type="AudioStream" id=6]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Dance"
@@ -34,7 +35,61 @@ tracks/1/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( 0, -20 ), Vector2( 0, 0 ) ]
 }
 
-[sub_resource type="CapsuleShape2D" id=2]
+[sub_resource type="Animation" id=2]
+resource_name = "DeathLeft"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.0117652, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( -50, -40 ), Vector2( -90, -10 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 89.9999, 150.0 ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "DeathRight"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.0117652, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 60, -40 ), Vector2( 100, -10 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, -89.9999, -165.0 ]
+}
+
+[sub_resource type="CapsuleShape2D" id=4]
 radius = 18.6056
 height = 19.9381
 
@@ -43,27 +98,54 @@ script = ExtResource( 1 )
 random_movement = true
 
 [node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 0.788564, -0.525709 )
 texture = ExtResource( 2 )
 
-[node name="Dance" type="AnimationPlayer" parent="Sprite"]
+[node name="Animator" type="AnimationPlayer" parent="Sprite"]
 anims/Dance = SubResource( 1 )
+anims/DeathLeft = SubResource( 2 )
+anims/DeathRight = SubResource( 3 )
+
+[node name="Particles2D" type="CPUParticles2D" parent="Sprite"]
+scale = Vector2( 0.5, 0.5 )
+emitting = false
+amount = 1
+lifetime = 4.18
+speed_scale = 9.31
+explosiveness = 0.3
+texture = ExtResource( 3 )
+emission_shape = 2
+emission_rect_extents = Vector2( 1, 1 )
+flag_align_y = true
+spread = 23.96
+flatness = 0.18
+gravity = Vector2( 0, 5 )
+angle = 130.9
+scale_amount = 0.5
+scale_amount_random = 0.03
 
 [node name="Tween" type="Tween" parent="."]
 
 [node name="SwipeDetector" type="Node" parent="."]
-script = ExtResource( 3 )
+editor/display_folded = true
+script = ExtResource( 4 )
 __meta__ = {
-"_editor_icon": ExtResource( 4 )
+"_editor_icon": ExtResource( 5 )
 }
 distance_threshold = 0.01
 
 [node name="Area2D" type="Area2D" parent="SwipeDetector"]
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SwipeDetector/Area2D"]
 rotation = 0.261799
-shape = SubResource( 2 )
+shape = SubResource( 4 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="SFX_Spawn" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource( 5 )
+stream = ExtResource( 6 )
 volume_db = -4.0
-

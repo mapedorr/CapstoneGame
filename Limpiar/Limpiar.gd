@@ -4,6 +4,7 @@ export(PackedScene) var leaf
 export(PackedScene) var stick
 export(PackedScene) var flower
 export(PackedScene) var mushroom
+export(bool) var skip_tutorial
 
 onready var dirt_on_ground = $LeafContainer.get_children().size()
 onready var min_x = int ($SpawnArea.position.x - $SpawnArea/CollisionShape2D.shape.extents.x)
@@ -168,6 +169,13 @@ func play_whoosh(obj_position):
 	$SFX_Whoosh.play()
 
 func _on_music_started():
+	if skip_tutorial:
+		in_tutorial = 4
+		$Bird4/DancingBird.destination = 4
+		$Bird4/DancingBird.moving = false
+		$LeafContainer/Leaf.in_game = true
+		$LeafContainer/Mushroom.in_game = true
+
 	$MusicManager/Metronome/Timer.connect(
 		"timeout",
 		$Bird4/DancingBird,

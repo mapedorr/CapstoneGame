@@ -1,9 +1,7 @@
 extends Node
 
 onready var timer = $Timer
-#onready var high_beap = $HighClick  #AudioStreamPlayer 
-#onready var low_beap = $LowClick	#AudioStreamPlayer
-onready var display = $Display 		#Label
+onready var display = $Display
 
 export(int) var time_signature_top = 4
 export(int) var time_signature_botton = 4
@@ -46,21 +44,12 @@ func _play_metronome():
 		isPlaying = true
 		timer.start()
 	if current_beat % time_signature_top == 0:
-		#high_beap.play()
 		current_beat = 1
 		current_measure += 1
 		display.set_text(str(current_measure) + "  " + str(current_beat))
-#		timer.start()
 	else:
-		#low_beap.play()
 		current_beat += 1
 		display.set_text(str(current_measure) + "  " + str(current_beat))
-#		timer.start()
-
-###use this function if you disconect the buttons
-#func _stop_metronome():
-#	currently_playing == false
-#	display.set_text("0  0")
 
 func _on_Timer_timeout():
 	if isPlaying == true:
@@ -69,8 +58,6 @@ func _on_Timer_timeout():
 func start_metronome():
 	if isPlaying == false:
 		_play_metronome()
-		
-
 
 func stop_metronome():
 	if isPlaying == true:
