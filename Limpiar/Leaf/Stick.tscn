@@ -34,7 +34,7 @@ tracks/1/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( 0, -20 ), Vector2( 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=2]
 resource_name = "DeathLeft"
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:position")
@@ -60,8 +60,20 @@ tracks/1/keys = {
 "update": 0,
 "values": [ 0.0, 89.9999, 150.0 ]
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.7, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 1e-05, 1e-05 ) ]
+}
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=3]
 resource_name = "DeathRight"
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:position")
@@ -87,8 +99,20 @@ tracks/1/keys = {
 "update": 0,
 "values": [ 0.0, -89.9999, -165.0 ]
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.7, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 1e-05, 1e-05 ) ]
+}
 
-[sub_resource type="CapsuleShape2D" id=2]
+[sub_resource type="CapsuleShape2D" id=4]
 radius = 18.6056
 height = 19.9381
 
@@ -97,13 +121,13 @@ script = ExtResource( 1 )
 random_movement = true
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( -0.540895, -0.432716 )
+position = Vector2( 10.8433, -7.22888 )
 texture = ExtResource( 2 )
 
 [node name="Animator" type="AnimationPlayer" parent="Sprite"]
 anims/Dance = SubResource( 1 )
-anims/DeathLeft = SubResource( 3 )
-anims/DeathRight = SubResource( 8 )
+anims/DeathLeft = SubResource( 2 )
+anims/DeathRight = SubResource( 3 )
 
 [node name="Tween" type="Tween" parent="."]
 
@@ -119,8 +143,9 @@ distance_threshold = 0.01
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SwipeDetector/Area2D"]
 rotation = 0.261799
-shape = SubResource( 2 )
+shape = SubResource( 4 )
 
 [node name="SFX_Spawn" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 5 )
 volume_db = -4.0
+

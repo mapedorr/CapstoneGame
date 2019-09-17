@@ -9,7 +9,7 @@
 [ext_resource path="res://Audio/SFX/SFX_FlowerSpawn.ogg" type="AudioStream" id=7]
 [ext_resource path="res://Audio/SFX/SFX_FlowerDeath.ogg" type="AudioStream" id=8]
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=1]
 resource_name = "Dance"
 length = 0.2
 tracks/0/type = "value"
@@ -73,7 +73,7 @@ tracks/4/keys = {
 "values": [ Vector2( -1, -1 ), Vector2( -8, -13 ), Vector2( -1, -1 ) ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=2]
 resource_name = "Dead"
 length = 0.1
 tracks/0/type = "value"
@@ -139,8 +139,20 @@ tracks/1/keys = {
 "update": 0,
 "values": [ 0.0, 89.9999, 150.0 ]
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.7, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 1e-05, 1e-05 ) ]
+}
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=4]
 resource_name = "DeathRight"
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:position")
@@ -166,12 +178,24 @@ tracks/1/keys = {
 "update": 0,
 "values": [ 0.0, -89.9999, -165.0 ]
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.7, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 1e-05, 1e-05 ) ]
+}
 
-[sub_resource type="CapsuleShape2D" id=6]
+[sub_resource type="CapsuleShape2D" id=5]
 radius = 18.6056
 height = 19.9381
 
-[sub_resource type="RectangleShape2D" id=7]
+[sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 24, 24 )
 
 [node name="Flower" type="Node2D"]
@@ -179,14 +203,14 @@ script = ExtResource( 1 )
 random_movement = true
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 0.121937, -0.081291 )
+position = Vector2( -9.0361, -7.22888 )
 texture = ExtResource( 2 )
 
 [node name="Animator" type="AnimationPlayer" parent="Sprite"]
-anims/Dance = SubResource( 4 )
-anims/Dead = SubResource( 5 )
+anims/Dance = SubResource( 1 )
+anims/Dead = SubResource( 2 )
 anims/DeathLeft = SubResource( 3 )
-anims/DeathRight = SubResource( 8 )
+anims/DeathRight = SubResource( 4 )
 
 [node name="Tween" type="Tween" parent="."]
 
@@ -202,13 +226,13 @@ distance_threshold = 0.01
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SwipeDetector/Area2D"]
 rotation = 0.261799
-shape = SubResource( 6 )
+shape = SubResource( 5 )
 
 [node name="TouchScreenButton" type="TouchScreenButton" parent="."]
 visible = false
 position = Vector2( -1, -1 )
 scale = Vector2( 0.726472, 0.856078 )
-shape = SubResource( 7 )
+shape = SubResource( 6 )
 passby_press = true
 
 [node name="SFX_Spawn" type="AudioStreamPlayer2D" parent="."]
@@ -218,3 +242,4 @@ volume_db = -2.0
 [node name="SFX_Death" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 8 )
 volume_db = -3.0
+

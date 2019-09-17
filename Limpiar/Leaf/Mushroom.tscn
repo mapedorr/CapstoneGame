@@ -140,8 +140,20 @@ tracks/1/keys = {
 "update": 0,
 "values": [ 0.0, 89.9999, 150.0 ]
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.7, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 1e-05, 1e-05 ) ]
+}
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=4]
 resource_name = "DeathRight"
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:position")
@@ -167,6 +179,18 @@ tracks/1/keys = {
 "update": 0,
 "values": [ 0.0, -89.9999, -165.0 ]
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.7, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 1e-05, 1e-05 ) ]
+}
 
 [sub_resource type="CapsuleShape2D" id=5]
 radius = 18.6056
@@ -181,19 +205,18 @@ script = ExtResource( 1 )
 random_movement = true
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 1.5249, -1.0166 )
+position = Vector2( 0.114, -7.229 )
 texture = ExtResource( 2 )
 
 [node name="Animator" type="AnimationPlayer" parent="Sprite"]
 anims/Dance = SubResource( 1 )
 anims/Dead = SubResource( 2 )
 anims/DeathLeft = SubResource( 3 )
-anims/DeathRight = SubResource( 8 )
+anims/DeathRight = SubResource( 4 )
 
 [node name="Tween" type="Tween" parent="."]
 
 [node name="SwipeDetector" type="Node" parent="."]
-editor/display_folded = true
 script = ExtResource( 6 )
 __meta__ = {
 "_editor_icon": ExtResource( 7 )
@@ -218,3 +241,4 @@ volume_db = -2.0
 
 [node name="SFX_Death" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 9 )
+
