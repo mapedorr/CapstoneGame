@@ -161,7 +161,17 @@ func check_dirt():
 		females_on_trunk += 1
 		
 		if game_finished:
-			$UI/WinMessage.show()
+			$MusicManager/Metronome/Timer.disconnect(
+				"timeout",
+				$Bird4/DancingBird,
+				"dance"
+			)
+			$Bird4/DancingBird/Dance.play("PreBow")
+			randomize()
+			yield(get_tree().create_timer(randi() % 6 + 1), "timeout")
+			$Bird4/DancingBird/Dance.stop()
+			$Bird4/DancingBird/Dance.play("Bow")
+#			$UI/WinMessage.show()
 
 
 func play_whoosh(obj_position):
