@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=2]
+[gd_scene load_steps=55 format=2]
 
 [ext_resource path="res://Limpiar/Limpiar.gd" type="Script" id=1]
 [ext_resource path="res://Limpiar/Leaf/Leaf.tscn" type="PackedScene" id=2]
@@ -70,7 +70,7 @@ Label/styles/normal = null
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 489.867, 215.897 )
 
-[sub_resource type="Animation" id=12]
+[sub_resource type="Animation" id=4]
 resource_name = "Idle"
 length = 0.6
 loop = true
@@ -87,7 +87,7 @@ tracks/0/keys = {
 "values": [ 0, 1, 2 ]
 }
 
-[sub_resource type="Animation" id=13]
+[sub_resource type="Animation" id=5]
 resource_name = "Idle"
 length = 0.6
 loop = true
@@ -104,7 +104,7 @@ tracks/0/keys = {
 "values": [ 0, 1, 2 ]
 }
 
-[sub_resource type="Animation" id=14]
+[sub_resource type="Animation" id=6]
 resource_name = "Idle"
 length = 0.6
 loop = true
@@ -121,7 +121,7 @@ tracks/0/keys = {
 "values": [ 0, 1, 2 ]
 }
 
-[sub_resource type="Animation" id=15]
+[sub_resource type="Animation" id=7]
 resource_name = "Idle"
 length = 0.6
 loop = true
@@ -138,7 +138,7 @@ tracks/0/keys = {
 "values": [ 0, 1, 2 ]
 }
 
-[sub_resource type="Animation" id=16]
+[sub_resource type="Animation" id=8]
 resource_name = "Bow"
 length = 0.6
 loop = true
@@ -155,7 +155,7 @@ tracks/0/keys = {
 "values": [ 10, 11, 12 ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=9]
 length = 0.6
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:position")
@@ -182,8 +182,7 @@ tracks/1/keys = {
 "values": [ 0, 4, 3, 4 ]
 }
 
-[sub_resource type="Animation" id=5]
-resource_name = "Idle"
+[sub_resource type="Animation" id=10]
 length = 0.6
 loop = true
 tracks/0/type = "value"
@@ -199,7 +198,7 @@ tracks/0/keys = {
 "values": [ 0, 1, 2 ]
 }
 
-[sub_resource type="Animation" id=12]
+[sub_resource type="Animation" id=11]
 resource_name = "PreBow"
 length = 0.6
 loop = true
@@ -216,8 +215,7 @@ tracks/0/keys = {
 "values": [ 7, 8, 9 ]
 }
 
-[sub_resource type="Animation" id=6]
-resource_name = "Speak"
+[sub_resource type="Animation" id=12]
 length = 0.6
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:frame")
@@ -232,7 +230,7 @@ tracks/0/keys = {
 "values": [ 5, 6, 5 ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=13]
 length = 0.9
 loop = true
 tracks/0/type = "value"
@@ -248,7 +246,7 @@ tracks/0/keys = {
 "values": [ 0, 1, 2 ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=14]
 length = 0.8
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:frame")
@@ -275,7 +273,7 @@ tracks/1/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=15]
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
@@ -289,7 +287,7 @@ tracks/0/keys = {
 "values": [ 3, 4, 5, 6, 7, 8 ]
 }
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=16]
 length = 1.2
 tracks/0/type = "value"
 tracks/0/path = NodePath("Tutorial:frame")
@@ -316,7 +314,7 @@ tracks/1/keys = {
 "values": [ ExtResource( 32 ) ]
 }
 
-[sub_resource type="Animation" id=11]
+[sub_resource type="Animation" id=17]
 length = 1.6
 loop = true
 tracks/0/type = "value"
@@ -483,7 +481,7 @@ hframes = 3
 
 [node name="Idle" type="AnimationPlayer" parent="Females/Birdy1"]
 autoplay = "Idle"
-anims/Idle = SubResource( 12 )
+anims/Idle = SubResource( 4 )
 
 [node name="Birdy2" type="Sprite" parent="Females"]
 editor/display_folded = true
@@ -495,7 +493,7 @@ hframes = 3
 
 [node name="Idle2" type="AnimationPlayer" parent="Females/Birdy2"]
 autoplay = "Idle"
-anims/Idle = SubResource( 13 )
+anims/Idle = SubResource( 5 )
 
 [node name="Birdy3" type="Sprite" parent="Females"]
 editor/display_folded = true
@@ -507,7 +505,7 @@ hframes = 3
 
 [node name="Idle3" type="AnimationPlayer" parent="Females/Birdy3"]
 autoplay = "Idle"
-anims/Idle = SubResource( 14 )
+anims/Idle = SubResource( 6 )
 
 [node name="Birdy4" type="Sprite" parent="Females"]
 visible = false
@@ -519,7 +517,7 @@ frame = 2
 
 [node name="Idle4" type="AnimationPlayer" parent="Females/Birdy4"]
 autoplay = "Idle"
-anims/Idle = SubResource( 15 )
+anims/Idle = SubResource( 7 )
 
 [node name="Bird4" type="Sprite" parent="."]
 position = Vector2( 1003, 425 )
@@ -535,11 +533,11 @@ cuando = 4
 
 [node name="Dance" type="AnimationPlayer" parent="Bird4/DancingBird"]
 autoplay = "Idle"
-anims/Bow = SubResource( 16 )
-anims/Dance = SubResource( 4 )
-anims/Idle = SubResource( 5 )
-anims/PreBow = SubResource( 12 )
-anims/Speak = SubResource( 6 )
+anims/Bow = SubResource( 8 )
+anims/Dance = SubResource( 9 )
+anims/Idle = SubResource( 10 )
+anims/PreBow = SubResource( 11 )
+anims/Speak = SubResource( 12 )
 next/Dance = "Idle"
 next/Speak = "Idle"
 
@@ -579,12 +577,12 @@ process_mode = 0
 wait_time = 0.2
 
 [node name="Animations" type="AnimationPlayer" parent="Bird4/DancingBird/SpeechBalloon"]
-anims/Idle = SubResource( 7 )
-anims/Show = SubResource( 8 )
-anims/ShowNoText = SubResource( 9 )
+anims/Idle = SubResource( 13 )
+anims/Show = SubResource( 14 )
+anims/ShowNoText = SubResource( 15 )
 
 [node name="Tutorials" type="AnimationPlayer" parent="Bird4/DancingBird/SpeechBalloon"]
-anims/WellDone = SubResource( 10 )
+anims/WellDone = SubResource( 16 )
 
 [node name="Text" type="Label" parent="Bird4/DancingBird/SpeechBalloon"]
 self_modulate = Color( 1, 1, 1, 0 )
@@ -655,10 +653,9 @@ hframes = 3
 frame = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="PrimerPlano"]
-anims/Idle = SubResource( 11 )
+anims/Idle = SubResource( 17 )
 
 [node name="BG" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 37 )
 autoplay = true
-
 [connection signal="timeout" from="MusicManager/Metronome/Timer" to="MusicManager/Metronome" method="_on_Timer_timeout"]
