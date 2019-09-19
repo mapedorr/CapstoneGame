@@ -349,7 +349,7 @@ margin_left = 1020.0
 margin_top = 710.0
 margin_right = 1083.0
 margin_bottom = 772.0
-rect_scale = Vector2( 3.68755e-05, 3.68755e-05 )
+rect_scale = Vector2( 3.68755e-005, 3.68755e-005 )
 rect_pivot_offset = Vector2( 31, 31 )
 mouse_filter = 2
 texture = SubResource( 5 )
@@ -365,7 +365,7 @@ margin_left = 1040.0
 margin_top = 646.0
 margin_right = 1118.0
 margin_bottom = 707.0
-rect_scale = Vector2( 3.68719e-05, 3.68719e-05 )
+rect_scale = Vector2( 3.68719e-005, 3.68719e-005 )
 rect_pivot_offset = Vector2( 39, 30 )
 mouse_filter = 2
 texture = SubResource( 8 )
@@ -381,7 +381,7 @@ margin_left = 1000.0
 margin_top = 584.0
 margin_right = 1076.0
 margin_bottom = 645.0
-rect_scale = Vector2( 2.95754e-05, 2.95754e-05 )
+rect_scale = Vector2( 2.95754e-005, 2.95754e-005 )
 rect_pivot_offset = Vector2( 38, 30 )
 mouse_filter = 2
 texture = SubResource( 10 )
@@ -392,7 +392,7 @@ anims/Break = SubResource( 6 )
 anims/Idle = SubResource( 11 )
 
 [node name="Bird" type="TextureRect" parent="CleanlinessCheck"]
-self_modulate = Color( 1, 1, 1, 1.29795e-05 )
+self_modulate = Color( 1, 1, 1, 1.29795e-005 )
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
@@ -437,7 +437,6 @@ stream = ExtResource( 17 )
 volume_db = -3.0
 
 [node name="StartScreen" type="Control" parent="."]
-editor/display_folded = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 
@@ -457,7 +456,6 @@ margin_bottom = -481.996
 texture = ExtResource( 18 )
 
 [node name="StartButtons" type="VBoxContainer" parent="StartScreen"]
-editor/display_folded = true
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -501,7 +499,6 @@ text = "Credits"
 flat = true
 
 [node name="Credits" type="VBoxContainer" parent="StartScreen"]
-editor/display_folded = true
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
@@ -559,8 +556,10 @@ texture = ExtResource( 21 )
 [node name="Back" type="Button" parent="StartScreen/Credits"]
 margin_top = 272.0
 margin_right = 1280.0
-margin_bottom = 305.0
+margin_bottom = 413.0
 mouse_default_cursor_shape = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 custom_fonts/font = SubResource( 16 )
 custom_colors/font_color = Color( 1, 0.894118, 0.470588, 1 )
 custom_colors/font_color_hover = Color( 0.4, 1, 0.890196, 1 )
