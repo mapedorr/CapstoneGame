@@ -435,7 +435,7 @@ tracks/1/keys = {
 "values": [ ExtResource( 32 ) ]
 }
 
-[sub_resource type="Animation" id=18]
+[sub_resource type="Animation" id=17]
 resource_name = "Idle"
 length = 0.6
 loop = true
@@ -452,7 +452,7 @@ tracks/0/keys = {
 "values": [ 0, 1, 2 ]
 }
 
-[sub_resource type="Animation" id=17]
+[sub_resource type="Animation" id=18]
 length = 1.6
 loop = true
 tracks/0/type = "value"
@@ -797,7 +797,7 @@ hframes = 3
 
 [node name="Animations" type="AnimationPlayer" parent="Bird4/DancingBird/Shadow"]
 autoplay = "Idle"
-anims/Idle = SubResource( 18 )
+anims/Idle = SubResource( 17 )
 
 [node name="PrimerPlano" type="Sprite" parent="."]
 editor/display_folded = true
@@ -808,7 +808,7 @@ hframes = 3
 frame = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="PrimerPlano"]
-anims/Idle = SubResource( 17 )
+anims/Idle = SubResource( 18 )
 
 [node name="BG" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 38 )

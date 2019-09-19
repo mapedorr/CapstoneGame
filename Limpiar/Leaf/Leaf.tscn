@@ -186,6 +186,7 @@ __meta__ = {
 random_movement = true
 
 [node name="Sprite" type="Sprite" parent="."]
+editor/display_folded = true
 rotation = -1.5708
 texture = ExtResource( 2 )
 
@@ -233,7 +234,7 @@ distance_threshold = 0.01
 [node name="Area2D" type="Area2D" parent="SwipeDetector"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SwipeDetector/Area2D"]
-rotation = -1.50098
+rotation = -1.5708
 shape = SubResource( 4 )
 
 [node name="SFX_Spawn" type="AudioStreamPlayer2D" parent="."]

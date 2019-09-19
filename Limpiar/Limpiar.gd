@@ -100,6 +100,10 @@ func spawn_mugre():
 	var pos_y = randi()%(max_y - min_y) + min_y
 	# Create a mugre and set its basic properties
 	var new_mugre = basic_mugre.instance() if (randi() % 21 > 8) else breakable_mugre.instance() 
+	if new_mugre.name == "Leaf":
+		# Set a random rotation
+		randomize()
+		new_mugre.get_node("Sprite").set_scale(Vector2(1.0, 1.0 if randi() % 100 > 50 else -1.0))
 	new_mugre.set_position(Vector2(pos_x, pos_y))
 	new_mugre.set_scale(Vector2(2.3, 2.3))
 	new_mugre.spawned = true
