@@ -12,6 +12,8 @@ func _ready():
 	$StartScreen/StartButtons/Credits.connect("pressed", self, "_on_credits_pressed")
 	$StartScreen/Credits/Back.connect("pressed", self, "_on_back_pressed")
 	$StartScreen/AnimationPlayer.play("Show")
+	yield(get_tree().create_timer(0.3), "timeout")
+	$UI_Menu_In.play() 
 
 func show_cleanliness_check(frame = 0):
 	$CleanlinessCheck/Bird.change_frame(frame)
@@ -47,12 +49,15 @@ func hide_cleanliness_check():
 func _on_start_pressed():
 	# TODO: start the animation that hides the Start Screen elements
 	$StartScreen/AnimationPlayer.play_backwards("Show")
+	$UI_Menu_Out.play()
 	yield($StartScreen/AnimationPlayer, "animation_finished")
 	$StartScreen.hide()
 	emit_signal("start_game")
 
 func _on_credits_pressed():
 	$StartScreen/AnimationPlayer.play("ShowCredits")
+	$UI_Menu_Click.play()
 
 func _on_back_pressed():
 	$StartScreen/AnimationPlayer.play_backwards("ShowCredits")
+	$UI_Menu_Back.play()

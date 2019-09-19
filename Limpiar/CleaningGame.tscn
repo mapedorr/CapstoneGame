@@ -432,7 +432,6 @@ volume_db = -80.0
 bus = "Music"
 
 [node name="LeafContainer" type="Node2D" parent="."]
-editor/display_folded = true
 __meta__ = {
 "_edit_lock_": true
 }
@@ -470,6 +469,7 @@ stream = ExtResource( 21 )
 volume_db = 6.0
 
 [node name="Females" type="Node2D" parent="."]
+editor/display_folded = true
 
 [node name="Birdy1" type="Sprite" parent="Females"]
 editor/display_folded = true
@@ -520,6 +520,7 @@ autoplay = "Idle"
 anims/Idle = SubResource( 7 )
 
 [node name="Bird4" type="Sprite" parent="."]
+editor/display_folded = true
 position = Vector2( 1003, 425 )
 
 [node name="DancingBird" type="Sprite" parent="Bird4"]
@@ -658,4 +659,5 @@ anims/Idle = SubResource( 17 )
 [node name="BG" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 37 )
 autoplay = true
+
 [connection signal="timeout" from="MusicManager/Metronome/Timer" to="MusicManager/Metronome" method="_on_Timer_timeout"]
