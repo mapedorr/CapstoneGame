@@ -39,7 +39,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.3 ),
 "transitions": PoolRealArray( 0.5, 1 ),
 "update": 0,
-"values": [ Vector2( 980, 820 ), Vector2( 980, 584 ) ]
+"values": [ Vector2( 987, 820 ), Vector2( 987, 584 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("CleanlinessCheck/Heart1:rect_scale")
@@ -321,7 +321,6 @@ autowrap = true
 anims/ShowCleanlinessCheck = SubResource( 2 )
 
 [node name="CleanlinessCheck" type="Control" parent="."]
-editor/display_folded = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
@@ -349,7 +348,7 @@ margin_left = 1020.0
 margin_top = 710.0
 margin_right = 1083.0
 margin_bottom = 772.0
-rect_scale = Vector2( 3.68755e-005, 3.68755e-005 )
+rect_scale = Vector2( 3.68755e-05, 3.68755e-05 )
 rect_pivot_offset = Vector2( 31, 31 )
 mouse_filter = 2
 texture = SubResource( 5 )
@@ -365,7 +364,7 @@ margin_left = 1040.0
 margin_top = 646.0
 margin_right = 1118.0
 margin_bottom = 707.0
-rect_scale = Vector2( 3.68719e-005, 3.68719e-005 )
+rect_scale = Vector2( 3.68719e-05, 3.68719e-05 )
 rect_pivot_offset = Vector2( 39, 30 )
 mouse_filter = 2
 texture = SubResource( 8 )
@@ -381,7 +380,7 @@ margin_left = 1000.0
 margin_top = 584.0
 margin_right = 1076.0
 margin_bottom = 645.0
-rect_scale = Vector2( 2.95754e-005, 2.95754e-005 )
+rect_scale = Vector2( 2.95754e-05, 2.95754e-05 )
 rect_pivot_offset = Vector2( 38, 30 )
 mouse_filter = 2
 texture = SubResource( 10 )
@@ -392,7 +391,7 @@ anims/Break = SubResource( 6 )
 anims/Idle = SubResource( 11 )
 
 [node name="Bird" type="TextureRect" parent="CleanlinessCheck"]
-self_modulate = Color( 1, 1, 1, 1.29795e-005 )
+self_modulate = Color( 1, 1, 1, 1.29795e-05 )
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
@@ -566,3 +565,4 @@ custom_colors/font_color_hover = Color( 0.4, 1, 0.890196, 1 )
 custom_colors/font_color_pressed = Color( 0.4, 1, 0.890196, 1 )
 text = "Go back"
 flat = true
+
