@@ -108,6 +108,7 @@ func spawn_mugre():
 	new_mugre.set_scale(Vector2(2.3, 2.3))
 	new_mugre.spawned = true
 	new_mugre.in_game = true
+	new_mugre.count = $MusicManager/Metronome.current_beat + 1
 	# Connect listeners for mugre's signals
 	$MusicManager/Metronome/Timer.connect("timeout", new_mugre, "move")
 	new_mugre.connect("swipe_object_deleted", self, "check_dirt")
@@ -203,12 +204,16 @@ func _on_tutorial_explained(index):
 	if index == 1:
 		# The leaf is ready to be SWIPED
 		$LeafContainer/Leaf.in_game = true
+		$LeafContainer/Leaf.connect("object_swiped", self, "play_whoosh")
 	elif index == 2:
 		# The mushroom is ready to be SWIPED
 		$LeafContainer/Mushroom.in_game = true
+		$LeafContainer/Mushroom.connect("object_swiped", self, "play_whoosh")
 	else:
 		dirt_on_ground = 1
 		check_dirt()
+
+
 
 func start_game():
 	$MusicManager.start_metronome()

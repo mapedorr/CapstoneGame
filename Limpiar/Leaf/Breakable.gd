@@ -6,6 +6,7 @@ var hp = 2
 var kill_called = false
 
 func _ready():
+	cuando2 = cuando
 	if random_movement:
 		randomize()
 		cuando2 = randi() % max_count + 1

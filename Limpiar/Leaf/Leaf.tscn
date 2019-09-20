@@ -1,12 +1,12 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Limpiar/Leaf/SwipeObject.gd" type="Script" id=1]
 [ext_resource path="res://Limpiar/leaf.png" type="Texture" id=2]
-[ext_resource path="res://Assets/Particles/dirt_01.png" type="Texture" id=3]
-[ext_resource path="res://Assets/Sprites/mugre_shadow.png" type="Texture" id=4]
-[ext_resource path="res://addons/swipe-detector/swipe_detector.gd" type="Script" id=5]
-[ext_resource path="res://addons/swipe-detector/icon.png" type="Texture" id=6]
-[ext_resource path="res://Audio/SFX/SFX_LeafSpawn.ogg" type="AudioStream" id=7]
+[ext_resource path="res://Assets/Sprites/mugre_shadow.png" type="Texture" id=3]
+[ext_resource path="res://addons/swipe-detector/swipe_detector.gd" type="Script" id=4]
+[ext_resource path="res://addons/swipe-detector/icon.png" type="Texture" id=5]
+[ext_resource path="res://Audio/SFX/SFX_LeafSpawn.ogg" type="AudioStream" id=6]
+[ext_resource path="res://Limpiar/Sprites/Particle.png" type="Texture" id=7]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Dance"
@@ -45,7 +45,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
-"values": [ Vector2( -18, 0 ), Vector2( -38, -1.78814e-006 ), Vector2( -18, 0 ) ]
+"values": [ Vector2( -18, 0 ), Vector2( -38, -1.78814e-06 ), Vector2( -18, 0 ) ]
 }
 tracks/3/type = "value"
 tracks/3/path = NodePath("Shadow:scale")
@@ -74,6 +74,7 @@ tracks/4/keys = {
 
 [sub_resource type="Animation" id=2]
 resource_name = "DeathLeft"
+length = 1.4
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:position")
 tracks/0/interp = 1
@@ -108,7 +109,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0, 0.6, 1 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 1e-005, 1e-005 ) ]
+"values": [ Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 1e-05, 1e-05 ) ]
 }
 tracks/3/type = "value"
 tracks/3/path = NodePath("Shadow:visible")
@@ -122,9 +123,46 @@ tracks/3/keys = {
 "update": 1,
 "values": [ false ]
 }
+tracks/4/type = "value"
+tracks/4/path = NodePath("../Particle:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 1, 1.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("../Particle:frame")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 1, 1.1, 1.2, 1.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 12416.8 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("../Particle:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -90.4888, -9.89722 ) ]
+}
 
 [sub_resource type="Animation" id=3]
 resource_name = "DeathRight"
+length = 1.4
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:position")
 tracks/0/interp = 1
@@ -159,22 +197,60 @@ tracks/2/keys = {
 "times": PoolRealArray( 0, 0.7, 1 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 1e-005, 1e-005 ) ]
+"values": [ Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 1e-05, 1e-05 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("Shadow:visible")
+tracks/3/path = NodePath("../Particle:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0.0105023 ),
+"times": PoolRealArray( 0, 1, 1.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("../Particle:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 1, 1.1, 1.2, 1.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("../Particle:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 90.4889, -18.1548 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Shadow:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ false ]
 }
 
-[sub_resource type="CapsuleShape2D" id=4]
+[sub_resource type="AnimatedTexture" id=4]
+
+[sub_resource type="CapsuleShape2D" id=5]
 radius = 18.6056
 height = 19.9381
 
@@ -183,10 +259,9 @@ script = ExtResource( 1 )
 __meta__ = {
 "_edit_horizontal_guides_": [ 18.0 ]
 }
-random_movement = true
+cuando = 3
 
 [node name="Sprite" type="Sprite" parent="."]
-editor/display_folded = true
 rotation = -1.5708
 texture = ExtResource( 2 )
 
@@ -197,12 +272,11 @@ anims/DeathRight = SubResource( 3 )
 
 [node name="Particles2D" type="CPUParticles2D" parent="Sprite"]
 scale = Vector2( 0.5, 0.5 )
-emitting = false
 amount = 1
 lifetime = 4.18
 speed_scale = 9.31
 explosiveness = 0.3
-texture = ExtResource( 3 )
+texture = SubResource( 4 )
 emission_shape = 2
 emission_rect_extents = Vector2( 1, 1 )
 flag_align_y = true
@@ -217,17 +291,17 @@ scale_amount_random = 0.03
 modulate = Color( 1, 1, 1, 0.776471 )
 position = Vector2( -18, 0 )
 rotation = 1.5708
+scale = Vector2( 0.5, 0.5 )
 z_index = -1
-texture = ExtResource( 4 )
+texture = ExtResource( 3 )
 hframes = 3
 
 [node name="Tween" type="Tween" parent="."]
 
 [node name="SwipeDetector" type="Node" parent="."]
-editor/display_folded = true
-script = ExtResource( 5 )
+script = ExtResource( 4 )
 __meta__ = {
-"_editor_icon": ExtResource( 6 )
+"_editor_icon": ExtResource( 5 )
 }
 distance_threshold = 0.01
 
@@ -235,8 +309,17 @@ distance_threshold = 0.01
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SwipeDetector/Area2D"]
 rotation = -1.5708
-shape = SubResource( 4 )
+shape = SubResource( 5 )
 
 [node name="SFX_Spawn" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource( 7 )
+stream = ExtResource( 6 )
 volume_db = -4.0
+
+[node name="Particle" type="Sprite" parent="."]
+visible = false
+position = Vector2( -90.4888, -9.89722 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 7 )
+hframes = 4
+frame = 3
+

@@ -9,7 +9,7 @@ export(int) var cuando = 1
 export(bool) var random_movement
 export(int) var max_count = 8
 
-var count = 2
+var count = 1 
 var spawned = false
 var in_game = false
 
@@ -21,9 +21,9 @@ func _ready():
 	$SwipeDetector.connect("swiped", self, "_on_swiped")
 	$Sprite/Animator.connect("animation_finished", self, "self_destroy")
 
-	if random_movement:
-		randomize()
-		cuando = randi() % max_count + 1
+#	if random_movement:
+#		randomize()
+#		cuando = randi() % max_count + 1
 
 func _enter_tree():
 	if self.has_node("SFX_Spawn") and spawned:
@@ -86,7 +86,9 @@ func move():
 	
 	if cuando == count:
 		$Sprite/Animator.play("Dance")
-	count += 1
+		count += 1
+	else:
+		count += 1
 	if count > max_count:
 		count = 1
 

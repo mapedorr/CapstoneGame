@@ -514,18 +514,17 @@ align = 1
 valign = 1
 
 [node name="MusicManager" type="Node" parent="."]
-editor/display_folded = true
 script = ExtResource( 9 )
 
 [node name="Fade" type="Tween" parent="MusicManager"]
 
 [node name="Metronome" type="Node" parent="MusicManager"]
-editor/display_folded = true
 script = ExtResource( 10 )
 bpm = 110.0
 eight = true
 
 [node name="Display" type="Label" parent="MusicManager/Metronome"]
+visible = false
 margin_right = 40.0
 margin_bottom = 14.0
 
