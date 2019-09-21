@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Limpiar/Leaf/Breakable.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Sprites/flor_dance1.png" type="Texture" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://addons/swipe-detector/icon.png" type="Texture" id=7]
 [ext_resource path="res://Audio/SFX/SFX_FlowerSpawn.ogg" type="AudioStream" id=8]
 [ext_resource path="res://Audio/SFX/SFX_FlowerDeath.ogg" type="AudioStream" id=9]
+[ext_resource path="res://Limpiar/Sprites/Particle.png" type="Texture" id=10]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Dance"
@@ -164,6 +165,7 @@ tracks/5/keys = {
 
 [sub_resource type="Animation" id=3]
 resource_name = "DeathLeft"
+length = 1.4
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:position")
 tracks/0/interp = 1
@@ -212,9 +214,46 @@ tracks/3/keys = {
 "update": 1,
 "values": [ false ]
 }
+tracks/4/type = "value"
+tracks/4/path = NodePath("../Particle:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 1, 1.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("../Particle:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -87.251, -20.9983 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("../Particle:frame")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 1, 1.1, 1.2, 1.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
+}
 
 [sub_resource type="Animation" id=4]
 resource_name = "DeathRight"
+length = 1.4
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:position")
 tracks/0/interp = 1
@@ -263,6 +302,42 @@ tracks/3/keys = {
 "update": 1,
 "values": [ false ]
 }
+tracks/4/type = "value"
+tracks/4/path = NodePath("../Particle:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 1, 1.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("../Particle:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 92.2166, -20.0732 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("../Particle:frame")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 1, 1.1, 1.2, 1.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
+}
 
 [sub_resource type="CapsuleShape2D" id=5]
 radius = 18.6056
@@ -276,7 +351,7 @@ script = ExtResource( 1 )
 cuando = 5
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 0.139345, -0.0928965 )
+position = Vector2( 10.8433, -7.22888 )
 texture = ExtResource( 2 )
 
 [node name="Animator" type="AnimationPlayer" parent="Sprite"]
@@ -287,7 +362,7 @@ anims/DeathRight = SubResource( 4 )
 
 [node name="Shadow" type="Sprite" parent="Sprite"]
 self_modulate = Color( 1, 1, 1, 0.894118 )
-position = Vector2( -2, 34 )
+position = Vector2( -3, 32 )
 z_index = -1
 texture = ExtResource( 5 )
 hframes = 3
@@ -322,4 +397,11 @@ volume_db = -2.0
 [node name="SFX_Death" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 9 )
 volume_db = -3.0
+
+[node name="Particle" type="Sprite" parent="."]
+visible = false
+position = Vector2( 92.2166, -20.0732 )
+scale = Vector2( 0.6, 0.6 )
+texture = ExtResource( 10 )
+hframes = 4
 
