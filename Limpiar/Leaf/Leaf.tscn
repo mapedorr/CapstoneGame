@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Limpiar/Leaf/SwipeObject.gd" type="Script" id=1]
 [ext_resource path="res://Limpiar/leaf.png" type="Texture" id=2]
@@ -6,7 +6,8 @@
 [ext_resource path="res://addons/swipe-detector/swipe_detector.gd" type="Script" id=4]
 [ext_resource path="res://addons/swipe-detector/icon.png" type="Texture" id=5]
 [ext_resource path="res://Audio/SFX/SFX_LeafSpawn.ogg" type="AudioStream" id=6]
-[ext_resource path="res://Limpiar/Sprites/Particle.png" type="Texture" id=7]
+[ext_resource path="res://Audio/SFX/SFX_Pop.ogg" type="AudioStream" id=7]
+[ext_resource path="res://Limpiar/Sprites/Particle.png" type="Texture" id=8]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Dance"
@@ -70,6 +71,18 @@ tracks/4/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ true ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath(".:rotation_degrees")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ -90.0 ]
 }
 
 [sub_resource type="Animation" id=2]
@@ -159,6 +172,20 @@ tracks/6/keys = {
 "update": 0,
 "values": [ Vector2( -90.4888, -9.89722 ) ]
 }
+tracks/7/type = "method"
+tracks/7/path = NodePath("../SFX_Pop")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ 0.0 ],
+"method": "play"
+} ]
+}
 
 [sub_resource type="Animation" id=3]
 resource_name = "DeathRight"
@@ -247,6 +274,20 @@ tracks/6/keys = {
 "update": 1,
 "values": [ false ]
 }
+tracks/7/type = "method"
+tracks/7/path = NodePath("../SFX_Pop")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ 0.0 ],
+"method": "play"
+} ]
+}
 
 [sub_resource type="AnimatedTexture" id=4]
 
@@ -315,11 +356,14 @@ shape = SubResource( 5 )
 stream = ExtResource( 6 )
 volume_db = -4.0
 
+[node name="SFX_Pop" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 7 )
+volume_db = 2.0
+
 [node name="Particle" type="Sprite" parent="."]
 visible = false
-position = Vector2( -90.4888, -9.89722 )
+position = Vector2( 90.4889, -18.1548 )
 scale = Vector2( 0.4, 0.4 )
-texture = ExtResource( 7 )
+texture = ExtResource( 8 )
 hframes = 4
-frame = 3
 

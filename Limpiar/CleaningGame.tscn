@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=2]
+[gd_scene load_steps=61 format=2]
 
 [ext_resource path="res://Limpiar/Limpiar.gd" type="Script" id=1]
 [ext_resource path="res://Limpiar/Leaf/Leaf.tscn" type="PackedScene" id=2]
@@ -24,20 +24,24 @@
 [ext_resource path="res://Bird_Female_Idle.png" type="Texture" id=22]
 [ext_resource path="res://Assets/Sprites/parotia.png" type="Texture" id=23]
 [ext_resource path="res://Assets/Scripts/DancingBird.gd" type="Script" id=24]
-[ext_resource path="res://Audio/SFX/SFX_Call_Short.ogg" type="AudioStream" id=25]
-[ext_resource path="res://Audio/SFX/SFX_Call_Long.ogg" type="AudioStream" id=26]
-[ext_resource path="res://Audio/SFX/SFX_Call_Med_02.ogg" type="AudioStream" id=27]
-[ext_resource path="res://Audio/SFX/SFX_Move_01.ogg" type="AudioStream" id=28]
-[ext_resource path="res://Audio/SFX/SFX_TextGlobe_Op.ogg" type="AudioStream" id=29]
-[ext_resource path="res://Audio/SFX/SFX_TextGlobe_Cl.ogg" type="AudioStream" id=30]
-[ext_resource path="res://Assets/Sprites/speech_balloon.png" type="Texture" id=31]
-[ext_resource path="res://Assets/Sprites/how_to_play_A.png" type="Texture" id=32]
-[ext_resource path="res://CustomResources/DynamicFonts/sniglet.tres" type="DynamicFont" id=33]
-[ext_resource path="res://Assets/Scripts/Tutorial.gd" type="Script" id=34]
-[ext_resource path="res://Assets/Sprites/how_to_play_B.png" type="Texture" id=35]
-[ext_resource path="res://Assets/Sprites/parotia_shadow.png" type="Texture" id=36]
-[ext_resource path="res://Limpiar/Sprites/clean-fg.png" type="Texture" id=37]
-[ext_resource path="res://Audio/SFX/BG_Main.ogg" type="AudioStream" id=38]
+[ext_resource path="res://Audio/SFX/SFX_FS_01.ogg" type="AudioStream" id=25]
+[ext_resource path="res://Audio/SFX/SFX_FS_02.ogg" type="AudioStream" id=26]
+[ext_resource path="res://Audio/SFX/SFX_BowDown.ogg" type="AudioStream" id=27]
+[ext_resource path="res://Audio/SFX/SFX_BowUp.ogg" type="AudioStream" id=28]
+[ext_resource path="res://Audio/SFX/SFX_Call_Short.ogg" type="AudioStream" id=29]
+[ext_resource path="res://Audio/SFX/SFX_Call_Long.ogg" type="AudioStream" id=30]
+[ext_resource path="res://Audio/SFX/SFX_Call_Med_02.ogg" type="AudioStream" id=31]
+[ext_resource path="res://Audio/SFX/SFX_Move_01.ogg" type="AudioStream" id=32]
+[ext_resource path="res://Audio/SFX/SFX_TextGlobe_Op.ogg" type="AudioStream" id=33]
+[ext_resource path="res://Audio/SFX/SFX_TextGlobe_Cl.ogg" type="AudioStream" id=34]
+[ext_resource path="res://Assets/Sprites/speech_balloon.png" type="Texture" id=35]
+[ext_resource path="res://Assets/Sprites/how_to_play_A.png" type="Texture" id=36]
+[ext_resource path="res://CustomResources/DynamicFonts/sniglet.tres" type="DynamicFont" id=37]
+[ext_resource path="res://Assets/Scripts/Tutorial.gd" type="Script" id=38]
+[ext_resource path="res://Assets/Sprites/how_to_play_B.png" type="Texture" id=39]
+[ext_resource path="res://Assets/Sprites/parotia_shadow.png" type="Texture" id=40]
+[ext_resource path="res://Limpiar/Sprites/clean-fg.png" type="Texture" id=41]
+[ext_resource path="res://Audio/SFX/BG_Main.ogg" type="AudioStream" id=42]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Idle"
@@ -182,6 +186,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id=9]
 length = 0.6
+step = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:position")
 tracks/0/interp = 1
@@ -229,6 +234,34 @@ tracks/3/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ Vector2( 2, 2 ) ]
+}
+tracks/4/type = "method"
+tracks/4/path = NodePath("FS_L")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.05 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ 0.0 ],
+"method": "play"
+} ]
+}
+tracks/5/type = "method"
+tracks/5/path = NodePath("FS_R")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0.25 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ 0.0 ],
+"method": "play"
+} ]
 }
 
 [sub_resource type="Animation" id=10]
@@ -432,7 +465,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0.00221157 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ ExtResource( 32 ) ]
+"values": [ ExtResource( 36 ) ]
 }
 
 [sub_resource type="Animation" id=17]
@@ -668,7 +701,6 @@ scale = Vector2( 1.3, 1.3 )
 texture = ExtResource( 23 )
 centered = false
 hframes = 13
-frame = 10
 script = ExtResource( 24 )
 cuando = 4
 
@@ -682,33 +714,49 @@ anims/Speak = SubResource( 12 )
 next/Dance = "Idle"
 next/Speak = "Idle"
 
-[node name="Chirp" type="AudioStreamPlayer2D" parent="Bird4/DancingBird"]
+[node name="FS_L" type="AudioStreamPlayer2D" parent="Bird4/DancingBird"]
 stream = ExtResource( 25 )
+volume_db = -3.0
+
+[node name="FS_R" type="AudioStreamPlayer2D" parent="Bird4/DancingBird"]
+stream = ExtResource( 26 )
+volume_db = -3.0
+
+[node name="Down" type="AudioStreamPlayer2D" parent="Bird4/DancingBird"]
+stream = ExtResource( 27 )
 volume_db = 8.0
 
-[node name="Scream" type="AudioStreamPlayer2D" parent="Bird4/DancingBird"]
-stream = ExtResource( 26 )
-volume_db = 3.0
-
-[node name="Call" type="AudioStreamPlayer2D" parent="Bird4/DancingBird"]
-stream = ExtResource( 27 )
-attenuation = 3.73213
-
-[node name="Jump" type="AudioStreamPlayer2D" parent="Bird4/DancingBird"]
+[node name="Up" type="AudioStreamPlayer2D" parent="Bird4/DancingBird"]
 stream = ExtResource( 28 )
 volume_db = 8.0
 
-[node name="Speech_Op" type="AudioStreamPlayer2D" parent="Bird4/DancingBird"]
+[node name="Chirp" type="AudioStreamPlayer2D" parent="Bird4/DancingBird"]
 stream = ExtResource( 29 )
+volume_db = 8.0
+
+[node name="Scream" type="AudioStreamPlayer2D" parent="Bird4/DancingBird"]
+stream = ExtResource( 30 )
+volume_db = 3.0
+
+[node name="Call" type="AudioStreamPlayer2D" parent="Bird4/DancingBird"]
+stream = ExtResource( 31 )
+attenuation = 3.73213
+
+[node name="Jump" type="AudioStreamPlayer2D" parent="Bird4/DancingBird"]
+stream = ExtResource( 32 )
+volume_db = 8.0
+
+[node name="Speech_Op" type="AudioStreamPlayer2D" parent="Bird4/DancingBird"]
+stream = ExtResource( 33 )
 volume_db = -1.5
 
 [node name="Speech_Cl" type="AudioStreamPlayer2D" parent="Bird4/DancingBird"]
-stream = ExtResource( 30 )
+stream = ExtResource( 34 )
 volume_db = -1.5
 
 [node name="SpeechBalloon" type="Sprite" parent="Bird4/DancingBird"]
 position = Vector2( 37, -45 )
-texture = ExtResource( 31 )
+texture = ExtResource( 35 )
 hframes = 9
 frame = 3
 
@@ -732,7 +780,7 @@ margin_left = -65.5
 margin_top = -48.0
 margin_right = -95.5
 margin_bottom = -83.0
-custom_fonts/font = ExtResource( 33 )
+custom_fonts/font = ExtResource( 37 )
 custom_colors/font_color = Color( 0.690196, 0.188235, 0.360784, 1 )
 text = "¡Uuuuh! se acercan las chicas"
 align = 1
@@ -742,12 +790,12 @@ autowrap = true
 [node name="Tutorial" type="Sprite" parent="Bird4/DancingBird/SpeechBalloon"]
 visible = false
 position = Vector2( -11.0001, -12.3736 )
-texture = ExtResource( 32 )
+texture = ExtResource( 36 )
 hframes = 15
 frame = 12
-script = ExtResource( 34 )
-tutorial_a = ExtResource( 32 )
-tutorial_b = ExtResource( 35 )
+script = ExtResource( 38 )
+tutorial_a = ExtResource( 36 )
+tutorial_b = ExtResource( 39 )
 tutorial_a_frames = 15
 tutorial_b_frames = 17
 
@@ -786,10 +834,10 @@ scale = Vector2( 2, 2 )
 
 [node name="Shadow" type="Sprite" parent="Bird4/DancingBird"]
 modulate = Color( 1, 1, 1, 0.784314 )
-position = Vector2( 74, 118 )
-scale = Vector2( 2.5, 2.5 )
+position = Vector2( 64, 122 )
+scale = Vector2( 2, 2 )
 z_index = -1
-texture = ExtResource( 36 )
+texture = ExtResource( 40 )
 hframes = 3
 
 [node name="Animations" type="AnimationPlayer" parent="Bird4/DancingBird/Shadow"]
@@ -799,7 +847,7 @@ anims/Idle = SubResource( 17 )
 [node name="PrimerPlano" type="Sprite" parent="."]
 editor/display_folded = true
 position = Vector2( 0, 507.051 )
-texture = ExtResource( 37 )
+texture = ExtResource( 41 )
 centered = false
 hframes = 3
 frame = 2
@@ -808,7 +856,7 @@ frame = 2
 anims/Idle = SubResource( 18 )
 
 [node name="BG" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 38 )
+stream = ExtResource( 42 )
 autoplay = true
 
 [connection signal="timeout" from="MusicManager/Metronome/Timer" to="MusicManager/Metronome" method="_on_Timer_timeout"]

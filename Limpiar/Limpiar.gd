@@ -172,11 +172,13 @@ func check_dirt():
 				"dance"
 			)
 			$Bird4/DancingBird/Dance.play("PreBow")
+			$Bird4/DancingBird/Up.play()
 			randomize()
 			yield(get_tree().create_timer(randi() % 6 + 1), "timeout")
 			$Bird4/DancingBird/Dance.stop()
 			$Bird4/DancingBird/Dance.play("Bow")
 			$UI.show_david('end')
+			$Bird4/DancingBird/Down.play()
 #			$UI/WinMessage.show()
 
 

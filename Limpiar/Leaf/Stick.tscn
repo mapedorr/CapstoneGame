@@ -171,6 +171,20 @@ tracks/6/keys = {
 "update": 0,
 "values": [ Vector2( -82.9691, -17.4169 ) ]
 }
+tracks/7/type = "method"
+tracks/7/path = NodePath("../SFX_Pop")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ 0.0 ],
+"method": "play"
+} ]
+}
 
 [sub_resource type="Animation" id=3]
 resource_name = "DeathRight"
@@ -259,6 +273,20 @@ tracks/6/keys = {
 "update": 0,
 "values": [ Vector2( 89.9827, -15.2052 ) ]
 }
+tracks/7/type = "method"
+tracks/7/path = NodePath("../SFX_Pop")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ 0.0 ],
+"method": "play"
+} ]
+}
 
 [sub_resource type="CapsuleShape2D" id=4]
 radius = 18.6056
@@ -313,11 +341,14 @@ __meta__ = {
 stream = ExtResource( 6 )
 volume_db = -4.0
 
+[node name="SFX_Pop" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 6 )
+volume_db = -4.0
+
 [node name="Particle" type="Sprite" parent="."]
 visible = false
-position = Vector2( -82.9691, -17.4169 )
+position = Vector2( 89.9827, -15.2052 )
 scale = Vector2( 0.3, 0.3 )
 texture = ExtResource( 7 )
 hframes = 4
-frame = 2
 

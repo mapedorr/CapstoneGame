@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Limpiar/Leaf/Breakable.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Sprites/hongo_dance2.png" type="Texture" id=2]
@@ -10,7 +10,8 @@
 [ext_resource path="res://addons/swipe-detector/icon.png" type="Texture" id=8]
 [ext_resource path="res://Audio/SFX/SFX_MushroomSpawn.ogg" type="AudioStream" id=9]
 [ext_resource path="res://Audio/SFX/SFX_MushroomDeath.ogg" type="AudioStream" id=10]
-[ext_resource path="res://Limpiar/Sprites/Particle.png" type="Texture" id=11]
+[ext_resource path="res://Audio/SFX/SFX_Pop.ogg" type="AudioStream" id=11]
+[ext_resource path="res://Limpiar/Sprites/Particle.png" type="Texture" id=12]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Dance"
@@ -287,6 +288,20 @@ tracks/6/keys = {
 "update": 0,
 "values": [ Vector2( -84.0527, -18.4787 ) ]
 }
+tracks/7/type = "method"
+tracks/7/path = NodePath("../SFX_Pop")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ 0.0 ],
+"method": "play"
+} ]
+}
 
 [sub_resource type="Animation" id=4]
 resource_name = "DeathRight"
@@ -375,6 +390,20 @@ tracks/6/keys = {
 "update": 0,
 "values": [ Vector2( 91.8669, -20.0877 ) ]
 }
+tracks/7/type = "method"
+tracks/7/path = NodePath("../SFX_Pop")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ 0.0 ],
+"method": "play"
+} ]
+}
 
 [sub_resource type="CapsuleShape2D" id=5]
 radius = 18.6056
@@ -389,7 +418,7 @@ script = ExtResource( 1 )
 cuando = 7
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 0.652868, -6.1562 )
+position = Vector2( 2.58246, -7.22888 )
 texture = ExtResource( 2 )
 
 [node name="Animator" type="AnimationPlayer" parent="Sprite"]
@@ -434,10 +463,14 @@ volume_db = -2.0
 [node name="SFX_Death" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 10 )
 
+[node name="SFX_Pop" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 11 )
+volume_db = 2.0
+
 [node name="Particle" type="Sprite" parent="."]
 visible = false
 position = Vector2( 91.8669, -20.0877 )
 scale = Vector2( 0.5, 0.5 )
-texture = ExtResource( 11 )
+texture = ExtResource( 12 )
 hframes = 4
 
