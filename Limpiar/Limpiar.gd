@@ -38,6 +38,8 @@ func _ready():
 	# Start animations
 	$FondoL1/AnimationPlayer.play("Idle")
 	$PrimerPlano/AnimationPlayer.play("Idle")
+	$LeafContainer/Leaf.connect("object_swiped", self, "play_whoosh")
+	$LeafContainer/Mushroom.connect("object_swiped", self, "play_whoosh")
 
 func _on_master_timer_timeout():
 	if clean:
