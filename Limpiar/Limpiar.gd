@@ -176,6 +176,7 @@ func check_dirt():
 			yield(get_tree().create_timer(randi() % 6 + 1), "timeout")
 			$Bird4/DancingBird/Dance.stop()
 			$Bird4/DancingBird/Dance.play("Bow")
+			$UI.show_david('end')
 #			$UI/WinMessage.show()
 
 
@@ -184,6 +185,7 @@ func play_whoosh(obj_position):
 	$SFX_Whoosh.play()
 
 func _on_music_started():
+	$UI.hide_david()
 	if skip_tutorial:
 		in_tutorial = 4
 		$Bird4/DancingBird.destination = 4
@@ -217,3 +219,4 @@ func _on_tutorial_explained(index):
 
 func start_game():
 	$MusicManager.start_metronome()
+	$UI.show_david('start')

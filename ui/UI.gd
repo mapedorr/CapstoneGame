@@ -61,3 +61,13 @@ func _on_credits_pressed():
 func _on_back_pressed():
 	$StartScreen/AnimationPlayer.play_backwards("ShowCredits")
 	$UI_Menu_Back.play()
+
+func show_david(status):
+	if status == 'start':
+		$David/Globo/Label.set_text("¡Es Hora De Limpiar!")
+	else:
+		$David/Globo/Label.set_text("¡Es Hora De Bailar!")
+	$Animations.play("ShowDavid")
+
+func hide_david():
+	$Animations.play_backwards("ShowDavid")

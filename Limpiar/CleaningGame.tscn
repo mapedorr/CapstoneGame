@@ -661,7 +661,6 @@ autoplay = "Idle"
 anims/Idle = SubResource( 7 )
 
 [node name="Bird4" type="Sprite" parent="."]
-editor/display_folded = true
 position = Vector2( 1003, 425 )
 
 [node name="DancingBird" type="Sprite" parent="Bird4"]
@@ -708,7 +707,6 @@ stream = ExtResource( 30 )
 volume_db = -1.5
 
 [node name="SpeechBalloon" type="Sprite" parent="Bird4/DancingBird"]
-editor/display_folded = true
 position = Vector2( 37, -45 )
 texture = ExtResource( 31 )
 hframes = 9

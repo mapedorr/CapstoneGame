@@ -1,26 +1,28 @@
-[gd_scene load_steps=38 format=2]
+[gd_scene load_steps=43 format=2]
 
 [ext_resource path="res://ui/UI.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Fonts/Sniglet-Regular.ttf" type="DynamicFontData" id=2]
-[ext_resource path="res://ui/assets/bg.png" type="Texture" id=3]
-[ext_resource path="res://ui/AnimatedAtlas.gd" type="Script" id=4]
-[ext_resource path="res://ui/assets/heart_1.png" type="Texture" id=5]
-[ext_resource path="res://ui/assets/heart_2.png" type="Texture" id=6]
-[ext_resource path="res://ui/assets/heart_3.png" type="Texture" id=7]
-[ext_resource path="res://ui/assets/bird.png" type="Texture" id=8]
-[ext_resource path="res://Audio/SFX/UI_Menu_In.ogg" type="AudioStream" id=9]
-[ext_resource path="res://Audio/SFX/UI_Menu_Out.ogg" type="AudioStream" id=10]
-[ext_resource path="res://Audio/SFX/UI_Menu_Click.ogg" type="AudioStream" id=11]
-[ext_resource path="res://Audio/SFX/UI_Menu_Back.ogg" type="AudioStream" id=12]
-[ext_resource path="res://Audio/SFX/SFX_UI_Show.ogg" type="AudioStream" id=13]
-[ext_resource path="res://Audio/SFX/SFX_UI_Hide.ogg" type="AudioStream" id=14]
-[ext_resource path="res://Audio/SFX/SFX_Heart_01.ogg" type="AudioStream" id=15]
-[ext_resource path="res://Audio/SFX/SFX_Heart_02.ogg" type="AudioStream" id=16]
-[ext_resource path="res://Audio/SFX/SFX_Heart_03.ogg" type="AudioStream" id=17]
-[ext_resource path="res://ui/assets/game_name.png" type="Texture" id=18]
-[ext_resource path="res://Assets/Fonts/ConcertOne-Regular.ttf" type="DynamicFontData" id=19]
-[ext_resource path="res://CustomResources/DynamicFonts/ConcertOne-48.tres" type="DynamicFont" id=20]
-[ext_resource path="res://ui/assets/CLO-logo.png" type="Texture" id=21]
+[ext_resource path="res://Assets/Sprites/David_Globo.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Fonts/ConcertOne-Regular.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://Assets/Sprites/David_temp.png" type="Texture" id=5]
+[ext_resource path="res://ui/assets/bg.png" type="Texture" id=6]
+[ext_resource path="res://ui/AnimatedAtlas.gd" type="Script" id=7]
+[ext_resource path="res://ui/assets/heart_1.png" type="Texture" id=8]
+[ext_resource path="res://ui/assets/heart_2.png" type="Texture" id=9]
+[ext_resource path="res://ui/assets/heart_3.png" type="Texture" id=10]
+[ext_resource path="res://ui/assets/bird.png" type="Texture" id=11]
+[ext_resource path="res://Audio/SFX/UI_Menu_In.ogg" type="AudioStream" id=12]
+[ext_resource path="res://Audio/SFX/UI_Menu_Out.ogg" type="AudioStream" id=13]
+[ext_resource path="res://Audio/SFX/UI_Menu_Click.ogg" type="AudioStream" id=14]
+[ext_resource path="res://Audio/SFX/UI_Menu_Back.ogg" type="AudioStream" id=15]
+[ext_resource path="res://Audio/SFX/SFX_UI_Show.ogg" type="AudioStream" id=16]
+[ext_resource path="res://Audio/SFX/SFX_UI_Hide.ogg" type="AudioStream" id=17]
+[ext_resource path="res://Audio/SFX/SFX_Heart_01.ogg" type="AudioStream" id=18]
+[ext_resource path="res://Audio/SFX/SFX_Heart_02.ogg" type="AudioStream" id=19]
+[ext_resource path="res://Audio/SFX/SFX_Heart_03.ogg" type="AudioStream" id=20]
+[ext_resource path="res://ui/assets/game_name.png" type="Texture" id=21]
+[ext_resource path="res://CustomResources/DynamicFonts/ConcertOne-48.tres" type="DynamicFont" id=22]
+[ext_resource path="res://ui/assets/CLO-logo.png" type="Texture" id=23]
 
 [sub_resource type="DynamicFont" id=1]
 size = 72
@@ -102,8 +104,57 @@ tracks/5/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
+[sub_resource type="Animation" id=18]
+resource_name = "ShowDavid"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/path = NodePath("David/David:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -60, 60 ), Vector2( 256, -216 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("David/Globo:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.5, 0.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1e-05, 1e-05 ), Vector2( 1, 1 ) ]
+}
+
+[sub_resource type="DynamicFont" id=19]
+size = 50
+font_data = ExtResource( 4 )
+
+[sub_resource type="Animation" id=17]
+resource_name = "Idle"
+length = 0.7
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("David:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 1 ]
+}
+
 [sub_resource type="AtlasTexture" id=3]
-atlas = ExtResource( 3 )
+atlas = ExtResource( 6 )
 region = Rect2( 0, 0, 300, 216 )
 
 [sub_resource type="Animation" id=4]
@@ -131,7 +182,7 @@ tracks/0/keys = {
 }
 
 [sub_resource type="AtlasTexture" id=5]
-atlas = ExtResource( 5 )
+atlas = ExtResource( 8 )
 region = Rect2( 0, 0, 63, 62 )
 
 [sub_resource type="Animation" id=6]
@@ -174,7 +225,7 @@ tracks/0/keys = {
 }
 
 [sub_resource type="AtlasTexture" id=8]
-atlas = ExtResource( 6 )
+atlas = ExtResource( 9 )
 region = Rect2( 0, 0, 78, 61 )
 
 [sub_resource type="Animation" id=9]
@@ -202,7 +253,7 @@ tracks/0/keys = {
 }
 
 [sub_resource type="AtlasTexture" id=10]
-atlas = ExtResource( 7 )
+atlas = ExtResource( 10 )
 region = Rect2( 0, 0, 76, 61 )
 
 [sub_resource type="Animation" id=11]
@@ -230,7 +281,7 @@ tracks/0/keys = {
 }
 
 [sub_resource type="AtlasTexture" id=12]
-atlas = ExtResource( 8 )
+atlas = ExtResource( 11 )
 region = Rect2( 0, 0, 184, 160 )
 
 [sub_resource type="Animation" id=13]
@@ -292,12 +343,12 @@ tracks/1/keys = {
 [sub_resource type="DynamicFont" id=15]
 size = 64
 extra_spacing_top = -32
-font_data = ExtResource( 19 )
+font_data = ExtResource( 4 )
 
 [sub_resource type="DynamicFont" id=16]
 size = 64
 extra_spacing_top = -24
-font_data = ExtResource( 19 )
+font_data = ExtResource( 4 )
 
 [node name="UI" type="CanvasLayer"]
 script = ExtResource( 1 )
@@ -319,6 +370,38 @@ autowrap = true
 
 [node name="Animations" type="AnimationPlayer" parent="."]
 anims/ShowCleanlinessCheck = SubResource( 2 )
+anims/ShowDavid = SubResource( 18 )
+
+[node name="David" type="Control" parent="."]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = -40.0
+margin_right = 40.0
+
+[node name="Globo" type="Sprite" parent="David"]
+position = Vector2( 680, -430 )
+scale = Vector2( 1e-05, 1e-05 )
+texture = ExtResource( 3 )
+
+[node name="Label" type="Label" parent="David/Globo"]
+margin_left = -237.0
+margin_top = -130.0
+margin_right = 239.0
+margin_bottom = 140.0
+custom_fonts/font = SubResource( 19 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "¡Es Hora De Limpiar!"
+align = 1
+valign = 1
+
+[node name="David" type="Sprite" parent="David"]
+position = Vector2( -60, 60 )
+texture = ExtResource( 5 )
+hframes = 3
+
+[node name="Animator" type="AnimationPlayer" parent="David"]
+autoplay = "Idle"
+anims/Idle = SubResource( 17 )
 
 [node name="CleanlinessCheck" type="Control" parent="."]
 anchor_right = 1.0
@@ -331,13 +414,13 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -300.0
-margin_top = 20.0
-margin_bottom = 236.0
+margin_left = -293.0
+margin_top = -216.0
+margin_right = 7.0
 mouse_filter = 2
 texture = SubResource( 3 )
 expand = true
-script = ExtResource( 4 )
+script = ExtResource( 7 )
 
 [node name="Animations" type="AnimationPlayer" parent="CleanlinessCheck/Background"]
 anims/Idle = SubResource( 4 )
@@ -348,11 +431,11 @@ margin_left = 1020.0
 margin_top = 710.0
 margin_right = 1083.0
 margin_bottom = 772.0
-rect_scale = Vector2( 3.68755e-05, 3.68755e-05 )
+rect_scale = Vector2( 0.25, 0.25 )
 rect_pivot_offset = Vector2( 31, 31 )
 mouse_filter = 2
 texture = SubResource( 5 )
-script = ExtResource( 4 )
+script = ExtResource( 7 )
 
 [node name="Animations" type="AnimationPlayer" parent="CleanlinessCheck/Heart1"]
 anims/Break = SubResource( 6 )
@@ -364,11 +447,11 @@ margin_left = 1040.0
 margin_top = 646.0
 margin_right = 1118.0
 margin_bottom = 707.0
-rect_scale = Vector2( 3.68719e-05, 3.68719e-05 )
+rect_scale = Vector2( 0, 0 )
 rect_pivot_offset = Vector2( 39, 30 )
 mouse_filter = 2
 texture = SubResource( 8 )
-script = ExtResource( 4 )
+script = ExtResource( 7 )
 
 [node name="Animations" type="AnimationPlayer" parent="CleanlinessCheck/Heart2"]
 anims/Break = SubResource( 6 )
@@ -384,58 +467,58 @@ rect_scale = Vector2( 2.95754e-05, 2.95754e-05 )
 rect_pivot_offset = Vector2( 38, 30 )
 mouse_filter = 2
 texture = SubResource( 10 )
-script = ExtResource( 4 )
+script = ExtResource( 7 )
 
 [node name="Animations" type="AnimationPlayer" parent="CleanlinessCheck/Heart3"]
 anims/Break = SubResource( 6 )
 anims/Idle = SubResource( 11 )
 
 [node name="Bird" type="TextureRect" parent="CleanlinessCheck"]
-self_modulate = Color( 1, 1, 1, 1.29795e-05 )
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -180.0
-margin_top = 29.9975
-margin_right = 4.0
-margin_bottom = 191.997
+margin_left = -182.0
+margin_top = -162.0
+margin_right = 2.0
+margin_bottom = -0.000488281
 texture = SubResource( 12 )
-script = ExtResource( 4 )
+script = ExtResource( 7 )
 
 [node name="UI_Menu_In" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 9 )
-
-[node name="UI_Menu_Out" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 10 )
-
-[node name="UI_Menu_Click" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 11 )
-
-[node name="UI_Menu_Back" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 12 )
 
-[node name="Show" type="AudioStreamPlayer" parent="."]
+[node name="UI_Menu_Out" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 13 )
+
+[node name="UI_Menu_Click" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 14 )
+
+[node name="UI_Menu_Back" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 15 )
+
+[node name="Show" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 16 )
 volume_db = -4.0
 
 [node name="Hide" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 14 )
+stream = ExtResource( 17 )
 volume_db = -6.0
 
 [node name="Heart" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 15 )
+stream = ExtResource( 18 )
 volume_db = -3.0
 
 [node name="Heart2" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 16 )
+stream = ExtResource( 19 )
 volume_db = -3.0
 
 [node name="Heart3" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 17 )
+stream = ExtResource( 20 )
 volume_db = -3.0
 
 [node name="StartScreen" type="Control" parent="."]
+editor/display_folded = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 
@@ -452,9 +535,10 @@ margin_left = -536.0
 margin_top = -670.0
 margin_right = 536.0
 margin_bottom = -481.996
-texture = ExtResource( 18 )
+texture = ExtResource( 21 )
 
 [node name="StartButtons" type="VBoxContainer" parent="StartScreen"]
+editor/display_folded = true
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -498,6 +582,7 @@ text = "Credits"
 flat = true
 
 [node name="Credits" type="VBoxContainer" parent="StartScreen"]
+editor/display_folded = true
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
@@ -514,7 +599,7 @@ __meta__ = {
 [node name="Juan" type="Label" parent="StartScreen/Credits"]
 margin_right = 1280.0
 margin_bottom = 14.0
-custom_fonts/font = ExtResource( 20 )
+custom_fonts/font = ExtResource( 22 )
 custom_colors/font_color = Color( 1, 1, 0.921569, 1 )
 text = "@QuietGecko (audio, art, programming)"
 align = 1
@@ -524,7 +609,7 @@ valign = 1
 margin_top = 62.0
 margin_right = 1280.0
 margin_bottom = 76.0
-custom_fonts/font = ExtResource( 20 )
+custom_fonts/font = ExtResource( 22 )
 custom_colors/font_color = Color( 1, 1, 0.921569, 1 )
 text = "@mapedorr (art, programming)"
 align = 1
@@ -541,7 +626,7 @@ margin_left = 204.0
 margin_top = 43.0
 margin_right = 572.0
 margin_bottom = 57.0
-custom_fonts/font = ExtResource( 20 )
+custom_fonts/font = ExtResource( 22 )
 custom_colors/font_color = Color( 1, 1, 0.921569, 1 )
 text = "Special thanks to"
 align = 1
@@ -550,7 +635,7 @@ align = 1
 margin_left = 576.0
 margin_right = 1076.0
 margin_bottom = 100.0
-texture = ExtResource( 21 )
+texture = ExtResource( 23 )
 
 [node name="Back" type="Button" parent="StartScreen/Credits"]
 margin_top = 272.0
