@@ -40,7 +40,7 @@ func _ready():
 	$PrimerPlano/AnimationPlayer.play("Idle")
 	$LeafContainer/Leaf.connect("object_swiped", self, "play_whoosh")
 	$LeafContainer/Mushroom.connect("object_swiped", self, "play_whoosh")
-
+	
 func _on_master_timer_timeout():
 	if clean:
 		clean_countdown = 0
@@ -213,6 +213,7 @@ func _on_tutorial_explained(index):
 		$LeafContainer/Leaf.connect("object_swiped", self, "play_whoosh")
 	elif index == 2:
 		# The mushroom is ready to be SWIPED
+		$LeafContainer/Mushroom/FalseScreen.visible = false
 		$LeafContainer/Mushroom.in_game = true
 		$LeafContainer/Mushroom.connect("object_swiped", self, "play_whoosh")
 	else:
