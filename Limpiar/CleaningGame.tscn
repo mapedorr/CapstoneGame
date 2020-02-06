@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=2]
+[gd_scene load_steps=62 format=2]
 
 [ext_resource path="res://Limpiar/Limpiar.gd" type="Script" id=1]
 [ext_resource path="res://Limpiar/Leaf/Leaf.tscn" type="PackedScene" id=2]
@@ -36,7 +36,7 @@
 [ext_resource path="res://Audio/SFX/SFX_TextGlobe_Cl.ogg" type="AudioStream" id=34]
 [ext_resource path="res://Assets/Sprites/speech_balloon.png" type="Texture" id=35]
 [ext_resource path="res://Assets/Sprites/how_to_play_A.png" type="Texture" id=36]
-[ext_resource path="res://CustomResources/DynamicFonts/sniglet.tres" type="DynamicFont" id=37]
+[ext_resource path="res://Assets/Fonts/HungryPro.ttf" type="DynamicFontData" id=37]
 [ext_resource path="res://Assets/Scripts/Tutorial.gd" type="Script" id=38]
 [ext_resource path="res://Assets/Sprites/how_to_play_B.png" type="Texture" id=39]
 [ext_resource path="res://Assets/Sprites/parotia_shadow.png" type="Texture" id=40]
@@ -468,6 +468,12 @@ tracks/1/keys = {
 "values": [ ExtResource( 36 ) ]
 }
 
+[sub_resource type="DynamicFont" id=19]
+size = 26
+extra_spacing_top = -4
+extra_spacing_bottom = -4
+font_data = ExtResource( 37 )
+
 [sub_resource type="Animation" id=17]
 resource_name = "Idle"
 length = 0.6
@@ -518,7 +524,6 @@ z_index = -1
 texture = ExtResource( 6 )
 
 [node name="FondoL1" type="Sprite" parent="."]
-editor/display_folded = true
 position = Vector2( 0, 70 )
 texture = ExtResource( 7 )
 centered = false
@@ -531,7 +536,6 @@ anims/Idle = SubResource( 1 )
 [node name="MasterTimer" type="Timer" parent="."]
 
 [node name="Debug" type="Control" parent="."]
-editor/display_folded = true
 visible = false
 margin_right = 1280.0
 margin_bottom = 800.0
@@ -569,7 +573,6 @@ stream = ExtResource( 11 )
 bus = "Music"
 
 [node name="Layers" type="Node" parent="MusicManager"]
-editor/display_folded = true
 
 [node name="Layer1" type="AudioStreamPlayer" parent="MusicManager/Layers"]
 stream = ExtResource( 12 )
@@ -582,7 +585,6 @@ volume_db = -80.0
 bus = "Music"
 
 [node name="Birds" type="Node" parent="MusicManager"]
-editor/display_folded = true
 
 [node name="Birds1" type="AudioStreamPlayer" parent="MusicManager/Birds"]
 stream = ExtResource( 14 )
@@ -626,7 +628,6 @@ color = Color( 1, 1, 1, 0 )
 [node name="UI" parent="." instance=ExtResource( 18 )]
 
 [node name="SpawnArea" type="StaticBody2D" parent="."]
-editor/display_folded = true
 visible = false
 position = Vector2( 636.259, 404.603 )
 __meta__ = {
@@ -656,10 +657,8 @@ minPitch = -3.0
 maxPitch = 5.0
 
 [node name="Females" type="Node2D" parent="."]
-editor/display_folded = true
 
 [node name="Birdy1" type="Sprite" parent="Females"]
-editor/display_folded = true
 visible = false
 position = Vector2( 1137.55, 101 )
 scale = Vector2( 1.3, 1.3 )
@@ -671,7 +670,6 @@ autoplay = "Idle"
 anims/Idle = SubResource( 4 )
 
 [node name="Birdy2" type="Sprite" parent="Females"]
-editor/display_folded = true
 visible = false
 position = Vector2( 830, 75 )
 scale = Vector2( 1.3, 1.3 )
@@ -683,7 +681,6 @@ autoplay = "Idle"
 anims/Idle = SubResource( 5 )
 
 [node name="Birdy3" type="Sprite" parent="Females"]
-editor/display_folded = true
 visible = false
 position = Vector2( 430, 67 )
 scale = Vector2( -1.3, 1.3 )
@@ -808,23 +805,26 @@ anims/WellDone = SubResource( 16 )
 self_modulate = Color( 1, 1, 1, 0 )
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -65.5
-margin_top = -48.0
-margin_right = -95.5
-margin_bottom = -83.0
-custom_fonts/font = ExtResource( 37 )
+margin_left = -65.0
+margin_top = -44.0
+margin_right = -95.0
+margin_bottom = -85.0
+custom_fonts/font = SubResource( 19 )
 custom_colors/font_color = Color( 0.690196, 0.188235, 0.360784, 1 )
 text = "¡Uuuuh! se acercan las chicas"
 align = 1
 valign = 1
 autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Tutorial" type="Sprite" parent="Bird4/DancingBird/SpeechBalloon"]
 visible = false
 position = Vector2( -11.0001, -12.3736 )
 texture = ExtResource( 36 )
 hframes = 15
-frame = 12
+frame = 13
 script = ExtResource( 38 )
 tutorial_a = ExtResource( 36 )
 tutorial_b = ExtResource( 39 )
@@ -832,7 +832,6 @@ tutorial_a_frames = 15
 tutorial_b_frames = 17
 
 [node name="Waypoints" type="Node" parent="Bird4/DancingBird"]
-editor/display_folded = true
 
 [node name="A" type="Position2D" parent="Bird4/DancingBird/Waypoints"]
 modulate = Color( 0.913725, 1, 0.917647, 1 )
@@ -877,12 +876,10 @@ autoplay = "Idle"
 anims/Idle = SubResource( 17 )
 
 [node name="PrimerPlano" type="Sprite" parent="."]
-editor/display_folded = true
 position = Vector2( 0, 507.051 )
 texture = ExtResource( 41 )
 centered = false
 hframes = 3
-frame = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="PrimerPlano"]
 anims/Idle = SubResource( 18 )

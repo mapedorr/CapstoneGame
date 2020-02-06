@@ -1,9 +1,8 @@
-[gd_scene load_steps=43 format=2]
+[gd_scene load_steps=44 format=2]
 
 [ext_resource path="res://ui/UI.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Fonts/Sniglet-Regular.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://Assets/Sprites/David_Globo.png" type="Texture" id=3]
-[ext_resource path="res://Assets/Fonts/ConcertOne-Regular.ttf" type="DynamicFontData" id=4]
 [ext_resource path="res://Assets/Sprites/David_temp.png" type="Texture" id=5]
 [ext_resource path="res://ui/assets/bg.png" type="Texture" id=6]
 [ext_resource path="res://ui/AnimatedAtlas.gd" type="Script" id=7]
@@ -23,6 +22,8 @@
 [ext_resource path="res://ui/assets/game_name.png" type="Texture" id=21]
 [ext_resource path="res://CustomResources/DynamicFonts/ConcertOne-48.tres" type="DynamicFont" id=22]
 [ext_resource path="res://ui/assets/CLO-logo.png" type="Texture" id=23]
+[ext_resource path="res://CustomResources/DynamicFonts/sniglet.tres" type="DynamicFont" id=24]
+[ext_resource path="res://Assets/Fonts/HungryPro.ttf" type="DynamicFontData" id=25]
 
 [sub_resource type="DynamicFont" id=1]
 size = 72
@@ -104,7 +105,7 @@ tracks/5/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=18]
+[sub_resource type="Animation" id=3]
 resource_name = "ShowDavid"
 length = 0.8
 tracks/0/type = "value"
@@ -132,11 +133,7 @@ tracks/1/keys = {
 "values": [ Vector2( 1e-05, 1e-05 ), Vector2( 1, 1 ) ]
 }
 
-[sub_resource type="DynamicFont" id=19]
-size = 50
-font_data = ExtResource( 4 )
-
-[sub_resource type="Animation" id=17]
+[sub_resource type="Animation" id=5]
 resource_name = "Idle"
 length = 0.7
 loop = true
@@ -153,11 +150,11 @@ tracks/0/keys = {
 "values": [ 0, 1, 2, 1 ]
 }
 
-[sub_resource type="AtlasTexture" id=3]
+[sub_resource type="AtlasTexture" id=6]
 atlas = ExtResource( 6 )
 region = Rect2( 0, 0, 300, 216 )
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=7]
 length = 0.9
 loop = true
 tracks/0/type = "method"
@@ -181,11 +178,11 @@ tracks/0/keys = {
 } ]
 }
 
-[sub_resource type="AtlasTexture" id=5]
+[sub_resource type="AtlasTexture" id=8]
 atlas = ExtResource( 8 )
 region = Rect2( 0, 0, 63, 62 )
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=9]
 length = 0.4
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:self_modulate")
@@ -200,7 +197,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=10]
 length = 0.6
 loop = true
 tracks/0/type = "method"
@@ -224,11 +221,11 @@ tracks/0/keys = {
 } ]
 }
 
-[sub_resource type="AtlasTexture" id=8]
+[sub_resource type="AtlasTexture" id=11]
 atlas = ExtResource( 9 )
 region = Rect2( 0, 0, 78, 61 )
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=12]
 length = 0.6
 loop = true
 tracks/0/type = "method"
@@ -252,11 +249,11 @@ tracks/0/keys = {
 } ]
 }
 
-[sub_resource type="AtlasTexture" id=10]
+[sub_resource type="AtlasTexture" id=13]
 atlas = ExtResource( 10 )
 region = Rect2( 0, 0, 76, 61 )
 
-[sub_resource type="Animation" id=11]
+[sub_resource type="Animation" id=14]
 length = 0.6
 loop = true
 tracks/0/type = "method"
@@ -280,12 +277,11 @@ tracks/0/keys = {
 } ]
 }
 
-[sub_resource type="AtlasTexture" id=12]
+[sub_resource type="AtlasTexture" id=15]
 atlas = ExtResource( 11 )
 region = Rect2( 0, 0, 184, 160 )
 
-[sub_resource type="Animation" id=13]
-resource_name = "Show"
+[sub_resource type="Animation" id=16]
 length = 0.7
 tracks/0/type = "value"
 tracks/0/path = NodePath("GameName:rect_position")
@@ -312,8 +308,7 @@ tracks/1/keys = {
 "values": [ Vector2( 506, 945 ), Vector2( 506, 945 ), Vector2( 506, 495 ) ]
 }
 
-[sub_resource type="Animation" id=14]
-resource_name = "ShowCredits"
+[sub_resource type="Animation" id=17]
 length = 0.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("StartButtons:rect_position")
@@ -340,15 +335,22 @@ tracks/1/keys = {
 "values": [ Vector2( 1280, 387 ), Vector2( 0, 387 ) ]
 }
 
-[sub_resource type="DynamicFont" id=15]
-size = 64
-extra_spacing_top = -32
-font_data = ExtResource( 4 )
+[sub_resource type="DynamicFont" id=20]
+size = 90
+extra_spacing_top = -20
+extra_spacing_bottom = -20
+font_data = ExtResource( 25 )
 
-[sub_resource type="DynamicFont" id=16]
-size = 64
+[sub_resource type="DynamicFont" id=18]
+size = 90
+extra_spacing_top = -20
+extra_spacing_bottom = -20
+font_data = ExtResource( 25 )
+
+[sub_resource type="DynamicFont" id=19]
+size = 90
 extra_spacing_top = -24
-font_data = ExtResource( 4 )
+font_data = ExtResource( 25 )
 
 [node name="UI" type="CanvasLayer"]
 script = ExtResource( 1 )
@@ -370,29 +372,35 @@ autowrap = true
 
 [node name="Animations" type="AnimationPlayer" parent="."]
 anims/ShowCleanlinessCheck = SubResource( 2 )
-anims/ShowDavid = SubResource( 18 )
+anims/ShowDavid = SubResource( 3 )
 
 [node name="David" type="Control" parent="."]
 anchor_top = 1.0
 anchor_bottom = 1.0
 margin_top = -40.0
 margin_right = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Globo" type="Sprite" parent="David"]
-position = Vector2( 680, -430 )
+position = Vector2( 350.844, -537.76 )
 scale = Vector2( 1e-05, 1e-05 )
 texture = ExtResource( 3 )
 
 [node name="Label" type="Label" parent="David/Globo"]
-margin_left = -237.0
-margin_top = -130.0
-margin_right = 239.0
-margin_bottom = 140.0
-custom_fonts/font = SubResource( 19 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
+margin_left = -340.0
+margin_top = -125.0
+margin_right = 356.0
+margin_bottom = 46.0
+custom_fonts/font = ExtResource( 24 )
+custom_colors/font_color = Color( 0.152941, 0.152941, 0.211765, 1 )
 text = "¡Es Hora De Limpiar!"
 align = 1
 valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="David" type="Sprite" parent="David"]
 position = Vector2( -60, 60 )
@@ -401,7 +409,7 @@ hframes = 3
 
 [node name="Animator" type="AnimationPlayer" parent="David"]
 autoplay = "Idle"
-anims/Idle = SubResource( 17 )
+anims/Idle = SubResource( 5 )
 
 [node name="CleanlinessCheck" type="Control" parent="."]
 anchor_right = 1.0
@@ -409,81 +417,85 @@ anchor_bottom = 1.0
 mouse_filter = 2
 
 [node name="Background" type="TextureRect" parent="CleanlinessCheck"]
-editor/display_folded = true
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = -293.0
-margin_top = -216.0
+margin_top = 20.0
 margin_right = 7.0
+margin_bottom = 236.0
 mouse_filter = 2
-texture = SubResource( 3 )
+texture = SubResource( 6 )
 expand = true
 script = ExtResource( 7 )
 
 [node name="Animations" type="AnimationPlayer" parent="CleanlinessCheck/Background"]
-anims/Idle = SubResource( 4 )
+anims/Idle = SubResource( 7 )
 
 [node name="Heart1" type="TextureRect" parent="CleanlinessCheck"]
-editor/display_folded = true
 margin_left = 1020.0
 margin_top = 710.0
 margin_right = 1083.0
 margin_bottom = 772.0
-rect_scale = Vector2( 0.25, 0.25 )
+rect_scale = Vector2( 1e-05, 1e-05 )
 rect_pivot_offset = Vector2( 31, 31 )
-mouse_filter = 2
-texture = SubResource( 5 )
-script = ExtResource( 7 )
-
-[node name="Animations" type="AnimationPlayer" parent="CleanlinessCheck/Heart1"]
-anims/Break = SubResource( 6 )
-anims/Idle = SubResource( 7 )
-
-[node name="Heart2" type="TextureRect" parent="CleanlinessCheck"]
-editor/display_folded = true
-margin_left = 1040.0
-margin_top = 646.0
-margin_right = 1118.0
-margin_bottom = 707.0
-rect_scale = Vector2( 0, 0 )
-rect_pivot_offset = Vector2( 39, 30 )
 mouse_filter = 2
 texture = SubResource( 8 )
 script = ExtResource( 7 )
 
+[node name="Animations" type="AnimationPlayer" parent="CleanlinessCheck/Heart1"]
+anims/Break = SubResource( 9 )
+anims/Idle = SubResource( 10 )
+
+[node name="Heart2" type="TextureRect" parent="CleanlinessCheck"]
+margin_left = 1040.0
+margin_top = 646.0
+margin_right = 1118.0
+margin_bottom = 707.0
+rect_scale = Vector2( 1e-05, 1e-05 )
+rect_pivot_offset = Vector2( 39, 30 )
+mouse_filter = 2
+texture = SubResource( 11 )
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Animations" type="AnimationPlayer" parent="CleanlinessCheck/Heart2"]
-anims/Break = SubResource( 6 )
-anims/Idle = SubResource( 9 )
+anims/Break = SubResource( 9 )
+anims/Idle = SubResource( 12 )
 
 [node name="Heart3" type="TextureRect" parent="CleanlinessCheck"]
-editor/display_folded = true
 margin_left = 1000.0
 margin_top = 584.0
 margin_right = 1076.0
 margin_bottom = 645.0
-rect_scale = Vector2( 2.95754e-05, 2.95754e-05 )
+rect_scale = Vector2( 1e-05, 1e-05 )
 rect_pivot_offset = Vector2( 38, 30 )
 mouse_filter = 2
-texture = SubResource( 10 )
+texture = SubResource( 13 )
 script = ExtResource( 7 )
 
 [node name="Animations" type="AnimationPlayer" parent="CleanlinessCheck/Heart3"]
-anims/Break = SubResource( 6 )
-anims/Idle = SubResource( 11 )
+anims/Break = SubResource( 9 )
+anims/Idle = SubResource( 14 )
 
 [node name="Bird" type="TextureRect" parent="CleanlinessCheck"]
+self_modulate = Color( 1, 1, 1, 0 )
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -182.0
-margin_top = -162.0
-margin_right = 2.0
-margin_bottom = -0.000488281
-texture = SubResource( 12 )
+margin_left = -180.0
+margin_top = 30.0
+margin_right = 4.0
+margin_bottom = 192.0
+texture = SubResource( 15 )
 script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="UI_Menu_In" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 12 )
@@ -518,13 +530,15 @@ stream = ExtResource( 20 )
 volume_db = -3.0
 
 [node name="StartScreen" type="Control" parent="."]
-editor/display_folded = true
 anchor_right = 1.0
 anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="StartScreen"]
-anims/Show = SubResource( 13 )
-anims/ShowCredits = SubResource( 14 )
+anims/Show = SubResource( 16 )
+anims/ShowCredits = SubResource( 17 )
 
 [node name="GameName" type="TextureRect" parent="StartScreen"]
 anchor_left = 0.5
@@ -538,29 +552,32 @@ margin_bottom = -481.996
 texture = ExtResource( 21 )
 
 [node name="StartButtons" type="VBoxContainer" parent="StartScreen"]
-editor/display_folded = true
 anchor_left = 0.5
-anchor_top = 0.5
+anchor_top = 1.0
 anchor_right = 0.5
-anchor_bottom = 0.5
+anchor_bottom = 1.0
 margin_left = -134.0
-margin_top = 545.0
-margin_right = 134.0
-margin_bottom = 735.003
+margin_top = 145.0
+margin_right = 151.0
+margin_bottom = 268.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_constants/separation = 96
+size_flags_stretch_ratio = 0.0
+custom_constants/separation = 25
 __meta__ = {
-"_edit_group_": true
+"_edit_group_": true,
+"_edit_use_anchors_": false
 }
 
 [node name="Start" type="Button" parent="StartScreen/StartButtons"]
-margin_right = 268.0
-margin_bottom = 47.0
+margin_left = 39.0
+margin_right = 246.0
+margin_bottom = 49.0
 mouse_default_cursor_shape = 2
-size_flags_horizontal = 15
-size_flags_vertical = 15
-custom_fonts/font = SubResource( 15 )
+size_flags_horizontal = 4
+size_flags_vertical = 0
+size_flags_stretch_ratio = 0.0
+custom_fonts/font = SubResource( 20 )
 custom_colors/font_color = Color( 1, 0.894118, 0.470588, 1 )
 custom_colors/font_color_hover = Color( 0.4, 1, 0.890196, 1 )
 custom_colors/font_color_pressed = Color( 0.4, 1, 0.890196, 1 )
@@ -568,13 +585,13 @@ text = "Start"
 flat = true
 
 [node name="Credits" type="Button" parent="StartScreen/StartButtons"]
-margin_top = 143.0
-margin_right = 268.0
-margin_bottom = 190.0
+margin_top = 74.0
+margin_right = 285.0
+margin_bottom = 123.0
 mouse_default_cursor_shape = 2
 size_flags_horizontal = 15
-size_flags_vertical = 15
-custom_fonts/font = SubResource( 15 )
+size_flags_vertical = 12
+custom_fonts/font = SubResource( 18 )
 custom_colors/font_color = Color( 1, 0.894118, 0.470588, 1 )
 custom_colors/font_color_hover = Color( 0.4, 1, 0.890196, 1 )
 custom_colors/font_color_pressed = Color( 0.4, 1, 0.890196, 1 )
@@ -582,7 +599,6 @@ text = "Credits"
 flat = true
 
 [node name="Credits" type="VBoxContainer" parent="StartScreen"]
-editor/display_folded = true
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
@@ -598,7 +614,7 @@ __meta__ = {
 
 [node name="Juan" type="Label" parent="StartScreen/Credits"]
 margin_right = 1280.0
-margin_bottom = 14.0
+margin_bottom = 37.0
 custom_fonts/font = ExtResource( 22 )
 custom_colors/font_color = Color( 1, 1, 0.921569, 1 )
 text = "@QuietGecko (audio, art, programming)"
@@ -606,9 +622,9 @@ align = 1
 valign = 1
 
 [node name="Mateo" type="Label" parent="StartScreen/Credits"]
-margin_top = 62.0
+margin_top = 85.0
 margin_right = 1280.0
-margin_bottom = 76.0
+margin_bottom = 122.0
 custom_fonts/font = ExtResource( 22 )
 custom_colors/font_color = Color( 1, 1, 0.921569, 1 )
 text = "@mapedorr (art, programming)"
@@ -616,38 +632,37 @@ align = 1
 valign = 1
 
 [node name="Thanks" type="HBoxContainer" parent="StartScreen/Credits"]
-margin_top = 124.0
+margin_top = 170.0
 margin_right = 1280.0
-margin_bottom = 224.0
+margin_bottom = 270.0
 alignment = 1
 
 [node name="Text" type="Label" parent="StartScreen/Credits/Thanks"]
-margin_left = 204.0
-margin_top = 43.0
-margin_right = 572.0
-margin_bottom = 57.0
+margin_left = 150.0
+margin_top = 31.0
+margin_right = 626.0
+margin_bottom = 68.0
 custom_fonts/font = ExtResource( 22 )
 custom_colors/font_color = Color( 1, 1, 0.921569, 1 )
 text = "Special thanks to"
 align = 1
 
 [node name="CloLogo" type="TextureRect" parent="StartScreen/Credits/Thanks"]
-margin_left = 576.0
-margin_right = 1076.0
+margin_left = 630.0
+margin_right = 1130.0
 margin_bottom = 100.0
 texture = ExtResource( 23 )
 
 [node name="Back" type="Button" parent="StartScreen/Credits"]
-margin_top = 272.0
+margin_top = 318.0
 margin_right = 1280.0
 margin_bottom = 413.0
 mouse_default_cursor_shape = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/font = SubResource( 16 )
+custom_fonts/font = SubResource( 19 )
 custom_colors/font_color = Color( 1, 0.894118, 0.470588, 1 )
 custom_colors/font_color_hover = Color( 0.4, 1, 0.890196, 1 )
 custom_colors/font_color_pressed = Color( 0.4, 1, 0.890196, 1 )
 text = "Go back"
 flat = true
-
