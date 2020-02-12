@@ -210,12 +210,14 @@ func _on_tutorial_explained(index):
 	if index == 1:
 		# The leaf is ready to be SWIPED
 		$LeafContainer/Leaf.in_game = true
-		$LeafContainer/Leaf.connect("object_swiped", self, "play_whoosh")
+		if not $LeafContainer/Leaf.is_connected("object_swiped", self, "play_whoosh"):
+			$LeafContainer/Leaf.connect("object_swiped", self, "play_whoosh")
 	elif index == 2:
 		# The mushroom is ready to be SWIPED
 		$LeafContainer/Mushroom/FalseScreen.visible = false
 		$LeafContainer/Mushroom.in_game = true
-		$LeafContainer/Mushroom.connect("object_swiped", self, "play_whoosh")
+		if not $LeafContainer/Mushroom.is_connected("object_swiped", self, "play_whoosh"):
+			$LeafContainer/Mushroom.connect("object_swiped", self, "play_whoosh")
 	else:
 		dirt_on_ground = 1
 		check_dirt()

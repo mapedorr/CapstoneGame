@@ -468,14 +468,13 @@ tracks/1/keys = {
 "values": [ ExtResource( 36 ) ]
 }
 
-[sub_resource type="DynamicFont" id=19]
+[sub_resource type="DynamicFont" id=17]
 size = 26
 extra_spacing_top = -4
 extra_spacing_bottom = -4
 font_data = ExtResource( 37 )
 
-[sub_resource type="Animation" id=17]
-resource_name = "Idle"
+[sub_resource type="Animation" id=18]
 length = 0.6
 loop = true
 tracks/0/type = "value"
@@ -491,7 +490,7 @@ tracks/0/keys = {
 "values": [ 0, 1, 2 ]
 }
 
-[sub_resource type="Animation" id=18]
+[sub_resource type="Animation" id=19]
 length = 1.6
 loop = true
 tracks/0/type = "value"
@@ -809,7 +808,7 @@ margin_left = -65.0
 margin_top = -44.0
 margin_right = -95.0
 margin_bottom = -85.0
-custom_fonts/font = SubResource( 19 )
+custom_fonts/font = SubResource( 17 )
 custom_colors/font_color = Color( 0.690196, 0.188235, 0.360784, 1 )
 text = "¡Uuuuh! se acercan las chicas"
 align = 1
@@ -873,7 +872,7 @@ hframes = 3
 
 [node name="Animations" type="AnimationPlayer" parent="Bird4/DancingBird/Shadow"]
 autoplay = "Idle"
-anims/Idle = SubResource( 17 )
+anims/Idle = SubResource( 18 )
 
 [node name="PrimerPlano" type="Sprite" parent="."]
 position = Vector2( 0, 507.051 )
@@ -882,7 +881,7 @@ centered = false
 hframes = 3
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="PrimerPlano"]
-anims/Idle = SubResource( 18 )
+anims/Idle = SubResource( 19 )
 
 [node name="BG" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 42 )
