@@ -133,7 +133,7 @@ tracks/1/keys = {
 "values": [ Vector2( 1e-05, 1e-05 ), Vector2( 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=4]
 resource_name = "Idle"
 length = 0.7
 loop = true
@@ -150,11 +150,11 @@ tracks/0/keys = {
 "values": [ 0, 1, 2, 1 ]
 }
 
-[sub_resource type="AtlasTexture" id=6]
+[sub_resource type="AtlasTexture" id=5]
 atlas = ExtResource( 6 )
 region = Rect2( 0, 0, 300, 216 )
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=6]
 length = 0.9
 loop = true
 tracks/0/type = "method"
@@ -178,11 +178,11 @@ tracks/0/keys = {
 } ]
 }
 
-[sub_resource type="AtlasTexture" id=8]
+[sub_resource type="AtlasTexture" id=7]
 atlas = ExtResource( 8 )
 region = Rect2( 0, 0, 63, 62 )
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=8]
 length = 0.4
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:self_modulate")
@@ -197,7 +197,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=9]
 length = 0.6
 loop = true
 tracks/0/type = "method"
@@ -221,11 +221,11 @@ tracks/0/keys = {
 } ]
 }
 
-[sub_resource type="AtlasTexture" id=11]
+[sub_resource type="AtlasTexture" id=10]
 atlas = ExtResource( 9 )
 region = Rect2( 0, 0, 78, 61 )
 
-[sub_resource type="Animation" id=12]
+[sub_resource type="Animation" id=11]
 length = 0.6
 loop = true
 tracks/0/type = "method"
@@ -249,11 +249,11 @@ tracks/0/keys = {
 } ]
 }
 
-[sub_resource type="AtlasTexture" id=13]
+[sub_resource type="AtlasTexture" id=12]
 atlas = ExtResource( 10 )
 region = Rect2( 0, 0, 76, 61 )
 
-[sub_resource type="Animation" id=14]
+[sub_resource type="Animation" id=13]
 length = 0.6
 loop = true
 tracks/0/type = "method"
@@ -277,11 +277,11 @@ tracks/0/keys = {
 } ]
 }
 
-[sub_resource type="AtlasTexture" id=15]
+[sub_resource type="AtlasTexture" id=14]
 atlas = ExtResource( 11 )
 region = Rect2( 0, 0, 184, 160 )
 
-[sub_resource type="Animation" id=16]
+[sub_resource type="Animation" id=15]
 length = 0.7
 tracks/0/type = "value"
 tracks/0/path = NodePath("GameName:rect_position")
@@ -307,8 +307,20 @@ tracks/1/keys = {
 "update": 0,
 "values": [ Vector2( 506, 945 ), Vector2( 506, 945 ), Vector2( 506, 495 ) ]
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath("ColorRect:self_modulate")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.501961 ) ]
+}
 
-[sub_resource type="Animation" id=17]
+[sub_resource type="Animation" id=16]
 length = 0.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("StartButtons:rect_position")
@@ -335,7 +347,7 @@ tracks/1/keys = {
 "values": [ Vector2( 1280, 387 ), Vector2( 0, 387 ) ]
 }
 
-[sub_resource type="DynamicFont" id=20]
+[sub_resource type="DynamicFont" id=17]
 size = 90
 extra_spacing_top = -20
 extra_spacing_bottom = -20
@@ -409,7 +421,7 @@ hframes = 3
 
 [node name="Animator" type="AnimationPlayer" parent="David"]
 autoplay = "Idle"
-anims/Idle = SubResource( 5 )
+anims/Idle = SubResource( 4 )
 
 [node name="CleanlinessCheck" type="Control" parent="."]
 anchor_right = 1.0
@@ -426,12 +438,12 @@ margin_top = 20.0
 margin_right = 7.0
 margin_bottom = 236.0
 mouse_filter = 2
-texture = SubResource( 6 )
+texture = SubResource( 5 )
 expand = true
 script = ExtResource( 7 )
 
 [node name="Animations" type="AnimationPlayer" parent="CleanlinessCheck/Background"]
-anims/Idle = SubResource( 7 )
+anims/Idle = SubResource( 6 )
 
 [node name="Heart1" type="TextureRect" parent="CleanlinessCheck"]
 margin_left = 1020.0
@@ -441,12 +453,12 @@ margin_bottom = 772.0
 rect_scale = Vector2( 1e-05, 1e-05 )
 rect_pivot_offset = Vector2( 31, 31 )
 mouse_filter = 2
-texture = SubResource( 8 )
+texture = SubResource( 7 )
 script = ExtResource( 7 )
 
 [node name="Animations" type="AnimationPlayer" parent="CleanlinessCheck/Heart1"]
-anims/Break = SubResource( 9 )
-anims/Idle = SubResource( 10 )
+anims/Break = SubResource( 8 )
+anims/Idle = SubResource( 9 )
 
 [node name="Heart2" type="TextureRect" parent="CleanlinessCheck"]
 margin_left = 1040.0
@@ -456,15 +468,15 @@ margin_bottom = 707.0
 rect_scale = Vector2( 1e-05, 1e-05 )
 rect_pivot_offset = Vector2( 39, 30 )
 mouse_filter = 2
-texture = SubResource( 11 )
+texture = SubResource( 10 )
 script = ExtResource( 7 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Animations" type="AnimationPlayer" parent="CleanlinessCheck/Heart2"]
-anims/Break = SubResource( 9 )
-anims/Idle = SubResource( 12 )
+anims/Break = SubResource( 8 )
+anims/Idle = SubResource( 11 )
 
 [node name="Heart3" type="TextureRect" parent="CleanlinessCheck"]
 margin_left = 1000.0
@@ -474,12 +486,12 @@ margin_bottom = 645.0
 rect_scale = Vector2( 1e-05, 1e-05 )
 rect_pivot_offset = Vector2( 38, 30 )
 mouse_filter = 2
-texture = SubResource( 13 )
+texture = SubResource( 12 )
 script = ExtResource( 7 )
 
 [node name="Animations" type="AnimationPlayer" parent="CleanlinessCheck/Heart3"]
-anims/Break = SubResource( 9 )
-anims/Idle = SubResource( 14 )
+anims/Break = SubResource( 8 )
+anims/Idle = SubResource( 13 )
 
 [node name="Bird" type="TextureRect" parent="CleanlinessCheck"]
 self_modulate = Color( 1, 1, 1, 0 )
@@ -491,7 +503,7 @@ margin_left = -180.0
 margin_top = 30.0
 margin_right = 4.0
 margin_bottom = 192.0
-texture = SubResource( 15 )
+texture = SubResource( 14 )
 script = ExtResource( 7 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -537,8 +549,17 @@ __meta__ = {
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="StartScreen"]
-anims/Show = SubResource( 16 )
-anims/ShowCredits = SubResource( 17 )
+anims/Show = SubResource( 15 )
+anims/ShowCredits = SubResource( 16 )
+
+[node name="ColorRect" type="ColorRect" parent="StartScreen"]
+self_modulate = Color( 1, 1, 1, 0 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.196078, 0.160784, 0.278431, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="GameName" type="TextureRect" parent="StartScreen"]
 anchor_left = 0.5
@@ -550,6 +571,9 @@ margin_top = -670.0
 margin_right = 536.0
 margin_bottom = -481.996
 texture = ExtResource( 21 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="StartButtons" type="VBoxContainer" parent="StartScreen"]
 anchor_left = 0.5
@@ -577,7 +601,7 @@ mouse_default_cursor_shape = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
 size_flags_stretch_ratio = 0.0
-custom_fonts/font = SubResource( 20 )
+custom_fonts/font = SubResource( 17 )
 custom_colors/font_color = Color( 1, 0.894118, 0.470588, 1 )
 custom_colors/font_color_hover = Color( 0.4, 1, 0.890196, 1 )
 custom_colors/font_color_pressed = Color( 0.4, 1, 0.890196, 1 )
