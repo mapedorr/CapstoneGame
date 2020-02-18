@@ -11,12 +11,12 @@
 [ext_resource path="res://Limpiar/MusicManager.gd" type="Script" id=9]
 [ext_resource path="res://Limpiar/Metronome.gd" type="Script" id=10]
 [ext_resource path="res://Audio/MX/MX_Cleaning_Base.ogg" type="AudioStream" id=11]
-[ext_resource path="res://Audio/MX/MX_Cleaning_Layer1.ogg" type="AudioStream" id=12]
-[ext_resource path="res://Audio/MX/MX_Cleaning_Layer2.ogg" type="AudioStream" id=13]
-[ext_resource path="res://Audio/MX/MX_Cleaning_Bird1.ogg" type="AudioStream" id=14]
-[ext_resource path="res://Audio/MX/MX_Cleaning_Bird2.ogg" type="AudioStream" id=15]
-[ext_resource path="res://Audio/MX/MX_Cleaning_Bird3.ogg" type="AudioStream" id=16]
-[ext_resource path="res://Audio/MX/MX_Cleaning_Bird4.ogg" type="AudioStream" id=17]
+[ext_resource path="res://Audio/Scripts/Instrument.gd" type="Script" id=12]
+[ext_resource path="res://Audio/MX/Bird1/MX_Bird1_01.ogg" type="AudioStream" id=13]
+[ext_resource path="res://Audio/MX/Bird1/MX_Bird1_02.ogg" type="AudioStream" id=14]
+[ext_resource path="res://Audio/MX/Bird1/MX_Bird1_04.ogg" type="AudioStream" id=15]
+[ext_resource path="res://Audio/MX/Bird1/MX_Bird1_03.ogg" type="AudioStream" id=16]
+[ext_resource path="res://Audio/MX/Bird1/MX_Bird1_05.ogg" type="AudioStream" id=17]
 [ext_resource path="res://ui/UI.tscn" type="PackedScene" id=18]
 [ext_resource path="res://Audio/SFX/SFX_Arrive.ogg" type="AudioStream" id=19]
 [ext_resource path="res://Audio/SFX/SFX_Away.ogg" type="AudioStream" id=20]
@@ -556,7 +556,7 @@ script = ExtResource( 9 )
 [node name="Metronome" type="Node" parent="MusicManager"]
 script = ExtResource( 10 )
 bpm = 110.0
-eight = true
+quarter = true
 
 [node name="Display" type="Label" parent="MusicManager/Metronome"]
 visible = false
@@ -569,40 +569,47 @@ wait_time = 0.5
 
 [node name="MxBase" type="AudioStreamPlayer" parent="MusicManager"]
 stream = ExtResource( 11 )
+volume_db = 3.0
 bus = "Music"
 
 [node name="Layers" type="Node" parent="MusicManager"]
 
 [node name="Layer1" type="AudioStreamPlayer" parent="MusicManager/Layers"]
-stream = ExtResource( 12 )
 volume_db = -80.0
 bus = "Music"
 
 [node name="Layer2" type="AudioStreamPlayer" parent="MusicManager/Layers"]
-stream = ExtResource( 13 )
 volume_db = -80.0
 bus = "Music"
 
 [node name="Birds" type="Node" parent="MusicManager"]
 
-[node name="Birds1" type="AudioStreamPlayer" parent="MusicManager/Birds"]
+[node name="Bird1" type="Node2D" parent="MusicManager/Birds"]
+script = ExtResource( 12 )
+weight = 70
+inst_vol = -6.0
+
+[node name="Bird1_01" type="AudioStreamPlayer" parent="MusicManager/Birds/Bird1"]
+stream = ExtResource( 13 )
+bus = "Music"
+
+[node name="Bird1_02" type="AudioStreamPlayer" parent="MusicManager/Birds/Bird1"]
 stream = ExtResource( 14 )
-volume_db = -80.0
 bus = "Music"
 
-[node name="Birds2" type="AudioStreamPlayer" parent="MusicManager/Birds"]
-stream = ExtResource( 15 )
-volume_db = -80.0
-bus = "Music"
-
-[node name="Birds3" type="AudioStreamPlayer" parent="MusicManager/Birds"]
+[node name="Bird1_03" type="AudioStreamPlayer" parent="MusicManager/Birds/Bird1"]
 stream = ExtResource( 16 )
-volume_db = -80.0
 bus = "Music"
 
-[node name="Birds4" type="AudioStreamPlayer" parent="MusicManager/Birds"]
+[node name="Bird1_04" type="AudioStreamPlayer" parent="MusicManager/Birds/Bird1"]
+stream = ExtResource( 15 )
+bus = "Music"
+
+[node name="Bird1_05" type="AudioStreamPlayer" parent="MusicManager/Birds/Bird1"]
 stream = ExtResource( 17 )
-volume_db = -80.0
+bus = "Music"
+
+[node name="Bird1_06" type="AudioStreamPlayer" parent="MusicManager/Birds/Bird1"]
 bus = "Music"
 
 [node name="LeafContainer" type="Node2D" parent="."]

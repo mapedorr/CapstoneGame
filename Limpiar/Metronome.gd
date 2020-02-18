@@ -19,7 +19,7 @@ var isPlaying
 
 func _ready():
 	isPlaying = false
-	current_beat = 0
+	current_beat = 1
 	current_measure = -1
 	
 	if quarter:
@@ -40,6 +40,10 @@ func _ready():
 
 
 func _play_metronome():
+	
+	for birds in get_node("../Birds").get_children():
+		birds._on_upbeat_ticked(current_measure)
+	
 	if not isPlaying:
 		isPlaying = true
 		timer.start()
@@ -62,6 +66,6 @@ func start_metronome():
 func stop_metronome():
 	if isPlaying == true:
 		isPlaying = false
-		current_beat = 0
+		current_beat = 1
 		current_measure = -1
 		display.set_text("0  0")

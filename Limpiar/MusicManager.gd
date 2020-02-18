@@ -63,8 +63,7 @@ func awake_bird(current_layer):
 		if $Metronome.current_beat == 1:
 			match current_layer:
 				1:
-					$Birds/Birds1.play($MxBase.get_playback_position())
-					fade_in($Birds/Birds1, 1)
+					$Birds/AudioStreamPlayer.play()
 					break
 				2:
 					$Birds/Birds2.play($MxBase.get_playback_position())
