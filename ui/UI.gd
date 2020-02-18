@@ -47,7 +47,6 @@ func hide_cleanliness_check():
 		$CleanlinessCheck.hide()
 
 func _on_start_pressed():
-	# TODO: start the animation that hides the Start Screen elements
 	$StartScreen/AnimationPlayer.play_backwards("Show")
 	$UI_Menu_Out.play()
 	yield($StartScreen/AnimationPlayer, "animation_finished")

@@ -3,7 +3,7 @@
 [ext_resource path="res://ui/UI.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Fonts/Sniglet-Regular.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://Assets/Sprites/David_Globo.png" type="Texture" id=3]
-[ext_resource path="res://Assets/Sprites/David_temp.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Sprites/david.png" type="Texture" id=4]
 [ext_resource path="res://ui/assets/bg.png" type="Texture" id=6]
 [ext_resource path="res://ui/AnimatedAtlas.gd" type="Script" id=7]
 [ext_resource path="res://ui/assets/heart_1.png" type="Texture" id=8]
@@ -127,15 +127,27 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0.5, 0.8 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0, 0.5, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 1e-05, 1e-05 ), Vector2( 1, 1 ) ]
+"values": [ Vector2( 1e-05, 1e-05 ), Vector2( 1e-05, 1e-05 ), Vector2( 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("David/Globo:modulate")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.5, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
 [sub_resource type="Animation" id=4]
 resource_name = "Idle"
-length = 0.7
+length = 0.3
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("David:frame")
@@ -144,10 +156,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
-"values": [ 0, 1, 2, 1 ]
+"values": [ 0, 1, 2 ]
 }
 
 [sub_resource type="AtlasTexture" id=5]
@@ -408,6 +420,7 @@ __meta__ = {
 }
 
 [node name="Globo" type="Sprite" parent="David"]
+modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 350.844, -537.76 )
 scale = Vector2( 1e-05, 1e-05 )
 texture = ExtResource( 3 )
@@ -428,7 +441,7 @@ __meta__ = {
 
 [node name="David" type="Sprite" parent="David"]
 position = Vector2( -60, 60 )
-texture = ExtResource( 5 )
+texture = ExtResource( 4 )
 hframes = 3
 
 [node name="Animator" type="AnimationPlayer" parent="David"]

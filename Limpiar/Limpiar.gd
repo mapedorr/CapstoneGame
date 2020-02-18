@@ -5,6 +5,7 @@ export(PackedScene) var stick
 export(PackedScene) var flower
 export(PackedScene) var mushroom
 export(bool) var skip_tutorial
+export(int) var goal_females = 4
 
 onready var dirt_on_ground = $LeafContainer.get_children().size()
 onready var min_x = int ($SpawnArea.position.x - $SpawnArea/CollisionShape2D.shape.extents.x)
@@ -34,27 +35,29 @@ func _ready():
 	$MasterTimer.connect("timeout", self, "_on_master_timer_timeout")
 	$MusicManager.connect("music_started", self, "_on_music_started")
 	$Bird4/DancingBird.connect("tutorial_explained", self, "_on_tutorial_explained")
+	$Bird4/DancingBird.connect("tutorial_finished", self, "_on_tutorial_finished")
 	$UI.connect("start_game", self, "start_game")
 	# Start animations
 	$FondoL1/AnimationPlayer.play("Idle")
 	$PrimerPlano/AnimationPlayer.play("Idle")
-	$LeafContainer/Leaf.connect("object_swiped", self, "play_whoosh")
-	$LeafContainer/Mushroom.connect("object_swiped", self, "play_whoosh")
+#	$LeafContainer/Leaf.connect("object_swiped", self, "play_whoosh")
+#	$LeafContainer/Mushroom.connect("object_swiped", self, "play_whoosh")
 	
 func _on_master_timer_timeout():
 	if clean:
 		clean_countdown = 0
 		secs += 1
+		
 		if secs > 59:
 			secs = 0
 			mins += 1
 			if mins > 59:
 				mins = 0
 
-		if secs == 10:
-			$MasterTimer.stop()
-			game_finished = true
-			return
+#		if secs == 13:
+#			$MasterTimer.stop()
+#			game_finished = true
+#			return
 		
 		spawn_countdown -= 1
 		if spawn_countdown <= 0:
@@ -97,29 +100,9 @@ func _physics_process(delta):
 			spawn_limit += 2
 
 func spawn_mugre():
-	randomize_mugre()
 	var pos_x = randi()%(max_x - min_x) + min_x
 	var pos_y = randi()%(max_y - min_y) + min_y
-	# Create a mugre and set its basic properties
-	var new_mugre = basic_mugre.instance() if (randi() % 21 > 8) else breakable_mugre.instance() 
-	if new_mugre.name == "Leaf":
-		# Set a random rotation
-		randomize()
-		new_mugre.get_node("Sprite").set_scale(Vector2(1.0, 1.0 if randi() % 100 > 50 else -1.0))
-	new_mugre.set_position(Vector2(pos_x, pos_y))
-	new_mugre.set_scale(Vector2(2.3, 2.3))
-	new_mugre.spawned = true
-	new_mugre.in_game = true
-	new_mugre.count = $MusicManager/Metronome.current_beat + 1
-	# Connect listeners for mugre's signals
-	$MusicManager/Metronome/Timer.connect("timeout", new_mugre, "move")
-	new_mugre.connect("swipe_object_deleted", self, "check_dirt")
-	new_mugre.connect("object_swiped", self, "play_whoosh")
-	# Add the mugre to the tree
-	$LeafContainer.add_child(new_mugre)
-	spawn_count += 1
-	dirt_on_ground += 1
-	clean = false
+	create_mugre(Vector2(pos_x, pos_y))
 
 func randomize_mugre():
 	randomize()
@@ -154,25 +137,28 @@ func check_dirt():
 		in_tutorial += 1
 		$Bird4/DancingBird.stop_tutorial()
 	elif dirt_on_ground == 0:
-		$MusicManager.add_layer()
-		$UI.hide_cleanliness_check()
 		spawn_countdown = 3
 		clean = true
 		
-		yield($Bird4/DancingBird.speech(), "completed")
-		$SFX_Arrive.play()
-		yield(get_tree().create_timer(2), "timeout")
-		$Bird4/DancingBird.silence()
-
-		$Females.get_child(females_on_trunk).show()
-		females_on_trunk += 1
+		$UI.hide_cleanliness_check()
 		
-		if game_finished:
+		if females_on_trunk < goal_females:
+			$MusicManager.add_layer()
+			yield($Bird4/DancingBird.speech(), "completed")
+			$SFX_Arrive.play()
+			yield(get_tree().create_timer(2), "timeout")
+			$Bird4/DancingBird.silence()
+
+			$Females.get_child(females_on_trunk).show()
+			females_on_trunk += 1
+		else:
+			$MasterTimer.stop()
 			$MusicManager/Metronome/Timer.disconnect(
 				"timeout",
 				$Bird4/DancingBird,
 				"dance"
 			)
+			yield(get_tree().create_timer(3), "timeout")
 			$Bird4/DancingBird/Dance.play("PreBow")
 			$Bird4/DancingBird/Up.play()
 			randomize()
@@ -181,7 +167,6 @@ func check_dirt():
 			$Bird4/DancingBird/Dance.play("Bow")
 			$UI.show_david('end')
 			$Bird4/DancingBird/Down.play()
-#			$UI/WinMessage.show()
 
 
 func play_whoosh(obj_position):
@@ -189,13 +174,9 @@ func play_whoosh(obj_position):
 	$SFX_Whoosh.play()
 
 func _on_music_started():
-	$UI.hide_david()
 	if skip_tutorial:
-		in_tutorial = 4
-		$Bird4/DancingBird.destination = 4
-		$Bird4/DancingBird.moving = false
-		$LeafContainer/Leaf.in_game = true
-		$LeafContainer/Mushroom.in_game = true
+		in_tutorial = 4 # Creo que esto no sirve pa' mierdas
+		$Bird4/DancingBird.showing_tutorials = false
 
 	$MusicManager/Metronome/Timer.connect(
 		"timeout",
@@ -208,22 +189,61 @@ func _on_music_started():
 
 func _on_tutorial_explained(index):
 	if index == 1:
-		# The leaf is ready to be SWIPED
-		$LeafContainer/Leaf.in_game = true
-		if not $LeafContainer/Leaf.is_connected("object_swiped", self, "play_whoosh"):
-			$LeafContainer/Leaf.connect("object_swiped", self, "play_whoosh")
+		# The leaf is ready to be SPAWNED AND SWIPED
+		if $LeafContainer.get_child_count() == 0:
+			create_mugre(Vector2(620, 400), leaf)
 	elif index == 2:
-		# The mushroom is ready to be SWIPED
-		$LeafContainer/Mushroom/FalseScreen.visible = false
-		$LeafContainer/Mushroom.in_game = true
-		if not $LeafContainer/Mushroom.is_connected("object_swiped", self, "play_whoosh"):
-			$LeafContainer/Mushroom.connect("object_swiped", self, "play_whoosh")
+		# The mushroom is ready to be SPAWNED AND SWIPED
+		if $LeafContainer.get_child_count() == 0:
+			create_mugre(Vector2(620, 400), mushroom)
 	else:
 		dirt_on_ground = 1
 		check_dirt()
 
 
-
 func start_game():
 	$MusicManager.start_metronome()
+
+
+func create_mugre(position: Vector2, type: PackedScene = null) -> void:
+	# Create a mugre and set its basic properties
+	var new_mugre = null
+
+	if not type:
+		randomize_mugre()
+		new_mugre = basic_mugre.instance() if (randi() % 21 > 8) else breakable_mugre.instance()
+	else:
+		new_mugre = type.instance()
+
+	if new_mugre.name == "Leaf":
+		# Set a random rotation
+		randomize()
+		new_mugre.get_node("Sprite").set_scale(Vector2(1.0, 1.0 if randi() % 100 > 50 else -1.0))
+
+	new_mugre.set_position(position)
+	new_mugre.set_scale(Vector2(2.3, 2.3))
+	new_mugre.spawned = true
+	new_mugre.in_game = true
+	new_mugre.count = $MusicManager/Metronome.current_beat + 1
+	
+	# Connect listeners for mugre's signals
+	$MusicManager/Metronome/Timer.connect("timeout", new_mugre, "move")
+	new_mugre.connect("swipe_object_deleted", self, "check_dirt")
+	new_mugre.connect("object_swiped", self, "play_whoosh")
+	
+	# Add the mugre to the tree
+	$LeafContainer.add_child(new_mugre)
+	
+	# Update counters and cleanning flag
+	spawn_count += 1
+	dirt_on_ground += 1
+	clean = false
+
+func _on_tutorial_finished() -> void:
 	$UI.show_david('start')
+	yield($UI/Animations, "animation_finished")
+	yield(get_tree().create_timer(5), "timeout")
+	$UI.hide_david()
+	# Hacer que se generen mugres y resetear el contador de mugres generados
+	spawning = true
+	spawn_count = 0

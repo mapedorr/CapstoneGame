@@ -1,12 +1,13 @@
 extends Sprite
 
 signal tutorial_explained(index)
+signal tutorial_finished
 
 export(int) var cuando = 1
 var face = -1.0
 var count = 2
 var pre_count = 0
-var moving = true
+var moving = false
 var points = 2
 var destination = 1
 var tutorial_steps = [
@@ -28,6 +29,8 @@ var step_index = 0
 var tutorial_repeat = 0
 onready var default_position = get_parent().get_position()
 onready var normal_texture = get_texture()
+var tutorial_dance_count = 0
+var showing_tutorials = true
 
 func _ready():
 	$SpeechBalloon.hide()
@@ -38,12 +41,33 @@ func dance():
 	if pre_count == 2:
 		pre_count = 0
 		if cuando == count:
-			go_to_mugres(destination)
+#			go_to_mugres(destination)
 			if not moving:
 				if $SpeechBalloon.is_visible():
 					$Dance.play("Speak")
 				else:
 					$Dance.play("Dance")
+					
+					if showing_tutorials:
+						tutorial_dance_count += 1
+						if tutorial_dance_count == 2:
+							# Set the texture and frames number for the first tutorial
+							# (a.k.a. the normal object)
+							$SpeechBalloon/Tutorial.set_texture($SpeechBalloon/Tutorial.tutorial_a)
+							$SpeechBalloon/Tutorial.set_hframes($SpeechBalloon/Tutorial.tutorial_a_frames)
+							# Start the tutorial animation
+							begin_tutorial()
+						elif tutorial_dance_count == 4:
+							# Set the texture and frames number for the second tutorial
+							# (a.k.a. the swipeable object)
+							$SpeechBalloon/Tutorial.set_texture($SpeechBalloon/Tutorial.tutorial_b)
+							$SpeechBalloon/Tutorial.set_hframes($SpeechBalloon/Tutorial.tutorial_b_frames)
+							# Start the tutorial animation
+							begin_tutorial()
+					else:
+						tutorial_dance_count += 1
+						if tutorial_dance_count == 2:
+							emit_signal("tutorial_finished")
 				$Chirp.play()
 			else:
 				$Call.play()
@@ -185,4 +209,6 @@ func stop_tutorial():
 	yield($SpeechBalloon/Tutorials, "animation_finished")
 	$SpeechBalloon/Tutorial.hide()
 	yield(show_balloon(), "completed")
-	moving = true
+	if current_tutorial_index == 2:
+		showing_tutorials = false
+		tutorial_dance_count = 0
