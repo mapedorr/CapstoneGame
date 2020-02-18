@@ -52,8 +52,7 @@ func reset():
 		tween_out.connect("tween_completed", self, "stoplayers")
 		fade_out(layers)
 	for birds in $Birds.get_children():
-		tween_out.connect("tween_completed", self, "stoplayers")
-		fade_out(birds)
+			birds.awake = false
 		
 	current_layer = 0
 
@@ -64,15 +63,19 @@ func awake_bird(current_layer):
 			match current_layer:
 				1:
 					$Birds/Bird1.awake = true
+					$Birds/Melody_Bird1.awake = true
 					break
 				2:
 					$Birds/Bird2.awake = true
+					$Birds/Melody_Bird2.awake = true
 					break
 				3:
 					$Birds/Bird3.awake = true
+					$Birds/Melody_Bird3.awake = true
 					break
 				4:
 					$Birds/Bird4.awake = true
+					$Birds/Melody_Bird4.awake = true
 					break
 		yield(get_tree().create_timer(0.3),"timeout")
 
@@ -80,8 +83,6 @@ func stoplayers(object, key):
 	if fadingout:
 		for layers in $Layers.get_children():
 			layers.stop()
-		for birds in $Birds.get_children():
-			birds.awake = false
 
 func fade_in(music_to_fade, fadein_duration):
 	tween_out.interpolate_property(music_to_fade, "volume_db", music_to_fade.volume_db, 0, fadein_duration, transition_type, Tween.EASE_OUT, 1)

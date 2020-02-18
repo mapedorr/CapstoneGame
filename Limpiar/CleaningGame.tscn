@@ -1,4 +1,4 @@
-[gd_scene load_steps=89 format=2]
+[gd_scene load_steps=113 format=2]
 
 [ext_resource path="res://Limpiar/Limpiar.gd" type="Script" id=1]
 [ext_resource path="res://Limpiar/Leaf/Leaf.tscn" type="PackedScene" id=2]
@@ -69,6 +69,30 @@
 [ext_resource path="res://Audio/MX/Bird4/MX_Bird4_06.ogg" type="AudioStream" id=67]
 [ext_resource path="res://Audio/MX/Bird4/MX_Bird4_01.ogg" type="AudioStream" id=68]
 [ext_resource path="res://Audio/MX/Bird4/MX_Bird4_02.ogg" type="AudioStream" id=69]
+[ext_resource path="res://Audio/MX/MelodyBird2/MX_MelBird2_03.ogg" type="AudioStream" id=70]
+[ext_resource path="res://Audio/MX/MelodyBird3/MX_MelBird3_04.ogg" type="AudioStream" id=71]
+[ext_resource path="res://Audio/MX/MelodyBird1/MX_MelBird1_02.ogg" type="AudioStream" id=72]
+[ext_resource path="res://Audio/MX/MelodyBird1/MX_MelBird1_03.ogg" type="AudioStream" id=73]
+[ext_resource path="res://Audio/MX/MelodyBird3/MX_MelBird3_01.ogg" type="AudioStream" id=74]
+[ext_resource path="res://Audio/MX/MelodyBird2/MX_MelBird2_01.ogg" type="AudioStream" id=75]
+[ext_resource path="res://Audio/MX/MelodyBird4/MX_MelBird4_01.ogg" type="AudioStream" id=76]
+[ext_resource path="res://Audio/MX/MelodyBird1/MX_MelBird1_05.ogg" type="AudioStream" id=77]
+[ext_resource path="res://Audio/MX/MelodyBird4/MX_MelBird4_06.ogg" type="AudioStream" id=78]
+[ext_resource path="res://Audio/MX/MelodyBird3/MX_MelBird3_02.ogg" type="AudioStream" id=79]
+[ext_resource path="res://Audio/MX/MelodyBird1/MX_MelBird1_04.ogg" type="AudioStream" id=80]
+[ext_resource path="res://Audio/MX/MelodyBird4/MX_MelBird4_05.ogg" type="AudioStream" id=81]
+[ext_resource path="res://Audio/MX/MelodyBird1/MX_MelBird1_01.ogg" type="AudioStream" id=82]
+[ext_resource path="res://Audio/MX/MelodyBird4/MX_MelBird4_04.ogg" type="AudioStream" id=83]
+[ext_resource path="res://Audio/MX/MelodyBird2/MX_MelBird2_06.ogg" type="AudioStream" id=84]
+[ext_resource path="res://Audio/MX/MelodyBird3/MX_MelBird3_05.ogg" type="AudioStream" id=85]
+[ext_resource path="res://Audio/MX/MelodyBird3/MX_MelBird3_06.ogg" type="AudioStream" id=86]
+[ext_resource path="res://Audio/MX/MelodyBird2/MX_MelBird2_05.ogg" type="AudioStream" id=87]
+[ext_resource path="res://Audio/MX/MelodyBird3/MX_MelBird3_03.ogg" type="AudioStream" id=88]
+[ext_resource path="res://Audio/MX/MelodyBird1/MX_MelBird1_06.ogg" type="AudioStream" id=89]
+[ext_resource path="res://Audio/MX/MelodyBird4/MX_MelBird4_02.ogg" type="AudioStream" id=90]
+[ext_resource path="res://Audio/MX/MelodyBird4/MX_MelBird4_03.ogg" type="AudioStream" id=91]
+[ext_resource path="res://Audio/MX/MelodyBird2/MX_MelBird2_02.ogg" type="AudioStream" id=92]
+[ext_resource path="res://Audio/MX/MelodyBird2/MX_MelBird2_04.ogg" type="AudioStream" id=93]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Idle"
@@ -614,7 +638,7 @@ bus = "Music"
 [node name="Bird1" type="Node2D" parent="MusicManager/Birds"]
 script = ExtResource( 12 )
 bar_per_sound = 8
-weight = 85
+weight = 10
 
 [node name="Bird1_01" type="AudioStreamPlayer" parent="MusicManager/Birds/Bird1"]
 stream = ExtResource( 13 )
@@ -651,10 +675,42 @@ bus = "Birds"
 [node name="Silencio" type="AudioStreamPlayer" parent="MusicManager/Birds/Bird1"]
 bus = "Birds"
 
+[node name="Melody_Bird1" type="Node2D" parent="MusicManager/Birds"]
+script = ExtResource( 12 )
+bar_per_sound = 16
+weight = 85
+
+[node name="Bird1_01" type="AudioStreamPlayer" parent="MusicManager/Birds/Melody_Bird1"]
+stream = ExtResource( 82 )
+bus = "Birds"
+
+[node name="Bird1_02" type="AudioStreamPlayer" parent="MusicManager/Birds/Melody_Bird1"]
+stream = ExtResource( 72 )
+bus = "Birds"
+
+[node name="Bird1_03" type="AudioStreamPlayer" parent="MusicManager/Birds/Melody_Bird1"]
+stream = ExtResource( 73 )
+bus = "Birds"
+
+[node name="Bird1_04" type="AudioStreamPlayer" parent="MusicManager/Birds/Melody_Bird1"]
+stream = ExtResource( 80 )
+bus = "Birds"
+
+[node name="Bird1_05" type="AudioStreamPlayer" parent="MusicManager/Birds/Melody_Bird1"]
+stream = ExtResource( 77 )
+bus = "Birds"
+
+[node name="Bird1_06" type="AudioStreamPlayer" parent="MusicManager/Birds/Melody_Bird1"]
+stream = ExtResource( 89 )
+bus = "Birds"
+
+[node name="Silencio" type="AudioStreamPlayer" parent="MusicManager/Birds/Melody_Bird1"]
+bus = "Birds"
+
 [node name="Bird2" type="Node2D" parent="MusicManager/Birds"]
 script = ExtResource( 12 )
 bar_per_sound = 8
-weight = 85
+weight = 10
 
 [node name="Bird2_01" type="AudioStreamPlayer" parent="MusicManager/Birds/Bird2"]
 stream = ExtResource( 46 )
@@ -691,10 +747,42 @@ bus = "Birds"
 [node name="Silencio" type="AudioStreamPlayer" parent="MusicManager/Birds/Bird2"]
 bus = "Birds"
 
+[node name="Melody_Bird2" type="Node2D" parent="MusicManager/Birds"]
+script = ExtResource( 12 )
+bar_per_sound = 16
+weight = 85
+
+[node name="Bird1_01" type="AudioStreamPlayer" parent="MusicManager/Birds/Melody_Bird2"]
+stream = ExtResource( 75 )
+bus = "Birds"
+
+[node name="Bird1_02" type="AudioStreamPlayer" parent="MusicManager/Birds/Melody_Bird2"]
+stream = ExtResource( 92 )
+bus = "Birds"
+
+[node name="Bird1_03" type="AudioStreamPlayer" parent="MusicManager/Birds/Melody_Bird2"]
+stream = ExtResource( 70 )
+bus = "Birds"
+
+[node name="Bird1_04" type="AudioStreamPlayer" parent="MusicManager/Birds/Melody_Bird2"]
+stream = ExtResource( 93 )
+bus = "Birds"
+
+[node name="Bird1_05" type="AudioStreamPlayer" parent="MusicManager/Birds/Melody_Bird2"]
+stream = ExtResource( 87 )
+bus = "Birds"
+
+[node name="Bird1_06" type="AudioStreamPlayer" parent="MusicManager/Birds/Melody_Bird2"]
+stream = ExtResource( 84 )
+bus = "Birds"
+
+[node name="Silencio" type="AudioStreamPlayer" parent="MusicManager/Birds/Melody_Bird2"]
+bus = "Birds"
+
 [node name="Bird3" type="Node2D" parent="MusicManager/Birds"]
 script = ExtResource( 12 )
 bar_per_sound = 8
-weight = 85
+weight = 10
 
 [node name="Bird3_01" type="AudioStreamPlayer" parent="MusicManager/Birds/Bird3"]
 stream = ExtResource( 55 )
@@ -731,10 +819,42 @@ bus = "Birds"
 [node name="Silencio" type="AudioStreamPlayer" parent="MusicManager/Birds/Bird3"]
 bus = "Birds"
 
+[node name="Melody_Bird3" type="Node2D" parent="MusicManager/Birds"]
+script = ExtResource( 12 )
+bar_per_sound = 16
+weight = 85
+
+[node name="Bird1_01" type="AudioStreamPlayer" parent="MusicManager/Birds/Melody_Bird3"]
+stream = ExtResource( 74 )
+bus = "Birds"
+
+[node name="Bird1_02" type="AudioStreamPlayer" parent="MusicManager/Birds/Melody_Bird3"]
+stream = ExtResource( 79 )
+bus = "Birds"
+
+[node name="Bird1_03" type="AudioStreamPlayer" parent="MusicManager/Birds/Melody_Bird3"]
+stream = ExtResource( 88 )
+bus = "Birds"
+
+[node name="Bird1_04" type="AudioStreamPlayer" parent="MusicManager/Birds/Melody_Bird3"]
+stream = ExtResource( 71 )
+bus = "Birds"
+
+[node name="Bird1_05" type="AudioStreamPlayer" parent="MusicManager/Birds/Melody_Bird3"]
+stream = ExtResource( 85 )
+bus = "Birds"
+
+[node name="Bird1_06" type="AudioStreamPlayer" parent="MusicManager/Birds/Melody_Bird3"]
+stream = ExtResource( 86 )
+bus = "Birds"
+
+[node name="Silencio" type="AudioStreamPlayer" parent="MusicManager/Birds/Melody_Bird3"]
+bus = "Birds"
+
 [node name="Bird4" type="Node2D" parent="MusicManager/Birds"]
 script = ExtResource( 12 )
 bar_per_sound = 8
-weight = 85
+weight = 10
 
 [node name="Bird4_01" type="AudioStreamPlayer" parent="MusicManager/Birds/Bird4"]
 stream = ExtResource( 68 )
@@ -769,6 +889,38 @@ stream = ExtResource( 64 )
 bus = "Birds"
 
 [node name="Silencio" type="AudioStreamPlayer" parent="MusicManager/Birds/Bird4"]
+bus = "Birds"
+
+[node name="Melody_Bird4" type="Node2D" parent="MusicManager/Birds"]
+script = ExtResource( 12 )
+bar_per_sound = 16
+weight = 85
+
+[node name="Bird1_01" type="AudioStreamPlayer" parent="MusicManager/Birds/Melody_Bird4"]
+stream = ExtResource( 76 )
+bus = "Birds"
+
+[node name="Bird1_02" type="AudioStreamPlayer" parent="MusicManager/Birds/Melody_Bird4"]
+stream = ExtResource( 90 )
+bus = "Birds"
+
+[node name="Bird1_03" type="AudioStreamPlayer" parent="MusicManager/Birds/Melody_Bird4"]
+stream = ExtResource( 91 )
+bus = "Birds"
+
+[node name="Bird1_04" type="AudioStreamPlayer" parent="MusicManager/Birds/Melody_Bird4"]
+stream = ExtResource( 83 )
+bus = "Birds"
+
+[node name="Bird1_05" type="AudioStreamPlayer" parent="MusicManager/Birds/Melody_Bird4"]
+stream = ExtResource( 81 )
+bus = "Birds"
+
+[node name="Bird1_06" type="AudioStreamPlayer" parent="MusicManager/Birds/Melody_Bird4"]
+stream = ExtResource( 78 )
+bus = "Birds"
+
+[node name="Silencio" type="AudioStreamPlayer" parent="MusicManager/Birds/Melody_Bird4"]
 bus = "Birds"
 
 [node name="LeafContainer" type="Node2D" parent="."]
