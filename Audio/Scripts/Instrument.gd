@@ -8,6 +8,7 @@ var index_sound = -1
 var select_sound
 var bar_count = 1
 var can_play = true
+var awake = false
 
 func _ready():
 	randomize()
@@ -18,7 +19,8 @@ func _ready():
 func _on_upbeat_ticked(current_bar):
 	bar_count += 1
 	if can_play:
-		playsound()
+		if awake:
+			playsound()
 		can_play = false
 	if bar_count == bar_per_sound:
 		can_play = true
@@ -29,7 +31,6 @@ func playsound():
 	randomize()
 	var randomNumber = randi()%100
 	if randomNumber < weight:
-		print('por que no sueno :()')
 		select_sound.play()
 		index_sound = randi()%get_child_count()
 		select_sound = get_child(index_sound)

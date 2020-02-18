@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/MX_Bird2_07.ogg-2e0b3cacf75dc268480d121d77e0d731.oggstr"
+
+[deps]
+
+source_file="res://Audio/MX/Bird2/MX_Bird2_07.ogg"
+dest_files=[ "res://.import/MX_Bird2_07.ogg-2e0b3cacf75dc268480d121d77e0d731.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

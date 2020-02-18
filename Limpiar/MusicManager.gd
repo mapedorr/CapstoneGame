@@ -63,19 +63,16 @@ func awake_bird(current_layer):
 		if $Metronome.current_beat == 1:
 			match current_layer:
 				1:
-					$Birds/AudioStreamPlayer.play()
+					$Birds/Bird1.awake = true
 					break
 				2:
-					$Birds/Birds2.play($MxBase.get_playback_position())
-					fade_in($Birds/Birds2, 1)
+					$Birds/Bird2.awake = true
 					break
 				3:
-					$Birds/Birds3.play($MxBase.get_playback_position())
-					fade_in($Birds/Birds3, 1)
+					$Birds/Bird3.awake = true
 					break
 				4:
-					$Birds/Birds4.play($MxBase.get_playback_position())
-					fade_in($Birds/Birds4, 1)
+					$Birds/Bird4.awake = true
 					break
 		yield(get_tree().create_timer(0.3),"timeout")
 
@@ -84,7 +81,7 @@ func stoplayers(object, key):
 		for layers in $Layers.get_children():
 			layers.stop()
 		for birds in $Birds.get_children():
-			birds.stop()
+			birds.awake = false
 
 func fade_in(music_to_fade, fadein_duration):
 	tween_out.interpolate_property(music_to_fade, "volume_db", music_to_fade.volume_db, 0, fadein_duration, transition_type, Tween.EASE_OUT, 1)
@@ -92,7 +89,7 @@ func fade_in(music_to_fade, fadein_duration):
 
 func fade_out(music_to_fade):
 	fadingout = true
-	tween_out.interpolate_property(music_to_fade, "volume_db", music_to_fade.volume_db, -80, fadeout_duration, transition_type, Tween.EASE_OUT, 1)
+#	tween_out.interpolate_property(music_to_fade, "volume_db", music_to_fade.volume_db, -80, fadeout_duration, transition_type, Tween.EASE_OUT, 1)
 	tween_out.start()
 
 func start_metronome():

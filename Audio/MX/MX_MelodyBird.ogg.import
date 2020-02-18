@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/MX_MelodyBird.ogg-8d2451a45d67bf35e0696b8c22b225be.oggstr"
+
+[deps]
+
+source_file="res://Audio/MX/MX_MelodyBird.ogg"
+dest_files=[ "res://.import/MX_MelodyBird.ogg-8d2451a45d67bf35e0696b8c22b225be.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

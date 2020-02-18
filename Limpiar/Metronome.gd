@@ -41,8 +41,6 @@ func _ready():
 
 func _play_metronome():
 	
-	for birds in get_node("../Birds").get_children():
-		birds._on_upbeat_ticked(current_measure)
 	
 	if not isPlaying:
 		isPlaying = true
@@ -55,13 +53,31 @@ func _play_metronome():
 		current_beat += 1
 		display.set_text(str(current_measure) + "  " + str(current_beat))
 
+func _sync_birds():
+	
+	for birds in get_node("../Birds").get_children():
+		birds._on_upbeat_ticked(current_measure)
+	
+	if not isPlaying:
+		isPlaying = true
+		timer.start()
+	if current_beat % time_signature_top/2 == 0:
+		current_beat = 1
+		current_measure += 1
+		display.set_text(str(current_measure) + "  " + str(current_beat))
+	else:
+		current_beat += 1
+		display.set_text(str(current_measure) + "  " + str(current_beat))
+
 func _on_Timer_timeout():
 	if isPlaying == true:
 		_play_metronome()
+		_sync_birds()
 
 func start_metronome():
 	if isPlaying == false:
 		_play_metronome()
+		_sync_birds()
 
 func stop_metronome():
 	if isPlaying == true:

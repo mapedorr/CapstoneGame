@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/MX_Base.ogg-7738abce8dc1a72248ef464afb6b156d.oggstr"
+
+[deps]
+
+source_file="res://Audio/MX/MX_Base.ogg"
+dest_files=[ "res://.import/MX_Base.ogg-7738abce8dc1a72248ef464afb6b156d.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
