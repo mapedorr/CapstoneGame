@@ -1,5 +1,5 @@
 extends Node2D
-
+""" ════ Variables ═════════════════════════════════════════════════════════ """
 export(PackedScene) var leaf
 export(PackedScene) var stick
 export(PackedScene) var flower
@@ -30,18 +30,18 @@ var females_on_trunk = 0
 var game_finished = false
 var in_tutorial = 1
 
+""" ════ Funciones ═════════════════════════════════════════════════════════ """
 func _ready():
 	# Assign listeners
 	$MasterTimer.connect("timeout", self, "_on_master_timer_timeout")
 	$MusicManager.connect("music_started", self, "_on_music_started")
 	$Bird4/DancingBird.connect("tutorial_explained", self, "_on_tutorial_explained")
 	$Bird4/DancingBird.connect("tutorial_finished", self, "_on_tutorial_finished")
+	$Bird4/DancingBird.connect("middle_reached", self, "_on_middle_reached")
 	$UI.connect("start_game", self, "start_game")
 	# Start animations
 	$FondoL1/AnimationPlayer.play("Idle")
 	$PrimerPlano/AnimationPlayer.play("Idle")
-#	$LeafContainer/Leaf.connect("object_swiped", self, "play_whoosh")
-#	$LeafContainer/Mushroom.connect("object_swiped", self, "play_whoosh")
 	
 func _on_master_timer_timeout():
 	if clean:
@@ -53,11 +53,6 @@ func _on_master_timer_timeout():
 			mins += 1
 			if mins > 59:
 				mins = 0
-
-#		if secs == 13:
-#			$MasterTimer.stop()
-#			game_finished = true
-#			return
 		
 		spawn_countdown -= 1
 		if spawn_countdown <= 0:
@@ -153,20 +148,8 @@ func check_dirt():
 			females_on_trunk += 1
 		else:
 			$MasterTimer.stop()
-			$MusicManager/Metronome/Timer.disconnect(
-				"timeout",
-				$Bird4/DancingBird,
-				"dance"
-			)
 			yield(get_tree().create_timer(3), "timeout")
-			$Bird4/DancingBird/Dance.play("PreBow")
-			$Bird4/DancingBird/Up.play()
-			randomize()
-			yield(get_tree().create_timer(randi() % 6 + 1), "timeout")
-			$Bird4/DancingBird/Dance.stop()
-			$Bird4/DancingBird/Dance.play("Bow")
-			$UI.show_david('end')
-			$Bird4/DancingBird/Down.play()
+			$Bird4/DancingBird.go_to_middle()
 
 
 func play_whoosh(obj_position):
@@ -175,8 +158,11 @@ func play_whoosh(obj_position):
 
 func _on_music_started():
 	if skip_tutorial:
-		in_tutorial = 4 # Creo que esto no sirve pa' mierdas
-		$Bird4/DancingBird.showing_tutorials = false
+		# Ponerlo en 4 para que el método que evalúa que esté todo limpio no crea
+		# que aún se están contando los mugres del tutorial
+		in_tutorial = 4
+		$Bird4/DancingBird.tutorial_dance_count = 10
+		_on_tutorial_finished()
 
 	$MusicManager/Metronome/Timer.connect(
 		"timeout",
@@ -247,3 +233,23 @@ func _on_tutorial_finished() -> void:
 	# Hacer que se generen mugres y resetear el contador de mugres generados
 	spawning = true
 	spawn_count = 0
+
+func _on_middle_reached():
+	$MusicManager/Metronome/Timer.disconnect(
+		"timeout",
+		$Bird4/DancingBird,
+		"dance"
+	)
+	
+	yield(get_tree().create_timer(3), "timeout")
+	
+	$Bird4/DancingBird/Dance.play("PreBow")
+	$Bird4/DancingBird/Up.play()
+	randomize()
+	
+	yield(get_tree().create_timer(randi() % 6 + 1), "timeout")
+	
+	$Bird4/DancingBird/Dance.stop()
+	$Bird4/DancingBird/Dance.play("Bow")
+	$UI.show_david('end')
+	$Bird4/DancingBird/Down.play()

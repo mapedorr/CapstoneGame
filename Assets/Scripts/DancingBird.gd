@@ -1,8 +1,9 @@
 extends Sprite
-
+""" ════ Señales ═══════════════════════════════════════════════════════════ """
 signal tutorial_explained(index)
 signal tutorial_finished
-
+signal middle_reached
+""" ════ Variables ═════════════════════════════════════════════════════════ """
 export(int) var cuando = 1
 var face = -1.0
 var count = 2
@@ -32,6 +33,8 @@ onready var normal_texture = get_texture()
 var tutorial_dance_count = 0
 var showing_tutorials = true
 
+
+""" ════ Funciones ═════════════════════════════════════════════════════════ """
 func _ready():
 	$SpeechBalloon.hide()
 	$SpeechBalloon/Timer.connect("timeout", self, "_on_tutorial_timeout")
@@ -41,7 +44,6 @@ func dance():
 	if pre_count == 2:
 		pre_count = 0
 		if cuando == count:
-#			go_to_mugres(destination)
 			if not moving:
 				if $SpeechBalloon.is_visible():
 					$Dance.play("Speak")
@@ -70,7 +72,8 @@ func dance():
 							emit_signal("tutorial_finished")
 				$Chirp.play()
 			else:
-				$Call.play()
+				if go_to_mugres(destination):
+					$Call.play()
 		else:
 			set_texture(normal_texture)
 		count += 1
@@ -136,10 +139,27 @@ func go_to_mugres(movimiento):
 					1:
 						move(default_position)
 						points -= 1
-					0:
 						moving = false
+					0:
 						$SpeechBalloon.hide()
 						emit_signal("tutorial_explained", current_tutorial_index + 1)
+		4:
+			# Ir al centro y luego hacer la reverencia
+			match points:
+				3:
+					move($Waypoints/A.position)
+					points -= 1
+				2:
+					move($Waypoints/B.position)
+					points -= 1
+				1:
+					move($Waypoints/C.position)
+					points -= 1
+				0:
+					moving = false
+					emit_signal("middle_reached")
+					return false
+	return true
 
 func begin_tutorial():
 	$Dance.play("Speak")
@@ -212,3 +232,8 @@ func stop_tutorial():
 	if current_tutorial_index == 2:
 		showing_tutorials = false
 		tutorial_dance_count = 0
+
+func go_to_middle():
+	moving = true
+	destination = 4
+	points = 3
