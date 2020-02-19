@@ -1,9 +1,10 @@
-[gd_scene load_steps=44 format=2]
+[gd_scene load_steps=47 format=2]
 
 [ext_resource path="res://ui/UI.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Fonts/Sniglet-Regular.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://Assets/Sprites/David_Globo.png" type="Texture" id=3]
-[ext_resource path="res://Assets/Sprites/david.png" type="Texture" id=4]
+[ext_resource path="res://CustomResources/DynamicFonts/sniglet.tres" type="DynamicFont" id=4]
+[ext_resource path="res://Assets/Sprites/david.png" type="Texture" id=5]
 [ext_resource path="res://ui/assets/bg.png" type="Texture" id=6]
 [ext_resource path="res://ui/AnimatedAtlas.gd" type="Script" id=7]
 [ext_resource path="res://ui/assets/heart_1.png" type="Texture" id=8]
@@ -20,10 +21,9 @@
 [ext_resource path="res://Audio/SFX/SFX_Heart_02.ogg" type="AudioStream" id=19]
 [ext_resource path="res://Audio/SFX/SFX_Heart_03.ogg" type="AudioStream" id=20]
 [ext_resource path="res://ui/assets/game_name.png" type="Texture" id=21]
-[ext_resource path="res://CustomResources/DynamicFonts/ConcertOne-48.tres" type="DynamicFont" id=22]
-[ext_resource path="res://ui/assets/CLO-logo.png" type="Texture" id=23]
-[ext_resource path="res://CustomResources/DynamicFonts/sniglet.tres" type="DynamicFont" id=24]
-[ext_resource path="res://Assets/Fonts/HungryPro.ttf" type="DynamicFontData" id=25]
+[ext_resource path="res://Assets/Fonts/HungryPro.ttf" type="DynamicFontData" id=22]
+[ext_resource path="res://CustomResources/DynamicFonts/ConcertOne-48.tres" type="DynamicFont" id=23]
+[ext_resource path="res://ui/assets/CLO-logo.png" type="Texture" id=24]
 
 [sub_resource type="DynamicFont" id=1]
 size = 72
@@ -130,7 +130,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 0.5, 0.8 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 1e-05, 1e-05 ), Vector2( 1e-05, 1e-05 ), Vector2( 1, 1 ) ]
+"values": [ Vector2( 1e-005, 1e-005 ), Vector2( 1e-005, 1e-005 ), Vector2( 1, 1 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("David/Globo:modulate")
@@ -371,22 +371,28 @@ tracks/2/keys = {
 "values": [ Color( 1, 1, 1, 0.501961 ), Color( 1, 1, 1, 0.894118 ) ]
 }
 
+[sub_resource type="StyleBoxEmpty" id=20]
+
 [sub_resource type="DynamicFont" id=17]
 size = 90
 extra_spacing_top = -20
 extra_spacing_bottom = -20
-font_data = ExtResource( 25 )
+font_data = ExtResource( 22 )
+
+[sub_resource type="StyleBoxEmpty" id=21]
 
 [sub_resource type="DynamicFont" id=18]
 size = 90
 extra_spacing_top = -20
 extra_spacing_bottom = -20
-font_data = ExtResource( 25 )
+font_data = ExtResource( 22 )
+
+[sub_resource type="StyleBoxEmpty" id=22]
 
 [sub_resource type="DynamicFont" id=19]
 size = 90
 extra_spacing_top = -24
-font_data = ExtResource( 25 )
+font_data = ExtResource( 22 )
 
 [node name="UI" type="CanvasLayer"]
 script = ExtResource( 1 )
@@ -422,7 +428,7 @@ __meta__ = {
 [node name="Globo" type="Sprite" parent="David"]
 modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 350.844, -537.76 )
-scale = Vector2( 1e-05, 1e-05 )
+scale = Vector2( 1e-005, 1e-005 )
 texture = ExtResource( 3 )
 
 [node name="Label" type="Label" parent="David/Globo"]
@@ -430,7 +436,7 @@ margin_left = -340.0
 margin_top = -125.0
 margin_right = 356.0
 margin_bottom = 46.0
-custom_fonts/font = ExtResource( 24 )
+custom_fonts/font = ExtResource( 4 )
 custom_colors/font_color = Color( 0.152941, 0.152941, 0.211765, 1 )
 text = "¡Es Hora De Limpiar!"
 align = 1
@@ -441,7 +447,7 @@ __meta__ = {
 
 [node name="David" type="Sprite" parent="David"]
 position = Vector2( -60, 60 )
-texture = ExtResource( 4 )
+texture = ExtResource( 5 )
 hframes = 3
 
 [node name="Animator" type="AnimationPlayer" parent="David"]
@@ -475,7 +481,7 @@ margin_left = 1020.0
 margin_top = 710.0
 margin_right = 1083.0
 margin_bottom = 772.0
-rect_scale = Vector2( 1e-05, 1e-05 )
+rect_scale = Vector2( 1e-005, 1e-005 )
 rect_pivot_offset = Vector2( 31, 31 )
 mouse_filter = 2
 texture = SubResource( 7 )
@@ -490,7 +496,7 @@ margin_left = 1040.0
 margin_top = 646.0
 margin_right = 1118.0
 margin_bottom = 707.0
-rect_scale = Vector2( 1e-05, 1e-05 )
+rect_scale = Vector2( 1e-005, 1e-005 )
 rect_pivot_offset = Vector2( 39, 30 )
 mouse_filter = 2
 texture = SubResource( 10 )
@@ -508,7 +514,7 @@ margin_left = 1000.0
 margin_top = 584.0
 margin_right = 1076.0
 margin_bottom = 645.0
-rect_scale = Vector2( 1e-05, 1e-05 )
+rect_scale = Vector2( 1e-005, 1e-005 )
 rect_pivot_offset = Vector2( 38, 30 )
 mouse_filter = 2
 texture = SubResource( 12 )
@@ -626,6 +632,7 @@ mouse_default_cursor_shape = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
 size_flags_stretch_ratio = 0.0
+custom_styles/focus = SubResource( 20 )
 custom_fonts/font = SubResource( 17 )
 custom_colors/font_color = Color( 1, 0.894118, 0.470588, 1 )
 custom_colors/font_color_hover = Color( 0.4, 1, 0.890196, 1 )
@@ -640,6 +647,7 @@ margin_bottom = 123.0
 mouse_default_cursor_shape = 2
 size_flags_horizontal = 15
 size_flags_vertical = 12
+custom_styles/focus = SubResource( 21 )
 custom_fonts/font = SubResource( 18 )
 custom_colors/font_color = Color( 1, 0.894118, 0.470588, 1 )
 custom_colors/font_color_hover = Color( 0.4, 1, 0.890196, 1 )
@@ -664,7 +672,7 @@ __meta__ = {
 [node name="Juan" type="Label" parent="StartScreen/Credits"]
 margin_right = 1280.0
 margin_bottom = 37.0
-custom_fonts/font = ExtResource( 22 )
+custom_fonts/font = ExtResource( 23 )
 custom_colors/font_color = Color( 1, 1, 0.921569, 1 )
 text = "@QuietGecko (audio, art, programming)"
 align = 1
@@ -674,7 +682,7 @@ valign = 1
 margin_top = 85.0
 margin_right = 1280.0
 margin_bottom = 122.0
-custom_fonts/font = ExtResource( 22 )
+custom_fonts/font = ExtResource( 23 )
 custom_colors/font_color = Color( 1, 1, 0.921569, 1 )
 text = "@mapedorr (art, programming)"
 align = 1
@@ -691,7 +699,7 @@ margin_left = 150.0
 margin_top = 31.0
 margin_right = 626.0
 margin_bottom = 68.0
-custom_fonts/font = ExtResource( 22 )
+custom_fonts/font = ExtResource( 23 )
 custom_colors/font_color = Color( 1, 1, 0.921569, 1 )
 text = "Special thanks to"
 align = 1
@@ -700,7 +708,7 @@ align = 1
 margin_left = 630.0
 margin_right = 1130.0
 margin_bottom = 100.0
-texture = ExtResource( 23 )
+texture = ExtResource( 24 )
 
 [node name="Back" type="Button" parent="StartScreen/Credits"]
 margin_top = 318.0
@@ -709,6 +717,7 @@ margin_bottom = 413.0
 mouse_default_cursor_shape = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+custom_styles/focus = SubResource( 22 )
 custom_fonts/font = SubResource( 19 )
 custom_colors/font_color = Color( 1, 0.894118, 0.470588, 1 )
 custom_colors/font_color_hover = Color( 0.4, 1, 0.890196, 1 )

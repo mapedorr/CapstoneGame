@@ -14,85 +14,85 @@
 [ext_resource path="res://Audio/Scripts/Instrument.gd" type="Script" id=12]
 [ext_resource path="res://Audio/MX/Bird1/MX_Bird1_01.ogg" type="AudioStream" id=13]
 [ext_resource path="res://Audio/MX/Bird1/MX_Bird1_02.ogg" type="AudioStream" id=14]
-[ext_resource path="res://Audio/MX/Bird1/MX_Bird1_04.ogg" type="AudioStream" id=15]
-[ext_resource path="res://Audio/MX/Bird1/MX_Bird1_03.ogg" type="AudioStream" id=16]
+[ext_resource path="res://Audio/MX/Bird1/MX_Bird1_03.ogg" type="AudioStream" id=15]
+[ext_resource path="res://Audio/MX/Bird1/MX_Bird1_04.ogg" type="AudioStream" id=16]
 [ext_resource path="res://Audio/MX/Bird1/MX_Bird1_05.ogg" type="AudioStream" id=17]
-[ext_resource path="res://ui/UI.tscn" type="PackedScene" id=18]
-[ext_resource path="res://Audio/SFX/SFX_Arrive.ogg" type="AudioStream" id=19]
-[ext_resource path="res://Audio/SFX/SFX_Away.ogg" type="AudioStream" id=20]
-[ext_resource path="res://Audio/SFX/SFX_Whoosh.ogg" type="AudioStream" id=21]
-[ext_resource path="res://Audio/Randomize_Audio.gd" type="Script" id=22]
-[ext_resource path="res://Bird_Female_Idle.png" type="Texture" id=23]
-[ext_resource path="res://Assets/Sprites/parotia.png" type="Texture" id=24]
-[ext_resource path="res://Assets/Scripts/DancingBird.gd" type="Script" id=25]
-[ext_resource path="res://Audio/SFX/SFX_FS_01.ogg" type="AudioStream" id=26]
-[ext_resource path="res://Audio/SFX/SFX_BowDown.ogg" type="AudioStream" id=27]
-[ext_resource path="res://Audio/SFX/SFX_BowUp.ogg" type="AudioStream" id=28]
-[ext_resource path="res://Audio/SFX/SFX_Call_Short.ogg" type="AudioStream" id=29]
-[ext_resource path="res://Audio/SFX/SFX_Call_Long.ogg" type="AudioStream" id=30]
-[ext_resource path="res://Audio/SFX/SFX_Call_Med_02.ogg" type="AudioStream" id=31]
-[ext_resource path="res://Audio/SFX/SFX_Move_01.ogg" type="AudioStream" id=32]
-[ext_resource path="res://Audio/SFX/SFX_TextGlobe_Op.ogg" type="AudioStream" id=33]
-[ext_resource path="res://Audio/SFX/SFX_TextGlobe_Cl.ogg" type="AudioStream" id=34]
-[ext_resource path="res://Assets/Sprites/speech_balloon.png" type="Texture" id=35]
-[ext_resource path="res://Assets/Sprites/how_to_play_A.png" type="Texture" id=36]
-[ext_resource path="res://Assets/Fonts/HungryPro.ttf" type="DynamicFontData" id=37]
-[ext_resource path="res://Assets/Scripts/Tutorial.gd" type="Script" id=38]
-[ext_resource path="res://Assets/Sprites/how_to_play_B.png" type="Texture" id=39]
-[ext_resource path="res://Assets/Sprites/parotia_shadow.png" type="Texture" id=40]
-[ext_resource path="res://Limpiar/Sprites/clean-fg.png" type="Texture" id=41]
-[ext_resource path="res://Audio/SFX/BG_Main.ogg" type="AudioStream" id=42]
-[ext_resource path="res://Audio/MX/Bird1/MX_Bird1_06.ogg" type="AudioStream" id=43]
-[ext_resource path="res://Audio/MX/Bird2/MX_Bird2_06.ogg" type="AudioStream" id=44]
-[ext_resource path="res://Audio/MX/Bird2/MX_Bird2_03.ogg" type="AudioStream" id=45]
-[ext_resource path="res://Audio/MX/Bird2/MX_Bird2_01.ogg" type="AudioStream" id=46]
-[ext_resource path="res://Audio/MX/Bird1/MX_Bird1_08.ogg" type="AudioStream" id=47]
-[ext_resource path="res://Audio/MX/Bird2/MX_Bird2_08.ogg" type="AudioStream" id=48]
-[ext_resource path="res://Audio/MX/Bird2/MX_Bird2_04.ogg" type="AudioStream" id=49]
-[ext_resource path="res://Audio/MX/Bird3/MX_Bird3_08.ogg" type="AudioStream" id=50]
-[ext_resource path="res://Audio/MX/Bird3/MX_Bird3_03.ogg" type="AudioStream" id=51]
-[ext_resource path="res://Audio/MX/Bird2/MX_Bird2_05.ogg" type="AudioStream" id=52]
-[ext_resource path="res://Audio/MX/Bird2/MX_Bird2_02.ogg" type="AudioStream" id=53]
-[ext_resource path="res://Audio/MX/Bird2/MX_Bird2_07.ogg" type="AudioStream" id=54]
-[ext_resource path="res://Audio/MX/Bird3/MX_Bird3_01.ogg" type="AudioStream" id=55]
-[ext_resource path="res://Audio/MX/Bird3/MX_Bird3_06.ogg" type="AudioStream" id=56]
-[ext_resource path="res://Audio/MX/Bird3/MX_Bird3_02.ogg" type="AudioStream" id=57]
-[ext_resource path="res://Audio/MX/Bird3/MX_Bird3_07.ogg" type="AudioStream" id=58]
-[ext_resource path="res://Audio/MX/Bird3/MX_Bird3_05.ogg" type="AudioStream" id=59]
-[ext_resource path="res://Audio/MX/Bird3/MX_Bird3_04.ogg" type="AudioStream" id=60]
-[ext_resource path="res://Audio/MX/Bird1/MX_Bird1_07.ogg" type="AudioStream" id=61]
-[ext_resource path="res://Audio/MX/Bird4/MX_Bird4_04.ogg" type="AudioStream" id=62]
-[ext_resource path="res://Audio/MX/Bird4/MX_Bird4_05.ogg" type="AudioStream" id=63]
-[ext_resource path="res://Audio/MX/Bird4/MX_Bird4_08.ogg" type="AudioStream" id=64]
-[ext_resource path="res://Audio/MX/Bird4/MX_Bird4_03.ogg" type="AudioStream" id=65]
-[ext_resource path="res://Audio/MX/Bird4/MX_Bird4_07.ogg" type="AudioStream" id=66]
-[ext_resource path="res://Audio/MX/Bird4/MX_Bird4_06.ogg" type="AudioStream" id=67]
-[ext_resource path="res://Audio/MX/Bird4/MX_Bird4_01.ogg" type="AudioStream" id=68]
-[ext_resource path="res://Audio/MX/Bird4/MX_Bird4_02.ogg" type="AudioStream" id=69]
-[ext_resource path="res://Audio/MX/MelodyBird2/MX_MelBird2_03.ogg" type="AudioStream" id=70]
-[ext_resource path="res://Audio/MX/MelodyBird3/MX_MelBird3_04.ogg" type="AudioStream" id=71]
-[ext_resource path="res://Audio/MX/MelodyBird1/MX_MelBird1_02.ogg" type="AudioStream" id=72]
-[ext_resource path="res://Audio/MX/MelodyBird1/MX_MelBird1_03.ogg" type="AudioStream" id=73]
-[ext_resource path="res://Audio/MX/MelodyBird3/MX_MelBird3_01.ogg" type="AudioStream" id=74]
-[ext_resource path="res://Audio/MX/MelodyBird2/MX_MelBird2_01.ogg" type="AudioStream" id=75]
-[ext_resource path="res://Audio/MX/MelodyBird4/MX_MelBird4_01.ogg" type="AudioStream" id=76]
-[ext_resource path="res://Audio/MX/MelodyBird1/MX_MelBird1_05.ogg" type="AudioStream" id=77]
-[ext_resource path="res://Audio/MX/MelodyBird4/MX_MelBird4_06.ogg" type="AudioStream" id=78]
-[ext_resource path="res://Audio/MX/MelodyBird3/MX_MelBird3_02.ogg" type="AudioStream" id=79]
-[ext_resource path="res://Audio/MX/MelodyBird1/MX_MelBird1_04.ogg" type="AudioStream" id=80]
-[ext_resource path="res://Audio/MX/MelodyBird4/MX_MelBird4_05.ogg" type="AudioStream" id=81]
-[ext_resource path="res://Audio/MX/MelodyBird1/MX_MelBird1_01.ogg" type="AudioStream" id=82]
-[ext_resource path="res://Audio/MX/MelodyBird4/MX_MelBird4_04.ogg" type="AudioStream" id=83]
-[ext_resource path="res://Audio/MX/MelodyBird2/MX_MelBird2_06.ogg" type="AudioStream" id=84]
-[ext_resource path="res://Audio/MX/MelodyBird3/MX_MelBird3_05.ogg" type="AudioStream" id=85]
-[ext_resource path="res://Audio/MX/MelodyBird3/MX_MelBird3_06.ogg" type="AudioStream" id=86]
-[ext_resource path="res://Audio/MX/MelodyBird2/MX_MelBird2_05.ogg" type="AudioStream" id=87]
-[ext_resource path="res://Audio/MX/MelodyBird3/MX_MelBird3_03.ogg" type="AudioStream" id=88]
-[ext_resource path="res://Audio/MX/MelodyBird1/MX_MelBird1_06.ogg" type="AudioStream" id=89]
-[ext_resource path="res://Audio/MX/MelodyBird4/MX_MelBird4_02.ogg" type="AudioStream" id=90]
-[ext_resource path="res://Audio/MX/MelodyBird4/MX_MelBird4_03.ogg" type="AudioStream" id=91]
-[ext_resource path="res://Audio/MX/MelodyBird2/MX_MelBird2_02.ogg" type="AudioStream" id=92]
-[ext_resource path="res://Audio/MX/MelodyBird2/MX_MelBird2_04.ogg" type="AudioStream" id=93]
+[ext_resource path="res://Audio/MX/Bird1/MX_Bird1_06.ogg" type="AudioStream" id=18]
+[ext_resource path="res://Audio/MX/Bird1/MX_Bird1_07.ogg" type="AudioStream" id=19]
+[ext_resource path="res://Audio/MX/Bird1/MX_Bird1_08.ogg" type="AudioStream" id=20]
+[ext_resource path="res://Audio/MX/MelodyBird1/MX_MelBird1_01.ogg" type="AudioStream" id=21]
+[ext_resource path="res://Audio/MX/MelodyBird1/MX_MelBird1_02.ogg" type="AudioStream" id=22]
+[ext_resource path="res://Audio/MX/MelodyBird1/MX_MelBird1_03.ogg" type="AudioStream" id=23]
+[ext_resource path="res://Audio/MX/MelodyBird1/MX_MelBird1_04.ogg" type="AudioStream" id=24]
+[ext_resource path="res://Audio/MX/MelodyBird1/MX_MelBird1_05.ogg" type="AudioStream" id=25]
+[ext_resource path="res://Audio/MX/MelodyBird1/MX_MelBird1_06.ogg" type="AudioStream" id=26]
+[ext_resource path="res://Audio/MX/Bird2/MX_Bird2_01.ogg" type="AudioStream" id=27]
+[ext_resource path="res://Audio/MX/Bird2/MX_Bird2_02.ogg" type="AudioStream" id=28]
+[ext_resource path="res://Audio/MX/Bird2/MX_Bird2_03.ogg" type="AudioStream" id=29]
+[ext_resource path="res://Audio/MX/Bird2/MX_Bird2_04.ogg" type="AudioStream" id=30]
+[ext_resource path="res://Audio/MX/Bird2/MX_Bird2_05.ogg" type="AudioStream" id=31]
+[ext_resource path="res://Audio/MX/Bird2/MX_Bird2_06.ogg" type="AudioStream" id=32]
+[ext_resource path="res://Audio/MX/Bird2/MX_Bird2_07.ogg" type="AudioStream" id=33]
+[ext_resource path="res://Audio/MX/Bird2/MX_Bird2_08.ogg" type="AudioStream" id=34]
+[ext_resource path="res://Audio/MX/MelodyBird2/MX_MelBird2_01.ogg" type="AudioStream" id=35]
+[ext_resource path="res://Audio/MX/MelodyBird2/MX_MelBird2_02.ogg" type="AudioStream" id=36]
+[ext_resource path="res://Audio/MX/MelodyBird2/MX_MelBird2_03.ogg" type="AudioStream" id=37]
+[ext_resource path="res://Audio/MX/MelodyBird2/MX_MelBird2_04.ogg" type="AudioStream" id=38]
+[ext_resource path="res://Audio/MX/MelodyBird2/MX_MelBird2_05.ogg" type="AudioStream" id=39]
+[ext_resource path="res://Audio/MX/MelodyBird2/MX_MelBird2_06.ogg" type="AudioStream" id=40]
+[ext_resource path="res://Audio/MX/Bird3/MX_Bird3_01.ogg" type="AudioStream" id=41]
+[ext_resource path="res://Audio/MX/Bird3/MX_Bird3_02.ogg" type="AudioStream" id=42]
+[ext_resource path="res://Audio/MX/Bird3/MX_Bird3_03.ogg" type="AudioStream" id=43]
+[ext_resource path="res://Audio/MX/Bird3/MX_Bird3_04.ogg" type="AudioStream" id=44]
+[ext_resource path="res://Audio/MX/Bird3/MX_Bird3_05.ogg" type="AudioStream" id=45]
+[ext_resource path="res://Audio/MX/Bird3/MX_Bird3_06.ogg" type="AudioStream" id=46]
+[ext_resource path="res://Audio/MX/Bird3/MX_Bird3_07.ogg" type="AudioStream" id=47]
+[ext_resource path="res://Audio/MX/Bird3/MX_Bird3_08.ogg" type="AudioStream" id=48]
+[ext_resource path="res://Audio/MX/MelodyBird3/MX_MelBird3_01.ogg" type="AudioStream" id=49]
+[ext_resource path="res://Audio/MX/MelodyBird3/MX_MelBird3_02.ogg" type="AudioStream" id=50]
+[ext_resource path="res://Audio/MX/MelodyBird3/MX_MelBird3_03.ogg" type="AudioStream" id=51]
+[ext_resource path="res://Audio/MX/MelodyBird3/MX_MelBird3_04.ogg" type="AudioStream" id=52]
+[ext_resource path="res://Audio/MX/MelodyBird3/MX_MelBird3_05.ogg" type="AudioStream" id=53]
+[ext_resource path="res://Audio/MX/MelodyBird3/MX_MelBird3_06.ogg" type="AudioStream" id=54]
+[ext_resource path="res://Audio/MX/Bird4/MX_Bird4_01.ogg" type="AudioStream" id=55]
+[ext_resource path="res://Audio/MX/Bird4/MX_Bird4_02.ogg" type="AudioStream" id=56]
+[ext_resource path="res://Audio/MX/Bird4/MX_Bird4_03.ogg" type="AudioStream" id=57]
+[ext_resource path="res://Audio/MX/Bird4/MX_Bird4_04.ogg" type="AudioStream" id=58]
+[ext_resource path="res://Audio/MX/Bird4/MX_Bird4_05.ogg" type="AudioStream" id=59]
+[ext_resource path="res://Audio/MX/Bird4/MX_Bird4_06.ogg" type="AudioStream" id=60]
+[ext_resource path="res://Audio/MX/Bird4/MX_Bird4_07.ogg" type="AudioStream" id=61]
+[ext_resource path="res://Audio/MX/Bird4/MX_Bird4_08.ogg" type="AudioStream" id=62]
+[ext_resource path="res://Audio/MX/MelodyBird4/MX_MelBird4_01.ogg" type="AudioStream" id=63]
+[ext_resource path="res://Audio/MX/MelodyBird4/MX_MelBird4_02.ogg" type="AudioStream" id=64]
+[ext_resource path="res://Audio/MX/MelodyBird4/MX_MelBird4_03.ogg" type="AudioStream" id=65]
+[ext_resource path="res://Audio/MX/MelodyBird4/MX_MelBird4_04.ogg" type="AudioStream" id=66]
+[ext_resource path="res://Audio/MX/MelodyBird4/MX_MelBird4_05.ogg" type="AudioStream" id=67]
+[ext_resource path="res://Audio/MX/MelodyBird4/MX_MelBird4_06.ogg" type="AudioStream" id=68]
+[ext_resource path="res://ui/UI.tscn" type="PackedScene" id=69]
+[ext_resource path="res://Audio/SFX/SFX_Arrive.ogg" type="AudioStream" id=70]
+[ext_resource path="res://Audio/SFX/SFX_Away.ogg" type="AudioStream" id=71]
+[ext_resource path="res://Audio/SFX/SFX_Whoosh.ogg" type="AudioStream" id=72]
+[ext_resource path="res://Audio/Randomize_Audio.gd" type="Script" id=73]
+[ext_resource path="res://Bird_Female_Idle.png" type="Texture" id=74]
+[ext_resource path="res://Assets/Sprites/parotia.png" type="Texture" id=75]
+[ext_resource path="res://Assets/Scripts/DancingBird.gd" type="Script" id=76]
+[ext_resource path="res://Audio/SFX/SFX_FS_01.ogg" type="AudioStream" id=77]
+[ext_resource path="res://Audio/SFX/SFX_BowDown.ogg" type="AudioStream" id=78]
+[ext_resource path="res://Audio/SFX/SFX_BowUp.ogg" type="AudioStream" id=79]
+[ext_resource path="res://Audio/SFX/SFX_Call_Short.ogg" type="AudioStream" id=80]
+[ext_resource path="res://Audio/SFX/SFX_Call_Long.ogg" type="AudioStream" id=81]
+[ext_resource path="res://Audio/SFX/SFX_Call_Med_02.ogg" type="AudioStream" id=82]
+[ext_resource path="res://Audio/SFX/SFX_Move_01.ogg" type="AudioStream" id=83]
+[ext_resource path="res://Audio/SFX/SFX_TextGlobe_Op.ogg" type="AudioStream" id=84]
+[ext_resource path="res://Audio/SFX/SFX_TextGlobe_Cl.ogg" type="AudioStream" id=85]
+[ext_resource path="res://Assets/Sprites/speech_balloon.png" type="Texture" id=86]
+[ext_resource path="res://Assets/Sprites/how_to_play_A.png" type="Texture" id=87]
+[ext_resource path="res://Assets/Fonts/HungryPro.ttf" type="DynamicFontData" id=88]
+[ext_resource path="res://Assets/Scripts/Tutorial.gd" type="Script" id=89]
+[ext_resource path="res://Assets/Sprites/how_to_play_B.png" type="Texture" id=90]
+[ext_resource path="res://Assets/Sprites/parotia_shadow.png" type="Texture" id=91]
+[ext_resource path="res://Limpiar/Sprites/clean-fg.png" type="Texture" id=92]
+[ext_resource path="res://Audio/SFX/BG_Main.ogg" type="AudioStream" id=93]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Idle"
@@ -516,14 +516,14 @@ tracks/1/keys = {
 "times": PoolRealArray( 0.00221157 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ ExtResource( 36 ) ]
+"values": [ ExtResource( 87 ) ]
 }
 
 [sub_resource type="DynamicFont" id=17]
 size = 26
 extra_spacing_top = -4
 extra_spacing_bottom = -4
-font_data = ExtResource( 37 )
+font_data = ExtResource( 88 )
 
 [sub_resource type="Animation" id=18]
 length = 0.6
@@ -649,11 +649,11 @@ stream = ExtResource( 14 )
 bus = "Birds"
 
 [node name="Bird1_03" type="AudioStreamPlayer" parent="MusicManager/Birds/Bird1"]
-stream = ExtResource( 16 )
+stream = ExtResource( 15 )
 bus = "Birds"
 
 [node name="Bird1_04" type="AudioStreamPlayer" parent="MusicManager/Birds/Bird1"]
-stream = ExtResource( 15 )
+stream = ExtResource( 16 )
 bus = "Birds"
 
 [node name="Bird1_05" type="AudioStreamPlayer" parent="MusicManager/Birds/Bird1"]
@@ -661,15 +661,15 @@ stream = ExtResource( 17 )
 bus = "Birds"
 
 [node name="Bird1_06" type="AudioStreamPlayer" parent="MusicManager/Birds/Bird1"]
-stream = ExtResource( 43 )
+stream = ExtResource( 18 )
 bus = "Birds"
 
 [node name="Bird1_07" type="AudioStreamPlayer" parent="MusicManager/Birds/Bird1"]
-stream = ExtResource( 61 )
+stream = ExtResource( 19 )
 bus = "Birds"
 
 [node name="Bird1_08" type="AudioStreamPlayer" parent="MusicManager/Birds/Bird1"]
-stream = ExtResource( 47 )
+stream = ExtResource( 20 )
 bus = "Birds"
 
 [node name="Silencio" type="AudioStreamPlayer" parent="MusicManager/Birds/Bird1"]
@@ -681,27 +681,27 @@ bar_per_sound = 16
 weight = 85
 
 [node name="Bird1_01" type="AudioStreamPlayer" parent="MusicManager/Birds/Melody_Bird1"]
-stream = ExtResource( 82 )
+stream = ExtResource( 21 )
 bus = "Birds"
 
 [node name="Bird1_02" type="AudioStreamPlayer" parent="MusicManager/Birds/Melody_Bird1"]
-stream = ExtResource( 72 )
+stream = ExtResource( 22 )
 bus = "Birds"
 
 [node name="Bird1_03" type="AudioStreamPlayer" parent="MusicManager/Birds/Melody_Bird1"]
-stream = ExtResource( 73 )
+stream = ExtResource( 23 )
 bus = "Birds"
 
 [node name="Bird1_04" type="AudioStreamPlayer" parent="MusicManager/Birds/Melody_Bird1"]
-stream = ExtResource( 80 )
+stream = ExtResource( 24 )
 bus = "Birds"
 
 [node name="Bird1_05" type="AudioStreamPlayer" parent="MusicManager/Birds/Melody_Bird1"]
-stream = ExtResource( 77 )
+stream = ExtResource( 25 )
 bus = "Birds"
 
 [node name="Bird1_06" type="AudioStreamPlayer" parent="MusicManager/Birds/Melody_Bird1"]
-stream = ExtResource( 89 )
+stream = ExtResource( 26 )
 bus = "Birds"
 
 [node name="Silencio" type="AudioStreamPlayer" parent="MusicManager/Birds/Melody_Bird1"]
@@ -713,35 +713,35 @@ bar_per_sound = 8
 weight = 10
 
 [node name="Bird2_01" type="AudioStreamPlayer" parent="MusicManager/Birds/Bird2"]
-stream = ExtResource( 46 )
+stream = ExtResource( 27 )
 bus = "Birds"
 
 [node name="Bird2_02" type="AudioStreamPlayer" parent="MusicManager/Birds/Bird2"]
-stream = ExtResource( 53 )
+stream = ExtResource( 28 )
 bus = "Birds"
 
 [node name="Bird2_03" type="AudioStreamPlayer" parent="MusicManager/Birds/Bird2"]
-stream = ExtResource( 45 )
+stream = ExtResource( 29 )
 bus = "Birds"
 
 [node name="Bird2_04" type="AudioStreamPlayer" parent="MusicManager/Birds/Bird2"]
-stream = ExtResource( 49 )
+stream = ExtResource( 30 )
 bus = "Birds"
 
 [node name="Bird2_05" type="AudioStreamPlayer" parent="MusicManager/Birds/Bird2"]
-stream = ExtResource( 52 )
+stream = ExtResource( 31 )
 bus = "Birds"
 
 [node name="Bird2_06" type="AudioStreamPlayer" parent="MusicManager/Birds/Bird2"]
-stream = ExtResource( 44 )
+stream = ExtResource( 32 )
 bus = "Birds"
 
 [node name="Bird2_07" type="AudioStreamPlayer" parent="MusicManager/Birds/Bird2"]
-stream = ExtResource( 54 )
+stream = ExtResource( 33 )
 bus = "Birds"
 
 [node name="Bird2_08" type="AudioStreamPlayer" parent="MusicManager/Birds/Bird2"]
-stream = ExtResource( 48 )
+stream = ExtResource( 34 )
 bus = "Birds"
 
 [node name="Silencio" type="AudioStreamPlayer" parent="MusicManager/Birds/Bird2"]
@@ -753,27 +753,27 @@ bar_per_sound = 16
 weight = 85
 
 [node name="Bird1_01" type="AudioStreamPlayer" parent="MusicManager/Birds/Melody_Bird2"]
-stream = ExtResource( 75 )
+stream = ExtResource( 35 )
 bus = "Birds"
 
 [node name="Bird1_02" type="AudioStreamPlayer" parent="MusicManager/Birds/Melody_Bird2"]
-stream = ExtResource( 92 )
+stream = ExtResource( 36 )
 bus = "Birds"
 
 [node name="Bird1_03" type="AudioStreamPlayer" parent="MusicManager/Birds/Melody_Bird2"]
-stream = ExtResource( 70 )
+stream = ExtResource( 37 )
 bus = "Birds"
 
 [node name="Bird1_04" type="AudioStreamPlayer" parent="MusicManager/Birds/Melody_Bird2"]
-stream = ExtResource( 93 )
+stream = ExtResource( 38 )
 bus = "Birds"
 
 [node name="Bird1_05" type="AudioStreamPlayer" parent="MusicManager/Birds/Melody_Bird2"]
-stream = ExtResource( 87 )
+stream = ExtResource( 39 )
 bus = "Birds"
 
 [node name="Bird1_06" type="AudioStreamPlayer" parent="MusicManager/Birds/Melody_Bird2"]
-stream = ExtResource( 84 )
+stream = ExtResource( 40 )
 bus = "Birds"
 
 [node name="Silencio" type="AudioStreamPlayer" parent="MusicManager/Birds/Melody_Bird2"]
@@ -785,35 +785,35 @@ bar_per_sound = 8
 weight = 10
 
 [node name="Bird3_01" type="AudioStreamPlayer" parent="MusicManager/Birds/Bird3"]
-stream = ExtResource( 55 )
+stream = ExtResource( 41 )
 bus = "Birds"
 
 [node name="Bird3_02" type="AudioStreamPlayer" parent="MusicManager/Birds/Bird3"]
-stream = ExtResource( 57 )
+stream = ExtResource( 42 )
 bus = "Birds"
 
 [node name="Bird3_03" type="AudioStreamPlayer" parent="MusicManager/Birds/Bird3"]
-stream = ExtResource( 51 )
+stream = ExtResource( 43 )
 bus = "Birds"
 
 [node name="Bird3_04" type="AudioStreamPlayer" parent="MusicManager/Birds/Bird3"]
-stream = ExtResource( 60 )
+stream = ExtResource( 44 )
 bus = "Birds"
 
 [node name="Bird3_05" type="AudioStreamPlayer" parent="MusicManager/Birds/Bird3"]
-stream = ExtResource( 59 )
+stream = ExtResource( 45 )
 bus = "Birds"
 
 [node name="Bird3_06" type="AudioStreamPlayer" parent="MusicManager/Birds/Bird3"]
-stream = ExtResource( 56 )
+stream = ExtResource( 46 )
 bus = "Birds"
 
 [node name="Bird3_07" type="AudioStreamPlayer" parent="MusicManager/Birds/Bird3"]
-stream = ExtResource( 58 )
+stream = ExtResource( 47 )
 bus = "Birds"
 
 [node name="Bird3_08" type="AudioStreamPlayer" parent="MusicManager/Birds/Bird3"]
-stream = ExtResource( 50 )
+stream = ExtResource( 48 )
 bus = "Birds"
 
 [node name="Silencio" type="AudioStreamPlayer" parent="MusicManager/Birds/Bird3"]
@@ -825,27 +825,27 @@ bar_per_sound = 16
 weight = 85
 
 [node name="Bird1_01" type="AudioStreamPlayer" parent="MusicManager/Birds/Melody_Bird3"]
-stream = ExtResource( 74 )
+stream = ExtResource( 49 )
 bus = "Birds"
 
 [node name="Bird1_02" type="AudioStreamPlayer" parent="MusicManager/Birds/Melody_Bird3"]
-stream = ExtResource( 79 )
+stream = ExtResource( 50 )
 bus = "Birds"
 
 [node name="Bird1_03" type="AudioStreamPlayer" parent="MusicManager/Birds/Melody_Bird3"]
-stream = ExtResource( 88 )
+stream = ExtResource( 51 )
 bus = "Birds"
 
 [node name="Bird1_04" type="AudioStreamPlayer" parent="MusicManager/Birds/Melody_Bird3"]
-stream = ExtResource( 71 )
+stream = ExtResource( 52 )
 bus = "Birds"
 
 [node name="Bird1_05" type="AudioStreamPlayer" parent="MusicManager/Birds/Melody_Bird3"]
-stream = ExtResource( 85 )
+stream = ExtResource( 53 )
 bus = "Birds"
 
 [node name="Bird1_06" type="AudioStreamPlayer" parent="MusicManager/Birds/Melody_Bird3"]
-stream = ExtResource( 86 )
+stream = ExtResource( 54 )
 bus = "Birds"
 
 [node name="Silencio" type="AudioStreamPlayer" parent="MusicManager/Birds/Melody_Bird3"]
@@ -857,35 +857,35 @@ bar_per_sound = 8
 weight = 10
 
 [node name="Bird4_01" type="AudioStreamPlayer" parent="MusicManager/Birds/Bird4"]
-stream = ExtResource( 68 )
+stream = ExtResource( 55 )
 bus = "Birds"
 
 [node name="Bird4_02" type="AudioStreamPlayer" parent="MusicManager/Birds/Bird4"]
-stream = ExtResource( 69 )
+stream = ExtResource( 56 )
 bus = "Birds"
 
 [node name="Bird4_03" type="AudioStreamPlayer" parent="MusicManager/Birds/Bird4"]
-stream = ExtResource( 65 )
+stream = ExtResource( 57 )
 bus = "Birds"
 
 [node name="Bird4_04" type="AudioStreamPlayer" parent="MusicManager/Birds/Bird4"]
-stream = ExtResource( 62 )
+stream = ExtResource( 58 )
 bus = "Birds"
 
 [node name="Bird4_05" type="AudioStreamPlayer" parent="MusicManager/Birds/Bird4"]
-stream = ExtResource( 63 )
+stream = ExtResource( 59 )
 bus = "Birds"
 
 [node name="Bird4_06" type="AudioStreamPlayer" parent="MusicManager/Birds/Bird4"]
-stream = ExtResource( 67 )
+stream = ExtResource( 60 )
 bus = "Birds"
 
 [node name="Bird4_07" type="AudioStreamPlayer" parent="MusicManager/Birds/Bird4"]
-stream = ExtResource( 66 )
+stream = ExtResource( 61 )
 bus = "Birds"
 
 [node name="Bird4_08" type="AudioStreamPlayer" parent="MusicManager/Birds/Bird4"]
-stream = ExtResource( 64 )
+stream = ExtResource( 62 )
 bus = "Birds"
 
 [node name="Silencio" type="AudioStreamPlayer" parent="MusicManager/Birds/Bird4"]
@@ -897,27 +897,27 @@ bar_per_sound = 16
 weight = 85
 
 [node name="Bird1_01" type="AudioStreamPlayer" parent="MusicManager/Birds/Melody_Bird4"]
-stream = ExtResource( 76 )
+stream = ExtResource( 63 )
 bus = "Birds"
 
 [node name="Bird1_02" type="AudioStreamPlayer" parent="MusicManager/Birds/Melody_Bird4"]
-stream = ExtResource( 90 )
+stream = ExtResource( 64 )
 bus = "Birds"
 
 [node name="Bird1_03" type="AudioStreamPlayer" parent="MusicManager/Birds/Melody_Bird4"]
-stream = ExtResource( 91 )
+stream = ExtResource( 65 )
 bus = "Birds"
 
 [node name="Bird1_04" type="AudioStreamPlayer" parent="MusicManager/Birds/Melody_Bird4"]
-stream = ExtResource( 83 )
+stream = ExtResource( 66 )
 bus = "Birds"
 
 [node name="Bird1_05" type="AudioStreamPlayer" parent="MusicManager/Birds/Melody_Bird4"]
-stream = ExtResource( 81 )
+stream = ExtResource( 67 )
 bus = "Birds"
 
 [node name="Bird1_06" type="AudioStreamPlayer" parent="MusicManager/Birds/Melody_Bird4"]
-stream = ExtResource( 78 )
+stream = ExtResource( 68 )
 bus = "Birds"
 
 [node name="Silencio" type="AudioStreamPlayer" parent="MusicManager/Birds/Melody_Bird4"]
@@ -928,7 +928,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="UI" parent="." instance=ExtResource( 18 )]
+[node name="UI" parent="." instance=ExtResource( 69 )]
 
 [node name="SpawnArea" type="StaticBody2D" parent="."]
 visible = false
@@ -943,15 +943,15 @@ shape = SubResource( 3 )
 disabled = true
 
 [node name="SFX_Arrive" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 19 )
+stream = ExtResource( 70 )
 
 [node name="SFX_Away" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 20 )
+stream = ExtResource( 71 )
 
 [node name="SFX_Whoosh" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource( 21 )
+stream = ExtResource( 72 )
 volume_db = 6.0
-script = ExtResource( 22 )
+script = ExtResource( 73 )
 RandomVolume = true
 minVolume = -1.0
 maxVolume = 2.0
@@ -965,7 +965,7 @@ maxPitch = 5.0
 visible = false
 position = Vector2( 1137.55, 101 )
 scale = Vector2( 1.3, 1.3 )
-texture = ExtResource( 23 )
+texture = ExtResource( 74 )
 hframes = 3
 
 [node name="Idle" type="AnimationPlayer" parent="Females/Birdy1"]
@@ -976,7 +976,7 @@ anims/Idle = SubResource( 4 )
 visible = false
 position = Vector2( 830, 75 )
 scale = Vector2( 1.3, 1.3 )
-texture = ExtResource( 23 )
+texture = ExtResource( 74 )
 hframes = 3
 
 [node name="Idle2" type="AnimationPlayer" parent="Females/Birdy2"]
@@ -987,7 +987,7 @@ anims/Idle = SubResource( 5 )
 visible = false
 position = Vector2( 430, 67 )
 scale = Vector2( -1.3, 1.3 )
-texture = ExtResource( 23 )
+texture = ExtResource( 74 )
 hframes = 3
 
 [node name="Idle3" type="AnimationPlayer" parent="Females/Birdy3"]
@@ -998,7 +998,7 @@ anims/Idle = SubResource( 6 )
 visible = false
 position = Vector2( 139, 108 )
 scale = Vector2( -1.3, 1.3 )
-texture = ExtResource( 23 )
+texture = ExtResource( 74 )
 hframes = 3
 frame = 2
 
@@ -1011,11 +1011,11 @@ position = Vector2( 1003, 425 )
 
 [node name="DancingBird" type="Sprite" parent="Bird4"]
 scale = Vector2( 1.3, 1.3 )
-texture = ExtResource( 24 )
+texture = ExtResource( 75 )
 centered = false
 hframes = 13
 frame = 10
-script = ExtResource( 25 )
+script = ExtResource( 76 )
 cuando = 4
 
 [node name="Dance" type="AnimationPlayer" parent="Bird4/DancingBird"]
@@ -1029,9 +1029,9 @@ next/Dance = "Idle"
 next/Speak = "Idle"
 
 [node name="FS_L" type="AudioStreamPlayer2D" parent="Bird4/DancingBird"]
-stream = ExtResource( 26 )
+stream = ExtResource( 77 )
 volume_db = -8.0
-script = ExtResource( 22 )
+script = ExtResource( 73 )
 RandomVolume = true
 minVolume = -4.0
 RandomPitch = true
@@ -1039,9 +1039,9 @@ minPitch = -8.0
 maxPitch = 2.0
 
 [node name="FS_R" type="AudioStreamPlayer2D" parent="Bird4/DancingBird"]
-stream = ExtResource( 26 )
+stream = ExtResource( 77 )
 volume_db = -8.0
-script = ExtResource( 22 )
+script = ExtResource( 73 )
 RandomVolume = true
 minVolume = -4.0
 RandomPitch = true
@@ -1049,29 +1049,29 @@ minPitch = -8.0
 maxPitch = 2.0
 
 [node name="Down" type="AudioStreamPlayer2D" parent="Bird4/DancingBird"]
-stream = ExtResource( 27 )
+stream = ExtResource( 78 )
 volume_db = 8.0
 
 [node name="Up" type="AudioStreamPlayer2D" parent="Bird4/DancingBird"]
-stream = ExtResource( 28 )
+stream = ExtResource( 79 )
 volume_db = 8.0
 
 [node name="Chirp" type="AudioStreamPlayer2D" parent="Bird4/DancingBird"]
-stream = ExtResource( 29 )
+stream = ExtResource( 80 )
 volume_db = 8.0
 
 [node name="Scream" type="AudioStreamPlayer2D" parent="Bird4/DancingBird"]
-stream = ExtResource( 30 )
+stream = ExtResource( 81 )
 volume_db = 3.0
 
 [node name="Call" type="AudioStreamPlayer2D" parent="Bird4/DancingBird"]
-stream = ExtResource( 31 )
+stream = ExtResource( 82 )
 attenuation = 3.73213
 
 [node name="Jump" type="AudioStreamPlayer2D" parent="Bird4/DancingBird"]
-stream = ExtResource( 32 )
+stream = ExtResource( 83 )
 volume_db = 8.0
-script = ExtResource( 22 )
+script = ExtResource( 73 )
 RandomVolume = true
 minVolume = -2.0
 maxVolume = 1.0
@@ -1080,16 +1080,16 @@ minPitch = -4.0
 maxPitch = 2.0
 
 [node name="Speech_Op" type="AudioStreamPlayer2D" parent="Bird4/DancingBird"]
-stream = ExtResource( 33 )
+stream = ExtResource( 84 )
 volume_db = -1.5
 
 [node name="Speech_Cl" type="AudioStreamPlayer2D" parent="Bird4/DancingBird"]
-stream = ExtResource( 34 )
+stream = ExtResource( 85 )
 volume_db = -1.5
 
 [node name="SpeechBalloon" type="Sprite" parent="Bird4/DancingBird"]
 position = Vector2( 37, -45 )
-texture = ExtResource( 35 )
+texture = ExtResource( 86 )
 hframes = 9
 
 [node name="Timer" type="Timer" parent="Bird4/DancingBird/SpeechBalloon"]
@@ -1125,12 +1125,12 @@ __meta__ = {
 [node name="Tutorial" type="Sprite" parent="Bird4/DancingBird/SpeechBalloon"]
 visible = false
 position = Vector2( -11.0001, -12.3736 )
-texture = ExtResource( 36 )
+texture = ExtResource( 87 )
 hframes = 15
 frame = 12
-script = ExtResource( 38 )
-tutorial_a = ExtResource( 36 )
-tutorial_b = ExtResource( 39 )
+script = ExtResource( 89 )
+tutorial_a = ExtResource( 87 )
+tutorial_b = ExtResource( 90 )
 tutorial_a_frames = 15
 tutorial_b_frames = 17
 
@@ -1171,7 +1171,7 @@ modulate = Color( 1, 1, 1, 0.784314 )
 position = Vector2( 74, 118 )
 scale = Vector2( 2.5, 2.5 )
 z_index = -1
-texture = ExtResource( 40 )
+texture = ExtResource( 91 )
 hframes = 3
 
 [node name="Animations" type="AnimationPlayer" parent="Bird4/DancingBird/Shadow"]
@@ -1180,7 +1180,7 @@ anims/Idle = SubResource( 18 )
 
 [node name="PrimerPlano" type="Sprite" parent="."]
 position = Vector2( 0, 507.051 )
-texture = ExtResource( 41 )
+texture = ExtResource( 92 )
 centered = false
 hframes = 3
 
@@ -1188,6 +1188,6 @@ hframes = 3
 anims/Idle = SubResource( 19 )
 
 [node name="BG" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 42 )
+stream = ExtResource( 93 )
 autoplay = true
 [connection signal="timeout" from="MusicManager/Metronome/Timer" to="MusicManager/Metronome" method="_on_Timer_timeout"]
