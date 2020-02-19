@@ -1,4 +1,4 @@
-[gd_scene load_steps=113 format=2]
+[gd_scene load_steps=116 format=2]
 
 [ext_resource path="res://Limpiar/Limpiar.gd" type="Script" id=1]
 [ext_resource path="res://Limpiar/Leaf/Leaf.tscn" type="PackedScene" id=2]
@@ -93,6 +93,9 @@
 [ext_resource path="res://Assets/Sprites/parotia_shadow.png" type="Texture" id=91]
 [ext_resource path="res://Limpiar/Sprites/clean-fg.png" type="Texture" id=92]
 [ext_resource path="res://Audio/SFX/BG_Main.ogg" type="AudioStream" id=93]
+[ext_resource path="res://Audio/MX/MX_MelodyBird.ogg" type="AudioStream" id=94]
+[ext_resource path="res://Audio/MX/MX_Cleaning_Layer1.ogg" type="AudioStream" id=95]
+[ext_resource path="res://Audio/MX/MX_Cleaning_Layer2.ogg" type="AudioStream" id=96]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Idle"
@@ -626,10 +629,17 @@ bus = "Music"
 [node name="Layers" type="Node" parent="MusicManager"]
 
 [node name="Layer1" type="AudioStreamPlayer" parent="MusicManager/Layers"]
+stream = ExtResource( 95 )
 volume_db = -80.0
 bus = "Music"
 
 [node name="Layer2" type="AudioStreamPlayer" parent="MusicManager/Layers"]
+stream = ExtResource( 96 )
+volume_db = -80.0
+bus = "Music"
+
+[node name="FluteLayer" type="AudioStreamPlayer" parent="MusicManager/Layers"]
+stream = ExtResource( 94 )
 volume_db = -80.0
 bus = "Music"
 
@@ -680,27 +690,27 @@ script = ExtResource( 12 )
 bar_per_sound = 16
 weight = 85
 
-[node name="Bird1_01" type="AudioStreamPlayer" parent="MusicManager/Birds/Melody_Bird1"]
+[node name="Melody_Bird1_01" type="AudioStreamPlayer" parent="MusicManager/Birds/Melody_Bird1"]
 stream = ExtResource( 21 )
 bus = "Birds"
 
-[node name="Bird1_02" type="AudioStreamPlayer" parent="MusicManager/Birds/Melody_Bird1"]
+[node name="Melody_Bird1_02" type="AudioStreamPlayer" parent="MusicManager/Birds/Melody_Bird1"]
 stream = ExtResource( 22 )
 bus = "Birds"
 
-[node name="Bird1_03" type="AudioStreamPlayer" parent="MusicManager/Birds/Melody_Bird1"]
+[node name="Melody_Bird1_03" type="AudioStreamPlayer" parent="MusicManager/Birds/Melody_Bird1"]
 stream = ExtResource( 23 )
 bus = "Birds"
 
-[node name="Bird1_04" type="AudioStreamPlayer" parent="MusicManager/Birds/Melody_Bird1"]
+[node name="Melody_Bird1_04" type="AudioStreamPlayer" parent="MusicManager/Birds/Melody_Bird1"]
 stream = ExtResource( 24 )
 bus = "Birds"
 
-[node name="Bird1_05" type="AudioStreamPlayer" parent="MusicManager/Birds/Melody_Bird1"]
+[node name="Melody_Bird1_05" type="AudioStreamPlayer" parent="MusicManager/Birds/Melody_Bird1"]
 stream = ExtResource( 25 )
 bus = "Birds"
 
-[node name="Bird1_06" type="AudioStreamPlayer" parent="MusicManager/Birds/Melody_Bird1"]
+[node name="Melody_Bird1_06" type="AudioStreamPlayer" parent="MusicManager/Birds/Melody_Bird1"]
 stream = ExtResource( 26 )
 bus = "Birds"
 
@@ -752,27 +762,27 @@ script = ExtResource( 12 )
 bar_per_sound = 16
 weight = 85
 
-[node name="Bird1_01" type="AudioStreamPlayer" parent="MusicManager/Birds/Melody_Bird2"]
+[node name="Melody_Bird2_01" type="AudioStreamPlayer" parent="MusicManager/Birds/Melody_Bird2"]
 stream = ExtResource( 35 )
 bus = "Birds"
 
-[node name="Bird1_02" type="AudioStreamPlayer" parent="MusicManager/Birds/Melody_Bird2"]
+[node name="Melody_Bird2_02" type="AudioStreamPlayer" parent="MusicManager/Birds/Melody_Bird2"]
 stream = ExtResource( 36 )
 bus = "Birds"
 
-[node name="Bird1_03" type="AudioStreamPlayer" parent="MusicManager/Birds/Melody_Bird2"]
+[node name="Melody_Bird2_03" type="AudioStreamPlayer" parent="MusicManager/Birds/Melody_Bird2"]
 stream = ExtResource( 37 )
 bus = "Birds"
 
-[node name="Bird1_04" type="AudioStreamPlayer" parent="MusicManager/Birds/Melody_Bird2"]
+[node name="Melody_Bird2_04" type="AudioStreamPlayer" parent="MusicManager/Birds/Melody_Bird2"]
 stream = ExtResource( 38 )
 bus = "Birds"
 
-[node name="Bird1_05" type="AudioStreamPlayer" parent="MusicManager/Birds/Melody_Bird2"]
+[node name="Melody_Bird2_05" type="AudioStreamPlayer" parent="MusicManager/Birds/Melody_Bird2"]
 stream = ExtResource( 39 )
 bus = "Birds"
 
-[node name="Bird1_06" type="AudioStreamPlayer" parent="MusicManager/Birds/Melody_Bird2"]
+[node name="Melody_Bird2_06" type="AudioStreamPlayer" parent="MusicManager/Birds/Melody_Bird2"]
 stream = ExtResource( 40 )
 bus = "Birds"
 
@@ -824,27 +834,27 @@ script = ExtResource( 12 )
 bar_per_sound = 16
 weight = 85
 
-[node name="Bird1_01" type="AudioStreamPlayer" parent="MusicManager/Birds/Melody_Bird3"]
+[node name="Melody_Bird3_01" type="AudioStreamPlayer" parent="MusicManager/Birds/Melody_Bird3"]
 stream = ExtResource( 49 )
 bus = "Birds"
 
-[node name="Bird1_02" type="AudioStreamPlayer" parent="MusicManager/Birds/Melody_Bird3"]
+[node name="Melody_Bird3_02" type="AudioStreamPlayer" parent="MusicManager/Birds/Melody_Bird3"]
 stream = ExtResource( 50 )
 bus = "Birds"
 
-[node name="Bird1_03" type="AudioStreamPlayer" parent="MusicManager/Birds/Melody_Bird3"]
+[node name="Melody_Bird3_03" type="AudioStreamPlayer" parent="MusicManager/Birds/Melody_Bird3"]
 stream = ExtResource( 51 )
 bus = "Birds"
 
-[node name="Bird1_04" type="AudioStreamPlayer" parent="MusicManager/Birds/Melody_Bird3"]
+[node name="Melody_Bird3_04" type="AudioStreamPlayer" parent="MusicManager/Birds/Melody_Bird3"]
 stream = ExtResource( 52 )
 bus = "Birds"
 
-[node name="Bird1_05" type="AudioStreamPlayer" parent="MusicManager/Birds/Melody_Bird3"]
+[node name="Melody_Bird3_05" type="AudioStreamPlayer" parent="MusicManager/Birds/Melody_Bird3"]
 stream = ExtResource( 53 )
 bus = "Birds"
 
-[node name="Bird1_06" type="AudioStreamPlayer" parent="MusicManager/Birds/Melody_Bird3"]
+[node name="Melody_Bird3_06" type="AudioStreamPlayer" parent="MusicManager/Birds/Melody_Bird3"]
 stream = ExtResource( 54 )
 bus = "Birds"
 
@@ -896,27 +906,27 @@ script = ExtResource( 12 )
 bar_per_sound = 16
 weight = 85
 
-[node name="Bird1_01" type="AudioStreamPlayer" parent="MusicManager/Birds/Melody_Bird4"]
+[node name="Melody_Bird4_01" type="AudioStreamPlayer" parent="MusicManager/Birds/Melody_Bird4"]
 stream = ExtResource( 63 )
 bus = "Birds"
 
-[node name="Bird1_02" type="AudioStreamPlayer" parent="MusicManager/Birds/Melody_Bird4"]
+[node name="Melody_Bird4_02" type="AudioStreamPlayer" parent="MusicManager/Birds/Melody_Bird4"]
 stream = ExtResource( 64 )
 bus = "Birds"
 
-[node name="Bird1_03" type="AudioStreamPlayer" parent="MusicManager/Birds/Melody_Bird4"]
+[node name="Melody_Bird4_03" type="AudioStreamPlayer" parent="MusicManager/Birds/Melody_Bird4"]
 stream = ExtResource( 65 )
 bus = "Birds"
 
-[node name="Bird1_04" type="AudioStreamPlayer" parent="MusicManager/Birds/Melody_Bird4"]
+[node name="Melody_Bird4_04" type="AudioStreamPlayer" parent="MusicManager/Birds/Melody_Bird4"]
 stream = ExtResource( 66 )
 bus = "Birds"
 
-[node name="Bird1_05" type="AudioStreamPlayer" parent="MusicManager/Birds/Melody_Bird4"]
+[node name="Melody_Bird4_05" type="AudioStreamPlayer" parent="MusicManager/Birds/Melody_Bird4"]
 stream = ExtResource( 67 )
 bus = "Birds"
 
-[node name="Bird1_06" type="AudioStreamPlayer" parent="MusicManager/Birds/Melody_Bird4"]
+[node name="Melody_Bird4_06" type="AudioStreamPlayer" parent="MusicManager/Birds/Melody_Bird4"]
 stream = ExtResource( 68 )
 bus = "Birds"
 

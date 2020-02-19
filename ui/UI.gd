@@ -62,6 +62,7 @@ func _on_back_pressed():
 	$UI_Menu_Back.play()
 
 func show_david(status):
+	$UI_David_In.play()
 	if status == 'start':
 		$David/Globo/Label.set_text("¡Es Hora De Limpiar!")
 	else:
@@ -69,4 +70,5 @@ func show_david(status):
 	$Animations.play("ShowDavid")
 
 func hide_david():
+	$UI_David_Out.play()
 	$Animations.play_backwards("ShowDavid")

@@ -57,10 +57,7 @@ func _sync_birds():
 	
 	for birds in get_node("../Birds").get_children():
 		birds._on_upbeat_ticked(current_measure)
-	
-	if not isPlaying:
-		isPlaying = true
-		timer.start()
+		
 	if current_beat % time_signature_top/2 == 0:
 		current_beat = 1
 		current_measure += 1

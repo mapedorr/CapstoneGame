@@ -37,11 +37,11 @@ func add_layer():
 					break
 				2:
 					$Layers/Layer1.play($MxBase.get_playback_position())
-					fade_in($Layers/Layer1, 3)
+					fade_in($Layers/Layer1, 3, 6)
 					break
 				3:
 					$Layers/Layer2.play($MxBase.get_playback_position())
-					fade_in($Layers/Layer2, 3)
+					fade_in($Layers/Layer2, 3, 6)
 					break
 				4:
 					break
@@ -84,13 +84,13 @@ func stoplayers(object, key):
 		for layers in $Layers.get_children():
 			layers.stop()
 
-func fade_in(music_to_fade, fadein_duration):
-	tween_out.interpolate_property(music_to_fade, "volume_db", music_to_fade.volume_db, 0, fadein_duration, transition_type, Tween.EASE_OUT, 1)
+func fade_in(music_to_fade, fadein_duration, end_volume = 0):
+	tween_out.interpolate_property(music_to_fade, "volume_db", music_to_fade.volume_db, end_volume, fadein_duration, transition_type, Tween.EASE_OUT, 1)
 	tween_out.start()
 
 func fade_out(music_to_fade):
 	fadingout = true
-#	tween_out.interpolate_property(music_to_fade, "volume_db", music_to_fade.volume_db, -80, fadeout_duration, transition_type, Tween.EASE_OUT, 1)
+	tween_out.interpolate_property(music_to_fade, "volume_db", music_to_fade.volume_db, -80, fadeout_duration, transition_type, Tween.EASE_OUT, 1)
 	tween_out.start()
 
 func start_metronome():

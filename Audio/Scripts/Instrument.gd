@@ -21,7 +21,7 @@ func _on_upbeat_ticked(current_bar):
 	if can_play:
 		if awake:
 			playsound()
-		can_play = false
+			can_play = false
 	if bar_count == bar_per_sound:
 		can_play = true
 		bar_count = 0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=2]
+[gd_scene load_steps=50 format=2]
 
 [ext_resource path="res://ui/UI.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Fonts/Sniglet-Regular.ttf" type="DynamicFontData" id=2]
@@ -24,6 +24,9 @@
 [ext_resource path="res://Assets/Fonts/HungryPro.ttf" type="DynamicFontData" id=22]
 [ext_resource path="res://CustomResources/DynamicFonts/ConcertOne-48.tres" type="DynamicFont" id=23]
 [ext_resource path="res://ui/assets/CLO-logo.png" type="Texture" id=24]
+[ext_resource path="res://Audio/SFX/UI_David_Op.ogg" type="AudioStream" id=25]
+[ext_resource path="res://Audio/SFX/UI_David_Cl.ogg" type="AudioStream" id=26]
+[ext_resource path="res://Assets/Sprites/PerroViejoLogo_02.png" type="Texture" id=27]
 
 [sub_resource type="DynamicFont" id=1]
 size = 72
@@ -130,7 +133,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 0.5, 0.8 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 1e-005, 1e-005 ), Vector2( 1e-005, 1e-005 ), Vector2( 1, 1 ) ]
+"values": [ Vector2( 1e-05, 1e-05 ), Vector2( 1e-05, 1e-05 ), Vector2( 1, 1 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("David/Globo:modulate")
@@ -341,10 +344,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0.0109547, 0.5 ),
-"transitions": PoolRealArray( 0.277393, 1 ),
+"times": PoolRealArray( 0, 0.0109547, 0.5 ),
+"transitions": PoolRealArray( 0.28, 0.28, 1 ),
 "update": 0,
-"values": [ Vector2( 506, 495 ), Vector2( -500, 495 ) ]
+"values": [ Vector2( 506, 495 ), Vector2( 506, 495 ), Vector2( -500, 495 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Credits:rect_position")
@@ -354,7 +357,7 @@ tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
 "times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( 3.03143, 1 ),
+"transitions": PoolRealArray( 3.5, 0.3 ),
 "update": 0,
 "values": [ Vector2( 1280, 387 ), Vector2( 0, 387 ) ]
 }
@@ -370,16 +373,32 @@ tracks/2/keys = {
 "update": 0,
 "values": [ Color( 1, 1, 1, 0.501961 ), Color( 1, 1, 1, 0.894118 ) ]
 }
+tracks/3/type = "value"
+tracks/3/path = NodePath("LogoPerroViejo:rect_position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 5, 3 ),
+"update": 0,
+"values": [ Vector2( 500, -300 ), Vector2( 500, 10 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("GameName:rect_position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 104, 120 ), Vector2( 104, 170 ) ]
+}
 
-[sub_resource type="StyleBoxEmpty" id=20]
-
-[sub_resource type="DynamicFont" id=17]
-size = 90
-extra_spacing_top = -20
-extra_spacing_bottom = -20
-font_data = ExtResource( 22 )
-
-[sub_resource type="StyleBoxEmpty" id=21]
+[sub_resource type="StyleBoxEmpty" id=17]
 
 [sub_resource type="DynamicFont" id=18]
 size = 90
@@ -387,9 +406,17 @@ extra_spacing_top = -20
 extra_spacing_bottom = -20
 font_data = ExtResource( 22 )
 
-[sub_resource type="StyleBoxEmpty" id=22]
+[sub_resource type="StyleBoxEmpty" id=19]
 
-[sub_resource type="DynamicFont" id=19]
+[sub_resource type="DynamicFont" id=20]
+size = 90
+extra_spacing_top = -20
+extra_spacing_bottom = -20
+font_data = ExtResource( 22 )
+
+[sub_resource type="StyleBoxEmpty" id=21]
+
+[sub_resource type="DynamicFont" id=22]
 size = 90
 extra_spacing_top = -24
 font_data = ExtResource( 22 )
@@ -428,7 +455,7 @@ __meta__ = {
 [node name="Globo" type="Sprite" parent="David"]
 modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 350.844, -537.76 )
-scale = Vector2( 1e-005, 1e-005 )
+scale = Vector2( 1e-05, 1e-05 )
 texture = ExtResource( 3 )
 
 [node name="Label" type="Label" parent="David/Globo"]
@@ -481,7 +508,7 @@ margin_left = 1020.0
 margin_top = 710.0
 margin_right = 1083.0
 margin_bottom = 772.0
-rect_scale = Vector2( 1e-005, 1e-005 )
+rect_scale = Vector2( 1e-05, 1e-05 )
 rect_pivot_offset = Vector2( 31, 31 )
 mouse_filter = 2
 texture = SubResource( 7 )
@@ -496,7 +523,7 @@ margin_left = 1040.0
 margin_top = 646.0
 margin_right = 1118.0
 margin_bottom = 707.0
-rect_scale = Vector2( 1e-005, 1e-005 )
+rect_scale = Vector2( 1e-05, 1e-05 )
 rect_pivot_offset = Vector2( 39, 30 )
 mouse_filter = 2
 texture = SubResource( 10 )
@@ -514,7 +541,7 @@ margin_left = 1000.0
 margin_top = 584.0
 margin_right = 1076.0
 margin_bottom = 645.0
-rect_scale = Vector2( 1e-005, 1e-005 )
+rect_scale = Vector2( 1e-05, 1e-05 )
 rect_pivot_offset = Vector2( 38, 30 )
 mouse_filter = 2
 texture = SubResource( 12 )
@@ -539,6 +566,12 @@ script = ExtResource( 7 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="UI_David_In" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 25 )
+
+[node name="UI_David_Out" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 26 )
 
 [node name="UI_Menu_In" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 12 )
@@ -584,7 +617,7 @@ anims/Show = SubResource( 15 )
 anims/ShowCredits = SubResource( 16 )
 
 [node name="Overlay" type="ColorRect" parent="StartScreen"]
-self_modulate = Color( 1, 1, 1, 0 )
+self_modulate = Color( 1, 1, 1, 0.501961 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0.152941, 0.152941, 0.211765, 1 )
@@ -598,9 +631,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -536.0
-margin_top = -670.0
+margin_top = -280.0
 margin_right = 536.0
-margin_bottom = -481.996
+margin_bottom = -91.9946
 texture = ExtResource( 21 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -612,9 +645,9 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 margin_left = -134.0
-margin_top = 145.0
-margin_right = 151.0
-margin_bottom = 268.0
+margin_top = -305.0
+margin_right = 151.06
+margin_bottom = -157.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.0
@@ -632,8 +665,8 @@ mouse_default_cursor_shape = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
 size_flags_stretch_ratio = 0.0
-custom_styles/focus = SubResource( 20 )
-custom_fonts/font = SubResource( 17 )
+custom_styles/focus = SubResource( 17 )
+custom_fonts/font = SubResource( 18 )
 custom_colors/font_color = Color( 1, 0.894118, 0.470588, 1 )
 custom_colors/font_color_hover = Color( 0.4, 1, 0.890196, 1 )
 custom_colors/font_color_pressed = Color( 0.4, 1, 0.890196, 1 )
@@ -647,13 +680,28 @@ margin_bottom = 123.0
 mouse_default_cursor_shape = 2
 size_flags_horizontal = 15
 size_flags_vertical = 12
-custom_styles/focus = SubResource( 21 )
-custom_fonts/font = SubResource( 18 )
+custom_styles/focus = SubResource( 19 )
+custom_fonts/font = SubResource( 20 )
 custom_colors/font_color = Color( 1, 0.894118, 0.470588, 1 )
 custom_colors/font_color_hover = Color( 0.4, 1, 0.890196, 1 )
 custom_colors/font_color_pressed = Color( 0.4, 1, 0.890196, 1 )
 text = "Credits"
 flat = true
+
+[node name="LogoPerroViejo" type="TextureRect" parent="StartScreen"]
+anchor_left = 0.512543
+anchor_top = 0.0150516
+anchor_right = 0.512543
+anchor_bottom = 0.0150516
+margin_left = -156.055
+margin_top = -312.041
+margin_right = 483.946
+margin_bottom = 177.959
+rect_scale = Vector2( 0.4, 0.4 )
+texture = ExtResource( 27 )
+__meta__ = {
+"_edit_use_anchors_": true
+}
 
 [node name="Credits" type="VBoxContainer" parent="StartScreen"]
 anchor_top = 0.5
@@ -661,12 +709,11 @@ anchor_right = 1.0
 anchor_bottom = 0.5
 margin_left = 1280.0
 margin_top = -13.0
-margin_right = 1280.0
-margin_bottom = 400.0
+margin_right = 1280.24
+margin_bottom = 370.0
 custom_constants/separation = 48
 __meta__ = {
-"_edit_group_": true,
-"_edit_lock_": true
+"_edit_use_anchors_": false
 }
 
 [node name="Juan" type="Label" parent="StartScreen/Credits"]
@@ -713,12 +760,12 @@ texture = ExtResource( 24 )
 [node name="Back" type="Button" parent="StartScreen/Credits"]
 margin_top = 318.0
 margin_right = 1280.0
-margin_bottom = 413.0
+margin_bottom = 383.0
 mouse_default_cursor_shape = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_styles/focus = SubResource( 22 )
-custom_fonts/font = SubResource( 19 )
+custom_styles/focus = SubResource( 21 )
+custom_fonts/font = SubResource( 22 )
 custom_colors/font_color = Color( 1, 0.894118, 0.470588, 1 )
 custom_colors/font_color_hover = Color( 0.4, 1, 0.890196, 1 )
 custom_colors/font_color_pressed = Color( 0.4, 1, 0.890196, 1 )
