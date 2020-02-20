@@ -6,6 +6,7 @@ export(PackedScene) var flower
 export(PackedScene) var mushroom
 export(bool) var skip_tutorial
 export(int) var goal_females = 4
+export(float) var dflt_master_volume = -1.7
 
 onready var dirt_on_ground = $LeafContainer.get_children().size()
 onready var min_x = int ($SpawnArea.position.x - $SpawnArea/CollisionShape2D.shape.extents.x)
@@ -32,6 +33,8 @@ var in_tutorial = 1
 
 """ ════ Funciones ═════════════════════════════════════════════════════════ """
 func _ready():
+	# Establecer valores por defecto
+	AudioServer.set_bus_volume_db(0, dflt_master_volume)
 	# Assign listeners
 	$MasterTimer.connect("timeout", self, "_on_master_timer_timeout")
 	$MusicManager.connect("music_started", self, "_on_music_started")
@@ -188,6 +191,7 @@ func _on_tutorial_explained(index):
 
 
 func _on_start_game():
+#	$UI.show_end()
 	$MusicManager.start_metronome()
 
 

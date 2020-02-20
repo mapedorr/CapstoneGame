@@ -4,6 +4,7 @@ signal start_game
 
 onready var cleanliness_visible = false
 var hearts = 3
+var coco = 0
 
 func _ready():
 	$CleanlinessCheck.hide()
@@ -76,13 +77,20 @@ func hide_david():
 
 func show_end():
 	$EndScreen.show()
+	$EndScreen/ToMainMenuSFX.play()
 	$EndScreen/AnimationPlayer.play("ShowButton")
 	yield($EndScreen/AnimationPlayer, "animation_finished")
 	$EndScreen/AnimationPlayer.play("IdleButton")
 	$EndScreen/ToMainMenu.connect("pressed", self, "_on_to_main_menu_pressed")
 
 func _on_to_main_menu_pressed():
+	var master_volume_db = AudioServer.get_bus_volume_db(0)
+	$EndScreen/Tween.interpolate_method(self, "change_master_volume", master_volume_db, -24, 1, Tween.TRANS_LINEAR, Tween.EASE_OUT)
+	$EndScreen/Tween.start()
 	$EndScreen/AnimationPlayer.stop()
 	$EndScreen/AnimationPlayer.play("HideButton")
 	yield($EndScreen/AnimationPlayer, "animation_finished")
 	get_tree().reload_current_scene()
+
+func change_master_volume(new_val):
+	AudioServer.set_bus_volume_db(0, new_val)

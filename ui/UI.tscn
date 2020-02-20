@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=2]
+[gd_scene load_steps=67 format=2]
 
 [ext_resource path="res://ui/UI.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Fonts/Sniglet-Regular.ttf" type="DynamicFontData" id=2]
@@ -38,6 +38,8 @@
 [ext_resource path="res://CustomResources/StyleBoxTexture/ToMainMenuBtn-pressed-07.tres" type="StyleBox" id=36]
 [ext_resource path="res://CustomResources/StyleBoxTexture/ToMainMenuBtn-pressed-04.tres" type="StyleBox" id=37]
 [ext_resource path="res://CustomResources/StyleBoxTexture/ToMainMenuBtn-pressed-02.tres" type="StyleBox" id=38]
+[ext_resource path="res://Audio/SFX/SFX_Whoosh.ogg" type="AudioStream" id=39]
+[ext_resource path="res://Audio/Randomize_Audio.gd" type="Script" id=40]
 
 [sub_resource type="DynamicFont" id=1]
 size = 72
@@ -432,7 +434,7 @@ size = 90
 extra_spacing_top = -24
 font_data = ExtResource( 22 )
 
-[sub_resource type="Animation" id=26]
+[sub_resource type="Animation" id=23]
 resource_name = "HideButton"
 tracks/0/type = "value"
 tracks/0/path = NodePath("ToMainMenu:custom_styles/focus")
@@ -477,7 +479,7 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 0.6, 0.9 ),
+"times": PoolRealArray( 0, 0.1, 0.8 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
@@ -495,8 +497,7 @@ tracks/4/keys = {
 "values": [ ExtResource( 29 ), ExtResource( 38 ), ExtResource( 33 ), ExtResource( 37 ), ExtResource( 35 ), ExtResource( 34 ), ExtResource( 36 ), ExtResource( 32 ) ]
 }
 
-[sub_resource type="Animation" id=23]
-resource_name = "IdleButton"
+[sub_resource type="Animation" id=24]
 length = 0.3
 loop = true
 tracks/0/type = "value"
@@ -536,7 +537,7 @@ tracks/2/keys = {
 "values": [ Color( 1, 1, 1, 0 ) ]
 }
 
-[sub_resource type="Animation" id=24]
+[sub_resource type="Animation" id=25]
 length = 0.2
 tracks/0/type = "value"
 tracks/0/path = NodePath("ToMainMenu:rect_position")
@@ -587,7 +588,7 @@ tracks/3/keys = {
 "values": [ Color( 1, 1, 1, 0 ) ]
 }
 
-[sub_resource type="DynamicFont" id=25]
+[sub_resource type="DynamicFont" id=26]
 size = 36
 font_data = ExtResource( 22 )
 
@@ -951,9 +952,11 @@ __meta__ = {
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="EndScreen"]
-anims/HideButton = SubResource( 26 )
-anims/IdleButton = SubResource( 23 )
-anims/ShowButton = SubResource( 24 )
+anims/HideButton = SubResource( 23 )
+anims/IdleButton = SubResource( 24 )
+anims/ShowButton = SubResource( 25 )
+
+[node name="Tween" type="Tween" parent="EndScreen"]
 
 [node name="ToMainMenu" type="Button" parent="EndScreen"]
 margin_left = 998.0
@@ -966,7 +969,7 @@ custom_styles/hover = ExtResource( 28 )
 custom_styles/pressed = ExtResource( 29 )
 custom_styles/focus = ExtResource( 29 )
 custom_styles/normal = ExtResource( 29 )
-custom_fonts/font = SubResource( 25 )
+custom_fonts/font = SubResource( 26 )
 custom_colors/font_color = Color( 0.54902, 0.247059, 0.364706, 1 )
 custom_colors/font_color_hover = Color( 0.54902, 0.247059, 0.364706, 1 )
 custom_colors/font_color_pressed = Color( 0.54902, 0.247059, 0.364706, 1 )
@@ -984,3 +987,14 @@ color = Color( 0.152941, 0.152941, 0.211765, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="ToMainMenuSFX" type="AudioStreamPlayer2D" parent="EndScreen"]
+stream = ExtResource( 39 )
+volume_db = 6.0
+script = ExtResource( 40 )
+RandomVolume = true
+minVolume = -1.0
+maxVolume = 2.0
+RandomPitch = true
+minPitch = -3.0
+maxPitch = 5.0
