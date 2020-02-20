@@ -574,6 +574,7 @@ stick = ExtResource( 3 )
 flower = ExtResource( 4 )
 mushroom = ExtResource( 5 )
 skip_tutorial = true
+goal_females = 1
 
 [node name="Fondo" type="Sprite" parent="."]
 position = Vector2( 636.259, 400 )

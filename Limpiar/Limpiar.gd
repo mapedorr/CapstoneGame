@@ -38,7 +38,7 @@ func _ready():
 	$Bird4/DancingBird.connect("tutorial_explained", self, "_on_tutorial_explained")
 	$Bird4/DancingBird.connect("tutorial_finished", self, "_on_tutorial_finished")
 	$Bird4/DancingBird.connect("middle_reached", self, "_on_middle_reached")
-	$UI.connect("start_game", self, "start_game")
+	$UI.connect("start_game", self, "_on_start_game")
 	# Start animations
 	$FondoL1/AnimationPlayer.play("Idle")
 	$PrimerPlano/AnimationPlayer.play("Idle")
@@ -187,7 +187,7 @@ func _on_tutorial_explained(index):
 		check_dirt()
 
 
-func start_game():
+func _on_start_game():
 	$MusicManager.start_metronome()
 
 
@@ -254,3 +254,6 @@ func _on_middle_reached():
 	$Bird4/DancingBird/Dance.play("Bow")
 	$UI.show_david('end')
 	$Bird4/DancingBird/Down.play()
+	
+	yield(get_tree().create_timer(5), "timeout")
+	$UI.show_end()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=2]
+[gd_scene load_steps=65 format=2]
 
 [ext_resource path="res://ui/UI.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Fonts/Sniglet-Regular.ttf" type="DynamicFontData" id=2]
@@ -27,6 +27,17 @@
 [ext_resource path="res://Audio/SFX/UI_David_Op.ogg" type="AudioStream" id=25]
 [ext_resource path="res://Audio/SFX/UI_David_Cl.ogg" type="AudioStream" id=26]
 [ext_resource path="res://Assets/Sprites/PerroViejoLogo_02.png" type="Texture" id=27]
+[ext_resource path="res://CustomResources/StyleBoxTexture/ToMainMenuBtn-01.tres" type="StyleBox" id=28]
+[ext_resource path="res://CustomResources/StyleBoxTexture/ToMainMenuBtn-pressed-01.tres" type="StyleBox" id=29]
+[ext_resource path="res://CustomResources/StyleBoxTexture/ToMainMenuBtn-02.tres" type="StyleBox" id=30]
+[ext_resource path="res://CustomResources/StyleBoxTexture/ToMainMenuBtn-03.tres" type="StyleBox" id=31]
+[ext_resource path="res://CustomResources/StyleBoxTexture/ToMainMenuBtn-pressed-08.tres" type="StyleBox" id=32]
+[ext_resource path="res://CustomResources/StyleBoxTexture/ToMainMenuBtn-pressed-03.tres" type="StyleBox" id=33]
+[ext_resource path="res://CustomResources/StyleBoxTexture/ToMainMenuBtn-pressed-06.tres" type="StyleBox" id=34]
+[ext_resource path="res://CustomResources/StyleBoxTexture/ToMainMenuBtn-pressed-05.tres" type="StyleBox" id=35]
+[ext_resource path="res://CustomResources/StyleBoxTexture/ToMainMenuBtn-pressed-07.tres" type="StyleBox" id=36]
+[ext_resource path="res://CustomResources/StyleBoxTexture/ToMainMenuBtn-pressed-04.tres" type="StyleBox" id=37]
+[ext_resource path="res://CustomResources/StyleBoxTexture/ToMainMenuBtn-pressed-02.tres" type="StyleBox" id=38]
 
 [sub_resource type="DynamicFont" id=1]
 size = 72
@@ -421,6 +432,165 @@ size = 90
 extra_spacing_top = -24
 font_data = ExtResource( 22 )
 
+[sub_resource type="Animation" id=26]
+resource_name = "HideButton"
+tracks/0/type = "value"
+tracks/0/path = NodePath("ToMainMenu:custom_styles/focus")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 0.353553, 0.353553, 0.353553, 1.10957, 3.73213 ),
+"update": 1,
+"values": [ ExtResource( 29 ), ExtResource( 32 ), ExtResource( 33 ), ExtResource( 37 ), ExtResource( 35 ), ExtResource( 34 ), ExtResource( 36 ), ExtResource( 32 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("ToMainMenu:custom_styles/pressed")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1.1487, 1, 1, 1, 3.4822, 3.4822, 3.4822, 3.73213 ),
+"update": 1,
+"values": [ ExtResource( 29 ), ExtResource( 38 ), ExtResource( 33 ), ExtResource( 37 ), ExtResource( 35 ), ExtResource( 34 ), ExtResource( 36 ), ExtResource( 32 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("ToMainMenu:modulate")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Overlay:self_modulate")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.6, 0.9 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("ToMainMenu:custom_styles/normal")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1.1487, 1.1487, 1.10957, 4.28709, 4.28709, 4.28709, 13.9288, 30.91 ),
+"update": 1,
+"values": [ ExtResource( 29 ), ExtResource( 38 ), ExtResource( 33 ), ExtResource( 37 ), ExtResource( 35 ), ExtResource( 34 ), ExtResource( 36 ), ExtResource( 32 ) ]
+}
+
+[sub_resource type="Animation" id=23]
+resource_name = "IdleButton"
+length = 0.3
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("ToMainMenu:custom_styles/hover")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 28 ), ExtResource( 30 ), ExtResource( 31 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("ToMainMenu:custom_styles/normal")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 28 ), ExtResource( 30 ), ExtResource( 31 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Overlay:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=24]
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("ToMainMenu:rect_position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 998, 402 ), Vector2( 870, 370 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("ToMainMenu:rect_scale")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.1, 0.1 ), Vector2( 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("ToMainMenu:modulate")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Overlay:self_modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="DynamicFont" id=25]
+size = 36
+font_data = ExtResource( 22 )
+
 [node name="UI" type="CanvasLayer"]
 script = ExtResource( 1 )
 
@@ -508,7 +678,7 @@ margin_left = 1020.0
 margin_top = 710.0
 margin_right = 1083.0
 margin_bottom = 772.0
-rect_scale = Vector2( 1e-05, 1e-05 )
+rect_scale = Vector2( 2.66432e-06, 2.66432e-06 )
 rect_pivot_offset = Vector2( 31, 31 )
 mouse_filter = 2
 texture = SubResource( 7 )
@@ -523,7 +693,7 @@ margin_left = 1040.0
 margin_top = 646.0
 margin_right = 1118.0
 margin_bottom = 707.0
-rect_scale = Vector2( 1e-05, 1e-05 )
+rect_scale = Vector2( 1.19513e-05, 1.19513e-05 )
 rect_pivot_offset = Vector2( 39, 30 )
 mouse_filter = 2
 texture = SubResource( 10 )
@@ -541,7 +711,7 @@ margin_left = 1000.0
 margin_top = 584.0
 margin_right = 1076.0
 margin_bottom = 645.0
-rect_scale = Vector2( 1e-05, 1e-05 )
+rect_scale = Vector2( 0.00040337, 0.00040337 )
 rect_pivot_offset = Vector2( 38, 30 )
 mouse_filter = 2
 texture = SubResource( 12 )
@@ -617,7 +787,7 @@ anims/Show = SubResource( 15 )
 anims/ShowCredits = SubResource( 16 )
 
 [node name="Overlay" type="ColorRect" parent="StartScreen"]
-self_modulate = Color( 1, 1, 1, 0.501961 )
+self_modulate = Color( 1, 1, 1, 0 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0.152941, 0.152941, 0.211765, 1 )
@@ -631,9 +801,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -536.0
-margin_top = -280.0
+margin_top = -670.0
 margin_right = 536.0
-margin_bottom = -91.9946
+margin_bottom = -481.995
 texture = ExtResource( 21 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -645,9 +815,9 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 margin_left = -134.0
-margin_top = -305.0
+margin_top = 145.0
 margin_right = 151.06
-margin_bottom = -157.0
+margin_bottom = 293.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.0
@@ -771,3 +941,46 @@ custom_colors/font_color_hover = Color( 0.4, 1, 0.890196, 1 )
 custom_colors/font_color_pressed = Color( 0.4, 1, 0.890196, 1 )
 text = "Go back"
 flat = true
+
+[node name="EndScreen" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="EndScreen"]
+anims/HideButton = SubResource( 26 )
+anims/IdleButton = SubResource( 23 )
+anims/ShowButton = SubResource( 24 )
+
+[node name="ToMainMenu" type="Button" parent="EndScreen"]
+margin_left = 998.0
+margin_top = 402.0
+margin_right = 1308.0
+margin_bottom = 475.0
+rect_scale = Vector2( 0.1, 0.1 )
+mouse_default_cursor_shape = 2
+custom_styles/hover = ExtResource( 28 )
+custom_styles/pressed = ExtResource( 29 )
+custom_styles/focus = ExtResource( 29 )
+custom_styles/normal = ExtResource( 29 )
+custom_fonts/font = SubResource( 25 )
+custom_colors/font_color = Color( 0.54902, 0.247059, 0.364706, 1 )
+custom_colors/font_color_hover = Color( 0.54902, 0.247059, 0.364706, 1 )
+custom_colors/font_color_pressed = Color( 0.54902, 0.247059, 0.364706, 1 )
+text = "¡Menú principal!"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Overlay" type="ColorRect" parent="EndScreen"]
+self_modulate = Color( 1, 1, 1, 0 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color( 0.152941, 0.152941, 0.211765, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}

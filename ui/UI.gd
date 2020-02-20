@@ -7,6 +7,7 @@ var hearts = 3
 
 func _ready():
 	$CleanlinessCheck.hide()
+	$EndScreen.hide()
 	# Connect signals
 	$StartScreen/StartButtons/Start.connect("pressed", self, "_on_start_pressed")
 	$StartScreen/StartButtons/Credits.connect("pressed", self, "_on_credits_pressed")
@@ -72,3 +73,16 @@ func show_david(status):
 func hide_david():
 	$UI_David_Out.play()
 	$Animations.play_backwards("ShowDavid")
+
+func show_end():
+	$EndScreen.show()
+	$EndScreen/AnimationPlayer.play("ShowButton")
+	yield($EndScreen/AnimationPlayer, "animation_finished")
+	$EndScreen/AnimationPlayer.play("IdleButton")
+	$EndScreen/ToMainMenu.connect("pressed", self, "_on_to_main_menu_pressed")
+
+func _on_to_main_menu_pressed():
+	$EndScreen/AnimationPlayer.stop()
+	$EndScreen/AnimationPlayer.play("HideButton")
+	yield($EndScreen/AnimationPlayer, "animation_finished")
+	get_tree().reload_current_scene()
