@@ -11,7 +11,8 @@ export var transition_type = 1 # TRANS_SINE
 
 var isPlaying = false
 var fadingout = false
-var davidShown = false
+var music_played = false
+var david_shown = false
 
 
 # Called when the node enters the scene tree for the first time.
@@ -21,12 +22,14 @@ func _ready():
 func _process(delta):
 	if isPlaying  == false:
 		if $Metronome.current_measure == 1:
+			isPlaying = true
 			start_system()
-			if davidShown:
-				for birds in $Birds.get_children():
-					birds.awake = true
-				$MxBase.play()
-				isPlaying = true
+	else:
+		if not music_played and david_shown and $Metronome.current_beat == 1:
+			music_played = true
+			for birds in $Birds.get_children():
+				birds.awake = true
+			$MxBase.play()
 
 func start_system():
 	emit_signal("music_started")
@@ -53,7 +56,8 @@ func add_layer():
 
 func reset():
 	for layers in $Layers.get_children():
-		tween_out.connect("tween_completed", self, "stoplayers")
+		if not tween_out.is_connected("tween_completed", self, "stoplayers"):
+			tween_out.connect("tween_completed", self, "stoplayers")
 		fade_out(layers)
 	for birds in $Birds.get_children():
 			birds.sleep()

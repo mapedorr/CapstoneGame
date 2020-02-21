@@ -37,9 +37,7 @@ func playsound():
 		select_sound.set_volume_db(inst_vol)
 
 func awake():
-	
 	inst_vol = 0
 	
 func sleep():
-	
 	inst_vol = -80

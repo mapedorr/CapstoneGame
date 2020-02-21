@@ -231,7 +231,7 @@ func create_mugre(position: Vector2, type: PackedScene = null) -> void:
 
 func _on_tutorial_finished() -> void:
 	$UI.show_david('start')
-	$MusicManager.davidShown = true
+	$MusicManager.david_shown = true
 	yield($UI/Animations, "animation_finished")
 	yield(get_tree().create_timer(5), "timeout")
 	$UI.hide_david()

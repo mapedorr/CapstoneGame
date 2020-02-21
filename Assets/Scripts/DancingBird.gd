@@ -45,6 +45,7 @@ func dance():
 		pre_count = 0
 		if cuando == count:
 			if not moving:
+				var scream = false
 				if $SpeechBalloon.is_visible():
 					$Dance.play("Speak")
 				else:
@@ -59,6 +60,8 @@ func dance():
 							$SpeechBalloon/Tutorial.set_hframes($SpeechBalloon/Tutorial.tutorial_a_frames)
 							# Start the tutorial animation
 							begin_tutorial()
+						elif tutorial_dance_count == 3:
+							scream = true
 						elif tutorial_dance_count == 4:
 							# Set the texture and frames number for the second tutorial
 							# (a.k.a. the swipeable object)
@@ -68,9 +71,14 @@ func dance():
 							begin_tutorial()
 					else:
 						tutorial_dance_count += 1
-						if tutorial_dance_count == 2:
+						if tutorial_dance_count == 1:
+							scream = true
+						elif tutorial_dance_count == 2:
 							emit_signal("tutorial_finished")
-				$Chirp.play()
+				if scream:
+					$Scream.play()
+				else:
+					$Chirp.play()
 			else:
 				if go_to_mugres(destination):
 					$Call.play()
