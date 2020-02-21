@@ -11,6 +11,7 @@ export var transition_type = 1 # TRANS_SINE
 
 var isPlaying = false
 var fadingout = false
+var davidShown = false
 
 
 # Called when the node enters the scene tree for the first time.
@@ -18,13 +19,16 @@ func _ready():
 	pass
 
 func _process(delta):
-	if isPlaying == false:
+	if isPlaying  == false:
 		if $Metronome.current_measure == 1:
-			isPlaying = true
 			start_system()
+			if davidShown:
+				for birds in $Birds.get_children():
+					birds.awake = true
+				$MxBase.play()
+				isPlaying = true
 
 func start_system():
-	$MxBase.play()
 	emit_signal("music_started")
 	
 func add_layer():
@@ -52,7 +56,7 @@ func reset():
 		tween_out.connect("tween_completed", self, "stoplayers")
 		fade_out(layers)
 	for birds in $Birds.get_children():
-			birds.awake = false
+			birds.sleep()
 		
 	current_layer = 0
 
@@ -62,20 +66,16 @@ func awake_bird(current_layer):
 		if $Metronome.current_beat == 1:
 			match current_layer:
 				1:
-					$Birds/Bird1.awake = true
-					$Birds/Melody_Bird1.awake = true
+					$Birds/Melody_Bird1.awake()
 					break
 				2:
-					$Birds/Bird2.awake = true
-					$Birds/Melody_Bird2.awake = true
+					$Birds/Melody_Bird2.awake()
 					break
 				3:
-					$Birds/Bird3.awake = true
-					$Birds/Melody_Bird3.awake = true
+					$Birds/Melody_Bird3.awake()
 					break
 				4:
-					$Birds/Bird4.awake = true
-					$Birds/Melody_Bird4.awake = true
+					$Birds/Melody_Bird4.awake()
 					break
 		yield(get_tree().create_timer(0.3),"timeout")
 

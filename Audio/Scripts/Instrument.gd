@@ -17,11 +17,11 @@ func _ready():
 	select_sound.set_volume_db(inst_vol)
 
 func _on_upbeat_ticked(current_bar):
+	
 	bar_count += 1
-	if can_play:
-		if awake:
+	if awake:
+		if bar_count == 1:
 			playsound()
-			can_play = false
 	if bar_count == bar_per_sound:
 		can_play = true
 		bar_count = 0
@@ -35,3 +35,11 @@ func playsound():
 		index_sound = randi()%get_child_count()
 		select_sound = get_child(index_sound)
 		select_sound.set_volume_db(inst_vol)
+
+func awake():
+	
+	inst_vol = 0
+	
+func sleep():
+	
+	inst_vol = -80
