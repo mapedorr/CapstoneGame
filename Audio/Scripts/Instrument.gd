@@ -43,7 +43,7 @@ func awake():
 		"change_volume",
 		-80,
 		init_vol,
-		2,
+		2.5,
 		Tween.TRANS_LINEAR,
 		Tween.EASE_OUT
 	)
@@ -55,7 +55,7 @@ func sleep():
 		"change_volume",
 		init_vol,
 		-80,
-		1,
+		0.4,
 		Tween.TRANS_LINEAR,
 		Tween.EASE_OUT
 	)
