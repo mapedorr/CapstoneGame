@@ -1,4 +1,4 @@
-[gd_scene load_steps=67 format=2]
+[gd_scene load_steps=73 format=2]
 
 [ext_resource path="res://ui/UI.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Fonts/Sniglet-Regular.ttf" type="DynamicFontData" id=2]
@@ -40,6 +40,10 @@
 [ext_resource path="res://CustomResources/StyleBoxTexture/ToMainMenuBtn-pressed-02.tres" type="StyleBox" id=38]
 [ext_resource path="res://Audio/SFX/SFX_Whoosh.ogg" type="AudioStream" id=39]
 [ext_resource path="res://Audio/Randomize_Audio.gd" type="Script" id=40]
+[ext_resource path="res://CustomResources/DynamicFonts/HungryPro_90.tres" type="DynamicFont" id=41]
+[ext_resource path="res://CustomResources/DynamicFonts/HungryPro_48.tres" type="DynamicFont" id=42]
+[ext_resource path="res://CustomResources/StyleBoxTexture/LanguageBtn-es-pressed.tres" type="StyleBox" id=43]
+[ext_resource path="res://CustomResources/StyleBoxTexture/LanguageBtn-en-pressed.tres" type="StyleBox" id=44]
 
 [sub_resource type="DynamicFont" id=1]
 size = 72
@@ -347,6 +351,18 @@ tracks/2/keys = {
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.501961 ) ]
 }
+tracks/3/type = "value"
+tracks/3/path = NodePath("GameName:rect_scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
 
 [sub_resource type="Animation" id=16]
 length = 0.5
@@ -400,24 +416,30 @@ tracks/3/keys = {
 }
 tracks/4/type = "value"
 tracks/4/path = NodePath("GameName:rect_position")
-tracks/4/interp = 1
+tracks/4/interp = 2
 tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0, 0.5 ),
+"times": PoolRealArray( 0, 0.3 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 104, 120 ), Vector2( 104, 170 ) ]
+"values": [ Vector2( 104, 120 ), Vector2( 211, 190 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("GameName:rect_scale")
+tracks/5/interp = 2
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 0.8, 0.8 ) ]
 }
 
 [sub_resource type="StyleBoxEmpty" id=17]
-
-[sub_resource type="DynamicFont" id=18]
-size = 90
-extra_spacing_top = -20
-extra_spacing_bottom = -20
-font_data = ExtResource( 22 )
 
 [sub_resource type="StyleBoxEmpty" id=19]
 
@@ -426,6 +448,12 @@ size = 90
 extra_spacing_top = -20
 extra_spacing_bottom = -20
 font_data = ExtResource( 22 )
+
+[sub_resource type="StyleBoxEmpty" id=28]
+
+[sub_resource type="StyleBoxEmpty" id=29]
+
+[sub_resource type="StyleBoxEmpty" id=27]
 
 [sub_resource type="StyleBoxEmpty" id=21]
 
@@ -636,7 +664,7 @@ margin_right = 356.0
 margin_bottom = 46.0
 custom_fonts/font = ExtResource( 4 )
 custom_colors/font_color = Color( 0.152941, 0.152941, 0.211765, 1 )
-text = "¡Es Hora De Limpiar!"
+text = "TIME_TO_CLEAN"
 align = 1
 valign = 1
 __meta__ = {
@@ -804,7 +832,7 @@ anchor_bottom = 0.5
 margin_left = -536.0
 margin_top = -670.0
 margin_right = 536.0
-margin_bottom = -481.995
+margin_bottom = -482.0
 texture = ExtResource( 21 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -817,8 +845,8 @@ anchor_right = 0.5
 anchor_bottom = 1.0
 margin_left = -134.0
 margin_top = 145.0
-margin_right = 151.06
-margin_bottom = 293.0
+margin_right = 220.0
+margin_bottom = 377.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.0
@@ -829,24 +857,24 @@ __meta__ = {
 }
 
 [node name="Start" type="Button" parent="StartScreen/StartButtons"]
-margin_left = 39.0
-margin_right = 246.0
+margin_left = 73.0
+margin_right = 280.0
 margin_bottom = 49.0
 mouse_default_cursor_shape = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
 size_flags_stretch_ratio = 0.0
 custom_styles/focus = SubResource( 17 )
-custom_fonts/font = SubResource( 18 )
+custom_fonts/font = ExtResource( 41 )
 custom_colors/font_color = Color( 1, 0.894118, 0.470588, 1 )
 custom_colors/font_color_hover = Color( 0.4, 1, 0.890196, 1 )
 custom_colors/font_color_pressed = Color( 0.4, 1, 0.890196, 1 )
-text = "Start"
+text = "START"
 flat = true
 
 [node name="Credits" type="Button" parent="StartScreen/StartButtons"]
 margin_top = 74.0
-margin_right = 285.0
+margin_right = 354.0
 margin_bottom = 123.0
 mouse_default_cursor_shape = 2
 size_flags_horizontal = 15
@@ -856,8 +884,47 @@ custom_fonts/font = SubResource( 20 )
 custom_colors/font_color = Color( 1, 0.894118, 0.470588, 1 )
 custom_colors/font_color_hover = Color( 0.4, 1, 0.890196, 1 )
 custom_colors/font_color_pressed = Color( 0.4, 1, 0.890196, 1 )
-text = "Credits"
+text = "CREDITS"
 flat = true
+
+[node name="LanguageOps" type="HBoxContainer" parent="StartScreen/StartButtons"]
+margin_left = 14.0
+margin_top = 148.0
+margin_right = 340.0
+margin_bottom = 192.0
+size_flags_horizontal = 6
+custom_constants/separation = 32
+
+[node name="Es" type="Button" parent="StartScreen/StartButtons/LanguageOps"]
+margin_right = 147.0
+margin_bottom = 44.0
+mouse_default_cursor_shape = 2
+custom_styles/hover = SubResource( 28 )
+custom_styles/pressed = ExtResource( 43 )
+custom_styles/focus = SubResource( 29 )
+custom_styles/normal = SubResource( 27 )
+custom_fonts/font = ExtResource( 42 )
+custom_colors/font_color = Color( 1, 1, 0.921569, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 0.921569, 1 )
+custom_colors/font_color_pressed = Color( 0.560784, 0.870588, 0.364706, 1 )
+toggle_mode = true
+text = "Español"
+
+[node name="En" type="Button" parent="StartScreen/StartButtons/LanguageOps"]
+margin_left = 179.0
+margin_right = 326.0
+margin_bottom = 44.0
+mouse_default_cursor_shape = 2
+custom_styles/hover = SubResource( 28 )
+custom_styles/pressed = ExtResource( 44 )
+custom_styles/focus = SubResource( 29 )
+custom_styles/normal = SubResource( 27 )
+custom_fonts/font = ExtResource( 42 )
+custom_colors/font_color = Color( 1, 1, 0.921569, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 0.921569, 1 )
+custom_colors/font_color_pressed = Color( 0.4, 1, 0.890196, 1 )
+toggle_mode = true
+text = "English"
 
 [node name="LogoPerroViejo" type="TextureRect" parent="StartScreen"]
 anchor_left = 0.512543
@@ -866,9 +933,9 @@ anchor_right = 0.512543
 anchor_bottom = 0.0150516
 margin_left = -156.055
 margin_top = -312.041
-margin_right = 483.946
-margin_bottom = 177.959
-rect_scale = Vector2( 0.4, 0.4 )
+margin_right = 163.945
+margin_bottom = -112.041
+rect_scale = Vector2( 0.8, 0.8 )
 texture = ExtResource( 27 )
 __meta__ = {
 "_edit_use_anchors_": true
@@ -892,7 +959,7 @@ margin_right = 1280.0
 margin_bottom = 37.0
 custom_fonts/font = ExtResource( 23 )
 custom_colors/font_color = Color( 1, 1, 0.921569, 1 )
-text = "@QuietGecko (audio, art, programming)"
+text = "QUIET_GECKO"
 align = 1
 valign = 1
 
@@ -902,7 +969,7 @@ margin_right = 1280.0
 margin_bottom = 122.0
 custom_fonts/font = ExtResource( 23 )
 custom_colors/font_color = Color( 1, 1, 0.921569, 1 )
-text = "@mapedorr (art, programming)"
+text = "CARENALGA"
 align = 1
 valign = 1
 
@@ -913,18 +980,18 @@ margin_bottom = 270.0
 alignment = 1
 
 [node name="Text" type="Label" parent="StartScreen/Credits/Thanks"]
-margin_left = 150.0
+margin_left = 304.0
 margin_top = 31.0
-margin_right = 626.0
+margin_right = 472.0
 margin_bottom = 68.0
 custom_fonts/font = ExtResource( 23 )
 custom_colors/font_color = Color( 1, 1, 0.921569, 1 )
-text = "Special thanks to"
+text = "THANKS"
 align = 1
 
 [node name="CloLogo" type="TextureRect" parent="StartScreen/Credits/Thanks"]
-margin_left = 630.0
-margin_right = 1130.0
+margin_left = 476.0
+margin_right = 976.0
 margin_bottom = 100.0
 texture = ExtResource( 24 )
 
@@ -940,7 +1007,7 @@ custom_fonts/font = SubResource( 22 )
 custom_colors/font_color = Color( 1, 0.894118, 0.470588, 1 )
 custom_colors/font_color_hover = Color( 0.4, 1, 0.890196, 1 )
 custom_colors/font_color_pressed = Color( 0.4, 1, 0.890196, 1 )
-text = "Go back"
+text = "BACK"
 flat = true
 
 [node name="EndScreen" type="Control" parent="."]
@@ -973,7 +1040,7 @@ custom_fonts/font = SubResource( 26 )
 custom_colors/font_color = Color( 0.54902, 0.247059, 0.364706, 1 )
 custom_colors/font_color_hover = Color( 0.54902, 0.247059, 0.364706, 1 )
 custom_colors/font_color_pressed = Color( 0.54902, 0.247059, 0.364706, 1 )
-text = "¡Menú principal!"
+text = "TO_MAIN_MENU"
 __meta__ = {
 "_edit_use_anchors_": false
 }

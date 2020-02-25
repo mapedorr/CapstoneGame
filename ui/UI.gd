@@ -1,21 +1,35 @@
 extends CanvasLayer
 
 signal start_game
+signal started
 
 onready var cleanliness_visible = false
 var hearts = 3
 var coco = 0
 
 func _ready():
+	# Establecer estados por defecto
 	$CleanlinessCheck.hide()
 	$EndScreen.hide()
-	# Connect signals
+	$StartScreen/StartButtons/LanguageOps/Es.pressed = true
+	
+	# Conectar señales
 	$StartScreen/StartButtons/Start.connect("pressed", self, "_on_start_pressed")
 	$StartScreen/StartButtons/Credits.connect("pressed", self, "_on_credits_pressed")
 	$StartScreen/Credits/Back.connect("pressed", self, "_on_back_pressed")
 	$StartScreen/AnimationPlayer.play("Show")
+	$StartScreen/StartButtons/LanguageOps/Es.connect(
+		'pressed', self, '_on_language_changed', ['es']
+	)
+	$StartScreen/StartButtons/LanguageOps/En.connect(
+		'pressed', self, '_on_language_changed', ['en']
+	)
+	LanguageManager.connect('language_changed', self, '_on_language_changed')
+	
+	# ¿Reproducir sonido de animación?
 	yield(get_tree().create_timer(0.3), "timeout")
-	$UI_Menu_In.play() 
+	$UI_Menu_In.play()
+	emit_signal('started')
 
 func show_cleanliness_check(frame = 0):
 	$CleanlinessCheck/Bird.change_frame(frame)
@@ -66,9 +80,9 @@ func _on_back_pressed():
 func show_david(status):
 	$UI_David_In.play()
 	if status == 'start':
-		$David/Globo/Label.set_text("¡Es Hora De Limpiar!")
+		$David/Globo/Label.set_text('TIME_TO_CLEAN')
 	else:
-		$David/Globo/Label.set_text("¡Es Hora De Bailar!")
+		$David/Globo/Label.set_text('TIME_TO_DANCE')
 	$Animations.play("ShowDavid")
 
 func hide_david():
@@ -94,3 +108,13 @@ func _on_to_main_menu_pressed():
 
 func change_master_volume(new_val):
 	AudioServer.set_bus_volume_db(0, new_val)
+
+func _on_language_changed(language: String):
+	TranslationServer.set_locale(language)
+	match language:
+		'es':
+			$StartScreen/StartButtons/LanguageOps/Es.pressed = true
+			$StartScreen/StartButtons/LanguageOps/En.pressed = false
+		'en':
+			$StartScreen/StartButtons/LanguageOps/Es.pressed = false
+			$StartScreen/StartButtons/LanguageOps/En.pressed = true

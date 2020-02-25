@@ -20,6 +20,10 @@ run/main_scene="res://Limpiar/SplashScreen.tscn"
 boot_splash/bg_color=Color( 0.141176, 0.141176, 0.141176, 1 )
 config/icon="res://icon.png"
 
+[autoload]
+
+LanguageManager="*res://Managers/LanguageManager.gd"
+
 [debug]
 
 gdscript/warnings/shadowed_variable=false
@@ -44,6 +48,11 @@ enabled=PoolStringArray( "swipe-detector" )
 [input_devices]
 
 pointing/emulate_touch_from_mouse=true
+
+[locale]
+
+fallback="es"
+translations=PoolStringArray( "res://Assets/Language/texts.es.translation", "res://Assets/Language/texts.en.translation" )
 
 [rendering]
 

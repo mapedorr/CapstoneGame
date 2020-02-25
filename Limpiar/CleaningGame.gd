@@ -7,6 +7,7 @@ export(PackedScene) var mushroom
 export(bool) var skip_tutorial
 export(int) var goal_females = 4
 export(float) var dflt_master_volume = -1.7
+export(LanguageManager.Language) var language = LanguageManager.Language.ES
 
 onready var dirt_on_ground = $LeafContainer.get_children().size()
 onready var min_x = int ($SpawnArea.position.x - $SpawnArea/CollisionShape2D.shape.extents.x)
@@ -35,6 +36,7 @@ var in_tutorial = 1
 func _ready():
 	# Establecer valores por defecto
 	AudioServer.set_bus_volume_db(0, dflt_master_volume)
+	
 	# Assign listeners
 	$MasterTimer.connect("timeout", self, "_on_master_timer_timeout")
 	$MusicManager.connect("music_started", self, "_on_music_started")
@@ -42,10 +44,12 @@ func _ready():
 	$Bird4/DancingBird.connect("tutorial_finished", self, "_on_tutorial_finished")
 	$Bird4/DancingBird.connect("middle_reached", self, "_on_middle_reached")
 	$UI.connect("start_game", self, "_on_start_game")
+	$UI.connect('started', self, '_on_ui_started')
+	
 	# Start animations
 	$FondoL1/AnimationPlayer.play("Idle")
 	$PrimerPlano/AnimationPlayer.play("Idle")
-	
+
 func _on_master_timer_timeout():
 	if clean:
 		clean_countdown = 0
@@ -261,3 +265,6 @@ func _on_middle_reached():
 	
 	yield(get_tree().create_timer(5), "timeout")
 	$UI.show_end()
+
+func _on_ui_started() -> void:
+	LanguageManager.emit_signal('language_changed', LanguageManager.get_key(language))

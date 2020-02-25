@@ -1,6 +1,6 @@
 [gd_scene load_steps=87 format=2]
 
-[ext_resource path="res://Limpiar/Limpiar.gd" type="Script" id=1]
+[ext_resource path="res://Limpiar/CleaningGame.gd" type="Script" id=1]
 [ext_resource path="res://Limpiar/Leaf/Leaf.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Limpiar/Leaf/Stick.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Limpiar/Leaf/Flower.tscn" type="PackedScene" id=4]
@@ -541,7 +541,6 @@ leaf = ExtResource( 2 )
 stick = ExtResource( 3 )
 flower = ExtResource( 4 )
 mushroom = ExtResource( 5 )
-skip_tutorial = true
 
 [node name="Fondo" type="Sprite" parent="."]
 position = Vector2( 636.259, 400 )
@@ -934,7 +933,7 @@ margin_right = -95.0
 margin_bottom = -85.0
 custom_fonts/font = SubResource( 17 )
 custom_colors/font_color = Color( 0.690196, 0.188235, 0.360784, 1 )
-text = "¡Uuuuh! se acercan las chicas"
+text = "FEMALE_APPROACH"
 align = 1
 valign = 1
 autowrap = true
