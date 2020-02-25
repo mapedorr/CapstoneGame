@@ -531,7 +531,7 @@ tracks/0/keys = {
 "values": [ 0, 1, 2 ]
 }
 
-[node name="Limpiar" type="Node2D"]
+[node name="CleaningGame" type="Node2D"]
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_horizontal_guides_": [ 582.7 ],
