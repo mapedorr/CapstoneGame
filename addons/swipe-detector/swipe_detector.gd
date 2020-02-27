@@ -91,8 +91,8 @@ export var debug_mode = false
 ## Implementation
 
 func debug(message, more1='', more2='', more3=''):
-  if debug_mode:
-    print('[DEBUG][SwipeDetector] ', message, more1, more2, more3)
+    if debug_mode:
+        print('[DEBUG][SwipeDetector] ', message, more1, more2, more3)
 
 
 
