@@ -1,4 +1,4 @@
-[gd_scene load_steps=73 format=2]
+[gd_scene load_steps=75 format=2]
 
 [ext_resource path="res://ui/UI.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Fonts/Sniglet-Regular.ttf" type="DynamicFontData" id=2]
@@ -409,10 +409,10 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( 5, 3 ),
+"times": PoolRealArray( 0, 0.2, 0.5 ),
+"transitions": PoolRealArray( 5, 5, 3 ),
 "update": 0,
-"values": [ Vector2( 500, -300 ), Vector2( 500, 10 ) ]
+"values": [ Vector2( 500, -300 ), Vector2( 500, -300 ), Vector2( 500, 10 ) ]
 }
 tracks/4/type = "value"
 tracks/4/path = NodePath("GameName:rect_position")
@@ -454,6 +454,15 @@ font_data = ExtResource( 22 )
 [sub_resource type="StyleBoxEmpty" id=21]
 
 [sub_resource type="StyleBoxEmpty" id=22]
+
+[sub_resource type="DynamicFont" id=30]
+size = 54
+extra_spacing_top = -24
+font_data = ExtResource( 22 )
+
+[sub_resource type="DynamicFont" id=29]
+size = 54
+font_data = ExtResource( 22 )
 
 [sub_resource type="StyleBoxEmpty" id=23]
 
@@ -815,7 +824,7 @@ anims/Show = SubResource( 15 )
 anims/ShowCredits = SubResource( 16 )
 
 [node name="Overlay" type="ColorRect" parent="StartScreen"]
-self_modulate = Color( 1, 1, 1, 0 )
+self_modulate = Color( 1, 1, 1, 0.501961 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0.152941, 0.152941, 0.211765, 1 )
@@ -829,9 +838,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -536.0
-margin_top = -670.0
+margin_top = -280.0
 margin_right = 536.0
-margin_bottom = -482.0
+margin_bottom = -91.9999
 texture = ExtResource( 21 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -843,9 +852,9 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 margin_left = -134.0
-margin_top = 145.0
-margin_right = 220.0
-margin_bottom = 377.0
+margin_top = -305.0
+margin_right = 219.996
+margin_bottom = -72.9999
 size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.0
@@ -873,7 +882,7 @@ flat = true
 
 [node name="Credits" type="Button" parent="StartScreen/StartButtons"]
 margin_top = 74.0
-margin_right = 354.0
+margin_right = 353.0
 margin_bottom = 123.0
 mouse_default_cursor_shape = 2
 size_flags_horizontal = 15
@@ -887,9 +896,9 @@ text = "CREDITS"
 flat = true
 
 [node name="LanguageOps" type="HBoxContainer" parent="StartScreen/StartButtons"]
-margin_left = 14.0
+margin_left = 13.0
 margin_top = 148.0
-margin_right = 340.0
+margin_right = 339.0
 margin_bottom = 192.0
 size_flags_horizontal = 6
 custom_constants/separation = 32
@@ -933,7 +942,7 @@ anchor_bottom = 0.0150516
 margin_left = -156.055
 margin_top = -312.041
 margin_right = 163.945
-margin_bottom = -112.041
+margin_bottom = -67.0413
 rect_scale = Vector2( 0.7, 0.7 )
 texture = ExtResource( 27 )
 __meta__ = {
@@ -947,7 +956,7 @@ anchor_bottom = 0.5
 margin_left = 1280.0
 margin_top = -13.0
 margin_right = 1280.24
-margin_bottom = 370.0
+margin_bottom = 867.0
 custom_constants/separation = 48
 __meta__ = {
 "_edit_use_anchors_": false
@@ -972,35 +981,51 @@ text = "CARENALGA"
 align = 1
 valign = 1
 
-[node name="Thanks" type="HBoxContainer" parent="StartScreen/Credits"]
+[node name="ThanksContainer" type="VBoxContainer" parent="StartScreen/Credits"]
 margin_top = 170.0
 margin_right = 1280.0
-margin_bottom = 270.0
+margin_bottom = 300.0
 alignment = 1
 
-[node name="Text" type="Label" parent="StartScreen/Credits/Thanks"]
-margin_left = 304.0
-margin_top = 31.0
-margin_right = 472.0
-margin_bottom = 68.0
-custom_fonts/font = ExtResource( 23 )
-custom_colors/font_color = Color( 1, 1, 0.921569, 1 )
+[node name="Thanks" type="Label" parent="StartScreen/Credits/ThanksContainer"]
+margin_right = 1280.0
+margin_bottom = 26.0
+custom_fonts/font = SubResource( 30 )
+custom_colors/font_color = Color( 1, 0.419608, 0.592157, 1 )
 text = "THANKS"
 align = 1
 
-[node name="CloLogo" type="TextureRect" parent="StartScreen/Credits/Thanks"]
-margin_left = 476.0
-margin_right = 976.0
+[node name="HBoxContainer" type="HBoxContainer" parent="StartScreen/Credits/ThanksContainer"]
+margin_left = 232.0
+margin_top = 30.0
+margin_right = 1048.0
+margin_bottom = 130.0
+size_flags_horizontal = 4
+
+[node name="CloLogo" type="TextureRect" parent="StartScreen/Credits/ThanksContainer/HBoxContainer"]
+margin_right = 500.0
 margin_bottom = 100.0
+size_flags_horizontal = 4
 texture = ExtResource( 24 )
 
+[node name="SwipeCreator" type="Label" parent="StartScreen/Credits/ThanksContainer/HBoxContainer"]
+margin_left = 504.0
+margin_top = 25.0
+margin_right = 816.0
+margin_bottom = 75.0
+custom_fonts/font = SubResource( 29 )
+custom_colors/font_color = Color( 1, 1, 0.921569, 1 )
+text = "SWIPE_CREATOR"
+percent_visible = -0.0769231
+
 [node name="Back" type="Button" parent="StartScreen/Credits"]
-margin_top = 318.0
-margin_right = 1280.0
-margin_bottom = 383.0
+margin_left = 556.0
+margin_top = 348.0
+margin_right = 724.0
+margin_bottom = 413.0
 mouse_default_cursor_shape = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
+size_flags_horizontal = 6
+size_flags_vertical = 2
 custom_styles/focus = SubResource( 23 )
 custom_fonts/font = SubResource( 24 )
 custom_colors/font_color = Color( 1, 0.894118, 0.470588, 1 )

@@ -70,7 +70,7 @@ func _on_start_pressed():
 	emit_signal("start_game")
 
 func _on_credits_pressed():
-	$StartScreen/AnimationPlayer.play("ShowCredits")
+	$StartScreen/AnimationPlayer.play("ShowCredits", -1, 1.5)
 	$UI_Menu_Click.play()
 
 func _on_back_pressed():
