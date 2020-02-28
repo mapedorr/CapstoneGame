@@ -31,8 +31,6 @@ var breakable_mugre
 var females_on_trunk = 0
 var game_finished = false
 var in_tutorial = 1
-var beat = 1
-var beat_time:float = 0.0
 
 """ ════ Funciones ═════════════════════════════════════════════════════════ """
 func _ready():
@@ -51,6 +49,27 @@ func _ready():
 	# Start animations
 	$FondoL1/AnimationPlayer.play("Idle")
 	$PrimerPlano/AnimationPlayer.play("Idle")
+
+func _process(delta):
+	if clean:
+		if not timer_on:
+			timer_on = true
+			$MasterTimer.start()
+		else:
+			countdown_on = false
+	elif timer_on and not countdown_on:
+		countdown_on = true
+
+func _physics_process(delta):
+	if spawning:
+		spawn_timer += 1
+		if spawn_timer == 30:
+			spawn_mugre()
+			spawn_timer = 0
+		if spawn_count == spawn_limit:
+			spawning = false
+			spawn_count = 0
+			spawn_limit += 2
 
 func _on_master_timer_timeout():
 	if clean:
@@ -81,39 +100,6 @@ func _on_master_timer_timeout():
 
 func start_clean_check():
 	clean = !clean
-
-func _process(delta):
-	
-	if $MusicManager/MxBase.playing:
-		var time = $MusicManager/MxBase.get_playback_position() + AudioServer.get_time_since_last_mix()
-		# Compensate for output latency.
-		time -= AudioServer.get_output_latency()
-		if time - beat_time >= 60.0/110.0:
-			beat += 1
-			if beat == 5:
-				beat = 1
-			beat_time = time
-			print("beat is: ", beat)
-	
-	if clean:
-		if not timer_on:
-			timer_on = true
-			$MasterTimer.start()
-		else:
-			countdown_on = false
-	elif timer_on and not countdown_on:
-		countdown_on = true
-
-func _physics_process(delta):
-	if spawning:
-		spawn_timer += 1
-		if spawn_timer == 30:
-			spawn_mugre()
-			spawn_timer = 0
-		if spawn_count == spawn_limit:
-			spawning = false
-			spawn_count = 0
-			spawn_limit += 2
 
 func spawn_mugre():
 	var pos_x = randi()%(max_x - min_x) + min_x

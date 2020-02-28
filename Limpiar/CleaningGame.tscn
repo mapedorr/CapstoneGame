@@ -619,7 +619,7 @@ bus = "Music"
 
 [node name="Melody_Bird1" type="Node2D" parent="MusicManager/Birds"]
 script = ExtResource( 12 )
-bar_per_sound = 16
+bar_per_sound = 8
 weight = 85
 
 [node name="Melody_Bird1_01" type="AudioStreamPlayer" parent="MusicManager/Birds/Melody_Bird1"]
@@ -651,7 +651,7 @@ bus = "Birds"
 
 [node name="Melody_Bird2" type="Node2D" parent="MusicManager/Birds"]
 script = ExtResource( 12 )
-bar_per_sound = 16
+bar_per_sound = 8
 weight = 85
 
 [node name="Melody_Bird2_01" type="AudioStreamPlayer" parent="MusicManager/Birds/Melody_Bird2"]
@@ -683,7 +683,7 @@ bus = "Birds"
 
 [node name="Melody_Bird3" type="Node2D" parent="MusicManager/Birds"]
 script = ExtResource( 12 )
-bar_per_sound = 16
+bar_per_sound = 8
 weight = 85
 
 [node name="Melody_Bird3_01" type="AudioStreamPlayer" parent="MusicManager/Birds/Melody_Bird3"]
@@ -715,7 +715,7 @@ bus = "Birds"
 
 [node name="Melody_Bird4" type="Node2D" parent="MusicManager/Birds"]
 script = ExtResource( 12 )
-bar_per_sound = 16
+bar_per_sound = 8
 weight = 85
 
 [node name="Melody_Bird4_01" type="AudioStreamPlayer" parent="MusicManager/Birds/Melody_Bird4"]

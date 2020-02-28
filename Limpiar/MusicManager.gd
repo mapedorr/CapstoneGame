@@ -14,12 +14,42 @@ var fadingout = false
 var music_played = false
 var david_shown = false
 
+# Cosas para tener las pájaras coordinadas con la música ----
+var time_begin
+var time_delay
+var beat: int = 1
+var last_tick: int = -1
+# ----
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass
 
 func _process(delta):
+	if $MxBase.playing:
+		var time = 0.0
+		# Obtain from ticks.
+		time = (OS.get_ticks_usec() - time_begin) / 1000000.0
+		# Compensate.
+		time -= time_delay
+		var tick = int(abs(time * $Metronome.bpm / 60.0))
+		if tick != last_tick:
+			last_tick = tick
+
+			$Birds/Melody_Bird1._on_upbeat_ticked(beat)
+			$Birds/Melody_Bird2._on_upbeat_ticked(beat)
+			$Birds/Melody_Bird3._on_upbeat_ticked(beat)
+			$Birds/Melody_Bird4._on_upbeat_ticked(beat)
+			
+#			if beat == 1:
+#				print('Aquí se hará algo')
+#			else: print('Beat: ', beat)
+
+			beat += 1
+			if beat == 5:
+				beat = 1
+
 	if isPlaying  == false:
 		if $Metronome.current_measure == 1:
 			isPlaying = true
@@ -27,8 +57,12 @@ func _process(delta):
 	else:
 		if not music_played and david_shown and $Metronome.current_beat == 1:
 			music_played = true
+
 			for birds in $Birds.get_children():
 				birds.awake = true
+
+			time_begin = OS.get_ticks_usec()
+			time_delay = AudioServer.get_time_to_next_mix() + AudioServer.get_output_latency()
 			$MxBase.play()
 
 func start_system():

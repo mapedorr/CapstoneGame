@@ -6,8 +6,7 @@ export (float) var inst_vol = 0
 
 var index_sound = -1
 var select_sound
-var bar_count = 1
-var can_play = true
+var bar_count = 0
 var awake = false
 onready var init_vol = inst_vol
 
@@ -18,12 +17,11 @@ func _ready():
 	inst_vol = 0
 	select_sound.set_volume_db(inst_vol)
 
-func _on_upbeat_ticked(current_bar):
+func _on_upbeat_ticked(beat):
 	bar_count += 1
 	if bar_count == 1:
 		playsound()
 	if bar_count == bar_per_sound:
-		can_play = true
 		bar_count = 0
 
 
