@@ -23,6 +23,7 @@ config/icon="res://icon.png"
 [autoload]
 
 LanguageManager="*res://Managers/LanguageManager.gd"
+EventManager="*res://Managers/EventManager.gd"
 
 [debug]
 

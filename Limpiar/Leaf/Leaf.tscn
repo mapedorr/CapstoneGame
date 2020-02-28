@@ -323,7 +323,6 @@ emission_shape = 2
 emission_rect_extents = Vector2( 1, 1 )
 flag_align_y = true
 spread = 23.96
-flatness = 0.18
 gravity = Vector2( 0, 5 )
 angle = 130.9
 scale_amount = 0.5
@@ -381,4 +380,3 @@ position = Vector2( 90.4889, -18.1548 )
 scale = Vector2( 0.4, 0.4 )
 texture = ExtResource( 9 )
 hframes = 4
-
