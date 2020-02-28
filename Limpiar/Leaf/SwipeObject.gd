@@ -8,6 +8,7 @@ onready var _swipe_directions = $SwipeDetector.Directions
 export(int) var cuando = 1
 export(bool) var random_movement
 export(int) var max_count = 8
+export(String, 'Leaf', 'Stick', 'Flower', 'Mushroom') var type = 'Leaf'
 
 var count = 1 
 var spawned = false
@@ -21,13 +22,10 @@ func _ready():
 	$SwipeDetector.connect("swiped", self, "_on_swiped")
 	$Sprite/Animator.connect("animation_finished", self, "self_destroy")
 
-#	if random_movement:
-#		randomize()
-#		cuando = randi() % max_count + 1
 
 func _enter_tree():
-	if self.has_node("SFX_Spawn") and spawned:
-		$SFX_Spawn.play()
+	if spawned:
+		EventManager.emit_signal('play_requested', type, 'Spawn', position)
 	$SwipeDetector/Area2D.transform = transform
 
 func _on_swipe_started(partial_gesture):
@@ -96,3 +94,6 @@ func self_destroy(anim_name):
 	if anim_name == 'DeathLeft' or anim_name == 'DeathRight':
 		# TODO: generar las partículas de la destrucción
 		queue_free()
+
+func _on_death():
+	EventManager.emit_signal('play_requested', type, 'Pop', position)

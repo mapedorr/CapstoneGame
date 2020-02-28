@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Limpiar/Leaf/Breakable.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Sprites/flor_dance1.png" type="Texture" id=2]
@@ -7,10 +7,6 @@
 [ext_resource path="res://Assets/Sprites/mugre_shadow.png" type="Texture" id=5]
 [ext_resource path="res://addons/swipe-detector/swipe_detector.gd" type="Script" id=6]
 [ext_resource path="res://addons/swipe-detector/icon.png" type="Texture" id=7]
-[ext_resource path="res://Audio/SFX/SFX_FlowerSpawn.ogg" type="AudioStream" id=8]
-[ext_resource path="res://Audio/Randomize_Audio.gd" type="Script" id=9]
-[ext_resource path="res://Audio/SFX/SFX_Pop.ogg" type="AudioStream" id=10]
-[ext_resource path="res://Audio/SFX/SFX_FlowerDeath.ogg" type="AudioStream" id=11]
 [ext_resource path="res://Limpiar/Sprites/Particle.png" type="Texture" id=12]
 
 [sub_resource type="Animation" id=1]
@@ -301,7 +297,7 @@ tracks/6/keys = {
 "values": [ 0, 1, 2, 3 ]
 }
 tracks/7/type = "method"
-tracks/7/path = NodePath("../SFX_Pop")
+tracks/7/path = NodePath("..")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/imported = false
@@ -310,8 +306,8 @@ tracks/7/keys = {
 "times": PoolRealArray( 1 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
-"args": [ 0.0 ],
-"method": "play"
+"args": [  ],
+"method": "_on_death"
 } ]
 }
 
@@ -403,7 +399,7 @@ tracks/6/keys = {
 "values": [ 0, 1, 2, 3 ]
 }
 tracks/7/type = "method"
-tracks/7/path = NodePath("../SFX_Pop")
+tracks/7/path = NodePath("..")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/imported = false
@@ -412,8 +408,8 @@ tracks/7/keys = {
 "times": PoolRealArray( 1 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
-"args": [ 0.0 ],
-"method": "play"
+"args": [  ],
+"method": "_on_death"
 } ]
 }
 
@@ -427,9 +423,9 @@ extents = Vector2( 24, 24 )
 [node name="Flower" type="Node2D"]
 script = ExtResource( 1 )
 cuando = 5
+type = "Flower"
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 10.8433, -7.22888 )
 texture = ExtResource( 2 )
 
 [node name="Animator" type="AnimationPlayer" parent="Sprite"]
@@ -440,7 +436,7 @@ anims/DeathRight = SubResource( 4 )
 
 [node name="Shadow" type="Sprite" parent="Sprite"]
 self_modulate = Color( 1, 1, 1, 0.894118 )
-position = Vector2( -3, 32 )
+position = Vector2( -2, 34 )
 z_index = -1
 texture = ExtResource( 5 )
 hframes = 3
@@ -468,42 +464,9 @@ scale = Vector2( 0.726472, 0.856078 )
 shape = SubResource( 6 )
 passby_press = true
 
-[node name="SFX_Spawn" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource( 8 )
-volume_db = -2.0
-script = ExtResource( 9 )
-RandomVolume = true
-minVolume = -3.0
-RandomPitch = true
-minPitch = -3.0
-maxPitch = 1.0
-
-[node name="SFX_Pop" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource( 10 )
-volume_db = 2.0
-script = ExtResource( 9 )
-RandomVolume = true
-minVolume = -1.0
-maxVolume = 2.0
-RandomPitch = true
-minPitch = -4.0
-maxPitch = 1.0
-
-[node name="SFX_Death" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource( 11 )
-volume_db = -3.0
-script = ExtResource( 9 )
-RandomVolume = true
-minVolume = -3.0
-maxVolume = 2.0
-RandomPitch = true
-minPitch = -2.0
-maxPitch = 1.0
-
 [node name="Particle" type="Sprite" parent="."]
 visible = false
 position = Vector2( 92.2166, -20.0732 )
 scale = Vector2( 0.6, 0.6 )
 texture = ExtResource( 12 )
 hframes = 4
-

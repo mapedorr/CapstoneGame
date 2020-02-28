@@ -2,12 +2,16 @@ extends Node
 
 signal music_started
 
-onready var tween_out = $Fade
-onready var current_layer = 0
 
 export var fadein_duration = 3
 export var fadeout_duration = 8
 export var transition_type = 1 # TRANS_SINE
+
+onready var tween_out = $Fade
+onready var current_layer = 0
+
+const COMPENSATE_FRAMES = 2
+const COMPENSATE_HZ = 60.0
 
 var isPlaying = false
 var fadingout = false
@@ -30,10 +34,18 @@ func _ready():
 func _process(delta):
 	if $MxBase.playing:
 		var time = 0.0
+
+		# ──────────────────────────────────────┤ SYNC_SOURCE_SYSTEM_CLOCK ├────
 		# Obtain from ticks.
 		time = (OS.get_ticks_usec() - time_begin) / 1000000.0
 		# Compensate.
 		time -= time_delay
+		# ──────────────────────────────────────────────────────────────────────
+
+		# ───────────────────────────────────────┤ SYNC_SOURCE_SOUND_CLOCK ├────
+		# time = $MxBase$MxBase.get_playback_position() + AudioServer.get_time_since_last_mix() - AudioServer.get_output_latency() + (1 / COMPENSATE_HZ) * COMPENSATE_FRAMES
+		# ──────────────────────────────────────────────────────────────────────
+
 		var tick = int(abs(time * $Metronome.bpm / 60.0))
 		if tick != last_tick:
 			last_tick = tick
@@ -42,28 +54,15 @@ func _process(delta):
 			$Birds/Melody_Bird2._on_upbeat_ticked(beat)
 			$Birds/Melody_Bird3._on_upbeat_ticked(beat)
 			$Birds/Melody_Bird4._on_upbeat_ticked(beat)
-			
-#			if beat == 1:
-#				print('Aquí se hará algo')
-#			else: print('Beat: ', beat)
 
 			beat += 1
 			if beat == 5:
 				beat = 1
 		if $MxBase.get_playback_position() >= 1.0:
 			first_time = false
-		if not first_time && $MxBase.get_playback_position() < 1.0:
-			print('he vuelto')
-			first_time = true
-			time_begin = OS.get_ticks_usec()
-			time_delay = AudioServer.get_time_to_next_mix() + AudioServer.get_output_latency()
-			last_tick = -1 
-			beat = 1
-			$Birds/Melody_Bird1.bar_count = 0
-			$Birds/Melody_Bird2.bar_count = 0
-			$Birds/Melody_Bird3.bar_count = 0
-			$Birds/Melody_Bird4.bar_count = 0
-			
+		elif not first_time && $MxBase.get_playback_position() < 1.0:
+			_on_music_started()
+
 
 	if isPlaying  == false:
 		if $Metronome.current_measure == 1:
@@ -76,8 +75,7 @@ func _process(delta):
 			for birds in $Birds.get_children():
 				birds.awake = true
 
-			time_begin = OS.get_ticks_usec()
-			time_delay = AudioServer.get_time_to_next_mix() + AudioServer.get_output_latency()
+			_on_music_started()
 			$MxBase.play()
 
 func start_system():
@@ -99,9 +97,12 @@ func reset():
 		if not tween_out.is_connected("tween_completed", self, "stoplayers"):
 			tween_out.connect("tween_completed", self, "stoplayers")
 		fade_out(layers)
-#	for birds in $Birds.get_children():
-#			birds.sleep()
-		
+
+	$Birds/Melody_Bird1.sleep()
+	$Birds/Melody_Bird2.sleep()
+	$Birds/Melody_Bird3.sleep()
+	$Birds/Melody_Bird4.sleep()
+
 	current_layer = 0
 
 func awake_bird(current_layer):
@@ -132,3 +133,14 @@ func fade_out(music_to_fade):
 
 func start_metronome():
 	$Metronome.start_metronome()
+
+func _on_music_started():
+	first_time = true
+	time_begin = OS.get_ticks_usec()
+	time_delay = AudioServer.get_time_to_next_mix() + AudioServer.get_output_latency()
+	last_tick = -1 
+	beat = 1
+	$Birds/Melody_Bird1.bar_count = 0
+	$Birds/Melody_Bird2.bar_count = 0
+	$Birds/Melody_Bird3.bar_count = 0
+	$Birds/Melody_Bird4.bar_count = 0

@@ -37,6 +37,6 @@ func kill():
 	hp -= 1
 	if hp == 1:
 		$Sprite/Animator.play("Dead")
-		$SFX_Death.play()
+		EventManager.emit_signal('play_requested', type, 'Death', position)
 	elif hp <= 0:
 		alive = false

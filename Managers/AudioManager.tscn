@@ -1,0 +1,159 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Managers/AudioManager.gd" type="Script" id=1]
+[ext_resource path="res://Audio/SFX/SFX_LeafSpawn.ogg" type="AudioStream" id=2]
+[ext_resource path="res://Audio/SFX/SFX_Pop.ogg" type="AudioStream" id=3]
+[ext_resource path="res://Audio/Randomize_Audio.gd" type="Script" id=4]
+[ext_resource path="res://Audio/SFX/SFX_StickSpawn.ogg" type="AudioStream" id=5]
+[ext_resource path="res://Audio/SFX/SFX_FlowerSpawn.ogg" type="AudioStream" id=6]
+[ext_resource path="res://Audio/SFX/SFX_FlowerDeath.ogg" type="AudioStream" id=7]
+[ext_resource path="res://Audio/SFX/SFX_MushroomDeath.ogg" type="AudioStream" id=8]
+[ext_resource path="res://Audio/SFX/SFX_MushroomSpawn.ogg" type="AudioStream" id=9]
+
+[node name="AudioManager" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="Leaf" type="Node2D" parent="."]
+
+[node name="Spawn" type="AudioStreamPlayer2D" parent="Leaf"]
+stream = ExtResource( 2 )
+volume_db = -4.0
+script = ExtResource( 4 )
+__meta__ = {
+"_editor_description_": ""
+}
+RandomVolume = true
+minVolume = -2.0
+maxVolume = 1.0
+RandomPitch = true
+minPitch = -4.0
+maxPitch = 3.0
+
+[node name="Pop" type="AudioStreamPlayer2D" parent="Leaf"]
+stream = ExtResource( 3 )
+volume_db = 2.0
+script = ExtResource( 4 )
+__meta__ = {
+"_editor_description_": ""
+}
+RandomVolume = true
+minVolume = -2.0
+maxVolume = 1.0
+RandomPitch = true
+minPitch = -2.0
+maxPitch = 4.0
+
+[node name="Stick" type="Node2D" parent="."]
+
+[node name="Spawn" type="AudioStreamPlayer2D" parent="Stick"]
+stream = ExtResource( 5 )
+volume_db = -4.0
+script = ExtResource( 4 )
+__meta__ = {
+"_editor_description_": ""
+}
+RandomVolume = true
+minVolume = -2.0
+maxVolume = 1.0
+RandomPitch = true
+minPitch = -1.0
+maxPitch = 3.0
+
+[node name="Pop" type="AudioStreamPlayer2D" parent="Stick"]
+stream = ExtResource( 5 )
+volume_db = -4.0
+script = ExtResource( 4 )
+__meta__ = {
+"_editor_description_": ""
+}
+RandomVolume = true
+minVolume = -2.0
+maxVolume = 1.0
+RandomPitch = true
+minPitch = -2.0
+maxPitch = 3.0
+
+[node name="Flower" type="Node2D" parent="."]
+
+[node name="Spawn" type="AudioStreamPlayer2D" parent="Flower"]
+stream = ExtResource( 6 )
+volume_db = -2.0
+script = ExtResource( 4 )
+__meta__ = {
+"_editor_description_": ""
+}
+RandomVolume = true
+minVolume = -3.0
+RandomPitch = true
+minPitch = -3.0
+maxPitch = 1.0
+
+[node name="Pop" type="AudioStreamPlayer2D" parent="Flower"]
+stream = ExtResource( 3 )
+volume_db = 2.0
+script = ExtResource( 4 )
+__meta__ = {
+"_editor_description_": ""
+}
+RandomVolume = true
+minVolume = -1.0
+maxVolume = 2.0
+RandomPitch = true
+minPitch = -4.0
+maxPitch = 1.0
+
+[node name="Death" type="AudioStreamPlayer2D" parent="Flower"]
+stream = ExtResource( 7 )
+volume_db = -3.0
+script = ExtResource( 4 )
+__meta__ = {
+"_editor_description_": ""
+}
+RandomVolume = true
+minVolume = -3.0
+maxVolume = 2.0
+RandomPitch = true
+minPitch = -2.0
+maxPitch = 1.0
+
+[node name="Mushroom" type="Node2D" parent="."]
+
+[node name="Spawn" type="AudioStreamPlayer2D" parent="Mushroom"]
+stream = ExtResource( 9 )
+volume_db = -2.0
+script = ExtResource( 4 )
+__meta__ = {
+"_editor_description_": ""
+}
+RandomVolume = true
+minVolume = -2.0
+RandomPitch = true
+minPitch = -3.0
+maxPitch = 1.0
+
+[node name="Pop" type="AudioStreamPlayer2D" parent="Mushroom"]
+stream = ExtResource( 3 )
+volume_db = 2.0
+script = ExtResource( 4 )
+__meta__ = {
+"_editor_description_": ""
+}
+RandomVolume = true
+minVolume = -2.0
+maxVolume = 1.0
+RandomPitch = true
+minPitch = -3.0
+maxPitch = 1.0
+
+[node name="Death" type="AudioStreamPlayer2D" parent="Mushroom"]
+stream = ExtResource( 8 )
+script = ExtResource( 4 )
+__meta__ = {
+"_editor_description_": ""
+}
+RandomVolume = true
+minVolume = -1.0
+maxVolume = 1.0
+RandomPitch = true
+minPitch = -3.0
+maxPitch = 1.0
