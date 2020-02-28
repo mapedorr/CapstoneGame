@@ -19,6 +19,7 @@ var time_begin
 var time_delay
 var beat: int = 1
 var last_tick: int = -1
+var first_time = true
 # ----
 
 
@@ -49,6 +50,20 @@ func _process(delta):
 			beat += 1
 			if beat == 5:
 				beat = 1
+		if $MxBase.get_playback_position() >= 1.0:
+			first_time = false
+		if not first_time && $MxBase.get_playback_position() < 1.0:
+			print('he vuelto')
+			first_time = true
+			time_begin = OS.get_ticks_usec()
+			time_delay = AudioServer.get_time_to_next_mix() + AudioServer.get_output_latency()
+			last_tick = -1 
+			beat = 1
+			$Birds/Melody_Bird1.bar_count = 0
+			$Birds/Melody_Bird2.bar_count = 0
+			$Birds/Melody_Bird3.bar_count = 0
+			$Birds/Melody_Bird4.bar_count = 0
+			
 
 	if isPlaying  == false:
 		if $Metronome.current_measure == 1:
