@@ -15,14 +15,13 @@ func _ready():
 	randomize()
 	index_sound = randi()%get_child_count()
 	select_sound = get_child(index_sound)
-	inst_vol = -80
+	inst_vol = 0
 	select_sound.set_volume_db(inst_vol)
 
 func _on_upbeat_ticked(current_bar):
 	bar_count += 1
-	if awake:
-		if bar_count == 1:
-			playsound()
+	if bar_count == 1:
+		playsound()
 	if bar_count == bar_per_sound:
 		can_play = true
 		bar_count = 0
@@ -38,28 +37,30 @@ func playsound():
 		select_sound.set_volume_db(inst_vol)
 
 func awake():
-	get_node('../../Fade').interpolate_method(
-		self,
-		"change_volume",
-		-80,
-		init_vol,
-		2.5,
-		Tween.TRANS_LINEAR,
-		Tween.EASE_OUT
-	)
-	get_node('../../Fade').start()
+	inst_vol = init_vol
+#	get_node('../../Fade').interpolate_method(
+#		self,
+#		"change_volume",
+#		-80,
+#		init_vol,
+#		2.5,
+#		Tween.TRANS_LINEAR,
+#		Tween.EASE_OUT
+#	)
+#	get_node('../../Fade').start()
 	
 func sleep():
-	get_node('../../Fade').interpolate_method(
-		self,
-		"change_volume",
-		init_vol,
-		-80,
-		0.4,
-		Tween.TRANS_LINEAR,
-		Tween.EASE_OUT
-	)
-	get_node('../../Fade').start()
+	inst_vol = -80
+#	get_node('../../Fade').interpolate_method(
+#		self,
+#		"change_volume",
+#		init_vol,
+#		-80,
+#		0.4,
+#		Tween.TRANS_LINEAR,
+#		Tween.EASE_OUT
+#	)
+#	get_node('../../Fade').start()
 
 func change_volume(new_val: float):
 	inst_vol = new_val

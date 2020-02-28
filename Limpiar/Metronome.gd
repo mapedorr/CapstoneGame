@@ -35,8 +35,6 @@ func _ready():
 	
 	beat_interval = 60 / bpm * 4 / float(time_signature_botton)
 	timer.set_wait_time(beat_interval)
-	display.set_text("0  0")
-
 
 
 func _play_metronome():
@@ -48,37 +46,22 @@ func _play_metronome():
 	if current_beat % time_signature_top == 0:
 		current_beat = 1
 		current_measure += 1
-		display.set_text(str(current_measure) + "  " + str(current_beat))
 	else:
 		current_beat += 1
-		display.set_text(str(current_measure) + "  " + str(current_beat))
-
-func _sync_birds():
-	
+		
 	for birds in get_node("../Birds").get_children():
 		birds._on_upbeat_ticked(current_measure)
-		
-	if current_beat % time_signature_top/2 == 0:
-		current_beat = 1
-		current_measure += 1
-		display.set_text(str(current_measure) + "  " + str(current_beat))
-	else:
-		current_beat += 1
-		display.set_text(str(current_measure) + "  " + str(current_beat))
 
 func _on_Timer_timeout():
 	if isPlaying == true:
 		_play_metronome()
-		_sync_birds()
 
 func start_metronome():
 	if isPlaying == false:
 		_play_metronome()
-		_sync_birds()
 
 func stop_metronome():
 	if isPlaying == true:
 		isPlaying = false
 		current_beat = 1
 		current_measure = -1
-		display.set_text("0  0")

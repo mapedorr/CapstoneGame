@@ -7,6 +7,7 @@ export(PackedScene) var mushroom
 export(bool) var skip_tutorial
 export(int) var goal_females = 4
 export(float) var dflt_master_volume = -1.7
+export (int) var spawn_limit = 4
 export(LanguageManager.Language) var language = LanguageManager.Language.ES
 
 onready var dirt_on_ground = $LeafContainer.get_children().size()
@@ -24,13 +25,14 @@ var spawn_countdown = 3
 var spawning = false
 var spawn_timer = 0
 var spawn_count = 0
-var spawn_limit = 4
 var clean_countdown = 0
 var basic_mugre
 var breakable_mugre
 var females_on_trunk = 0
 var game_finished = false
 var in_tutorial = 1
+var beat = 1
+var beat_time:float = 0.0
 
 """ ════ Funciones ═════════════════════════════════════════════════════════ """
 func _ready():
@@ -81,6 +83,18 @@ func start_clean_check():
 	clean = !clean
 
 func _process(delta):
+	
+	if $MusicManager/MxBase.playing:
+		var time = $MusicManager/MxBase.get_playback_position() + AudioServer.get_time_since_last_mix()
+		# Compensate for output latency.
+		time -= AudioServer.get_output_latency()
+		if time - beat_time >= 60.0/110.0:
+			beat += 1
+			if beat == 5:
+				beat = 1
+			beat_time = time
+			print("beat is: ", beat)
+	
 	if clean:
 		if not timer_on:
 			timer_on = true

@@ -37,51 +37,35 @@ func start_system():
 func add_layer():
 	current_layer += 1
 	awake_bird(current_layer)
-	while (true):
-		if $Metronome.current_beat == 1:
-			match current_layer:
-				1:
-					break
-				2:
-					$Layers/Layer1.play($MxBase.get_playback_position())
-					fade_in($Layers/Layer1, 3, 6)
-					break
-				3:
-					$Layers/Layer2.play($MxBase.get_playback_position())
-					fade_in($Layers/Layer2, 3, 6)
-					break
-				4:
-					break
-		yield(get_tree().create_timer(0.3),"timeout")
-
+	match current_layer:
+		2:
+			$Layers/Layer1.play($MxBase.get_playback_position())
+			fade_in($Layers/Layer1, 3, 6)
+		3:
+			$Layers/Layer2.play($MxBase.get_playback_position())
+			fade_in($Layers/Layer2, 3, 6)
+			
 func reset():
 	for layers in $Layers.get_children():
 		if not tween_out.is_connected("tween_completed", self, "stoplayers"):
 			tween_out.connect("tween_completed", self, "stoplayers")
 		fade_out(layers)
-	for birds in $Birds.get_children():
-			birds.sleep()
+#	for birds in $Birds.get_children():
+#			birds.sleep()
 		
 	current_layer = 0
 
 func awake_bird(current_layer):
 	fadingout = false
-	while (true):
-		if $Metronome.current_beat == 1:
-			match current_layer:
-				1:
-					$Birds/Melody_Bird1.awake()
-					break
-				2:
-					$Birds/Melody_Bird2.awake()
-					break
-				3:
-					$Birds/Melody_Bird3.awake()
-					break
-				4:
-					$Birds/Melody_Bird4.awake()
-					break
-		yield(get_tree().create_timer(0.3),"timeout")
+	match current_layer:
+		1:
+			$Birds/Melody_Bird1.awake()
+		2:
+			$Birds/Melody_Bird2.awake()
+		3:
+			$Birds/Melody_Bird3.awake()
+		4:
+			$Birds/Melody_Bird4.awake()
 
 func stoplayers(object, key):
 	if fadingout:
