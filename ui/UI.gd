@@ -111,10 +111,13 @@ func change_master_volume(new_val):
 
 func _on_language_changed(language: String):
 	TranslationServer.set_locale(language)
+
 	match language:
 		'es':
 			$StartScreen/StartButtons/LanguageOps/Es.pressed = true
 			$StartScreen/StartButtons/LanguageOps/En.pressed = false
+			$StartScreen/GameName.set_texture($StartScreen/GameNameEs.texture)
 		'en':
 			$StartScreen/StartButtons/LanguageOps/Es.pressed = false
 			$StartScreen/StartButtons/LanguageOps/En.pressed = true
+			$StartScreen/GameName.set_texture($StartScreen/GameNameEn.texture)

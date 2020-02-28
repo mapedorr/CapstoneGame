@@ -1,4 +1,4 @@
-[gd_scene load_steps=75 format=2]
+[gd_scene load_steps=76 format=2]
 
 [ext_resource path="res://ui/UI.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Fonts/Sniglet-Regular.ttf" type="DynamicFontData" id=2]
@@ -20,7 +20,7 @@
 [ext_resource path="res://Audio/SFX/SFX_Heart_01.ogg" type="AudioStream" id=18]
 [ext_resource path="res://Audio/SFX/SFX_Heart_02.ogg" type="AudioStream" id=19]
 [ext_resource path="res://Audio/SFX/SFX_Heart_03.ogg" type="AudioStream" id=20]
-[ext_resource path="res://ui/assets/game_name.png" type="Texture" id=21]
+[ext_resource path="res://ui/assets/game_name-en.png" type="Texture" id=21]
 [ext_resource path="res://Assets/Fonts/HungryPro.ttf" type="DynamicFontData" id=22]
 [ext_resource path="res://CustomResources/DynamicFonts/ConcertOne-48.tres" type="DynamicFont" id=23]
 [ext_resource path="res://ui/assets/CLO-logo.png" type="Texture" id=24]
@@ -44,6 +44,7 @@
 [ext_resource path="res://CustomResources/DynamicFonts/HungryPro_48.tres" type="DynamicFont" id=42]
 [ext_resource path="res://CustomResources/StyleBoxTexture/LanguageBtn-es-pressed.tres" type="StyleBox" id=43]
 [ext_resource path="res://CustomResources/StyleBoxTexture/LanguageBtn-en-pressed.tres" type="StyleBox" id=44]
+[ext_resource path="res://ui/assets/game_name-es.png" type="Texture" id=45]
 
 [sub_resource type="DynamicFont" id=1]
 size = 72
@@ -455,23 +456,23 @@ font_data = ExtResource( 22 )
 
 [sub_resource type="StyleBoxEmpty" id=22]
 
-[sub_resource type="DynamicFont" id=30]
+[sub_resource type="DynamicFont" id=23]
 size = 54
 extra_spacing_top = -24
 font_data = ExtResource( 22 )
 
-[sub_resource type="DynamicFont" id=29]
+[sub_resource type="DynamicFont" id=24]
 size = 54
 font_data = ExtResource( 22 )
 
-[sub_resource type="StyleBoxEmpty" id=23]
+[sub_resource type="StyleBoxEmpty" id=25]
 
-[sub_resource type="DynamicFont" id=24]
+[sub_resource type="DynamicFont" id=26]
 size = 90
 extra_spacing_top = -24
 font_data = ExtResource( 22 )
 
-[sub_resource type="Animation" id=25]
+[sub_resource type="Animation" id=27]
 tracks/0/type = "value"
 tracks/0/path = NodePath("ToMainMenu:custom_styles/focus")
 tracks/0/interp = 1
@@ -533,7 +534,7 @@ tracks/4/keys = {
 "values": [ ExtResource( 29 ), ExtResource( 38 ), ExtResource( 33 ), ExtResource( 37 ), ExtResource( 35 ), ExtResource( 34 ), ExtResource( 36 ), ExtResource( 32 ) ]
 }
 
-[sub_resource type="Animation" id=26]
+[sub_resource type="Animation" id=28]
 length = 0.3
 loop = true
 tracks/0/type = "value"
@@ -573,7 +574,7 @@ tracks/2/keys = {
 "values": [ Color( 1, 1, 1, 0 ) ]
 }
 
-[sub_resource type="Animation" id=27]
+[sub_resource type="Animation" id=29]
 length = 0.2
 tracks/0/type = "value"
 tracks/0/path = NodePath("ToMainMenu:rect_position")
@@ -624,7 +625,7 @@ tracks/3/keys = {
 "values": [ Color( 1, 1, 1, 0 ) ]
 }
 
-[sub_resource type="DynamicFont" id=28]
+[sub_resource type="DynamicFont" id=30]
 size = 36
 font_data = ExtResource( 22 )
 
@@ -846,6 +847,20 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="GameNameEn" type="TextureRect" parent="StartScreen"]
+visible = false
+margin_top = -3.0
+margin_right = 40.0
+margin_bottom = 37.0
+texture = ExtResource( 21 )
+
+[node name="GameNameEs" type="TextureRect" parent="StartScreen"]
+visible = false
+margin_top = -3.0
+margin_right = 40.0
+margin_bottom = 37.0
+texture = ExtResource( 45 )
+
 [node name="StartButtons" type="VBoxContainer" parent="StartScreen"]
 anchor_left = 0.5
 anchor_top = 1.0
@@ -990,7 +1005,7 @@ alignment = 1
 [node name="Thanks" type="Label" parent="StartScreen/Credits/ThanksContainer"]
 margin_right = 1280.0
 margin_bottom = 26.0
-custom_fonts/font = SubResource( 30 )
+custom_fonts/font = SubResource( 23 )
 custom_colors/font_color = Color( 1, 0.419608, 0.592157, 1 )
 text = "THANKS"
 align = 1
@@ -1013,10 +1028,9 @@ margin_left = 504.0
 margin_top = 25.0
 margin_right = 816.0
 margin_bottom = 75.0
-custom_fonts/font = SubResource( 29 )
+custom_fonts/font = SubResource( 24 )
 custom_colors/font_color = Color( 1, 1, 0.921569, 1 )
 text = "SWIPE_CREATOR"
-percent_visible = -0.0769231
 
 [node name="Back" type="Button" parent="StartScreen/Credits"]
 margin_left = 556.0
@@ -1026,8 +1040,8 @@ margin_bottom = 413.0
 mouse_default_cursor_shape = 2
 size_flags_horizontal = 6
 size_flags_vertical = 2
-custom_styles/focus = SubResource( 23 )
-custom_fonts/font = SubResource( 24 )
+custom_styles/focus = SubResource( 25 )
+custom_fonts/font = SubResource( 26 )
 custom_colors/font_color = Color( 1, 0.894118, 0.470588, 1 )
 custom_colors/font_color_hover = Color( 0.4, 1, 0.890196, 1 )
 custom_colors/font_color_pressed = Color( 0.4, 1, 0.890196, 1 )
@@ -1043,9 +1057,9 @@ __meta__ = {
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="EndScreen"]
-anims/HideButton = SubResource( 25 )
-anims/IdleButton = SubResource( 26 )
-anims/ShowButton = SubResource( 27 )
+anims/HideButton = SubResource( 27 )
+anims/IdleButton = SubResource( 28 )
+anims/ShowButton = SubResource( 29 )
 
 [node name="Tween" type="Tween" parent="EndScreen"]
 
@@ -1060,7 +1074,7 @@ custom_styles/hover = ExtResource( 28 )
 custom_styles/pressed = ExtResource( 29 )
 custom_styles/focus = ExtResource( 29 )
 custom_styles/normal = ExtResource( 29 )
-custom_fonts/font = SubResource( 28 )
+custom_fonts/font = SubResource( 30 )
 custom_colors/font_color = Color( 0.54902, 0.247059, 0.364706, 1 )
 custom_colors/font_color_hover = Color( 0.54902, 0.247059, 0.364706, 1 )
 custom_colors/font_color_pressed = Color( 0.54902, 0.247059, 0.364706, 1 )
