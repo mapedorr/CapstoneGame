@@ -103,7 +103,7 @@ func _on_to_main_menu_pressed():
 	$EndScreen/Tween.start()
 	$EndScreen/AnimationPlayer.stop()
 	$EndScreen/AnimationPlayer.play("HideButton")
-	yield($EndScreen/AnimationPlayer, "animation_finished")
+	yield($EndScreen/Tween, 'tween_completed')
 	get_tree().reload_current_scene()
 
 func change_master_volume(new_val):

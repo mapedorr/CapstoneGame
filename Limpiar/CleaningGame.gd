@@ -69,7 +69,7 @@ func _physics_process(delta):
 		if spawn_count == spawn_limit:
 			spawning = false
 			spawn_count = 0
-			spawn_limit += 2
+			spawn_limit += ceil(spawn_limit / 2)
 
 func _on_master_timer_timeout():
 	if clean:

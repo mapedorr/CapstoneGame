@@ -825,7 +825,7 @@ anims/Show = SubResource( 15 )
 anims/ShowCredits = SubResource( 16 )
 
 [node name="Overlay" type="ColorRect" parent="StartScreen"]
-self_modulate = Color( 1, 1, 1, 0.501961 )
+self_modulate = Color( 1, 1, 1, 0 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0.152941, 0.152941, 0.211765, 1 )
@@ -839,9 +839,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -536.0
-margin_top = -280.0
+margin_top = -670.0
 margin_right = 536.0
-margin_bottom = -91.9999
+margin_bottom = -482.0
 texture = ExtResource( 21 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -867,9 +867,9 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 margin_left = -134.0
-margin_top = -305.0
+margin_top = 145.0
 margin_right = 219.996
-margin_bottom = -72.9999
+margin_bottom = 377.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.0
