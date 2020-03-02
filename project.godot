@@ -15,7 +15,7 @@ _global_script_class_icons={
 
 [application]
 
-config/name="CapstoneGameProject"
+config/name="Pajaronorreo"
 run/main_scene="res://Limpiar/SplashScreen.tscn"
 boot_splash/bg_color=Color( 0.141176, 0.141176, 0.141176, 1 )
 config/icon="res://icon.png"

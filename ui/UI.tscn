@@ -1064,6 +1064,7 @@ anims/ShowButton = SubResource( 29 )
 [node name="Tween" type="Tween" parent="EndScreen"]
 
 [node name="ToMainMenu" type="Button" parent="EndScreen"]
+modulate = Color( 1, 1, 1, 0 )
 margin_left = 998.0
 margin_top = 402.0
 margin_right = 1308.0
